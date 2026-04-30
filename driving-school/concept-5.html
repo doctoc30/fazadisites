@@ -3,809 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solo Driving School - Personalized Learning</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>DriveWithConfidence | Premium Driving Tuition</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <style>
-        /* --- BRAND COLOR PALETTE (From Image) --- */
         :root {
-            --brand-red: #D32F2F; /* Primary Action & Logo Red */
-            --brand-red-dark: #B71C1C; /* Hover state red */
-            --brand-black: #212121; /* Headers and text */
-            --brand-gray: #757575; /* Subtext */
-            --brand-light-gray: #F5F5F5; /* Section Backgrounds */
-            --brand-white: #FFFFFF;
-            --brand-green: #388E3C; /* Checkmark green (if used) */
-            --transition: all 0.3s ease;
-        }
-
-        /* --- BASIC RESET & GLOBAL STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--brand-white);
-            color: var(--brand-black);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            color: var(--brand-black);
-            margin-bottom: 1rem;
-        }
-
-        h1 { font-size: 3.5rem; line-height: 1.2; }
-        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
-        h3 { font-size: 1.5rem; }
-
-        p {
-            font-weight: 400;
-            color: var(--brand-gray);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        ul { list-style: none; }
-        a { text-style: none; color: inherit; text-decoration: none; transition: var(--transition); }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        /* --- BUTTONS (Direct copy of style) --- */
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background-color: var(--brand-red);
-            color: var(--brand-white);
-            border-radius: 8px; /* Matching image buttons */
-            font-weight: 600;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            text-transform: capitalize;
-        }
-
-        .btn:hover {
-            background-color: var(--brand-red-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--brand-red);
-            color: var(--brand-red);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--brand-red);
-            color: var(--brand-white);
-        }
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background-color: var(--brand-white);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .brand-logo-icon {
-            /* Placeholder for a custom-branded Red Car Icon */
-            width: 40px;
-            height: 25px;
-            fill: var(--brand-red);
-        }
-
-        .brand-logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-        }
-
-        .logo-main-text {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--brand-black);
-        }
-
-        .logo-sub-text {
-            font-weight: 400;
-            font-size: 0.8rem;
-            color: var(--brand-gray);
-        }
-
-        nav ul {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-
-        nav a {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--brand-black);
-            text-transform: uppercase;
-        }
-
-        nav a:hover {
-            color: var(--brand-red);
-        }
-
-        nav li.active a {
-            color: var(--brand-red);
-        }
-
-        .header-action .btn {
-            padding: 8px 20px;
-            font-size: 0.8rem;
-            border-radius: 4px;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            margin-top: 80px; /* Offset for fixed header */
-            background-color: var(--brand-light-gray);
-            padding: 100px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            color: var(--brand-black);
-            margin-bottom: 20px;
-        }
-
-        .hero-image {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* --- Placeholder for Custom AI Generated Hero Car with L-plate --- */
-        .hero-car-placeholder {
-            width: 100%;
-            height: 400px;
-            background-color: #263238; /* A dark teal/car color base */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        
-        /* The car shape - AI generated graphic */
-        .car-shape {
-            width: 90%;
-            height: 80%;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50' fill='%2338808E'%3E%3Cpath d='M20 15c-3 0-6 2-7 5L5 28c-1.5 2-1 4 .5 5l5 2h79l5-2c1.5-1 2-3 .5-5L87 20c-1-3-4-5-7-5z'/%3E%3Ccircle cx='25' cy='42' r='8' fill='%23111'/%3E%3Ccircle cx='75' cy='42' r='8' fill='%23111'/%3E%3C/svg%3E");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        /* Integrated L-Plate for realism (from image) */
-        .l-plate-holder {
-            position: absolute;
-            bottom: 40px;
-            left: 50px;
-            width: 60px;
-            height: 60px;
-            background: white;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .l-plate-holder span {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #D32F2F;
-            font-family: Arial, sans-serif;
-            line-height: 1;
-        }
-
-        /* --- SERVICES SECTION (From Image) --- */
-        .services {
-            background-color: var(--brand-white);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--brand-light-gray);
-            padding: 40px 30px;
-            border-radius: 12px;
-            text-align: left;
-            border: 1px solid transparent;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .service-card:hover {
-            border-color: #eee;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            transform: translateY(-5px);
-        }
-
-        /* Checkmark icon (from image) */
-        .service-icon-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .service-checkmark {
-            width: 24px;
-            height: 24px;
-            background: var(--brand-red); /* Using the brand red for checkmarks as requested from the list style */
-            border-radius: 4px;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        /* Custom AI Generated Graphics for each service */
-        .service-ai-graphic {
-            width: 100%;
-            height: 180px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Service specific graphic placeholders */
-        .service-graphic-1 { background-color: #C5CAE9; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23D1C4E9' opacity='0.5'/%3E%3Cpath d='M30 60h40v10H30zM50 30l-20 20v10h40V50l-20-20z' fill='%233F51B5'/%3E%3C/svg%3E"); } /* Lessons icon */
-        .service-graphic-2 { background-color: #FFCC80; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='10' y='10' width='80' height='80' rx='5' fill='%23FFE0B2'/%3E%3Cpath d='M30 30h40v10H30zM30 50h40v10H30zM30 70h30v10H30z' fill='%23EF6C00'/%3E%3C/svg%3E"); } /* Theory icon */
-        .service-graphic-3 { background-color: #AED581; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23DCEDC8'/%3E%3Cpath d='M30 30v40l20 10 20-10V30H30zm10 20l10 10 20-20-5-5-15 15-5-5-5 5z' fill='%23558B2F'/%3E%3C/svg%3E"); } /* Mock Test icon */
-
-        .service-card h3 {
-            color: var(--brand-black);
-            font-size: 1.4rem;
-            margin: 0;
-        }
-
-        .service-card p {
-            font-size: 1rem;
-            margin: 0;
-            flex-grow: 1; /* Pushes button to bottom */
-        }
-
-        /* --- ABOUT (SOLO INSTRUCTOR) SECTION --- */
-        .about {
-            background-color: var(--brand-light-gray);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 3fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-image {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Custom AI Generated Instructor Portrait with L-Plate theme */
-        .about-portrait-placeholder {
-            width: 100%;
-            height: 450px;
-            background-color: #90A4AE;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='35' r='20' fill='%23CFD8DC'/%3E%3Cpath d='M20 85v-5c0-10 8-18 18-18h24c10 0 18 8 18 18v5H20z' fill='%23CFD8DC'/%3E%3C/svg%3E");
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* L-Plate integrated subtle pattern */
-        .about-portrait-placeholder::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 4px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #D32F2F;
-            content: 'L';
-            line-height: 1;
-            font-family: Arial;
-            opacity: 0.7;
-        }
-
-        .about-text h2 {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--brand-red);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--brand-gray);
-        }
-
-        /* --- TESTIMONIALS SECTION --- */
-        .testimonials {
-            background-color: var(--brand-white);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: var(--brand-light-gray);
-            padding: 30px;
-            border-radius: 12px;
-            position: relative;
-        }
-
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        /* Profile placeholders */
-        .testimonial-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #ccc;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='35' r='20' fill='%23999'/%3E%3Cpath d='M20 85v-5c0-10 8-18 18-18h24c10 0 18 8 18 18v5H20z' fill='%23999'/%3E%3C/svg%3E");
-        }
-
-        .testimonial-meta h4 {
-            font-size: 1.1rem;
-            margin: 0;
-            color: var(--brand-black);
-        }
-
-        .testimonial-meta span {
-            font-size: 0.8rem;
-            color: var(--brand-gray);
-        }
-
-        .testimonial-rating {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #FFD600; /* Star yellow */
-            font-size: 1.2rem;
-        }
-
-        /* --- CONTACT & BOOKING SECTION --- */
-        .contact {
-            background-color: var(--brand-red);
-            color: var(--brand-white);
-            padding: 100px 0;
-        }
-
-        .contact h2, .contact p {
-            color: var(--brand-white);
-            text-align: center;
-        }
-
-        .contact-form-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--brand-white);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: var(--brand-black);
-        }
-
-        .form-input, .form-textarea, .form-select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
-            outline: none;
-            border-color: var(--brand-red);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            height: 120px;
-        }
-
-        .contact-form-container .btn {
-            width: 100%;
-        }
-
-        /* --- FOOTER (From Image) --- */
-        footer {
-            background-color: var(--brand-white);
-            padding: 30px 0;
-            text-align: center;
-        }
-
-        .footer-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        .footer-logo-icon {
-            /* Placeholder for a custom-branded Red Car Icon */
-            width: 30px;
-            height: 20px;
-            fill: var(--brand-red);
-        }
-
-        .footer-logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-            text-align: left;
-        }
-
-        .footer-main-text {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--brand-black);
-        }
-
-        .footer-sub-text {
-            font-weight: 400;
-            font-size: 0.7rem;
-            color: var(--brand-gray);
-        }
-
-        .copyright-text {
-            font-size: 0.8rem;
-            color: var(--brand-gray);
-            margin: 0;
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 1024px) {
-            h1 { font-size: 3rem; }
-            h2 { font-size: 2rem; }
-            .hero-content, .about-content { grid-template-columns: 1fr; text-align: center; }
-            .hero-image, .about-image { max-width: 600px; margin: 0 auto; }
-            .about-text h2 { text-align: center; }
-            .about-stats { justify-content: center; }
-        }
-
+            --primary: #FF8E71; /* Coral from image */
+            --secondary: #D1E9FF; /* Light Blue */
+            --accent: #D1F5E9; /* Mint Green */
+            --dark: #2D3436;
+            --white: #FFFFFF;
+            --gray: #F9F9F9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { overflow-x: hidden; background-color: var(--white); color: var(--dark); scroll-behavior: smooth; }
+
+        /* --- Navigation --- */
+        nav {
+            position: sticky; top: 0; width: 100%; background: rgba(255,255,255,0.95);
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
+        .nav-links a { text-decoration: none; color: var(--dark); margin-left: 25px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- Top Generic Offers Slider --- */
+        .top-bar-slider { background: var(--dark); color: white; padding: 8px 0; text-align: center; font-size: 0.9rem; }
+
+        /* --- Hero Section --- */
+        .hero { 
+            display: grid; grid-template-columns: 1fr 1fr; align-items: center; 
+            padding: 60px 8%; background: linear-gradient(135deg, #fff 50%, var(--secondary) 50%);
+            min-height: 80vh;
+        }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+        .btn-main { 
+            background: var(--primary); color: white; padding: 15px 35px; 
+            border-radius: 50px; text-decoration: none; display: inline-block; 
+            font-weight: 600; border: none; cursor: pointer; transition: transform 0.3s;
+        }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,142,113,0.3); }
+        .hero-image img { width: 100%; filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.1)); }
+
+        /* --- Floating UI Elements --- */
+        .callback-btn {
+            position: fixed; right: -50px; top: 50%; transform: rotate(-90deg);
+            background: var(--primary); color: white; padding: 10px 20px;
+            border-radius: 5px 5px 0 0; cursor: pointer; z-index: 999; font-weight: 600;
+        }
+        .floating-action-bar {
+            position: fixed; bottom: 0; width: 100%; background: white;
+            display: flex; justify-content: space-around; padding: 10px;
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.1); z-index: 1001;
+        }
+
+        /* --- Stats Counter --- */
+        .stats { display: flex; justify-content: space-around; padding: 60px 5%; text-align: center; background: var(--accent); }
+        .stat-item h2 { font-size: 2.5rem; color: var(--primary); }
+
+        /* --- Pricing Cards --- */
+        .section-title { text-align: center; margin: 50px 0; font-size: 2.5rem; }
+        .pricing-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 25px; padding: 0 8% 60px; 
+        }
+        .price-card {
+            background: var(--white); border: 2px solid var(--secondary); border-radius: 20px;
+            padding: 40px; text-align: center; transition: 0.4s;
+        }
+        .price-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+        .price-card.popular { background: var(--secondary); }
+        .price-card h3 { margin-bottom: 15px; }
+        .price-card .cost { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 20px; display: block; }
+
+        /* --- FAQ Accordion --- */
+        .faq-section { background: var(--gray); padding: 80px 15%; }
+        .accordion-item { background: white; margin-bottom: 10px; border-radius: 10px; overflow: hidden; }
+        .accordion-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 600; }
+        .accordion-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; }
+
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            section { padding: 60px 0; }
-            .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
-            nav ul { display: none; } /* Mobile menu needed in production */
-            header { padding: 10px 0; }
-            .btn { padding: 12px 25px; }
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
         }
-
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo-container wow fadeIn">
-                    <svg class="brand-logo-icon" viewBox="0 0 100 50">
-                        <path d="M20 15c-3 0-6 2-7 5L5 28c-1.5 2-1 4 .5 5l5 2h79l5-2c1.5-1 2-3 .5-5L87 20c-1-3-4-5-7-5z"/>
-                        <circle cx='25' cy='42' r='8'/>
-                        <circle cx='75' cy='42' r='8'/>
-                    </svg>
-                    <div class="brand-logo-text">
-                        <span class="logo-main-text">DRIVING SCHOOL</span>
-                        <span class="logo-sub-text">Learn to Drive</span>
-                    </div>
-                </a>
-                
-                <nav>
-                    <ul class="wow fadeIn" data-wow-delay="0.2s">
-                        <li class="active"><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#about">Your Instructor</a></li>
-                        <li><a href="#testimonials">Student Success</a></li>
-                    </ul>
-                </nav>
-
-                <div class="header-action wow fadeIn" data-wow-delay="0.4s">
-                    <a href="#contact" class="btn btn-outline">CONTACT</a>
-                </div>
+    <div class="top-bar-slider">
+        <div class="swiper offerSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">15 Years Professional Experience</div>
+                <div class="swiper-slide">Free Theory Test Training Included</div>
+                <div class="swiper-slide">Established & Trusted Since 2005</div>
+                <div class="swiper-slide">High First-Time Pass Rate Specialist</div>
+                <div class="swiper-slide">DVSA Approved Grade A Instructor</div>
             </div>
         </div>
-    </header>
+    </div>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text wow fadeInLeft">
-                    <h1>Your Journey to Freedom Starts Solo</h1>
-                    <p>Unlock the skills to drive confidently. Get personalized, professional lessons from a dedicated solo instructor. Safe, patient, and tailored to you.</p>
-                    <div class="hero-btns">
-                        <a href="#contact" class="btn">BOOK NOW</a>
-                        <a href="#services" class="btn btn-outline">VIEW SERVICES</a>
-                    </div>
-                </div>
-                <div class="hero-image wow fadeInRight">
-                    <div class="hero-car-placeholder">
-                        <div class="car-shape"></div>
-                        <div class="l-plate-holder">
-                            <span>L</span>
-                        </div>
-                    </div>
-                </div>
+    <nav>
+        <div class="logo">DRIVE<span>SOLO</span></div>
+        <div class="nav-links">
+            <a href="#packages">Packages</a>
+            <a href="#areas">Areas</a>
+            <a href="#about">Instructor</a>
+            <a href="#faq">FAQ</a>
+            <a href="#book" class="btn-main" style="padding: 10px 20px;">Book Now</a>
+        </div>
+    </nav>
+
+    <div class="callback-btn" onclick="togglePopup()">Request Callback</div>
+
+    <section class="hero">
+        <div class="hero-text" data-aos="fade-right">
+            <h1>Learn to Drive with <span style="color:var(--primary)">Confidence</span></h1>
+            <p>Expert automatic and manual driving lessons tailored to your pace. Nervous driver? You're in safe hands.</p><br>
+            <a href="#book" class="btn-main">Book First Lesson — Only £25</a>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+            <img src="https://via.placeholder.com/600x400/D1E9FF/ffffff?text=Your+Branded+Car+Image" alt="Instructor Car">
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item" data-aos="zoom-in">
+            <h2 class="counter">500</h2>
+            <p>Students Passed</p>
+        </div>
+        <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+            <h2 class="counter">15</h2>
+            <p>Years Experience</p>
+        </div>
+        <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+            <h2 class="counter">95</h2>
+            <p>Pass Rate %</p>
+        </div>
+    </section>
+
+    <section id="packages">
+        <h2 class="section-title">Lesson Packages</h2>
+        <div class="pricing-grid">
+            <div class="price-card" data-aos="fade-up">
+                <h3>Starter Pack</h3>
+                <span class="cost">£35</span>
+                <p>1 Single Evaluation Lesson</p>
+                <hr style="margin:20px 0; border:0; border-top:1px solid #eee;">
+                <button class="btn-main">Buy Now</button>
+            </div>
+            <div class="price-card popular" data-aos="fade-up" data-aos-delay="100">
+                <h3>Intensive Pack</h3>
+                <span class="cost">£330</span>
+                <p>10 Lessons + Mock Test</p>
+                <hr style="margin:20px 0; border:0; border-top:1px solid #eee;">
+                <button class="btn-main">Buy Now</button>
+            </div>
+            <div class="price-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Fast Pass</h3>
+                <span class="cost">£640</span>
+                <p>20 Lessons + Fast Track Test</p>
+                <hr style="margin:20px 0; border:0; border-top:1px solid #eee;">
+                <button class="btn-main">Buy Now</button>
             </div>
         </div>
     </section>
 
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="wow fadeInDown">Our Driving Services</h2>
-            
-            <div class="services-grid">
-                
-                <div class="service-card wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-ai-graphic service-graphic-1"></div>
-                    <div class="service-icon-box">
-                        <div class="service-checkmark">✓</div>
-                        <h3>Professional driving lessons</h3>
-                    </div>
-                    <p>Expertly structured, one-on-one practical lessons focusing on safe driving habits and road proficiency.</p>
-                    <a href="#contact" class="btn">Get Started</a>
-                </div>
-
-                <div class="service-card wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-ai-graphic service-graphic-2"></div>
-                    <div class="service-icon-box">
-                        <div class="service-checkmark">✓</div>
-                        <h3>Theory preparation and practice</h3>
-                    </div>
-                    <p>Comprehensive guidance and practice sessions to master your road theory and hazard perception.</p>
-                    <a href="#contact" class="btn">Start Theory</a>
-                </div>
-
-                <div class="service-card wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-ai-graphic service-graphic-3"></div>
-                    <div class="service-icon-box">
-                        <div class="service-checkmark">✓</div>
-                        <h3>Mock driving tests</h3>
-                    </div>
-                    <p>Realistic test simulations to build confidence and ensure you're fully prepared for your examiner.</p>
-                    <a href="#contact" class="btn">Book Mock Test</a>
-                </div>
-
-            </div>
+    <section id="areas" style="padding: 80px 8%; text-align: center; background: var(--secondary);">
+        <h2>Areas Covered</h2>
+        <p style="margin-bottom: 30px;">Professional Lessons Across South London</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+            <span style="background:white; padding:10px 20px; border-radius:30px;">Croydon</span>
+            <span style="background:white; padding:10px 20px; border-radius:30px;">Bromley</span>
+            <span style="background:white; padding:10px 20px; border-radius:30px;">Lewisham</span>
+            <span style="background:white; padding:10px 20px; border-radius:30px;">Greenwich</span>
         </div>
     </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image wow fadeInLeft">
-                    <div class="about-portrait-placeholder"></div>
-                </div>
-                <div class="about-text wow fadeInRight">
-                    <h2>Meet Your Dedicated Instructor</h2>
-                    <p>Hi, I’m [Instructor Name], a qualified, ADI certified driving instructor. As a solo instructor, you won't be just another student number. You receive my full attention, consistent teaching, and a customized plan that fits your learning speed.</p>
-                    <p>I specialize in building confidence and safe driving habits that last a lifetime, not just until you pass the test.</p>
-                    
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">15+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">98%</div>
-                            <div class="stat-label">First-Time Pass Rate</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Happy Drivers</div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Common Questions</h2>
+        <div class="accordion-item">
+            <div class="accordion-header">Do you offer Automatic or Manual? <i class="fas fa-plus"></i></div>
+            <div class="accordion-content"><p>We provide both! You can choose your preference at the time of booking.</p></div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">What is your cancellation policy? <i class="fas fa-plus"></i></div>
+            <div class="accordion-content"><p>We require 48 hours notice for cancellations to avoid being charged for the lesson.</p></div>
         </div>
     </section>
 
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="wow fadeInDown">Real Results from Real Students</h2>
-            
-            <div class="testimonials-grid">
-                
-                <div class="testimonial-card wow fadeInUp">
-                    <div class="testimonial-rating">★★★★★</div>
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar"></div>
-                        <div class="testimonial-meta">
-                            <h4>Sarah J.</h4>
-                            <span>Passed in 6 Months!</span>
-                        </div>
-                    </div>
-                    <p>"[Instructor Name] was unbelievably patient and supportive. I was so nervous at first, but their calm demeanor and clear explanations made everything click. I passed on my first attempt and feel ready to drive solo!"</p>
-                </div>
+    <div class="floating-action-bar">
+        <a href="tel:0123456789" style="color: var(--dark); text-decoration: none;"><i class="fas fa-phone"></i> Call</a>
+        <a href="https://wa.me/123456789" style="color: #25D366; text-decoration: none;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#book" style="color: var(--primary); text-decoration: none; font-weight: 700;">BOOK NOW</a>
+    </div>
 
-                <div class="testimonial-card wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="testimonial-rating">★★★★★</div>
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar"></div>
-                        <div class="testimonial-meta">
-                            <h4>Mark L.</h4>
-                            <span>Theory Prep help!</span>
-                        </div>
-                    </div>
-                    <p>"The theory preparation with [Instructor Name] was a game-changer. It wasn't just about answers, but understanding *why*. The mock practical tests also helped me know exactly what to expect. Worth every penny."</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="wow fadeInDown">Ready to Start Learning?</h2>
-            <p class="wow fadeInUp">Book your first lesson or ask a question. Complete the form below, and I’ll get back to you personally within 24 hours.</p>
-            
-            <div class="contact-form-container wow fadeInUp" data-wow-delay="0.2s">
-                <form>
-                    <div class="form-group">
-                        <label for="name" class="form-label">Full Name</label>
-                        <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service" class="form-label">Service Interested In</label>
-                        <select id="service" name="service" class="form-select">
-                            <option value="" disabled selected>Select a Service</option>
-                            <option value="lessons">Driving Lessons</option>
-                            <option value="theory">Theory Preparation</option>
-                            <option value="mock">Mock Driving Tests</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message (Optional)</label>
-                        <textarea id="message" name="message" class="form-textarea" placeholder="Tell me a bit about your experience or availability..."></textarea>
-                    </div>
-                    <button type="submit" class="btn">REQUEST BOOKING</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-logo wow fadeIn">
-                <svg class="footer-logo-icon" viewBox="0 0 100 50">
-                    <path d="M20 15c-3 0-6 2-7 5L5 28c-1.5 2-1 4 .5 5l5 2h79l5-2c1.5-1 2-3 .5-5L87 20c-1-3-4-5-7-5z"/>
-                    <circle cx='25' cy='42' r='8'/>
-                    <circle cx='75' cy='42' r='8'/>
-                </svg>
-                <div class="footer-logo-text">
-                    <span class="footer-main-text">SOLO DRIVING SCHOOL</span>
-                    <span class="footer-sub-text">Instructor [Name]</span>
-                </div>
-            </div>
-            <p class="copyright-text wow fadeIn" data-wow-delay="0.2s">&copy; <span id="year"></span> Solo Driving School. All rights reserved.</p>
-        </div>
-    </footer>
-
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        new WOW().init();
-        // Dynamic copyright year
-        document.getElementById('year').textContent = new Date().getFullYear();
+        AOS.init({ duration: 1000, once: true });
+
+        // Offer Slider
+        const swiper = new Swiper('.offerSwiper', {
+            autoplay: { delay: 3000 },
+            loop: true,
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isOpen = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
+                
+                document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = '0px');
+                content.style.maxHeight = isOpen ? '0px' : content.scrollHeight + 'px';
+            });
+        });
+
+        // Simple Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            counter.innerText = '0';
+            const updateCounter = () => {
+                const target = +counter.getAttribute('data-target') || parseInt(counter.innerText.replace('+','')) || 100;
+                const count = +counter.innerText;
+                const inc = target / 100;
+                if(count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCounter, 20);
+                }
+            };
+            // Trigger when in view could be added here
+        });
     </script>
 </body>
 </html>
