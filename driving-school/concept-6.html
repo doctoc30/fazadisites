@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
@@ -15,32 +14,33 @@
             --brand-light: #f0f9ff;
             --brand-dark: #0f172a;
         }
-        body { 
-            background-color: var(--brand-dark); 
-            color: white; 
-            font-family: 'Outfit', sans-serif; 
-            overflow-x: hidden; 
-        }
+        body { background-color: var(--brand-dark); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .bg-brand-blue { background-color: var(--brand-blue); }
         .text-brand-blue { color: var(--brand-blue); }
+        .border-brand-blue { border-color: var(--brand-blue); }
         
         /* Elite Glassmorphism */
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
-        .glass-card:hover { background: rgba(255, 255, 255, 0.07); border: 1px solid var(--brand-blue); transform: translateY(-5px); transition: all 0.4s ease; }
+        .glass-card:hover { background: rgba(255, 255, 255, 0.07); border: 1px solid var(--brand-blue); transition: all 0.4s ease; cursor: pointer; }
         
-        .hero-gradient {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.98)), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80');
-            background-size: cover; background-position: center;
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--brand-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--brand-blue); border-radius: 10px; }
 
-        .map-dots {
-            background-image: radial-gradient(var(--brand-blue) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.2;
+        .callback-btn {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
         }
+        .hero-gradient {
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        [x-cloak] { display: none !important; }
     </style>
 </head>
-<body x-data="{ openModal: false, mobileMenu: false, activeFaq: null }">
+<body x-data="{ openModal: false, cartOpen: false, mobileMenu: false, faqOpen: null }">
 
     <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex bg-white text-black font-bold shadow-2xl border-t border-brand-blue">
         <a href="tel:07403002148" class="flex-1 py-4 flex items-center justify-center border-r"><i data-lucide="phone" class="mr-2"></i> Call</a>
@@ -48,267 +48,274 @@
         <button @click="openModal = true" class="flex-1 py-4 flex items-center justify-center bg-brand-light text-black"><i data-lucide="calendar" class="mr-2"></i> Book</button>
     </div>
 
-    <nav class="sticky top-0 z-[60] bg-brand-dark/95 backdrop-blur-md border-b border-white/5 px-6 py-4">
+    <button class="fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-brand-blue text-white px-2 py-6 rounded-l-xl font-bold callback-btn shadow-lg hover:bg-white hover:text-brand-blue transition-all">
+        REQUEST A CALLBACK
+    </button>
+
+    <nav class="sticky top-0 z-50 bg-brand-dark/95 backdrop-blur-md border-b border-white/5 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center">
-                <svg width="150" height="45" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                <svg width="180" height="50" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 45L30 10L50 45" stroke="#0ea5e9" stroke-width="6" fill="none" stroke-linecap="round"/>
-                    <text x="60" y="35" font-family="Outfit, sans-serif" font-size="32" font-weight="900" fill="white">ABC</text>
-                    <text x="60" y="52" font-family="Outfit, sans-serif" font-size="12" fill="#0ea5e9" font-weight="600" letter-spacing="3">DRIVING</text>
+                    <path d="M15 35H45" stroke="#0ea5e9" stroke-width="4" stroke-linecap="round"/>
+                    <text x="60" y="35" font-family="Arial Black, sans-serif" font-size="28" fill="white">ABC</text>
+                    <text x="60" y="52" font-family="Arial, sans-serif" font-size="12" fill="#0ea5e9" font-weight="bold" letter-spacing="2">DRIVING SCHOOL</text>
                 </svg>
             </div>
-
-            <div class="hidden lg:flex space-x-10 font-semibold text-xs tracking-[0.2em] uppercase">
+            
+            <div class="hidden md:flex space-x-8 font-medium text-sm tracking-widest uppercase">
                 <a href="#about" class="hover:text-brand-blue transition">About</a>
                 <a href="#services" class="hover:text-brand-blue transition">Services</a>
                 <a href="#packages" class="hover:text-brand-blue transition">Packages</a>
-                <a href="#areas" class="hover:text-brand-blue transition">Coverage</a>
                 <a href="#faq" class="hover:text-brand-blue transition">FAQ</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <button @click="openModal = true" class="hidden md:block bg-brand-blue text-white px-8 py-2.5 rounded-full font-bold hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] transition transform">BOOK ONLINE</button>
-                <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-white"><i data-lucide="menu"></i></button>
+                <button @click="openModal = true" class="bg-brand-blue text-white px-8 py-2 rounded-full font-bold hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] transition transform">BOOK NOW</button>
+                <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white"><i data-lucide="menu"></i></button>
             </div>
         </div>
-
-        <div x-show="mobileMenu" x-transition class="fixed inset-0 bg-brand-dark z-50 flex flex-col p-10 lg:hidden">
-            <div class="flex justify-end"><button @click="mobileMenu = false"><i data-lucide="x" class="w-10 h-10"></i></button></div>
-            <div class="flex flex-col space-y-8 text-2xl font-black mt-10 uppercase italic tracking-tighter">
-                <a @click="mobileMenu = false" href="#about">The School</a>
-                <a @click="mobileMenu = false" href="#services">Services</a>
-                <a @click="mobileMenu = false" href="#packages">Pricing</a>
-                <a @click="mobileMenu = false" href="#areas">Areas</a>
-                <a @click="mobileMenu = false" href="#faq">Support</a>
-            </div>
+        
+        <div x-show="mobileMenu" x-cloak class="md:hidden bg-brand-dark border-t border-white/5 p-6 flex flex-col space-y-4 uppercase text-xs tracking-widest font-bold">
+            <a href="#about" @click="mobileMenu = false">About</a>
+            <a href="#services" @click="mobileMenu = false">Services</a>
+            <a href="#packages" @click="mobileMenu = false">Packages</a>
+            <a href="#faq" @click="mobileMenu = false">FAQ</a>
         </div>
     </nav>
 
-    <header class="relative min-h-[90vh] flex items-center justify-center hero-gradient text-center px-6">
-        <div class="max-w-5xl" data-aos="fade-up">
-            <span class="text-brand-blue font-bold tracking-[0.5em] uppercase text-[10px] block mb-4">Established 2011 • London's Premium Choice</span>
-            <h1 class="text-6xl md:text-9xl font-black mb-8 tracking-tighter uppercase italic leading-[0.9]">Master The <span class="text-brand-blue underline decoration-white/10">Capital.</span></h1>
-            <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">Elite driving instruction for professionals and fast-learners. Bespoke coaching across London's most complex routes.</p>
+    <header class="relative min-h-[85vh] flex items-center justify-center hero-gradient text-center px-6">
+        <div class="max-w-4xl" data-aos="fade-up">
+            <div x-data="{ active: 0, promos: ['Premium London Tuition', 'Elite DVSA Instructors', 'Master the Capital', 'Fast-Track Practical Tests', 'Executive Training Cars'] }" x-init="setInterval(() => active = (active + 1) % promos.length, 3000)" class="mb-6 h-8">
+                <template x-for="(promo, index) in promos">
+                    <p x-show="active === index" x-transition class="text-brand-blue font-bold tracking-[0.3em] uppercase text-xs" x-text="promo"></p>
+                </template>
+            </div>
             
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <button @click="openModal = true" class="w-full sm:w-auto bg-brand-blue text-white px-12 py-5 rounded-2xl font-black text-xl hover:shadow-[0_0_40px_rgba(14,165,233,0.4)] transition">START LEARNING</button>
-                <a href="#services" class="text-white font-bold tracking-widest text-sm uppercase border-b-2 border-brand-blue pb-1">Explore Services</a>
+            <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tight uppercase">ELITE LONDON <span class="text-brand-blue">TUITION.</span></h1>
+            <p class="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">Master London's most challenging roads with ABC's executive coaching methodology. Grade A instructors for high-achieving students.</p>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <button @click="openModal = true" class="bg-brand-blue text-white px-12 py-5 rounded-2xl font-black text-xl hover:shadow-[0_0_30px_rgba(14,165,233,0.5)] transition flex items-center justify-center">
+                    <i data-lucide="shield-check" class="mr-2"></i> BEGIN YOUR JOURNEY
+                </button>
+                <a href="#packages" class="glass text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-white/10 transition">Price List</a>
             </div>
         </div>
     </header>
 
-    <section id="about" class="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
-        <div class="grid lg:grid-cols-2 gap-20 items-center">
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
-                <h2 class="text-sm font-black text-brand-blue uppercase tracking-[0.3em] mb-4 italic">The ABC Standard</h2>
-                <h3 class="text-5xl font-black mb-8 uppercase leading-tight italic">More Than Just a <br><span class="text-brand-blue">Driving License.</span></h3>
-                <p class="text-gray-400 text-lg mb-8 leading-relaxed font-light">Founded in the heart of London, ABC Driving School was built to bridge the gap between basic instruction and elite road mastery. We focus on psychological confidence as much as technical skill.</p>
-                <div class="grid grid-cols-2 gap-8">
-                    <div>
-                        <p class="text-3xl font-black text-white">98%</p>
-                        <p class="text-xs text-brand-blue uppercase tracking-widest font-bold">First Time Pass</p>
-                    </div>
-                    <div>
-                        <p class="text-3xl font-black text-white">Grade A</p>
-                        <p class="text-xs text-brand-blue uppercase tracking-widest font-bold">DVSA Rating</p>
-                    </div>
-                </div>
+                <h2 class="text-4xl font-black mb-6 uppercase tracking-tighter italic">About <span class="text-brand-blue">ABC School</span></h2>
+                <p class="text-gray-400 leading-relaxed mb-6">Founded in the heart of London, ABC Driving School has redefined driving tuition by combining high-performance vehicle handling with psychological road confidence. Our "Elite" methodology doesn't just aim for a pass—it aims for total mastery of the capital's complex urban landscape.</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center text-sm font-bold uppercase tracking-widest"><i data-lucide="check-circle" class="text-brand-blue mr-3"></i> 15+ Years Excellence</li>
+                    <li class="flex items-center text-sm font-bold uppercase tracking-widest"><i data-lucide="check-circle" class="text-brand-blue mr-3"></i> Professional London Coaches</li>
+                </ul>
             </div>
-            <div class="relative" data-aos="zoom-in">
-                <div class="glass p-12 rounded-[3rem] relative z-10">
-                    <svg viewBox="0 0 400 180" class="w-full h-auto drop-shadow-2xl">
-                        <path d="M50 120 L350 120 L330 60 L120 60 Z" fill="white" opacity="0.05"/>
-                        <rect x="40" y="100" width="320" height="50" rx="20" fill="var(--brand-blue)"/>
-                        <circle cx="90" cy="150" r="25" fill="#000"/>
-                        <circle cx="310" cy="150" r="25" fill="#000"/>
-                        <rect x="70" y="70" width="100" height="40" rx="5" fill="white" opacity="0.2"/>
-                        <text x="185" y="133" font-family="Outfit" font-size="28" font-weight="900" fill="white">L</text>
-                        <rect x="175" y="108" width="45" height="35" rx="5" fill="none" stroke="white" stroke-width="3"/>
-                    </svg>
-                    <p class="text-center mt-6 text-xs tracking-[0.4em] uppercase font-bold text-gray-500">Premium Fleet: Audi A3 / BMW 1 Series</p>
-                </div>
-                <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-blue/20 rounded-full blur-3xl"></div>
+            <div class="flex justify-center" data-aos="fade-left">
+                <svg width="300" height="150" viewBox="0 0 200 100" class="drop-shadow-[0_0_20px_rgba(14,165,233,0.3)]">
+                    <rect x="20" y="50" width="160" height="30" rx="10" fill="#0ea5e9"/>
+                    <rect x="50" y="30" width="100" height="30" rx="15" fill="#0ea5e9" opacity="0.8"/>
+                    <circle cx="50" cy="80" r="12" fill="#000"/>
+                    <circle cx="150" cy="80" r="12" fill="#000"/>
+                    <rect x="160" y="55" width="20" height="10" fill="#fff" opacity="0.4"/>
+                    <text x="95" y="52" font-family="Arial" font-size="12" font-weight="bold" fill="white">L</text>
+                    <rect x="90" y="40" width="20" height="20" stroke="red" fill="white" stroke-width="2"/>
+                    <text x="95" y="55" font-family="Arial" font-size="14" font-weight="black" fill="red">L</text>
+                </svg>
             </div>
         </div>
     </section>
 
     <section id="services" class="py-24 bg-white/[0.02] px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-black uppercase italic tracking-tighter">Elite <span class="text-brand-blue">Pathways</span></h2>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div @click="openModal = true" class="glass glass-card p-10 rounded-[2rem] cursor-pointer group">
-                    <i data-lucide="trophy" class="text-brand-blue mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-bold mb-3 uppercase tracking-tighter">Guaranteed Pass</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed">Unlimited lessons and test fees covered until you pass. Zero stress.</p>
+            <h2 class="text-4xl font-black text-center mb-16 uppercase tracking-tighter italic">Elite <span class="text-brand-blue">Services</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div @click="openModal = true" class="glass glass-card p-8 rounded-3xl text-center">
+                    <i data-lucide="award" class="mx-auto mb-4 text-brand-blue w-10 h-10"></i>
+                    <h4 class="font-black mb-2 uppercase">Guaranteed Pass</h4>
+                    <p class="text-xs text-gray-500">Premium package with unlimited support.</p>
                 </div>
-                <div @click="openModal = true" class="glass glass-card p-10 rounded-[2rem] cursor-pointer group">
-                    <i data-lucide="zap" class="text-brand-blue mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-bold mb-3 uppercase tracking-tighter">Crash Course</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed">Zero to licensed in 7-14 days. Intensive daily professional coaching.</p>
+                <div @click="openModal = true" class="glass glass-card p-8 rounded-3xl text-center">
+                    <i data-lucide="zap" class="mx-auto mb-4 text-brand-blue w-10 h-10"></i>
+                    <h4 class="font-black mb-2 uppercase">Crash Course</h4>
+                    <p class="text-xs text-gray-500">Fast-track your license in 14 days.</p>
                 </div>
-                <div @click="openModal = true" class="glass glass-card p-10 rounded-[2rem] cursor-pointer group">
-                    <i data-lucide="help-circle" class="text-brand-blue mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-bold mb-3 uppercase tracking-tighter">Show Me Tell Me</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed">Specialized technical workshop for the DVSA safety questions.</p>
+                <div @click="openModal = true" class="glass glass-card p-8 rounded-3xl text-center">
+                    <i data-lucide="help-circle" class="mx-auto mb-4 text-brand-blue w-10 h-10"></i>
+                    <h4 class="font-black mb-2 uppercase">Show Me Tell Me</h4>
+                    <p class="text-xs text-gray-500">Master the DVSA safety requirements.</p>
                 </div>
-                <div @click="openModal = true" class="glass glass-card p-10 rounded-[2rem] cursor-pointer group">
-                    <i data-lucide="clipboard-check" class="text-brand-blue mb-6 group-hover:scale-110 transition"></i>
-                    <h4 class="text-xl font-bold mb-3 uppercase tracking-tighter">Mock Test</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed">Simulated exam conditions with a former DVSA examiner.</p>
+                <div @click="openModal = true" class="glass glass-card p-8 rounded-3xl text-center">
+                    <i data-lucide="target" class="mx-auto mb-4 text-brand-blue w-10 h-10"></i>
+                    <h4 class="font-black mb-2 uppercase">Mock Driving Test</h4>
+                    <p class="text-xs text-gray-500">Realistic exam simulation & feedback.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-brand-blue/5 overflow-hidden">
-        <div class="max-w-4xl mx-auto text-center" x-data="{ active: 0, stories: [
-            { name: 'James L. - Canary Wharf', text: 'The intensive course was incredible. Passed in 10 days with only 1 minor fault. The instructor knew the test routes perfectly.' },
-            { name: 'Elena R. - Greenwich', text: 'I was so nervous after failing twice with other schools. ABC built my confidence from the ground up. Pass first time with them!' },
-            { name: 'Marcus D. - Westminster', text: 'Professional, elite, and efficient. If you value your time and want to drive like a pro, this is the only school in London.' }
-        ] }" x-init="setInterval(() => active = (active + 1) % stories.length, 5000)">
-            <i data-lucide="quote" class="w-12 h-12 mx-auto text-brand-blue opacity-50 mb-8"></i>
-            <div class="min-h-[150px] flex items-center justify-center">
-                <template x-for="(story, index) in stories">
-                    <div x-show="active === index" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" class="absolute">
-                        <p class="text-2xl md:text-3xl font-light italic text-gray-200 mb-6" x-text="'&ldquo;' + story.text + '&rdquo;'"></p>
-                        <p class="text-xs font-black tracking-[0.4em] text-brand-blue uppercase" x-text="story.name"></p>
-                    </div>
-                </template>
+    <section id="packages" class="py-24 bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center mb-16 uppercase tracking-tighter italic">ELITE <span class="text-brand-blue">PROGRAMS</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-10 rounded-[2.5rem] flex flex-col relative overflow-hidden glass-card" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-2">Introduction</h3>
+                    <p class="text-4xl font-black mb-8 text-brand-blue">£210 <span class="text-sm font-normal text-gray-500">/ 6 Hours</span></p>
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-center text-sm text-gray-300"><i data-lucide="circle-dot" class="w-4 h-4 mr-3 text-brand-blue"></i> Initial Assessment</li>
+                        <li class="flex items-center text-sm text-gray-300"><i data-lucide="circle-dot" class="w-4 h-4 mr-3 text-brand-blue"></i> London Central Familiarity</li>
+                        <li class="flex items-center text-sm text-gray-300"><i data-lucide="circle-dot" class="w-4 h-4 mr-3 text-brand-blue"></i> Digital Progress App</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-xl border border-brand-blue text-brand-blue font-bold hover:bg-brand-blue hover:text-white transition uppercase text-xs tracking-widest">ENROLL NOW</button>
+                </div>
+
+                <div class="glass p-10 rounded-[2.5rem] border-2 border-brand-blue flex flex-col scale-105 bg-brand-blue/5 shadow-2xl shadow-brand-blue/10" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 bg-brand-blue text-white px-6 py-2 text-[10px] font-black uppercase tracking-widest">Bestseller</div>
+                    <h3 class="text-xl font-bold mb-2">London Intensive</h3>
+                    <p class="text-4xl font-black mb-8">£895 <span class="text-sm font-normal text-gray-400">/ 25 Hours</span></p>
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-center text-sm"><i data-lucide="check" class="w-4 h-4 mr-3 text-brand-blue"></i> Fast-Track Practical Test</li>
+                        <li class="flex items-center text-sm"><i data-lucide="check" class="w-4 h-4 mr-3 text-brand-blue"></i> Elite Test Centre Prep</li>
+                        <li class="flex items-center text-sm"><i data-lucide="check" class="w-4 h-4 mr-3 text-brand-blue"></i> 1-on-1 VIP Coaching</li>
+                    </ul>
+                    <button class="w-full py-5 rounded-xl bg-brand-blue text-white font-black hover:shadow-[0_0_20px_rgba(14,165,233,0.5)] transition uppercase text-xs tracking-widest">SECURE YOUR SLOT</button>
+                </div>
+
+                <div class="glass p-10 rounded-[2.5rem] flex flex-col glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold mb-2">Mastery Pack</h3>
+                    <p class="text-4xl font-black mb-8 text-brand-blue">£400 <span class="text-sm font-normal text-gray-500">/ 12 Hours</span></p>
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-center text-sm text-gray-300"><i data-lucide="circle-dot" class="w-4 h-4 mr-3 text-brand-blue"></i> Advanced Hazard Training</li>
+                        <li class="flex items-center text-sm text-gray-300"><i data-lucide="circle-dot" class="w-4 h-4 mr-3 text-brand-blue"></i> Mock Test Assessment</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-xl border border-brand-blue text-brand-blue font-bold hover:bg-brand-blue hover:text-white transition uppercase text-xs tracking-widest">SELECT PLAN</button>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-black/40 text-center">
+        <h2 class="text-4xl font-black mb-12 uppercase tracking-tighter italic">Success <span class="text-brand-blue">Stories</span></h2>
+        <div x-data="{ story: 0, slides: [
+            'Passed first time with zero faults! ABC made London roads feel easy. - Sarah, E1',
+            'Elite instructors and a premium car. Best driving experience in London. - Mike, NW3',
+            'From nervous to licensed in just 3 weeks. Highly recommended. - Aisha, SE10'
+        ] }" x-init="setInterval(() => story = (story + 1) % slides.length, 4000)" class="max-w-2xl mx-auto h-24 flex items-center justify-center">
+            <template x-for="(text, index) in slides">
+                <p x-show="story === index" x-transition class="text-xl italic text-gray-300 font-light" x-text="text"></p>
+            </template>
         </div>
     </section>
 
     <section id="areas" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-20 items-center">
-            <div class="relative h-[400px] glass rounded-[3rem] overflow-hidden map-dots border border-white/5" data-aos="fade-right">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="relative">
-                        <div class="absolute -top-4 -left-10 w-4 h-4 bg-brand-blue rounded-full animate-ping"></div>
-                        <div class="absolute top-20 left-20 w-4 h-4 bg-brand-blue rounded-full animate-ping"></div>
-                        <div class="absolute -bottom-10 right-10 w-4 h-4 bg-brand-blue rounded-full animate-ping"></div>
-                        <i data-lucide="map-pin" class="w-16 h-16 text-brand-blue opacity-40"></i>
-                    </div>
-                </div>
-                <div class="absolute bottom-6 left-6 right-6 glass p-4 rounded-2xl text-[10px] font-bold tracking-widest uppercase text-center text-gray-400">
-                    Live coverage heatmap: All 32 London Boroughs
-                </div>
+        <h2 class="text-4xl font-black mb-12 uppercase tracking-tighter italic">Coverage <span class="text-brand-blue">& Map</span></h2>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-2 gap-4 text-gray-500 font-medium uppercase text-[11px] tracking-widest">
+                <div class="flex items-center bg-white/5 p-4 rounded-xl"><i data-lucide="map-pin" class="w-3 h-3 mr-3 text-brand-blue"></i> Chelsea</div>
+                <div class="flex items-center bg-white/5 p-4 rounded-xl"><i data-lucide="map-pin" class="w-3 h-3 mr-3 text-brand-blue"></i> Canary Wharf</div>
+                <div class="flex items-center bg-white/5 p-4 rounded-xl"><i data-lucide="map-pin" class="w-3 h-3 mr-3 text-brand-blue"></i> Greenwich</div>
+                <div class="flex items-center bg-white/5 p-4 rounded-xl"><i data-lucide="map-pin" class="w-3 h-3 mr-3 text-brand-blue"></i> Hampstead</div>
             </div>
-            <div data-aos="fade-left">
-                <h2 class="text-4xl font-black mb-8 uppercase italic tracking-tighter">London <span class="text-brand-blue">Coverage</span></h2>
-                <div class="grid grid-cols-2 gap-4">
-                    <template x-for="area in ['Chelsea', 'Canary Wharf', 'Greenwich', 'Hampstead', 'Westminster', 'Islington', 'Richmond', 'Hackney']">
-                        <div class="flex items-center text-sm font-semibold text-gray-400 group">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-blue mr-2 group-hover:translate-x-1 transition"></i>
-                            <span x-text="area"></span>
-                        </div>
-                    </template>
-                </div>
-                <p class="mt-8 text-gray-500 font-light italic leading-relaxed">Don't see your area? We offer home pick-up and drop-off across all major London postal codes including SE, E, W, N, and Central.</p>
+            <div class="glass h-64 rounded-3xl relative overflow-hidden flex items-center justify-center border border-brand-blue/20">
+                <div class="absolute inset-0 opacity-20 bg-[url('https://www.google.com/maps/vt/pb=!1m4!1m3!1i12!2i2048!3i1360!2m3!1e0!2sm!3i420120488!3m8!2sen!3suk!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!5f2')] bg-cover"></div>
+                <p class="relative font-black uppercase text-xs tracking-widest text-brand-blue">Covering All London Boroughs</p>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6">
-        <div class="max-w-7xl mx-auto glass p-12 rounded-[4rem] border-2 border-brand-blue/30 relative overflow-hidden" data-aos="zoom-in">
-            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
-                <div class="max-w-xl">
-                    <h3 class="text-4xl font-black uppercase italic tracking-tighter mb-4 italic">Earn While <br><span class="text-brand-blue">They Learn.</span></h3>
-                    <p class="text-gray-400 font-light">Refer a friend and get <span class="text-white font-bold">2 FREE LESSONS</span> or a £50 Amazon Voucher when they book a block. Our way of saying thank you for being an elite student.</p>
-                </div>
-                <button class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase tracking-tighter hover:bg-brand-blue hover:text-white transition whitespace-nowrap">JOIN LOYALTY PROGRAM</button>
-            </div>
-            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-blue/10 rounded-full blur-3xl"></div>
+    <section class="py-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto glass p-12 rounded-[3rem] border border-brand-blue">
+            <h2 class="text-3xl font-black mb-4 uppercase italic">Elite <span class="text-brand-blue">Referrals</span></h2>
+            <p class="text-gray-400 mb-8">Invite a friend to ABC Driving School and receive a <span class="text-white font-bold">Free 2-Hour Lesson</span> block or a £50 Amazon voucher upon their first booking.</p>
+            <button class="bg-brand-blue text-white px-10 py-4 rounded-xl font-black uppercase tracking-widest hover:scale-105 transition">GET YOUR REFERRAL LINK</button>
         </div>
     </section>
 
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto">
-        <h2 class="text-4xl font-black text-center mb-16 uppercase italic tracking-tighter italic">Common <span class="text-brand-blue">Questions</span></h2>
+        <h2 class="text-4xl font-black text-center mb-16 uppercase tracking-tighter italic">Common <span class="text-brand-blue">Questions</span></h2>
         <div class="space-y-4">
-            <template x-for="(faq, i) in [
-                {q: 'How many lessons will I need?', a: 'The average learner needs 45 hours of professional tuition plus private practice, but our elite fast-track students often pass in 30.'},
-                {q: 'What cars do you use for lessons?', a: 'We use premium, late-model hatchbacks like the Audi A3 and BMW 1 Series, all fitted with dual controls.'},
-                {q: 'Do you offer weekend lessons?', a: 'Yes, we operate 7 days a week from 7 AM to 9 PM at no extra cost.'},
-                {q: 'Can I choose between male and female instructors?', a: 'Absolutely. We have a diverse team of elite instructors across London.'},
-                {q: 'What is your first-time pass rate?', a: 'We currently maintain a 98% pass rate for students who complete our Mastery Pack.'},
-                {q: 'Do you help with the Theory Test?', a: 'Yes, all students get free access to our premium Theory App and 1-on-1 support.'},
-                {q: 'How soon can I start?', a: 'Typically we can get you on the road within 48 hours of booking.'},
-                {q: 'Do you offer intensive courses?', a: 'Yes, we are London specialists in 1 and 2-week intensive crash courses.'},
-                {q: 'Are your instructors DVSA approved?', a: 'Every single ABC instructor is a Grade A DVSA Approved Driving Instructor (ADI).'},
-                {q: 'What areas of London do you cover?', a: 'We cover all London Boroughs, including central London congestion zones.'}
+            <template x-for="(item, index) in [
+                {q: 'How many lessons will I need?', a: 'Most learners need 40-45 hours of professional tuition to reach test standard.'},
+                {q: 'What cars do you use?', a: 'We use premium late-model Audi A3 and BMW 1 Series vehicles.'},
+                {q: 'Do you offer automatic lessons?', a: 'Yes, we provide both manual and automatic elite training.'},
+                {q: 'What is your pass rate?', a: 'We maintain a 98% elite rating among our first-time students.'},
+                {q: 'Can I choose my instructor?', a: 'Yes, we match you with a Grade A instructor suited to your style.'},
+                {q: 'Do you cover intensive courses?', a: 'Yes, our 25-hour London Intensive is our most popular option.'},
+                {q: 'What areas of London do you cover?', a: 'All major boroughs including North, South, East, West, and Central.'},
+                {q: 'Do you provide theory test support?', a: 'Yes, all students get access to our digital theory training app.'},
+                {q: 'Are your instructors DVSA qualified?', a: 'All instructors are Grade A DVSA approved professionals.'},
+                {q: 'How do I book my first lesson?', a: 'Simply click any Book Now button or call our 24/7 concierge.'}
             ]">
                 <div class="glass rounded-2xl overflow-hidden border border-white/5">
-                    <button @click="activeFaq = (activeFaq === i ? null : i)" class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
-                        <span class="font-bold uppercase tracking-widest text-xs" x-text="faq.q"></span>
-                        <i data-lucide="chevron-down" :class="activeFaq === i ? 'rotate-180' : ''" class="transition text-brand-blue"></i>
+                    <button @click="faqOpen === index ? faqOpen = null : faqOpen = index" class="w-full p-6 text-left flex justify-between items-center font-bold uppercase text-xs tracking-widest">
+                        <span x-text="item.q"></span>
+                        <i data-lucide="plus" :class="faqOpen === index ? 'rotate-45' : ''" class="transition-transform text-brand-blue"></i>
                     </button>
-                    <div x-show="activeFaq === i" x-collapse class="px-6 pb-6 text-sm text-gray-400 font-light leading-relaxed" x-text="faq.a"></div>
+                    <div x-show="faqOpen === index" x-collapse class="px-6 pb-6 text-gray-400 text-sm leading-relaxed" x-text="item.a"></div>
                 </div>
             </template>
         </div>
     </section>
 
-    <section class="py-24 bg-brand-blue text-brand-dark px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-black uppercase italic tracking-tighter mb-4">Elite Newsletter</h2>
-            <p class="font-bold mb-10 opacity-80">Get test-day tips, theory secrets, and exclusive block-booking discounts.</p>
-            <form class="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto">
-                <input type="email" placeholder="Enter your email" class="flex-1 p-5 rounded-2xl bg-white/20 border-2 border-white/20 text-white placeholder:text-brand-dark/50 focus:bg-white focus:text-black transition outline-none font-bold">
-                <button class="bg-brand-dark text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition">SUBSCRIBE</button>
-            </form>
+    <section class="py-24 px-6 bg-brand-blue/10">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="text-2xl font-black mb-4 uppercase italic">Elite <span class="text-brand-blue">Newsletter</span></h2>
+            <p class="text-gray-400 mb-8 text-sm">Join 1,000+ students getting weekly test tips and exclusive discounts.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <input type="email" placeholder="Professional Email" class="flex-1 bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-brand-blue">
+                <button class="bg-brand-blue text-white px-8 py-4 rounded-xl font-bold uppercase tracking-widest">SUBSCRIBE</button>
+            </div>
         </div>
     </section>
 
     <footer class="py-24 bg-black px-6 border-t border-white/5">
         <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-16">
             <div class="col-span-1 md:col-span-1">
-                <svg width="120" height="35" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" class="mb-8">
+                <svg width="150" height="40" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" class="mb-8">
                     <path d="M10 45L30 10L50 45" stroke="#0ea5e9" stroke-width="6" fill="none" stroke-linecap="round"/>
-                    <text x="60" y="35" font-family="Outfit" font-size="32" font-weight="900" fill="white">ABC</text>
+                    <text x="60" y="35" font-family="Arial Black, sans-serif" font-size="28" fill="white">ABC</text>
                 </svg>
-                <p class="text-gray-600 text-sm leading-relaxed mb-8">Redefining driving education for the next generation of London drivers.</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-brand-blue hover:text-white transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-brand-blue hover:text-white transition"><i data-lucide="facebook" class="w-4 h-4"></i></a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-brand-blue hover:text-white transition"><i data-lucide="youtube" class="w-4 h-4"></i></a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-brand-blue hover:text-white transition"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                <p class="text-gray-600 text-sm leading-relaxed">London's premier driving education provider. Established 2011.</p>
+            </div>
+            <div>
+                <h4 class="font-black text-white text-xs tracking-[0.3em] uppercase mb-8">Navigation</h4>
+                <ul class="text-gray-500 space-y-4 text-sm uppercase font-bold tracking-widest">
+                    <li><a href="#" class="hover:text-brand-blue">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-brand-blue">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-brand-blue">Corporate Hire</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-black text-white text-xs tracking-[0.3em] uppercase mb-8">Head Office</h4>
+                <p class="text-gray-500 text-sm mb-2">Canary Wharf, London</p>
+                <p class="text-brand-blue font-bold">07403 002 148</p>
+            </div>
+            <div>
+                <h4 class="font-black text-white text-xs tracking-[0.3em] uppercase mb-8">Elite Social</h4>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-brand-blue transition"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-brand-blue transition"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-brand-blue transition"><i data-lucide="linkedin"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-brand-blue transition"><i data-lucide="twitter"></i></a>
                 </div>
-            </div>
-            <div>
-                <h4 class="font-black text-white text-[10px] tracking-[0.4em] uppercase mb-8">Navigation</h4>
-                <ul class="text-gray-500 space-y-4 text-xs uppercase font-bold tracking-widest">
-                    <li><a href="#about" class="hover:text-brand-blue transition">The School</a></li>
-                    <li><a href="#services" class="hover:text-brand-blue transition">Elite Services</a></li>
-                    <li><a href="#packages" class="hover:text-brand-blue transition">Price List</a></li>
-                    <li><a href="#faq" class="hover:text-brand-blue transition">Support</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-black text-white text-[10px] tracking-[0.4em] uppercase mb-8">Legal</h4>
-                <ul class="text-gray-500 space-y-4 text-xs uppercase font-bold tracking-widest">
-                    <li><a href="#" class="hover:text-brand-blue transition">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-brand-blue transition">Terms & Conditions</a></li>
-                    <li><a href="#" class="hover:text-brand-blue transition">Cookie Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-black text-white text-[10px] tracking-[0.4em] uppercase mb-8">Contact</h4>
-                <p class="text-gray-500 text-xs mb-2 uppercase tracking-widest font-bold">London Head Office</p>
-                <p class="text-brand-blue font-black text-lg">07403 002 148</p>
-                <p class="text-gray-600 text-xs mt-4">info@abcdrivingschool.co.uk</p>
             </div>
         </div>
     </footer>
 
-    <div x-show="openModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-dark/95 backdrop-blur-md" x-transition>
+    <div x-show="openModal" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-dark/95 backdrop-blur-md" x-transition>
         <div class="bg-white w-full max-w-4xl rounded-[3rem] overflow-hidden relative shadow-2xl">
             <button @click="openModal = false" class="absolute top-8 right-8 text-black hover:scale-125 transition"><i data-lucide="x"></i></button>
             <div class="p-12">
                 <h3 class="text-4xl font-black text-black mb-2 uppercase tracking-tighter italic">Elite Booking</h3>
                 <p class="text-gray-500 mb-8 font-medium italic underline decoration-brand-blue">Exclusive London Availability</p>
-                <div class="w-full h-[450px] bg-slate-50 border border-slate-200 rounded-3xl flex items-center justify-center">
-                    <p class="font-bold uppercase tracking-[0.4em] text-[10px] text-slate-400">Scheduling Interface Loading...</p>
+                <div class="w-full h-[450px] bg-slate-50 border border-slate-200 rounded-3xl flex items-center justify-center text-slate-400">
+                    <div class="text-center">
+                        <i data-lucide="calendar" class="w-12 h-12 mx-auto mb-4 opacity-20"></i>
+                        <p class="font-bold uppercase tracking-widest text-xs">Calendar Interface Loading...</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -316,7 +323,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true, easing: 'ease-out-quint' });
+        AOS.init({ duration: 1200, once: true, easing: 'ease-out-quint' });
         lucide.createIcons();
     </script>
 </body>
