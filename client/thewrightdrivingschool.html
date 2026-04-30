@@ -54,8 +54,22 @@
 
     <nav class="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <img src="https://i.ibb.co/C3mH0mK/wright-logo.png" alt="The Wright Driving School" class="h-16 md:h-20"> 
+            <div class="flex items-center">
+                <svg width="200" height="65" viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="outline">
+                            <feMorphology in="SourceAlpha" result="expanded" operator="dilate" radius="1.5"/>
+                            <feFlood flood-color="black" result="black"/>
+                            <feComposite in="black" in2="expanded" operator="in"/>
+                            <feComposite in="SourceGraphic"/>
+                        </filter>
+                    </defs>
+                    <path d="M10 25L20 45L45 5L35 5L20 30L15 20L10 25Z" fill="#79c043" filter="url(#outline)"/>
+                    <path d="M25 25L35 45L60 5L50 5L35 30L30 20L25 25Z" fill="#79c043" filter="url(#outline)"/>
+                    <text x="65" y="42" font-family="Arial Black, sans-serif" font-size="32" fill="#fff100" filter="url(#outline)" style="font-style: italic;">right</text>
+                    <text x="15" y="40" font-family="Arial Black, sans-serif" font-size="12" fill="#fff100" filter="url(#outline)">the</text>
+                    <text x="65" y="58" font-family="Arial Black, sans-serif" font-size="14" fill="#fff100" filter="url(#outline)">driving school</text>
+                </svg>
             </div>
             <div class="hidden md:flex space-x-8 font-medium">
                 <a href="#packages" class="hover:text-brand-green transition">Packages</a>
@@ -269,7 +283,13 @@
     <footer class="py-20 bg-black px-6 border-t border-white/10">
         <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
             <div>
-                <img src="https://i.ibb.co/C3mH0mK/wright-logo.png" alt="The Wright Driving School" class="h-20 mb-6">
+                <svg width="180" height="60" viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg" class="mb-6">
+                    <path d="M10 25L20 45L45 5L35 5L20 30L15 20L10 25Z" fill="#79c043"/>
+                    <path d="M25 25L35 45L60 5L50 5L35 30L30 20L25 25Z" fill="#79c043"/>
+                    <text x="65" y="42" font-family="Arial Black, sans-serif" font-size="32" fill="#fff100" style="font-style: italic;">right</text>
+                    <text x="15" y="40" font-family="Arial Black, sans-serif" font-size="12" fill="#fff100">the</text>
+                    <text x="65" y="58" font-family="Arial Black, sans-serif" font-size="14" fill="#fff100">driving school</text>
+                </svg>
                 <p class="text-gray-500">Providing quality driving tuition since 2005. Grade A ADI Instructor.</p>
             </div>
             <div>
@@ -326,14 +346,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            easing: 'ease-out-back'
-        });
-
-        // Initialize Icons
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-back' });
         lucide.createIcons();
     </script>
 </body>
