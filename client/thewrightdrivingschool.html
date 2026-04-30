@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wright Driving School | Premium Driving Tuition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --brand-green: #79c043;
+            --brand-yellow: #fff100;
+            --brand-dark: #2c2e35;
+        }
+        body { background-color: var(--brand-dark); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .bg-brand-green { background-color: var(--brand-green); }
+        .text-brand-green { color: var(--brand-green); }
+        .bg-brand-yellow { background-color: var(--brand-yellow); }
+        .text-brand-yellow { color: var(--brand-yellow); }
+        .border-brand-green { border-color: var(--brand-green); }
+        
+        /* Glassmorphism */
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--brand-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--brand-green); border-radius: 10px; }
+
+        .callback-btn {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(44, 46, 53, 0.7), rgba(44, 46, 53, 0.9)), url('https://images.unsplash.com/photo-1449960232330-79164c44cf1d?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body x-data="{ openModal: false, cartOpen: false, mobileMenu: false }">
+
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex bg-white text-black font-bold shadow-2xl border-t border-brand-green">
+        <a href="tel:07403002148" class="flex-1 py-4 flex items-center justify-center border-r"><i data-lucide="phone" class="mr-2"></i> Call</a>
+        <a href="https://wa.me/447403002148" class="flex-1 py-4 flex items-center justify-center bg-green-500 text-white"><i data-lucide="message-circle" class="mr-2"></i> WhatsApp</a>
+        <button @click="openModal = true" class="flex-1 py-4 flex items-center justify-center bg-brand-yellow text-black"><i data-lucide="calendar" class="mr-2"></i> Book</button>
+    </div>
+
+    <button class="fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-brand-green text-white px-2 py-6 rounded-l-xl font-bold callback-btn shadow-lg hover:bg-brand-yellow hover:text-black transition-all">
+        REQUEST A CALLBACK
+    </button>
+
+    <nav class="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://i.imgur.com/vHq0L59.png" alt="Wright Logo" class="h-12"> </div>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#packages" class="hover:text-brand-green transition">Packages</a>
+                <a href="#instructor" class="hover:text-brand-green transition">The Instructor</a>
+                <a href="#areas" class="hover:text-brand-green transition">Areas</a>
+                <a href="#reviews" class="hover:text-brand-green transition">Pass Gallery</a>
+            </div>
+            <button @click="openModal = true" class="bg-brand-green text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition transform">BOOK NOW</button>
+        </div>
+    </nav>
+
+    <header class="relative min-h-[80vh] flex items-center justify-center hero-gradient text-center px-6">
+        <div class="max-w-4xl" data-aos="fade-up">
+            <div x-data="{ active: 0, promos: ['15 Years Experience', 'Established 2005', 'Free Theory Test Training', 'Grade A Instructor', 'High Pass Rate'] }" x-init="setInterval(() => active = (active + 1) % promos.length, 3000)" class="mb-6 h-8">
+                <template x-for="(promo, index) in promos">
+                    <p x-show="active === index" x-transition class="text-brand-yellow font-bold tracking-widest uppercase" x-text="promo"></p>
+                </template>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-black mb-6 italic tracking-tighter">THE <span class="text-brand-green">WRIGHT</span> WAY TO PASS.</h1>
+            <p class="text-xl text-gray-300 mb-8">Professional driving tuition in Burton upon Trent, Lichfield & surrounding areas.</p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button @click="openModal = true" class="bg-brand-yellow text-black px-10 py-4 rounded-xl font-black text-xl hover:bg-white transition flex items-center justify-center">
+                    <i data-lucide="zap" class="mr-2"></i> START LEARNING TODAY
+                </button>
+                <a href="#packages" class="glass text-white px-10 py-4 rounded-xl font-bold text-xl hover:bg-white/10 transition">View Prices</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-12 bg-black/40">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div data-aos="zoom-in">
+                <p class="text-4xl font-black text-brand-green">500+</p>
+                <p class="text-gray-400 uppercase text-sm">Students Passed</p>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="100">
+                <p class="text-4xl font-black text-brand-green">20+</p>
+                <p class="text-gray-400 uppercase text-sm">Years Experience</p>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="200">
+                <p class="text-4xl font-black text-brand-green">95%</p>
+                <p class="text-gray-400 uppercase text-sm">First-Time Pass</p>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="300">
+                <p class="text-4xl font-black text-brand-green">Grade A</p>
+                <p class="text-gray-400 uppercase text-sm">DVSA Status</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="glass p-8 rounded-3xl border-l-8 border-brand-green" data-aos="fade-right">
+                <h3 class="text-3xl font-bold mb-4 flex items-center"><i data-lucide="settings" class="mr-3 text-brand-green"></i> Manual Lessons</h3>
+                <p class="text-gray-300">Full control and the most common licence type. Perfect for those who want to drive any car.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl border-l-8 border-brand-yellow" data-aos="fade-left">
+                <h3 class="text-3xl font-bold mb-4 flex items-center"><i data-lucide="zap" class="mr-3 text-brand-yellow"></i> Automatic Lessons</h3>
+                <p class="text-gray-300">Easier to learn, no gears to worry about. Focus entirely on the road and safety.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="py-20 bg-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center mb-16">CHOOSE YOUR <span class="text-brand-green">PACKAGE</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-3xl flex flex-col relative overflow-hidden group hover:border-brand-green transition" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 bg-brand-green text-white px-4 py-1 text-xs font-bold uppercase">Popular</div>
+                    <h3 class="text-2xl font-bold mb-2">Beginner Bundle</h3>
+                    <p class="text-4xl font-black mb-6">£175 <span class="text-sm font-normal text-gray-400">/ 5 Lessons</span></p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-center text-sm"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-brand-green"></i> 5 Hours of Tuition</li>
+                        <li class="flex items-center text-sm"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-brand-green"></i> Door-to-door pickup</li>
+                        <li class="flex items-center text-sm"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-brand-green"></i> Free Theory App Access</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-xl bg-brand-green font-bold hover:bg-brand-yellow hover:text-black transition">BUY PACKAGE</button>
+                </div>
+
+                <div class="glass p-8 rounded-3xl border-2 border-brand-yellow flex flex-col scale-105 bg-white/10" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold mb-2 text-brand-yellow">Intensive Crash Course</h3>
+                    <p class="text-4xl font-black mb-6">£650 <span class="text-sm font-normal text-gray-400">/ 20 Lessons</span></p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-center text-sm font-bold"><i data-lucide="star" class="w-4 h-4 mr-2 text-brand-yellow"></i> 1 or 2 Week Duration</li>
+                        <li class="flex items-center text-sm"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-brand-green"></i> Fast-Track Test Booking</li>
+                        <li class="flex items-center text-sm"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-brand-green"></i> Mock Driving Test</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-xl bg-brand-yellow text-black font-black hover:bg-white transition">BUY NOW</button>
+                </div>
+
+                <div class="glass p-8 rounded-3xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold mb-2">Fast Pass Package</h3>
+                    <p class="text-4xl font-black mb-6">£340 <span class="text-sm font-normal text-gray-400">/ 10 Lessons</span></p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-center text-sm"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-brand-green"></i> 10 Hours of Tuition</li>
+                        <li class="flex items-center text-sm"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-brand-green"></i> Priority Booking Slots</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-xl bg-white/10 border border-white/20 font-bold hover:bg-brand-green hover:border-transparent transition">BUY PACKAGE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instructor" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2" data-aos="fade-right">
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand-green rounded-full z-0 opacity-50 blur-2xl"></div>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600" alt="Driving Instructor John" class="rounded-3xl relative z-10 shadow-2xl border-4 border-brand-green">
+                </div>
+            </div>
+            <div class="w-full md:w-1/2" data-aos="fade-left">
+                <span class="text-brand-green font-bold uppercase tracking-widest">About the Instructor</span>
+                <h2 class="text-4xl font-black mt-2 mb-6 uppercase">Patience is My <span class="text-brand-yellow">Speciality</span></h2>
+                <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                    Hi, I'm James Wright. With over 20 years on the road, I specialize in **nervous driver coaching**. My teaching style is calm, structured, and tailored to your speed. I'm a Grade A DVSA Approved Instructor, which means you're getting the highest level of tuition in the UK.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center"><i data-lucide="check" class="text-brand-green mr-2"></i> DVSA Approved</div>
+                    <div class="flex items-center"><i data-lucide="check" class="text-brand-green mr-2"></i> Full Insurance</div>
+                    <div class="flex items-center"><i data-lucide="check" class="text-brand-green mr-2"></i> Dual Controls</div>
+                    <div class="flex items-center"><i data-lucide="check" class="text-brand-green mr-2"></i> DBS Checked</div>
+                </div>
+                <button class="bg-brand-green px-8 py-3 rounded-full font-bold">Read Full Profile</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-20 bg-black/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center mb-12">SUCCESS <span class="text-brand-green">STORIES</span></h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="group relative cursor-pointer" data-aos="flip-left">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=400" alt="Student Pass 1" class="rounded-xl grayscale group-hover:grayscale-0 transition duration-500">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 rounded-xl transition">
+                        <span class="font-bold text-brand-yellow italic text-xl">PASSED FIRST TIME!</span>
+                    </div>
+                </div>
+                <div class="group relative cursor-pointer" data-aos="flip-left" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400" alt="Student Pass 2" class="rounded-xl grayscale group-hover:grayscale-0 transition duration-500">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 rounded-xl transition">
+                        <span class="font-bold text-brand-yellow italic text-xl">PASSED!</span>
+                    </div>
+                </div>
+                <div class="group relative cursor-pointer" data-aos="flip-left" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" alt="Student Pass 3" class="rounded-xl grayscale group-hover:grayscale-0 transition duration-500">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 rounded-xl transition">
+                        <span class="font-bold text-brand-yellow italic text-xl">0 MINORS!</span>
+                    </div>
+                </div>
+                <div class="group relative cursor-pointer" data-aos="flip-left" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400" alt="Student Pass 4" class="rounded-xl grayscale group-hover:grayscale-0 transition duration-500">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 rounded-xl transition">
+                        <span class="font-bold text-brand-yellow italic text-xl">CLEAN SHEET!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="areas" class="py-20 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-black mb-10 border-l-4 border-brand-green pl-4">AREAS COVERED</h2>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-gray-400">
+            <div class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand-green"></i> Burton upon Trent</div>
+            <div class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand-green"></i> Tutbury</div>
+            <div class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand-green"></i> Etwal</div>
+            <div class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand-green"></i> Hilton</div>
+            <div class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand-green"></i> Yoxall</div>
+            <div class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand-green"></i> Lichfield</div>
+            <div class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand-green"></i> Shenstone</div>
+            <div class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand-green"></i> Alrewas</div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white/5">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center mb-10">FREQUENTLY ASKED</h2>
+            <div class="space-y-4" x-data="{ active: null }">
+                <div class="glass rounded-xl overflow-hidden">
+                    <button @click="active = active === 0 ? null : 0" class="w-full p-6 text-left flex justify-between items-center font-bold">
+                        What is your first lesson discount?
+                        <i data-lucide="chevron-down" :class="active === 0 ? 'rotate-180' : ''" class="transition transform"></i>
+                    </button>
+                    <div x-show="active === 0" class="p-6 pt-0 text-gray-400">
+                        New beginners can start with a 1.5-hour introductory lesson for just £25.
+                    </div>
+                </div>
+                <div class="glass rounded-xl overflow-hidden">
+                    <button @click="active = active === 1 ? null : 1" class="w-full p-6 text-left flex justify-between items-center font-bold">
+                        Do you offer weekend lessons?
+                        <i data-lucide="chevron-down" :class="active === 1 ? 'rotate-180' : ''" class="transition transform"></i>
+                    </button>
+                    <div x-show="active === 1" class="p-6 pt-0 text-gray-400">
+                        Yes, we have limited slots available on Saturday mornings for a small premium.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 text-center bg-brand-green">
+        <div class="max-w-4xl mx-auto" data-aos="zoom-in">
+            <h2 class="text-5xl font-black text-white mb-6">READY TO HIT THE ROAD?</h2>
+            <p class="text-white/80 text-xl mb-10 font-medium">Join hundreds of successful drivers in the Midlands. Book your slot today.</p>
+            <button @click="openModal = true" class="bg-brand-yellow text-black px-12 py-5 rounded-2xl font-black text-2xl hover:bg-white transition-all transform hover:scale-110">BOOK MY FIRST LESSON</button>
+        </div>
+    </section>
+
+    <footer class="py-20 bg-black px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+            <div>
+                <img src="https://i.imgur.com/vHq0L59.png" alt="Wright Logo" class="h-16 mb-6">
+                <p class="text-gray-500">Providing quality driving tuition since 2005. Grade A ADI Instructor.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Quick Links</h4>
+                <ul class="text-gray-500 space-y-2">
+                    <li><a href="#" class="hover:text-brand-green">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-brand-green">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-brand-green">Gift Vouchers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Contact Info</h4>
+                <p class="text-gray-500 mb-2">07403 002 148</p>
+                <p class="text-gray-500">pass@thewrightdrivingschool.co.uk</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-green transition"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-green transition"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-green transition"><i data-lucide="twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div x-show="openModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" x-transition>
+        <div class="bg-white w-full max-w-4xl rounded-3xl overflow-hidden relative">
+            <button @click="openModal = false" class="absolute top-4 right-4 text-black"><i data-lucide="x"></i></button>
+            <div class="p-8">
+                <h3 class="text-2xl font-bold text-black mb-4">Schedule Your First Lesson</h3>
+                <div class="w-full h-[500px] bg-gray-100 flex items-center justify-center text-black">
+                    <div class="text-center">
+                        <i data-lucide="calendar-check" class="w-16 h-16 mx-auto mb-4 opacity-20"></i>
+                        <p>Calendly Integration Widget Goes Here</p>
+                        <p class="text-sm text-gray-500">(Custom scheduling API loader)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div x-data="{ showExit: false }" x-init="setTimeout(() => { document.addEventListener('mouseleave', () => { if(!showExit) showExit = true }) }, 5000)">
+        <div x-show="showExit" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/95" x-transition>
+            <div class="bg-brand-yellow p-10 rounded-[3rem] text-black text-center max-w-md relative">
+                <button @click="showExit = false" class="absolute top-4 right-4"><i data-lucide="x-circle"></i></button>
+                <h2 class="text-4xl font-black mb-4 italic">WAIT!</h2>
+                <p class="text-xl font-bold mb-6">Don't leave without your £10 OFF first lesson voucher!</p>
+                <input type="email" placeholder="Your Email Address" class="w-full p-4 rounded-xl mb-4 text-black border-2 border-black/10">
+                <button class="bg-black text-white w-full py-4 rounded-xl font-bold uppercase">Get My Voucher</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-back'
+        });
+
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
