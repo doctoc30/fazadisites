@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DriveElite | Premier Driving School London</title>
+    <title>DriveElite | Joe's London Driving Academy</title>
     
-    <!-- Fonts & Icons -->
+    <!-- Fonts & UI Libraries -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- UI Libraries -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <style>
         :root {
-            --primary-yellow: #FFD700; /* Exact branding from image */
+            --primary-yellow: #FFD700;
             --bg-light-yellow: #FFF9C4;
             --black: #000000;
             --white: #ffffff;
@@ -23,248 +20,243 @@
             --transition: all 0.3s ease-in-out;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--white); overflow-x: hidden; color: var(--black); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--white); color: var(--black); overflow-x: hidden; padding-bottom: 60px; }
 
-        /* --- STICKY NAV --- */
+        /* --- NAVIGATION --- */
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
+            position: fixed; top: 0; width: 100%; z-index: 2000;
             background: var(--primary-yellow); padding: 15px 5%;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 3px solid var(--black);
         }
-        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; border: 3px solid black; padding: 2px 8px; }
-        .nav-links a { text-decoration: none; color: black; font-weight: 700; margin-left: 25px; text-transform: uppercase; font-size: 0.9rem; }
-
-        /* --- HERO SECTION --- */
-        .hero { background: var(--primary-yellow); padding: 120px 5% 60px; text-align: center; }
-        .offer-slider { background: var(--black); color: var(--white); padding: 10px 0; margin-bottom: 30px; font-weight: bold; overflow: hidden; }
+        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; border: 3px solid black; padding: 2px 8px; background: white; }
         
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; line-height: 1; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-inline: auto; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { text-decoration: none; color: black; font-weight: 700; margin-left: 25px; text-transform: uppercase; font-size: 0.9rem; }
+        
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
 
+        /* --- HERO & BOOKING --- */
+        .hero { background: var(--primary-yellow); padding: 140px 5% 60px; text-align: center; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1; margin-bottom: 20px; text-transform: uppercase; }
+        
+        .booking-widget { 
+            background: white; border: 4px solid black; padding: 30px; 
+            max-width: 900px; margin: 40px auto; display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;
+            box-shadow: 15px 15px 0px black;
+        }
+        input, select { padding: 15px; border: 2px solid black; font-weight: bold; width: 100%; }
+
+        /* --- PRICE CALCULATOR & QUIZ --- */
+        .tool-section { background: var(--gray); padding: 80px 5%; border-y: 4px solid black; }
+        .calc-box { background: white; border: 4px solid black; padding: 40px; max-width: 600px; margin: 0 auto; }
+        
+        /* --- DOCK & BUTTONS --- */
         .btn-main { 
-            background: var(--black); color: var(--white); padding: 18px 35px; 
-            text-decoration: none; font-weight: 900; border-radius: 0; 
-            display: inline-block; transition: var(--transition); border: 2px solid var(--black);
+            background: var(--black); color: var(--white); padding: 15px 30px; 
+            text-decoration: none; font-weight: 900; display: inline-block; 
+            border: 2px solid var(--black); cursor: pointer; text-align: center;
         }
-        .btn-main:hover { background: transparent; color: var(--black); }
-
-        /* --- PACKAGES GRID --- */
-        .section-padding { padding: 80px 5%; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .package-card { border: 4px solid var(--black); padding: 30px; transition: 0.3s; position: relative; overflow: hidden; }
-        .package-card:hover { transform: translateY(-10px); background: var(--primary-yellow); }
-        .price { font-size: 2.5rem; font-weight: 900; margin: 15px 0; }
-
-        /* --- STATS COUNTER --- */
-        .stats-bar { background: var(--black); color: var(--primary-yellow); display: flex; justify-content: space-around; padding: 50px 5%; text-align: center; }
-        .stat-item h2 { font-size: 3rem; }
-
-        /* --- FLOATING ELEMENTS --- */
-        .callback-btn {
-            position: fixed; right: -50px; top: 50%; transform: rotate(-90deg);
-            background: var(--black); color: var(--white); padding: 15px 25px;
-            font-weight: bold; cursor: pointer; z-index: 999; border: 1px solid var(--white);
-        }
+        .btn-main:hover { background: var(--primary-yellow); color: var(--black); }
 
         .bottom-dock {
             position: fixed; bottom: 0; width: 100%; background: var(--black);
-            display: flex; justify-content: space-around; padding: 15px; z-index: 1001;
+            display: flex; justify-content: space-around; padding: 10px; z-index: 1001;
         }
-        .bottom-dock a { color: var(--primary-yellow); text-decoration: none; font-weight: bold; font-size: 0.8rem; text-align: center; }
+        .bottom-dock a { color: var(--primary-yellow); text-decoration: none; font-weight: bold; font-size: 0.75rem; text-align: center; }
 
-        /* --- EXIT INTENT POPUP --- */
+        /* --- MOBILE MENU --- */
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+                background: var(--primary-yellow); flex-direction: column; padding: 20px;
+                border-bottom: 4px solid black;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 15px 0; }
+            .hamburger { display: block; }
+        }
+
+        /* --- STEP BY STEP --- */
+        .step-card { text-align: center; padding: 20px; }
+        .step-num { font-size: 4rem; font-weight: 900; opacity: 0.2; }
+
         #exit-popup {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 2000;
+            background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 3000;
         }
-        .popup-content { background: var(--primary-yellow); padding: 40px; text-align: center; border: 5px solid black; max-width: 500px; }
-
-        /* Accordion */
-        .faq-item { border-bottom: 2px solid #000; padding: 15px 0; cursor: pointer; }
-        .faq-answer { display: none; padding-top: 10px; }
-
     </style>
 </head>
 <body>
 
-    <!-- 26. Exit Intent Popup -->
+    <!-- EXIT POPUP -->
     <div id="exit-popup">
-        <div class="popup-content">
-            <h2>WAIT! DON'T GO! 🚗</h2>
-            <p>Get your first lesson for just £25 if you book in the next 10 minutes.</p><br>
-            <a href="#booking" class="btn-main" onclick="closePopup()">CLAIM OFFER NOW</a>
+        <div style="background: var(--primary-yellow); padding: 40px; border: 5px solid black; text-align: center; max-width: 500px;">
+            <h2>WAIT! 🛑</h2>
+            <p>New Student Special: Get a <b>FREE</b> Theory Test App Premium Subscription if you book today.</p><br>
+            <button class="btn-main" onclick="closePopup()">CLAIM & BOOK</button>
         </div>
     </div>
 
-    <!-- 24. Bottom Dock -->
-    <div class="bottom-dock">
-        <a href="tel:0123456789"><i class="fas fa-phone"></i><br>Call</a>
-        <a href="https://wa.me/yourlink"><i class="fab fa-whatsapp"></i><br>WhatsApp</a>
-        <a href="#booking"><i class="fas fa-calendar-check"></i><br>Book Now</a>
-    </div>
-
-    <!-- 43. Vertical Callback -->
-    <div class="callback-btn" onclick="document.getElementById('contact').scrollIntoView()">REQUEST CALLBACK</div>
-
-    <!-- 22. Sticky Nav -->
+    <!-- STICKY NAV -->
     <nav>
-        <div class="logo">LOGO</div>
-        <div class="nav-links">
-            <a href="#services">Lessons</a>
-            <a href="#areas">Areas</a>
+        <div class="logo">DRIVE ELITE</div>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="#services">The Fleet</a>
+            <a href="#quiz">Which Plan?</a>
             <a href="#pricing">Pricing</a>
-            <a href="#booking" style="background:black; color:white; padding: 8px 15px;">Book Now</a>
+            <a href="#reviews">Success Stories</a>
+            <a href="#booking" style="background:black; color:white; padding: 10px 20px;">Book Lesson</a>
         </div>
     </nav>
 
-    <!-- 1. Hero Section -->
+    <!-- HERO WITH INSTANT BOOKING -->
     <section class="hero">
-        <!-- Offers Slider -->
-        <div class="offer-slider">
-            <marquee scrollamount="10">
-                15 YEARS EXPERIENCE • ESTABLISHED 2005 • FREE THEORY TEST TRAINING • 95% PASS RATE • DUAL CONTROL CARS
-            </marquee>
-        </div>
-        <h1 data-aos="fade-up">LEARN TO DRIVE<br>WITH CONFIDENCE</h1>
-        <p data-aos="fade-up" data-aos-delay="200">Expert DVSA approved tuition in South London. Manual & Automatic lessons tailored to your pace.</p>
-        
-        <!-- 2. Postcode & Booking -->
-        <div class="booking-box" data-aos="zoom-in" data-aos-delay="400">
-            <input type="text" placeholder="Enter Postcode" style="padding: 15px; width: 250px; border: 3px solid black;">
-            <a href="#booking" class="btn-main">CHECK AVAILABILITY</a>
-        </div>
+        <h1 data-aos="fade-up">Master London Roads <br><span style="background: black; color: white; padding: 0 10px;">With Joe</span></h1>
+        <p>15 Years Experience | 95% Pass Rate | Manual & Automatic Fleet</p>
 
-        <!-- Hero Image -->
-        <div style="margin-top: 50px;" data-aos="fade-up">
-            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200" alt="Instructor Car" style="width: 100%; max-width: 900px; border: 5px solid black; box-shadow: 20px 20px 0px black;">
+        <div class="booking-widget" data-aos="zoom-in">
+            <select id="lesson-type">
+                <option>Manual Lesson</option>
+                <option>Automatic (Tesla)</option>
+                <option>Mock Test</option>
+            </select>
+            <input type="date" id="date-select">
+            <select>
+                <option>Morning (8am - 12pm)</option>
+                <option>Afternoon (12pm - 4pm)</option>
+                <option>Evening (4pm - 8pm)</option>
+            </select>
+            <button class="btn-main">CHECK AVAILABILITY</button>
         </div>
     </section>
 
-    <!-- 11. Animated Stats -->
-    <section class="stats-bar">
-        <div class="stat-item">
-            <h2 class="counter">500</h2>
-            <p>STUDENTS PASSED</p>
+    <!-- INTERACTIVE QUIZ SECTION -->
+    <section class="tool-section" id="quiz">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <span style="background: black; color: white; padding: 5px 15px; font-weight: bold;">AI RECOMMENDATION</span>
+            <h2 style="font-size: 2.5rem; margin-top: 10px;">WHICH PLAN IS FOR YOU?</h2>
         </div>
-        <div class="stat-item">
-            <h2 class="counter">10</h2>
-            <p>YEARS EXP</p>
-        </div>
-        <div class="stat-item">
-            <h2 class="counter">95</h2>
-            <p>PASS RATE %</p>
-        </div>
-    </section>
-
-    <!-- 3 & 12. Lesson Packages -->
-    <section class="section-padding" id="pricing">
-        <h2 style="text-align: center; font-size: 3rem; margin-bottom: 50px;">LESSON PACKAGES</h2>
-        <div class="grid-3">
-            <div class="package-card" data-aos="fade-up">
-                <h3>Starter Package</h3>
-                <div class="price">£35</div>
-                <p>1 Full Hour Evaluation</p>
-                <hr style="margin: 20px 0;">
-                <a href="#" class="btn-main" style="width: 100%; text-align: center;">BUY NOW</a>
-            </div>
-            <div class="package-card" data-aos="fade-up" data-aos-delay="200" style="background: var(--bg-light-yellow);">
-                <div style="position: absolute; top: 10px; right: -30px; background: black; color: white; padding: 5px 40px; transform: rotate(45deg);">BEST</div>
-                <h3>Beginner Bundle</h3>
-                <div class="price">£165</div>
-                <p>5 Hours of Training</p>
-                <hr style="margin: 20px 0;">
-                <a href="#" class="btn-main" style="width: 100%; text-align: center;">BUY NOW</a>
-            </div>
-            <div class="package-card" data-aos="fade-up" data-aos-delay="400">
-                <h3>Intensive Pass</h3>
-                <div class="price">£650</div>
-                <p>20 Hours + Mock Test</p>
-                <hr style="margin: 20px 0;">
-                <a href="#" class="btn-main" style="width: 100%; text-align: center;">BUY NOW</a>
+        <div class="calc-box">
+            <p><b>How many hours of experience do you have?</b></p><br>
+            <input type="range" min="0" max="40" value="0" id="expRange" style="accent-color: black;">
+            <p style="margin: 20px 0;">Current Experience: <span id="expVal">0</span> Hours</p>
+            <div id="quizResult" style="padding: 20px; background: var(--bg-light-yellow); border: 2px dashed black; font-weight: bold;">
+                Recommended: Beginner Bundle (20 Hours)
             </div>
         </div>
     </section>
 
-    <!-- 4 & 33. Automatic vs Manual / Nervous Drivers -->
-    <section class="section-padding" style="background: var(--black); color: var(--white);">
-        <div class="grid-3">
-            <div data-aos="fade-right">
-                <h2 style="font-size: 2.5rem; color: var(--primary-yellow);">MANUAL & AUTOMATIC</h2>
-                <p>We provide both transmissions to suit your preference. Our cars are modern, easy to drive, and fully insured.</p>
+    <!-- HOW IT WORKS -->
+    <section style="padding: 80px 5%;">
+        <h2 style="text-align: center; margin-bottom: 50px;">HOW IT WORKS</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <h3>Book Online</h3>
+                <p>Pick your car and time slot instantly.</p>
             </div>
-            <div data-aos="fade-up">
-                <h2 style="font-size: 2.5rem; color: var(--primary-yellow);">NERVOUS SPECIALIST</h2>
-                <p>Patient, calm instruction designed for those who find the road intimidating. We go at your speed.</p>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <h3>Meet Joe</h3>
+                <p>Pick up from home, work, or college.</p>
             </div>
-            <div data-aos="fade-left">
-                <h2 style="font-size: 2.5rem; color: var(--primary-yellow);">AREAS COVERED</h2>
-                <p>Croydon, Bromley, Lewisham, Greenwich, and South London.</p>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <h3>Track Progress</h3>
+                <p>Digital lesson notes sent to your phone.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- 7. FAQ Accordion -->
-    <section class="section-padding">
-        <h2 style="text-align: center; margin-bottom: 30px;">FREQUENTLY ASKED</h2>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="faq-item">
-                <strong>Do you offer weekend lessons?</strong>
-                <div class="faq-answer">Yes! We offer Saturday and Sunday slots at no extra cost.</div>
-            </div>
-            <div class="faq-item">
-                <strong>Can I be picked up from home?</strong>
-                <div class="faq-answer">Absolutely. We offer home, work, or college pickups within our coverage area.</div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <h3>Pass Fast</h3>
+                <p>Join our 95% first-time pass club.</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer style="background: var(--black); color: var(--white); padding: 50px 5%; border-top: 10px solid var(--primary-yellow);">
-        <div class="grid-3">
+    <!-- PRICE CALCULATOR -->
+    <section style="padding: 80px 5%; background: black; color: white;">
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <h2 style="color: var(--primary-yellow);">INSTANT PRICE CALCULATOR</h2>
+            <div style="margin: 30px 0;">
+                <select id="calc-type" style="background: #222; color: white; border: 1px solid #444;">
+                    <option value="40">Single Lesson (£40)</option>
+                    <option value="380">10 Hour Block (£380)</option>
+                    <option value="700">20 Hour Intensive (£700)</option>
+                </select>
+                <h1 style="font-size: 4rem; color: var(--primary-yellow); margin-top: 20px;">Total: £<span id="totalPrice">40</span></h1>
+                <button class="btn-main" style="background: var(--primary-yellow); color: black;">PAY DEPOSIT NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS & TRUST -->
+    <section style="padding: 80px 5%;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=600" style="border: 10px solid black; width: 100%;">
             <div>
-                <h3>DRIVE ELITE</h3>
-                <p>Developing safe drivers for life since 2005.</p>
-            </div>
-            <div>
-                <h4>Quick Links</h4>
-                <p>Privacy Policy</p>
-                <p>Terms & Conditions</p>
-                <p>Instructor Login</p>
-            </div>
-            <div>
-                <h4>Newsletter</h4>
-                <input type="email" placeholder="Email Address" style="padding: 10px; width: 80%;">
-                <button style="padding: 10px; background: var(--primary-yellow); border: none;">SUBMIT</button>
+                <h2 style="font-size: 3rem;">"JOE SAVED MY TEST DAY!"</h2>
+                <p style="font-size: 1.2rem; margin: 20px 0;">- Sarah, Greenwich (Passed 1st Time with 0 Minors)</p>
+                <div style="color: var(--primary-yellow); font-size: 1.5rem;">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 40px; font-size: 0.8rem;">&copy; 2026 DriveElite Driving School. All Rights Reserved.</p>
+    </section>
+
+    <!-- FOOTER WITH SOCIALS -->
+    <footer style="background: black; color: white; padding: 60px 5%; text-align: center; border-top: 5px solid var(--primary-yellow);">
+        <div style="font-size: 2rem; margin-bottom: 30px;">
+            <a href="#" style="color: white; margin: 0 15px;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: white; margin: 0 15px;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: white; margin: 0 15px;"><i class="fab fa-tiktok"></i></a>
+            <a href="#" style="color: white; margin: 0 15px;"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>DriveElite London | Licensed DVSA Instructor Joe</p>
     </footer>
 
-    <!-- Scripts -->
+    <!-- BOTTOM MOBILE DOCK -->
+    <div class="bottom-dock">
+        <a href="tel:0123456789"><i class="fas fa-phone"></i><br>Call</a>
+        <a href="https://wa.me/123"><i class="fab fa-whatsapp"></i><br>WhatsApp</a>
+        <a href="#booking" style="background: var(--primary-yellow); color: black; padding: 5px 10px; border-radius: 5px;"><i class="fas fa-bolt"></i><br>Book</a>
+        <a href="sms:0123456789"><i class="fas fa-comment"></i><br>Text</a>
+    </div>
+
+    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 800 });
 
-        // FAQ Toggle
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const answer = item.querySelector('.faq-answer');
-                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-
-        // Exit Intent Logic
-        document.addEventListener('mouseleave', (e) => {
-            if (e.clientY < 0) {
-                document.getElementById('exit-popup').style.display = 'flex';
-            }
-        });
-
-        function closePopup() {
-            document.getElementById('exit-popup').style.display = 'none';
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
         }
+
+        // Price Calculator
+        document.getElementById('calc-type').addEventListener('change', (e) => {
+            document.getElementById('totalPrice').innerText = e.target.value;
+        });
+
+        // Quiz Logic
+        const range = document.getElementById('expRange');
+        const res = document.getElementById('quizResult');
+        range.addEventListener('input', (e) => {
+            const val = e.target.value;
+            document.getElementById('expVal').innerText = val;
+            if(val < 5) res.innerText = "Recommended: Beginner Bundle (20 Hours)";
+            else if(val < 20) res.innerText = "Recommended: Intermediate Block (10 Hours)";
+            else res.innerText = "Recommended: Mock Test & Refresher (5 Hours)";
+        });
+
+        // Exit Intent
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY < 0) document.getElementById('exit-popup').style.display = 'flex';
+        });
+        function closePopup() { document.getElementById('exit-popup').style.display = 'none'; }
     </script>
 </body>
 </html>
