@@ -109,6 +109,42 @@
             font-weight: 800;
         }
 
+        /* --- Video Thumbnail Custom CSS --- */
+        .video-thumbnail-container {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .video-thumbnail-container img {
+            transition: transform 0.5s ease;
+        }
+        .video-thumbnail-container:hover img {
+            transform: scale(1.05);
+        }
+        .play-icon-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 140, 40, 0.9);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .video-thumbnail-container:hover .play-icon-overlay {
+            background: var(--white);
+            color: var(--primary-orange);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
         /* --- Floating Action Bar --- */
         .floating-cta {
             position: fixed;
@@ -316,16 +352,19 @@
         <div class="container">
             <h2 class="text-center mb-5 fw-bold">Success Gallery & Tips</h2>
             <div class="row g-3">
-                <div class="col-md-4">
-                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Driving Lesson Preview" allowfullscreen></iframe>
+                <div class="col-md-6">
+                    <div class="video-thumbnail-container shadow h-100">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" class="img-fluid h-100 w-100 object-fit-cover" alt="Video Preview">
+                        <div class="play-icon-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="row g-2">
-                        <div class="col-4"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=400" class="img-fluid rounded-3" alt="Happy Student 1"></div>
-                        <div class="col-4"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=400" class="img-fluid rounded-3" alt="Happy Student 2"></div>
-                        <div class="col-4"><img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&q=80&w=400" class="img-fluid rounded-3" alt="Happy Student 3"></div>
+                <div class="col-md-6">
+                    <div class="row g-3">
+                        <div class="col-6"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=400" class="img-fluid rounded-4" alt="Happy Student 2"></div>
+                        <div class="col-6"><img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&q=80&w=400" class="img-fluid rounded-4" alt="Happy Student 3"></div>
+                        <div class="col-12"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800" class="img-fluid rounded-4" alt="Driving Car"></div>
                     </div>
                 </div>
             </div>
