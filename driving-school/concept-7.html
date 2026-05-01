@@ -3,214 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premier Solo Driving Instructor</title>
-  <meta name="description" content="Book driving lessons, purchase lesson packages, and train with a calm, DVSA-approved instructor across South London." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>Premier Solo | Driving Excellence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #030712;
-      --surface: #0a0f1d;
-      --glass: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
+      --bg: #ffffff;
+      --text: #0a0a0a;
+      --text-muted: #666666;
       --brand: #f15a24;
-      --brand-glow: rgba(241, 90, 36, 0.4);
-      --accent: #47d7ac;
-      --text: #f9fafb;
-      --text-muted: #9ca3af;
-      --radius-lg: 32px;
-      --radius-md: 20px;
-      --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      --soft-gray: #f5f5f7;
+      --border: #e5e5e7;
+      --radius: 20px;
+      --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * { box-sizing: border-box; outline: none; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     
     body {
-      margin: 0;
-      font-family: 'Inter', system-ui;
-      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
       background-color: var(--bg);
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(241, 90, 36, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(71, 215, 172, 0.1) 0px, transparent 50%);
-      overflow-x: hidden;
-      line-height: 1.5;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container { width: min(1300px, calc(100% - 40px)); margin: 0 auto; }
+    .container { width: min(1100px, 90%); margin: 0 auto; }
 
-    /* Typography */
-    h1, h2, h3 { font-weight: 900; letter-spacing: -0.05em; line-height: 1; margin: 0; }
-    h1 { font-size: clamp(2.5rem, 8vw, 5rem); }
-    h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
-    p { color: var(--text-muted); font-size: 1.1rem; }
-
-    /* Global UI Components */
-    .btn {
-      display: inline-flex; align-items: center; gap: 12px;
-      padding: 16px 32px; border-radius: 999px;
-      font-weight: 800; font-size: 1rem; cursor: pointer;
-      transition: var(--transition); border: 1px solid transparent;
-      text-transform: uppercase; letter-spacing: 0.05em;
-    }
-    .btn.primary { background: var(--brand); color: white; box-shadow: 0 10px 30px var(--brand-glow); }
-    .btn.primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 20px 40px var(--brand-glow); }
-    .btn.secondary { background: var(--glass); border-color: var(--glass-border); color: white; backdrop-filter: blur(10px); }
-    .btn.secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
-
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg);
-      transition: var(--transition);
-    }
-    .glass-card:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
-
-    .badge {
-      padding: 6px 16px; border-radius: 999px; font-size: 0.8rem;
-      font-weight: 700; background: var(--glass); border: 1px solid var(--glass-border);
-      color: var(--brand); text-transform: uppercase;
-    }
-
-    /* Navigation */
+    /* Minimal Header */
     .topbar {
       position: sticky; top: 0; z-index: 1000;
-      background: rgba(3, 7, 18, 0.7); backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 15px 0;
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; }
-    .logo { display: flex; align-items: center; gap: 15px; font-weight: 900; font-size: 1.2rem; }
-    .logo-mark { 
-      width: 45px; height: 45px; border-radius: 12px;
-      background: linear-gradient(45deg, var(--brand), #ff8a4c);
-      box-shadow: 0 0 20px var(--brand-glow);
-    }
-    .navlinks { display: flex; gap: 25px; }
-    .navlinks a { font-weight: 600; font-size: 0.9rem; color: var(--text-muted); transition: color 0.3s; }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
+    .logo-mark { width: 32px; height: 32px; background: var(--brand); border-radius: 8px; }
+    
+    .navlinks { display: flex; gap: 30px; }
+    .navlinks a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
     .navlinks a:hover { color: var(--text); }
 
-    /* Hero */
-    .hero { padding: 60px 0 100px; }
-    .offer-strip {
-      background: rgba(241, 90, 36, 0.1); border: 1px solid rgba(241, 90, 36, 0.2);
-      padding: 12px 0; border-radius: 999px; margin-bottom: 40px; overflow: hidden;
+    /* Hero: Minimal & Airy */
+    .hero { padding: 120px 0 80px; text-align: center; }
+    .badge { 
+      background: var(--soft-gray); padding: 6px 16px; border-radius: 100px; 
+      font-size: 0.8rem; font-weight: 600; color: var(--brand); margin-bottom: 24px; display: inline-block;
     }
-    .ticker { display: flex; gap: 50px; animation: ticker 25s linear infinite; width: max-content; }
-    .ticker span { font-weight: 800; font-size: 0.9rem; color: var(--text); white-space: nowrap; }
-    @keyframes ticker { to { transform: translateX(-50%); } }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 24px; }
+    .hero p { max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-muted); }
 
-    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
-    .hero-media { 
-      position: relative; height: 600px; border-radius: var(--radius-lg); overflow: hidden;
-      border: 1px solid var(--glass-border); box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    .btn {
+      padding: 16px 32px; border-radius: 12px; font-weight: 600; cursor: pointer;
+      transition: var(--transition); border: none; text-decoration: none; display: inline-block;
     }
-    .slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1s; }
-    .slide.active { opacity: 0.7; }
-    .hero-floating {
-      position: absolute; bottom: 20px; left: 20px; right: 20px;
-      padding: 30px; border-radius: var(--radius-md); background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(20px); border: 1px solid var(--glass-border);
-    }
+    .btn.primary { background: var(--text); color: white; }
+    .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .btn.secondary { background: var(--soft-gray); color: var(--text); margin-left: 12px; }
 
-    /* Stats */
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
-    .stat-item { padding: 30px; text-align: center; }
-    .stat-item b { font-size: 3rem; display: block; color: var(--text); }
-    .stat-item span { font-weight: 600; color: var(--text-muted); }
+    /* Simplified Stats */
+    .stats { display: flex; justify-content: center; gap: 60px; margin-top: 80px; border-top: 1px solid var(--border); padding-top: 40px; }
+    .stat { text-align: center; }
+    .stat b { font-size: 2rem; display: block; }
+    .stat span { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
 
-    /* Section Headers */
+    /* Bento Grid: Clean Cards */
     .section { padding: 100px 0; }
-    .kicker { color: var(--brand); font-weight: 900; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.2em; margin-bottom: 15px; display: block; }
-    .section-header { margin-bottom: 60px; max-width: 700px; }
+    .kicker { color: var(--brand); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; margin-bottom: 12px; display: block; }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .card { 
+      background: var(--soft-gray); border-radius: var(--radius); padding: 40px; 
+      transition: var(--transition); border: 1px solid transparent;
+    }
+    .card:hover { background: white; border-color: var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.04); }
 
-    /* Bento Grid (Packages/Services) */
-    .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-    .bento-item { padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
-    .price { font-size: 4rem; font-weight: 900; margin: 20px 0; }
-    .price small { font-size: 1rem; color: var(--text-muted); }
-
+    /* Packages */
+    .price { font-size: 3rem; font-weight: 800; margin: 20px 0; letter-spacing: -0.03em; }
+    .price small { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+    
     /* Services Filter */
-    .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+    .filter-chips { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
     .chip { 
-      padding: 10px 24px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-border);
-      font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: var(--transition);
+      padding: 10px 20px; border-radius: 100px; border: 1px solid var(--border); 
+      background: white; cursor: pointer; font-size: 0.9rem; transition: var(--transition);
     }
-    .chip.active { background: var(--brand); border-color: var(--brand); color: white; }
+    .chip.active { background: var(--text); color: white; border-color: var(--text); }
 
-    .service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .service-card { padding: 30px; display: none; }
-    .service-card.show { display: block; }
-    .icon-box { 
-      width: 60px; height: 60px; border-radius: 16px; background: rgba(241, 90, 36, 0.1);
-      display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 20px; border: 1px solid rgba(241, 90, 36, 0.2);
+    /* Minimal FAQ */
+    .faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; cursor: pointer; }
+    .faq-q { display: flex; justify-content: space-between; font-weight: 600; font-size: 1.1rem; }
+    .faq-a { max-height: 0; overflow: hidden; transition: var(--transition); color: var(--text-muted); padding-top: 0; }
+    .faq-item.open .faq-a { max-height: 150px; padding-top: 16px; }
+
+    /* Fixed Contact Bar */
+    .action-bar {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: rgba(10, 10, 10, 0.95); padding: 8px 8px 8px 24px; border-radius: 100px;
+      display: flex; align-items: center; gap: 20px; z-index: 2000; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
+    .action-bar span { color: white; font-weight: 600; font-size: 0.9rem; }
+    .action-bar .btn { padding: 10px 24px; font-size: 0.85rem; }
 
-    /* Booking Area */
-    .booking-split { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-    .booking-content { padding: 50px; }
-    .mini-card { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; border: 1px solid var(--glass-border); }
+    /* Footer */
+    footer { padding: 80px 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
 
-    /* Gallery */
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-    .photo-card { 
-      position: relative; border-radius: var(--radius-md); overflow: hidden; height: 350px; cursor: pointer;
-      border: 1px solid var(--glass-border);
-    }
-    .photo-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-    .photo-card:hover img { transform: scale(1.1); }
-    .photo-label { position: absolute; bottom: 20px; left: 20px; font-weight: 800; font-size: 0.9rem; z-index: 2; }
-    .photo-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); }
-
-    /* FAQ */
-    .faq-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .faq-item { 
-      background: var(--glass); border: 1px solid var(--glass-border); border-radius: 18px; 
-      padding: 20px; cursor: pointer; transition: var(--transition);
-    }
-    .faq-item.open { background: rgba(255,255,255,0.06); border-color: var(--brand); }
-    .faq-q { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1rem; }
-    .faq-a { max-height: 0; overflow: hidden; transition: 0.4s ease; color: var(--text-muted); margin-top: 0; }
-    .faq-item.open .faq-a { max-height: 200px; margin-top: 15px; }
-
-    /* Footer & Floating */
-    .footer { padding: 100px 0 150px; border-top: 1px solid var(--glass-border); background: #010409; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
-
-    .floating-nav {
-      position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 10px; background: rgba(10, 15, 29, 0.7);
-      backdrop-filter: blur(20px); padding: 12px; border-radius: 999px;
-      border: 1px solid var(--glass-border); z-index: 2000; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    }
-    .floating-nav a { 
-      padding: 10px 20px; border-radius: 999px; background: var(--glass);
-      font-weight: 800; font-size: 0.8rem; text-transform: uppercase; transition: var(--transition);
-    }
-    .floating-nav a:last-child { background: var(--brand); }
-
-    /* Popups */
-    .popup { 
-      position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,0.9);
-      display: none; place-items: center; backdrop-filter: blur(10px);
-    }
-    .popup.show { display: grid; }
-    .popup-inner { 
-      background: var(--surface); border: 1px solid var(--glass-border);
-      padding: 50px; border-radius: var(--radius-lg); width: min(500px, 90%); text-align: center;
-      position: relative;
-    }
-
-    /* Scroll Reveal */
-    .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 1024px) {
-      .hero-grid, .booking-split, .bento-grid, .faq-wrapper, .footer-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .navlinks { display: none; }
+    @media (max-width: 768px) {
+      .navlinks, .stats { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -218,388 +122,155 @@
 
 <header class="topbar">
   <div class="container nav">
-    <div class="logo">
-      <div class="logo-mark"></div>
-      <div>
-        <div>Premier Solo Driving</div>
-        <div style="font-size: 0.7rem; color: var(--brand); letter-spacing: 0.1em;">DVSA APPROVED ADI</div>
-      </div>
-    </div>
+    <div class="logo"><div class="logo-mark"></div> Premier Solo</div>
     <nav class="navlinks">
-      <a href="#book">Book</a>
-      <a href="#packages">Packages</a>
+      <a href="#packages">Pricing</a>
       <a href="#services">Services</a>
       <a href="#areas">Areas</a>
-      <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn primary" href="#book" style="padding: 10px 24px; font-size: 0.8rem;">Book Now</a>
+    <a href="#book" class="btn primary" style="padding: 10px 20px; font-size: 0.8rem;">Book Lesson</a>
   </div>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <div class="offer-strip">
-      <div class="ticker">
-        <span>★ 15+ YEARS EXPERIENCE</span>
-        <span>★ ESTABLISHED 2005</span>
-        <span>★ FREE THEORY SUPPORT</span>
-        <span>★ NERVOUS DRIVER SPECIALIST</span>
-        <span>★ WEEKEND LESSONS AVAILABLE</span>
-        <span>★ 15+ YEARS EXPERIENCE</span>
-        <span>★ ESTABLISHED 2005</span>
-        <span>★ FREE THEORY SUPPORT</span>
-        <span>★ NERVOUS DRIVER SPECIALIST</span>
-        <span>★ WEEKEND LESSONS AVAILABLE</span>
-      </div>
-    </div>
-
-    <div class="hero-grid">
-      <div class="reveal">
-        <span class="badge" style="margin-bottom: 20px; display: inline-block;">South London's Premium Instructor</span>
-        <h1>Master the road <br><span style="color: var(--brand);">with confidence.</span></h1>
-        <p style="margin-top: 25px; font-size: 1.25rem;">
-          Expert 1-to-1 instruction tailored to your learning style. Whether you're a complete beginner or looking for a fast-pass intensive course, we get you test-ready faster.
-        </p>
-        <div style="display: flex; gap: 15px; margin-top: 40px; flex-wrap: wrap;">
-          <a class="btn primary" href="#book">Start Learning Today</a>
-          <a class="btn secondary" href="#packages">View Packages</a>
-        </div>
-
-        <div class="stats-grid">
-          <div class="stat-item glass-card">
-            <b class="count" data-target="500">0</b>
-            <span>Success Stories</span>
-          </div>
-          <div class="stat-item glass-card">
-            <b class="count" data-target="15">0</b>
-            <span>Years Expert</span>
-          </div>
-          <div class="stat-item glass-card">
-            <b class="count" data-target="95">0</b>
-            <span>Pass Rate</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-media reveal">
-        <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80');"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1400&q=80');"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1400&q=80');"></div>
-        <div class="hero-floating">
-          <span class="kicker">Limited Deal</span>
-          <h3 style="font-size: 1.8rem; margin: 10px 0;">Introductory Session: £25</h3>
-          <p style="font-size: 0.9rem;">Start your journey with a discounted assessment lesson. No commitment required.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="book" class="section" style="background: rgba(255,255,255,0.02);">
   <div class="container reveal">
-    <div class="booking-split">
-      <div class="glass-card booking-content">
-        <span class="kicker">Live Calendar</span>
-        <h2>Reserve your slot</h2>
-        <p style="margin: 20px 0 40px;">Select your preferred time. Our automated system handles the rest.</p>
-        <div class="mini-card" style="text-align: center; border-style: dashed; padding: 60px;">
-          <h4 style="color: var(--brand);">CALENDLY WIDGET AREA</h4>
-          <p class="small">Replace this container with your Calendly embed code for real-time booking.</p>
-        </div>
-        <div style="display: flex; gap: 15px; margin-top: 30px;">
-          <a class="btn primary" href="#">Book Now</a>
-          <a class="btn secondary" href="#">Request Callback</a>
-        </div>
-      </div>
-
-      <div class="glass-card booking-content">
-        <span class="kicker">Secure Payments</span>
-        <h2>Pay Online</h2>
-        <p style="margin: 20px 0 40px;">We accept all major payment methods for individual lessons and bulk packages.</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-          <div class="mini-card"><strong>Stripe / PayPal</strong><p class="small">Instant secure processing.</p></div>
-          <div class="mini-card"><strong>Gift Cards</strong><p class="small">Perfect for birthdays.</p></div>
-          <div class="mini-card"><strong>Referral Bonus</strong><p class="small">Get credit for friends.</p></div>
-          <div class="mini-card"><strong>Promos</strong><p class="small">Apply seasonal codes.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="packages" class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="kicker">Pricing</span>
-      <h2>Choose your path to passing</h2>
-      <p>Transparent pricing with no hidden fees. Save more when you book in bundles.</p>
-    </div>
-
-    <div class="bento-grid">
-      <div class="glass-card bento-item reveal">
-        <div>
-          <h3>Starter Session</h3>
-          <div class="price">£35<small>/hr</small></div>
-          <ul style="list-style: none; padding: 0; color: var(--text-muted); display: grid; gap: 10px;">
-            <li>✓ Full 1-Hour Assessment</li>
-            <li>✓ Home/Work Pickup</li>
-            <li>✓ Progressive Syllabus</li>
-          </ul>
-        </div>
-        <a class="btn secondary" href="#" style="margin-top: 30px;">Get Started</a>
-      </div>
-      <div class="glass-card bento-item reveal" style="border-color: var(--brand); background: rgba(241, 90, 36, 0.05);">
-        <div>
-          <span class="badge">Most Popular</span>
-          <h3 style="margin-top: 15px;">Beginner Bundle</h3>
-          <div class="price">£330<small>/10hrs</small></div>
-          <ul style="list-style: none; padding: 0; color: var(--text-muted); display: grid; gap: 10px;">
-            <li>✓ 10 Hours of Instruction</li>
-            <li>✓ Free Theory Training</li>
-            <li>✓ Personalized Progress Log</li>
-          </ul>
-        </div>
-        <a class="btn primary" href="#" style="margin-top: 30px;">Buy Bundle</a>
-      </div>
-      <div class="glass-card bento-item reveal">
-        <div>
-          <h3>Fast Pass VIP</h3>
-          <div class="price">£650<small>/20hrs</small></div>
-          <ul style="list-style: none; padding: 0; color: var(--text-muted); display: grid; gap: 10px;">
-            <li>✓ 20 Intensive Hours</li>
-            <li>✓ Priority Scheduling</li>
-            <li>✓ Mock Practical Test</li>
-          </ul>
-        </div>
-        <a class="btn secondary" href="#" style="margin-top: 30px;">Go Fast Pass</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="services" class="section" style="background: #05080f;">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="kicker">Specializations</span>
-      <h2>Tailored Training</h2>
-      <div class="filter-bar" style="margin-top: 30px;">
-        <div class="chip active" data-filter="all">All Services</div>
-        <div class="chip" data-filter="auto">Automatic</div>
-        <div class="chip" data-filter="manual">Manual</div>
-        <div class="chip" data-filter="nervous">Nervous Drivers</div>
-        <div class="chip" data-filter="fast">Intensive</div>
-      </div>
-    </div>
-
-    <div class="service-grid">
-      <div class="glass-card service-card show reveal" data-tags="auto manual">
-        <div class="icon-box">🚘</div>
-        <h3>Automatic & Manual</h3>
-        <p>Choose the transmission that fits your lifestyle. Modern dual-control vehicles.</p>
-      </div>
-      <div class="glass-card service-card show reveal" data-tags="fast">
-        <div class="icon-box">⏱</div>
-        <h3>Intensive Courses</h3>
-        <p>Compressed learning plans for those who need their license in weeks, not months.</p>
-      </div>
-      <div class="glass-card service-card show reveal" data-tags="nervous">
-        <div class="icon-box">😌</div>
-        <h3>Anxiety Support</h3>
-        <p>Calm, patient environment designed specifically for nervous learners.</p>
-      </div>
-      <div class="glass-card service-card show reveal" data-tags="all">
-        <div class="icon-box">🧠</div>
-        <h3>Theory Mastery</h3>
-        <p>Complimentary app access and 1-on-1 support for your theory test.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="areas" class="section">
-  <div class="container">
-    <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-      <span class="kicker">Coverage</span>
-      <h2>South London Districts</h2>
-    </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;" class="reveal">
-      <div class="chip">Croydon</div>
-      <div class="chip">Bromley</div>
-      <div class="chip">Lewisham</div>
-      <div class="chip">Greenwich</div>
-      <div class="chip">Mitcham</div>
-      <div class="chip">Sutton</div>
-      <div class="chip">Orpington</div>
-      <div class="chip">Wimbledon</div>
-      <div class="chip" style="border-color: var(--brand);">+ All Surrounding Areas</div>
-    </div>
-    
-    <div class="glass-card reveal" style="height: 400px; margin-top: 40px; overflow: hidden;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d159048.9248430635!2d-0.19830509653839213!3d51.41243734005741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon!5e0!3m2!1sen!2suk!4v1714561234567!5m2!1sen!2suk" style="width:100%; height:100%; border:0; filter: invert(90%) hue-rotate(180deg) brightness(0.6);" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="reviews" style="background: rgba(255,255,255,0.01);">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="kicker">Success Stories</span>
-      <h2>Real Students. <br>Real Results.</h2>
-    </div>
-    <div class="gallery-grid">
-      <div class="photo-card reveal" onclick="openLightbox(this.querySelector('img').src)">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80">
-        <span class="photo-label">Croydon Pass - First Time</span>
-      </div>
-      <div class="photo-card reveal" onclick="openLightbox(this.querySelector('img').src)">
-        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80">
-        <span class="photo-label">Manual Test Success</span>
-      </div>
-      <div class="photo-card reveal" onclick="openLightbox(this.querySelector('img').src)">
-        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=80">
-        <span class="photo-label">Automatic Excellence</span>
-      </div>
-      <div class="photo-card reveal" onclick="openLightbox(this.querySelector('img').src)">
-        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80">
-        <span class="photo-label">Mitcham Centre Pass</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq" class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="kicker">Support</span>
-      <h2>Questions? Answers.</h2>
-    </div>
-    <div class="faq-wrapper reveal">
-      <div class="faq-item">
-        <div class="faq-q">How much do lessons cost? <span>+</span></div>
-        <div class="faq-a">Single lessons start at £35/hr, but significant discounts are available when purchasing 10 or 20-hour block bookings.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">How long is each lesson? <span>+</span></div>
-        <div class="faq-a">Standard lessons are 1.5 to 2 hours. We find 2-hour blocks allow for significantly better retention and progress.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Do you offer weekend lessons? <span>+</span></div>
-        <div class="faq-a">Yes, we offer limited weekend slots for students with tight weekday schedules at no extra premium cost.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Can I pay online? <span>+</span></div>
-        <div class="faq-a">Absolutely. You can pay via our secure Stripe checkout or PayPal before your lesson begins.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="footer" id="contact">
-  <div class="container footer-grid">
+    <span class="badge">DVSA Approved Instruction</span>
+    <h1>Drive with clarity. <br>Pass with ease.</h1>
+    <p>Premium 1-to-1 driving lessons across South London. No stress, no congestion—just professional coaching tailored to you.</p>
     <div>
-      <div class="logo">
-        <div class="logo-mark"></div>
-        <span>Premier Solo Driving</span>
-      </div>
-      <p style="margin-top: 25px;">Helping South London learners become safe, confident drivers since 2005. Professional, reliable, and DVSA approved.</p>
+      <a href="#book" class="btn primary">View Availability</a>
+      <a href="#packages" class="btn secondary">See Bundles</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b class="count" data-target="500">0</b><span>Students Passed</span></div>
+      <div class="stat"><b class="count" data-target="15">0</b><span>Years Experience</span></div>
+      <div class="stat"><b class="count" data-target="95">0</b><span>Pass Rate</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="packages" class="section container">
+  <span class="kicker">Pricing</span>
+  <h2 style="margin-bottom: 40px;">Simple Bundles</h2>
+  <div class="grid">
+    <div class="card reveal">
+      <h3>Starter Session</h3>
+      <div class="price">£35 <small>/hr</small></div>
+      <p style="margin-bottom: 24px;">Assessment lesson for new learners.</p>
+      <a href="#" class="btn secondary" style="margin: 0; width: 100%; text-align: center;">Choose Starter</a>
+    </div>
+    <div class="card reveal" style="background: var(--text); color: white;">
+      <h3 style="color: var(--brand);">Beginner Bundle</h3>
+      <div class="price">£330 <small style="color: #aaa;">/10hrs</small></div>
+      <p style="margin-bottom: 24px;">Our most popular path to the pink license.</p>
+      <a href="#" class="btn primary" style="margin: 0; width: 100%; text-align: center; background: var(--brand);">Buy Bundle</a>
+    </div>
+    <div class="card reveal">
+      <h3>Intensive Pass</h3>
+      <div class="price">£650 <small>/20hrs</small></div>
+      <p style="margin-bottom: 24px;">For those who need to pass in weeks.</p>
+      <a href="#" class="btn secondary" style="margin: 0; width: 100%; text-align: center;">Choose Intensive</a>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section container">
+  <span class="kicker">Expertise</span>
+  <h2 style="margin-bottom: 24px;">How we help</h2>
+  <div class="filter-chips">
+    <div class="chip active" data-filter="all">All</div>
+    <div class="chip" data-filter="auto">Automatic</div>
+    <div class="chip" data-filter="manual">Manual</div>
+    <div class="chip" data-filter="nervous">Nervous Driver</div>
+  </div>
+  <div class="grid">
+    <div class="card reveal" data-tags="auto manual">
+      <h4>Dual Control Training</h4>
+      <p style="font-size: 0.95rem; margin-top: 10px;">Available in both Automatic and Manual transmissions.</p>
+    </div>
+    <div class="card reveal" data-tags="nervous">
+      <h4>Confidence Building</h4>
+      <p style="font-size: 0.95rem; margin-top: 10px;">Patience-first approach for anxious or first-time drivers.</p>
+    </div>
+    <div class="card reveal" data-tags="all">
+      <h4>Theory Support</h4>
+      <p style="font-size: 0.95rem; margin-top: 10px;">Free digital resources and hazard perception training.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section container">
+  <div style="max-width: 700px; margin: 0 auto;">
+    <span class="kicker">FAQ</span>
+    <h2 style="margin-bottom: 30px;">Common Questions</h2>
+    <div class="faq-item reveal">
+      <div class="faq-q">Where do you cover? <span>+</span></div>
+      <div class="faq-a">We provide door-to-door pickup across Croydon, Bromley, Lewisham, and Greenwich.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Can I pay online? <span>+</span></div>
+      <div class="faq-a">Yes. We use Stripe for secure credit/debit card payments and Apple Pay.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">What is your pass rate? <span>+</span></div>
+      <div class="faq-a">Our current first-time pass rate is 95%, well above the national average.</div>
+    </div>
+  </div>
+</section>
+
+<footer class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom: 20px;"><div class="logo-mark"></div> Premier Solo</div>
+      <p>Professional driving instruction in South London. Established 2005.</p>
     </div>
     <div>
-      <h3 style="font-size: 1.2rem; margin-bottom: 20px;">Quick Access</h3>
-      <nav style="display: grid; gap: 12px;">
-        <a href="#packages" style="color: var(--text-muted);">Pricing</a>
-        <a href="#services" style="color: var(--text-muted);">Services</a>
-        <a href="#areas" style="color: var(--text-muted);">Areas</a>
-        <a href="#faq" style="color: var(--text-muted);">Support</a>
-      </nav>
+      <h4 style="color: var(--text); margin-bottom: 15px;">Contact</h4>
+      <p>07xxx xxxxxx</p>
+      <p>hello@premiersolo.com</p>
     </div>
     <div>
-      <h3 style="font-size: 1.2rem; margin-bottom: 20px;">Contact</h3>
-      <p style="font-size: 0.9rem;">
-        Phone: 07xxx xxxxxx<br>
-        Email: hello@premiersolo.co.uk<br>
-        Coverage: Croydon & Bromley
-      </p>
+      <h4 style="color: var(--text); margin-bottom: 15px;">Legal</h4>
+      <p>DVSA Approved ADI</p>
+      <p>Fully Insured</p>
     </div>
   </div>
 </footer>
 
-<div class="floating-nav">
-  <a href="tel:07000000000">Call</a>
-  <a href="https://wa.me/447000000000">WhatsApp</a>
-  <a href="#book">Book Now</a>
-</div>
-
-<div class="popup" id="offerPopup">
-  <div class="popup-inner">
-    <button style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;" onclick="closePopup()">×</button>
-    <span class="badge">Special Offer</span>
-    <h2 style="margin: 20px 0;">Unlock Your License</h2>
-    <p>Get your first 2-hour assessment session for just £45 when you book this week.</p>
-    <a class="btn primary" href="#book" style="margin-top: 30px;">Claim Discount</a>
-  </div>
+<div class="action-bar">
+  <span>Ready to start?</span>
+  <a href="#book" class="btn primary" style="background: var(--brand);">Book Now</a>
 </div>
 
 <script>
-  // Hero Slider
-  const slides = document.querySelectorAll('.slide');
-  let currentSlide = 0;
-  setInterval(() => {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }, 5000);
-
-  // Reveal Animations
+  // Simplified Reveal
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Count Up
-  document.querySelectorAll('.count').forEach(counter => {
-    const target = +counter.dataset.target;
-    const updateCount = () => {
-      const count = +counter.innerText;
-      const speed = target / 100;
-      if (count < target) {
-        counter.innerText = Math.ceil(count + speed);
-        setTimeout(updateCount, 20);
-      } else {
-        counter.innerText = target + '+';
-      }
-    };
-    
-    const countObserver = new IntersectionObserver((entries) => {
-      if(entries[0].isIntersecting) updateCount();
-    });
-    countObserver.observe(counter);
-  });
-
-  // Services Filter
-  document.querySelectorAll('.chip[data-filter]').forEach(chip => {
-    chip.addEventListener('click', () => {
-      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      const filter = chip.dataset.filter;
-      document.querySelectorAll('.service-card').forEach(card => {
-        const tags = card.dataset.tags;
-        card.classList.toggle('show', filter === 'all' || tags.includes(filter));
-      });
-    });
-  });
 
   // FAQ Toggle
   document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => item.classList.toggle('open'));
   });
 
-  // Popup Logic
-  function closePopup() { document.getElementById('offerPopup').classList.remove('show'); }
-  setTimeout(() => { if(!localStorage.getItem('popupShown')) document.getElementById('offerPopup').classList.add('show'); }, 3000);
+  // Simple Counter
+  document.querySelectorAll('.count').forEach(counter => {
+    const target = +counter.dataset.target;
+    const updateCount = () => {
+      const current = +counter.innerText;
+      if(current < target) {
+        counter.innerText = Math.ceil(current + (target/50));
+        setTimeout(updateCount, 30);
+      } else {
+        counter.innerText = target + (target > 50 ? '%' : '+');
+      }
+    };
+    observer.observe(counter); // Trigger on scroll
+    updateCount();
+  });
 </script>
 
 </body>
