@@ -23,6 +23,12 @@
         .gradient-overlay { background: linear-gradient(0deg, rgba(5,7,10,1) 0%, rgba(5,7,10,0) 100%); }
         .hover-scale { transition: transform 0.3s ease; }
         .hover-scale:hover { transform: scale(1.02); }
+        
+        /* New Styles for Calendar and Map */
+        .calendar-day:hover { background: var(--brand-blue); color: white; cursor: pointer; }
+        .map-pulse { position: absolute; width: 12px; height: 12px; background: var(--brand-blue); border-radius: 50%; box-shadow: 0 0 0 rgba(0, 86, 255, 0.4); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 86, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 86, 255, 0); } 100% { box-shadow: 0 0 0 0px rgba(0, 86, 255, 0); } }
+        .video-container:hover .play-icon { transform: translate(-50%, -50%) scale(1.2); color: var(--brand-blue); }
     </style>
 </head>
 <body class="antialiased">
@@ -65,6 +71,21 @@
             <div class="relative" data-aos="zoom-in">
                 <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1000" alt="Instructor Car" class="rounded-3xl shadow-2xl relative z-10 border border-white/10">
                 <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-brand-blue/20 blur-3xl rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
+            <div class="video-container relative rounded-3xl overflow-hidden glass h-64 group cursor-pointer" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1000" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition duration-500">
+                <i class="fa-solid fa-circle-play play-icon absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-white/80 transition duration-300"></i>
+                <div class="absolute bottom-6 left-6 font-bold">Watch Student Success Story</div>
+            </div>
+            <div class="video-container relative rounded-3xl overflow-hidden glass h-64 group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=1000" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition duration-500">
+                <i class="fa-solid fa-circle-play play-icon absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-white/80 transition duration-300"></i>
+                <div class="absolute bottom-6 left-6 font-bold">Inside The Training Vehicle</div>
             </div>
         </div>
     </section>
@@ -148,14 +169,40 @@
     </section>
 
     <section id="booking" class="py-20 px-6">
-        <div class="max-w-4xl mx-auto glass p-1 rounded-3xl overflow-hidden shadow-2xl">
+        <div class="max-w-4xl mx-auto glass rounded-3xl overflow-hidden shadow-2xl">
             <div class="bg-brand-blue p-8 text-center">
-                <h2 class="text-3xl font-black">Reserve Your Slot</h2>
-                <p>Live Instructor Availability</p>
+                <h2 class="text-3xl font-black uppercase">Reverse Your Slot</h2>
+                <p class="text-sm tracking-widest opacity-80">SELECT A DATE & TIME</p>
             </div>
-            <div class="p-4 bg-white text-black">
-                <div style="min-width:320px;height:630px; background: #f4f4f4; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #333;">
-                    [ Calendly / Booking Widget Embed Integration Here ]
+            <div class="p-8 bg-white text-gray-800">
+                <div class="grid md:grid-cols-7 gap-2 mb-6">
+                    <div class="text-center font-bold text-xs text-gray-400 uppercase">Mon</div>
+                    <div class="text-center font-bold text-xs text-gray-400 uppercase">Tue</div>
+                    <div class="text-center font-bold text-xs text-gray-400 uppercase">Wed</div>
+                    <div class="text-center font-bold text-xs text-gray-400 uppercase">Thu</div>
+                    <div class="text-center font-bold text-xs text-gray-400 uppercase">Fri</div>
+                    <div class="text-center font-bold text-xs text-blue-500 uppercase">Sat</div>
+                    <div class="text-center font-bold text-xs text-blue-500 uppercase">Sun</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center opacity-20">28</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center opacity-20">29</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center opacity-20">30</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold">1</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold">2</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold">3</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold">4</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold bg-blue-50 border-blue-200">5</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold">6</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold bg-brand-blue text-white">7</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold">8</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold">9</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold">10</div>
+                    <div class="calendar-day p-4 border rounded-xl text-center font-bold">11</div>
+                </div>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button class="px-6 py-2 border-2 border-brand-blue rounded-full text-brand-blue font-bold hover:bg-brand-blue hover:text-white transition">09:00 AM</button>
+                    <button class="px-6 py-2 border-2 border-brand-blue rounded-full text-brand-blue font-bold hover:bg-brand-blue hover:text-white transition">11:30 AM</button>
+                    <button class="px-6 py-2 border-2 border-brand-blue rounded-full text-brand-blue font-bold hover:bg-brand-blue hover:text-white transition">02:00 PM</button>
+                    <button class="px-6 py-2 border-2 border-brand-blue rounded-full text-brand-blue font-bold hover:bg-brand-blue hover:text-white transition">04:30 PM</button>
                 </div>
             </div>
         </div>
@@ -164,7 +211,7 @@
     <section id="areas" class="py-20 px-6 bg-brand-blue text-white">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2" data-aos="fade-right">
-                <h2 class="text-5xl font-black mb-6">We Drive In Your Area</h2>
+                <h2 class="text-5xl font-black mb-6 uppercase italic">Visual Coverage</h2>
                 <p class="text-xl mb-8">Serving South London and surroundings with local test centre expertise.</p>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot"></i> Croydon</div>
@@ -175,10 +222,19 @@
                     <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot"></i> Hither Green</div>
                 </div>
             </div>
-            <div class="md:w-1/2 glass h-96 rounded-3xl overflow-hidden relative" data-aos="fade-left">
-                <div class="absolute inset-0 bg-gray-300 flex items-center justify-center text-gray-800">
-                    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover opacity-50 grayscale" alt="Map">
-                    <span class="absolute bg-brand-blue text-white p-4 rounded-xl font-bold shadow-xl">Interactive Map View</span>
+            <div class="md:w-1/2 glass h-96 rounded-3xl overflow-hidden relative shadow-2xl" data-aos="fade-left">
+                <div class="absolute inset-0 bg-slate-900 overflow-hidden">
+                    <svg viewBox="0 0 800 600" class="w-full h-full opacity-30 stroke-blue-500 fill-transparent stroke-[2]">
+                        <path d="M100,100 Q400,50 700,100 T750,300 T600,500 T200,550 T50,300 Z" />
+                    </svg>
+                    <div class="map-pulse top-[30%] left-[40%]"></div>
+                    <div class="map-pulse top-[50%] left-[60%]"></div>
+                    <div class="map-pulse top-[70%] left-[30%]"></div>
+                    <div class="map-pulse top-[40%] left-[75%]"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-center w-full">
+                        <span class="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 text-sm font-bold uppercase tracking-widest">South London Service Zone</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -191,19 +247,29 @@
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
             <div class="h-80 glass rounded-2xl overflow-hidden group relative cursor-pointer shadow-xl" data-aos="zoom-in">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15790669068691004696_0" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                <div class="absolute inset-0 bg-brand-blue/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center font-black italic">SUCCESS!</div>
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-brand-blue/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="bg-white text-red-600 px-4 py-2 font-black text-2xl border-4 border-red-600 rounded-md shadow-lg transform -rotate-12 mb-2">L</div>
+                        <p class="font-black italic text-white uppercase tracking-tighter">PASSED!</p>
+                    </div>
+                </div>
             </div>
             <div class="h-80 glass rounded-2xl overflow-hidden group relative cursor-pointer shadow-xl" data-aos="zoom-in" data-aos-delay="100">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15790669068691004696_1" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                <div class="absolute inset-0 bg-brand-blue/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center font-black italic">PASSED FIRST TIME!</div>
+                <img src="https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-brand-blue/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="bg-white text-red-600 px-4 py-2 font-black text-2xl border-4 border-red-600 rounded-md shadow-lg transform rotate-12 mb-2">L</div>
+                        <p class="font-black italic text-white uppercase tracking-tighter">FIRST TIME!</p>
+                    </div>
+                </div>
             </div>
             <div class="h-80 glass rounded-2xl overflow-hidden group relative cursor-pointer shadow-xl" data-aos="zoom-in" data-aos-delay="200">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15790669068691004696_2" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 <div class="absolute inset-0 bg-brand-blue/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center font-black italic">WELL DONE!</div>
             </div>
             <div class="h-80 glass rounded-2xl overflow-hidden group relative cursor-pointer shadow-xl" data-aos="zoom-in" data-aos-delay="300">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15790669068691004696_3" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 <div class="absolute inset-0 bg-brand-blue/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center font-black italic">LICENSED!</div>
             </div>
         </div>
