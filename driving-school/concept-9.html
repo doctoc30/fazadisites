@@ -3,351 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shift - Premium Driving Academy</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <title>DriveElite | The Premium Driving Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <style>
         :root {
-            --primary: #2563eb;
-            --accent: #fbbf24;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --glass: rgba(255, 255, 255, 0.1);
+            --stone-900: #1c1917;
+            --gold-500: #c5a059;
+            --cream: #faf9f6;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* --- Navigation --- */
-        nav {
-            padding: 1.5rem 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .logo {
-            font-family: 'Lexend', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .logo span { color: var(--accent); }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--primary); }
-
-        .btn-nav {
-            background: var(--primary);
-            color: white !important;
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            height: 85vh;
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
-                        url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 5%;
-        }
-
-        .hero-content h1 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .btn-main {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-
-        .primary-btn { background: var(--primary); color: white; }
-        .accent-btn { background: var(--accent); color: var(--dark); }
-
-        .btn-main:hover { transform: translateY(-3px); }
-
-        /* --- Features Section --- */
-        .features {
-            padding: 5rem 10%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: -50px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .feature-card:hover { transform: translateY(-10px); }
-
-        .feature-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        /* --- Pricing --- */
-        .pricing {
-            padding: 5rem 10%;
-            background: #f1f5f9;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .price-card {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid transparent;
-        }
-
-        .price-card.popular {
-            border-color: var(--primary);
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--stone-900); scroll-behavior: smooth; }
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+        
+        .nav-blur { background: rgba(250, 249, 246, 0.8); backdrop-filter: blur(12px); }
+        .gold-gradient { background: linear-gradient(135deg, #c5a059 0%, #927035 100%); }
+        
+        .btn-elegant {
             position: relative;
+            padding: 12px 32px;
+            border: 1px solid var(--stone-900);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
         }
-
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .price-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .price { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; }
-        .price span { font-size: 1rem; color: #64748b; }
-
-        .price-list {
-            list-style: none;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .price-list li { margin-bottom: 0.8rem; }
-        .price-list i { color: #22c55e; margin-right: 10px; }
-
-        /* --- Footer --- */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 10% 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-col h4 { margin-bottom: 1.5rem; color: var(--accent); }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #334155;
-            font-size: 0.9rem;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-        }
+        .btn-elegant:hover { color: white; background: var(--stone-900); transform: translateY(-3px); }
+        
+        .glass-card { background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(255, 255, 255, 0.2); }
+        
+        /* Marquee Optimization */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: flex; width: 200%; animation: marquee 30s linear infinite; }
+        
+        .vertical-text { writing-mode: vertical-rl; transform: rotate(180deg); }
     </style>
 </head>
-<body>
+<body x-data="{ openBooking: false }">
 
-    <nav>
-        <div class="logo">SHI<span>FT</span></div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#instructors">Instructors</a></li>
-            <li><a href="#contact" class="btn-nav">Book Lesson</a></li>
-        </ul>
+    <!-- Premium Announcement Bar -->
+    <div class="bg-stone-900 text-stone-300 py-3 text-[10px] tracking-[0.2em] uppercase overflow-hidden border-b border-stone-800">
+        <div class="animate-marquee whitespace-nowrap">
+            <span class="mx-10">Established 2005</span>
+            <span class="mx-10 italic">London's Leading ADI Instructors</span>
+            <span class="mx-10">95% First-Time Pass Rate</span>
+            <span class="mx-10">Complimentary Theory Training</span>
+            <!-- Duplicated for seamless loop -->
+            <span class="mx-10">Established 2005</span>
+            <span class="mx-10 italic">London's Leading ADI Instructors</span>
+            <span class="mx-10">95% First-Time Pass Rate</span>
+            <span class="mx-10">Complimentary Theory Training</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-blur sticky top-0 z-50 border-b border-stone-200">
+        <div class="container mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="#" class="text-3xl serif tracking-tighter font-semibold">Drive<span class="text-[#c5a059]">Elite</span></a>
+            <div class="hidden md:flex space-x-12 text-[11px] uppercase tracking-widest font-semibold">
+                <a href="#services" class="hover:text-gold-500 transition">Services</a>
+                <a href="#about" class="hover:text-gold-500 transition">Our Story</a>
+                <a href="#pricing" class="hover:text-gold-500 transition">Investment</a>
+                <a href="#reviews" class="hover:text-gold-500 transition">Journal</a>
+            </div>
+            <button @click="openBooking = true" class="btn-elegant text-[11px] uppercase tracking-[0.2em] font-bold">Inquire</button>
+        </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Master the Road with Confidence.</h1>
-            <p>Expert instruction, flexible scheduling, and a 98% first-time pass rate.</p>
-            <div class="hero-btns">
-                <a href="#pricing" class="btn-main primary-btn">View Packages</a>
-                <a href="#" class="btn-main accent-btn">Learn More</a>
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        <div class="container mx-auto px-8 grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-up">
+                <h1 class="text-7xl md:text-8xl leading-[0.9] mb-8">Master the Art of <br><span class="italic text-gold-500">Driving</span>.</h1>
+                <p class="text-lg text-stone-500 max-w-md leading-relaxed mb-10 font-light">Experience South London's most refined driving tuition. Since 2005, we have specialized in transforming beginners into sophisticated, confident drivers.</p>
+                <div class="flex items-center space-x-6">
+                    <button @click="openBooking = true" class="bg-stone-900 text-white px-10 py-5 rounded-none hover:bg-stone-800 transition shadow-2xl">Start Your Journey</button>
+                    <div class="text-[11px] uppercase tracking-widest border-l border-stone-300 pl-6">
+                        <span class="block font-bold">Serving London</span>
+                        <span class="opacity-60 text-stone-400">Croydon • Bromley • Dulwich</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <div class="absolute -top-12 -right-12 w-64 h-64 border border-gold-500/30 rounded-full animate-pulse"></div>
+                <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=1000" alt="Luxury Car Detail" class="grayscale hover:grayscale-0 transition duration-1000 object-cover aspect-[4/5] shadow-2xl">
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <i class="fas fa-car-side"></i>
-            <h3>Modern Fleet</h3>
-            <p>Learn in the latest 2024 models equipped with dual controls for maximum safety.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-clock"></i>
-            <h3>Flexible Hours</h3>
-            <p>Early morning, evening, or weekend slots available to fit your busy lifestyle.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-id-card"></i>
-            <h3>Certified Pros</h3>
-            <p>All our instructors are fully certified and background-checked for your peace of mind.</p>
-        </div>
-    </section>
-
-    <section class="pricing" id="pricing">
-        <div class="section-title">
-            <h2>Driving Packages</h2>
-            <p>Choose the plan that fits your pace</p>
-        </div>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3>Starter Pack</h3>
-                <div class="price">$199<span>/ 5 hrs</span></div>
-                <ul class="price-list">
-                    <li><i class="fas fa-check"></i> 5 Hours of Instruction</li>
-                    <li><i class="fas fa-check"></i> Basic Road Skills</li>
-                    <li><i class="fas fa-check"></i> Pick-up & Drop-off</li>
-                    <li><i class="fas fa-times" style="color: #ef4444"></i> Mock Test</li>
-                </ul>
-                <a href="#" class="btn-main primary-btn">Get Started</a>
+    <!-- Service Grid -->
+    <section id="services" class="py-32 bg-stone-50">
+        <div class="container mx-auto px-8">
+            <div class="text-center mb-20">
+                <span class="text-[10px] uppercase tracking-[0.3em] text-gold-500 font-bold">Excellence in Motion</span>
+                <h2 class="text-5xl serif mt-4">Bespoke Tuition Services</h2>
             </div>
-
-            <div class="price-card popular">
-                <div class="popular-badge">Most Popular</div>
-                <h3>Standard Pro</h3>
-                <div class="price">$375<span>/ 10 hrs</span></div>
-                <ul class="price-list">
-                    <li><i class="fas fa-check"></i> 10 Hours of Instruction</li>
-                    <li><i class="fas fa-check"></i> Defensive Driving Intro</li>
-                    <li><i class="fas fa-check"></i> Freeway Experience</li>
-                    <li><i class="fas fa-check"></i> 1 Mock Driving Test</li>
-                </ul>
-                <a href="#" class="btn-main primary-btn">Get Started</a>
-            </div>
-
-            <div class="price-card">
-                <h3>The License Closer</h3>
-                <div class="price">$650<span>/ 20 hrs</span></div>
-                <ul class="price-list">
-                    <li><i class="fas fa-check"></i> 20 Hours of Instruction</li>
-                    <li><i class="fas fa-check"></i> Advanced Road Mastery</li>
-                    <li><i class="fas fa-check"></i> Car Rental for Exam</li>
-                    <li><i class="fas fa-check"></i> Unlimited Mock Tests</li>
-                </ul>
-                <a href="#" class="btn-main primary-btn">Get Started</a>
+            <div class="grid md:grid-cols-4 gap-1">
+                <div class="group bg-white p-12 border border-stone-100 hover:shadow-2xl transition-all duration-500">
+                    <i class="fa-thin fa-steering-wheel text-4xl text-gold-500 mb-8 block font-light"></i>
+                    <h3 class="serif text-2xl mb-4">Manual Mastery</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity">Precision control training for those who appreciate the mechanics of driving.</p>
+                </div>
+                <div class="group bg-white p-12 border border-stone-100 hover:shadow-2xl transition-all duration-500">
+                    <i class="fa fa-bolt-auto text-4xl text-gold-500 mb-8 block"></i>
+                    <h3 class="serif text-2xl mb-4">Electric/Auto</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity">Smooth, modern instruction in our fleet of premium automatic vehicles.</p>
+                </div>
+                <div class="group bg-white p-12 border border-stone-100 hover:shadow-2xl transition-all duration-500">
+                    <i class="fa fa-gauge-high text-4xl text-gold-500 mb-8 block"></i>
+                    <h3 class="serif text-2xl mb-4">Intensive Path</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity">Accelerated learning designed for the modern professional's schedule.</p>
+                </div>
+                <div class="group bg-white p-12 border border-stone-100 hover:shadow-2xl transition-all duration-500">
+                    <i class="fa fa-graduation-cap text-4xl text-gold-500 mb-8 block"></i>
+                    <h3 class="serif text-2xl mb-4">Pass Plus</h3>
+                    <h3 class="serif text-2xl mb-4">Pass Plus</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity">Advanced motorway and night driving for the ultimate safety foundation.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-col">
-                <div class="logo" style="color: white">SHI<span>FT</span></div>
-                <p>Teaching the drivers of tomorrow, today.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <p>About Us</p>
-                <p>Safety Standards</p>
-                <p>Reviews</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-                <p><i class="fas fa-envelope"></i> hello@shiftdrive.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Street, City, State</p>
+    <!-- The Instructor (Joe) -->
+    <section id="about" class="py-32 bg-stone-900 text-stone-100">
+        <div class="container mx-auto px-8">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="relative" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800" class="grayscale filter contrast-125" alt="Joe Instructor">
+                    <div class="absolute bottom-0 right-0 bg-gold-500 p-8 text-stone-900 font-bold uppercase tracking-widest text-xs">
+                        18 Years of Craft
+                    </div>
+                </div>
+                <div data-aos="fade-up">
+                    <span class="text-gold-500 text-[11px] uppercase tracking-[0.3em]">The Founder</span>
+                    <h2 class="text-6xl serif mt-6 mb-8 leading-tight italic">"Driving is a life skill, not a test hurdle."</h2>
+                    <p class="text-stone-400 leading-loose mb-8 font-light">Joe Harrison has spent nearly two decades refining a patient, high-calibre teaching method. As a Grade-A ADI, Joe doesn't just teach you to pass; he mentors you to command the road with calm authority.</p>
+                    <ul class="grid grid-cols-2 gap-y-4 text-xs tracking-widest uppercase">
+                        <li class="flex items-center"><i class="fa fa-check text-gold-500 mr-3"></i> ADI Grade A</li>
+                        <li class="flex items-center"><i class="fa fa-check text-gold-500 mr-3"></i> ADHD Specialist</li>
+                        <li class="flex items-center"><i class="fa fa-check text-gold-500 mr-3"></i> 5-Star Reputation</li>
+                        <li class="flex items-center"><i class="fa fa-check text-gold-500 mr-3"></i> Modern Fleet</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            &copy; 2026 Shift Driving Academy. All Rights Reserved.
+    </section>
+
+    <!-- Pricing (Investment) -->
+    <section id="pricing" class="py-32 bg-white">
+        <div class="container mx-auto px-8">
+            <div class="max-w-2xl mx-auto text-center mb-20">
+                <h2 class="text-5xl serif mb-6">Instruction Investment</h2>
+                <p class="text-stone-400 font-light italic">Transparent pricing for premium education.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="p-10 border border-stone-200 hover:border-gold-500 transition-colors">
+                    <h4 class="serif text-2xl mb-2">The Introduction</h4>
+                    <div class="text-3xl font-light mb-6">£38 <span class="text-sm opacity-50">/ hr</span></div>
+                    <p class="text-xs text-stone-400 mb-8">Ideal for assessments and single lesson top-ups.</p>
+                    <button class="w-full py-4 text-[10px] uppercase tracking-widest font-bold border border-stone-200 hover:bg-stone-50 transition">Select</button>
+                </div>
+                <!-- Card 2 (Popular) -->
+                <div class="p-10 bg-stone-50 border border-stone-900 relative">
+                    <div class="absolute -top-3 left-10 bg-stone-900 text-white text-[9px] px-4 py-1 tracking-widest uppercase">Preferred</div>
+                    <h4 class="serif text-2xl mb-2">10 Hour Block</h4>
+                    <div class="text-3xl font-light mb-6">£360</div>
+                    <p class="text-xs text-stone-400 mb-8">Save £20. Includes our proprietary Theory Success app.</p>
+                    <button class="w-full py-4 text-[10px] uppercase tracking-widest font-bold bg-stone-900 text-white hover:bg-stone-800 transition">Invest Now</button>
+                </div>
+                <!-- Card 3 -->
+                <div class="p-10 border border-stone-200 hover:border-gold-500 transition-colors">
+                    <h4 class="serif text-2xl mb-2">20 Hour Block</h4>
+                    <div class="text-3xl font-light mb-6">£700</div>
+                    <p class="text-xs text-stone-400 mb-8">Complete mid-range course with mock test included.</p>
+                    <button class="w-full py-4 text-[10px] uppercase tracking-widest font-bold border border-stone-200 hover:bg-stone-50 transition">Select</button>
+                </div>
+                <!-- Card 4 -->
+                <div class="p-10 border border-stone-200 hover:border-gold-500 transition-colors">
+                    <h4 class="serif text-2xl mb-2">The Intensive</h4>
+                    <div class="text-3xl font-light mb-6">£1,450</div>
+                    <p class="text-xs text-stone-400 mb-8">40 Hours. The full journey from novice to pass.</p>
+                    <button class="w-full py-4 text-[10px] uppercase tracking-widest font-bold border border-stone-200 hover:bg-stone-50 transition">Select</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request Callback Tab (Subtle) -->
+    <div @click="openBooking = true" class="fixed right-0 top-1/2 -translate-y-1/2 z-40 cursor-pointer group">
+        <div class="bg-stone-900 text-white vertical-text py-6 px-3 text-[10px] tracking-[0.3em] uppercase group-hover:bg-gold-500 transition-all">
+            Inquire Now
+        </div>
+    </div>
+
+    <!-- Bottom Dock (Mobile Only) -->
+    <div class="md:hidden fixed bottom-6 left-6 right-6 z-50">
+        <div class="nav-blur shadow-2xl rounded-full px-6 py-4 flex justify-around items-center border border-stone-200">
+            <a href="tel:02081234567" class="text-stone-900"><i class="fa fa-phone"></i></a>
+            <a href="https://wa.me/123" class="text-green-600"><i class="fab fa-whatsapp text-xl"></i></a>
+            <button @click="openBooking = true" class="bg-stone-900 text-white px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">Book Slot</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div x-show="openBooking" class="fixed inset-0 z-[100] bg-stone-900/90 backdrop-blur-md flex items-center justify-center p-6" x-transition>
+        <div class="bg-white max-w-4xl w-full grid md:grid-cols-2 shadow-2xl">
+            <div class="p-12">
+                <button @click="openBooking = false" class="text-2xl font-light mb-8 hover:rotate-90 transition inline-block">&times;</button>
+                <h2 class="serif text-4xl mb-6">Reserve Your Time</h2>
+                <p class="text-sm text-stone-400 mb-10">Select a consultation or lesson slot. We will confirm your details within 2 hours.</p>
+                <div class="bg-stone-50 aspect-video rounded flex items-center justify-center border border-dashed border-stone-300 italic text-stone-400">
+                    [Calendly Integration Interface]
+                </div>
+            </div>
+            <div class="hidden md:block bg-[url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800')] bg-cover grayscale"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-stone-50 pt-24 pb-12 border-t border-stone-200">
+        <div class="container mx-auto px-8 grid md:grid-cols-3 gap-12 mb-20">
+            <div>
+                <h3 class="serif text-3xl mb-6 tracking-tighter">DriveElite</h3>
+                <div class="flex space-x-6 text-stone-400">
+                    <a href="#" class="hover:text-gold-500"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-gold-500"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-gold-500"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-8 text-[11px] uppercase tracking-[0.2em] font-semibold">
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="hover:text-gold-500 transition">Services</a>
+                    <a href="#" class="hover:text-gold-500 transition">Fleet</a>
+                    <a href="#" class="hover:text-gold-500 transition">FAQs</a>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="hover:text-gold-500 transition">Privacy</a>
+                    <a href="#" class="hover:text-gold-500 transition">Terms</a>
+                    <a href="#" class="hover:text-gold-500 transition">Contact</a>
+                </div>
+            </div>
+            <div>
+                <p class="text-sm text-stone-400 italic">"Helping London drive with elegance since 2005."</p>
+                <p class="mt-4 text-[10px] text-stone-400 uppercase tracking-widest">&copy; 2024 DriveElite Ltd. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true, easing: 'ease-out-quart' });
+    </script>
 </body>
 </html>
