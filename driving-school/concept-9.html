@@ -3,332 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funky Wheels | The Ultimate Driving Experience</title>
+    <title>Drive Masters - Driving School 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Base Styles and Colors - Ref 1: Pink color scheme & minimalist layout */
         :root {
-            --funky-orange: #FF8C00;
-            --funky-purple: #6A0DAD;
-            --funky-cyan: #00BFFF;
-            --funky-yellow: #FFD700;
-            --neon-green: #39FF14;
+            --primary-pink: #d63384; /* Main branding pink */
+            --light-pink-bg: #ffe0f0; /* Soft background */
+            --text-dark: #212529;
+            --text-light: #6c757d;
             --white: #ffffff;
-            --dark: #1a1a1a;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial Black', sans-serif; }
-        body { background: #fdfdfd; overflow-x: hidden; }
-
-        /* 1. ANNOUNCEMENT BAR */
-        .top-bar {
-            background: var(--funky-orange);
-            color: white;
-            text-align: center;
-            padding: 8px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            color: var(--text-dark);
+            background-color: var(--light-pink-bg);
+            overflow-x: hidden;
         }
 
-        /* 2. NAVIGATION WITH PUPIL LOGIN */
+        a { text-decoration: none; color: inherit; }
+
+        /* --- Header Section (Ref 1: Logo & Nav items) --- */
         header {
-            background: var(--white);
-            padding: 15px 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 15px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-text { color: var(--funky-purple); font-size: 1.5rem; line-height: 1; }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            letter-spacing: -0.5px;
+        }
 
-        .nav-links a { text-decoration: none; color: var(--dark); margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
-        .nav-links a:hover { color: var(--funky-cyan); }
-        .btn-login { background: var(--funky-purple); color: white !important; padding: 8px 20px; border-radius: 20px; }
+        .logo span {
+            font-weight: 300;
+            color: var(--text-dark);
+        }
 
-        /* 3. HERO WITH TRUST SIGNALS */
-        .hero {
-            background: linear-gradient(rgba(106, 13, 173, 0.8), rgba(0, 191, 255, 0.7)), url('image.png');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
+        nav ul {
+            list-style: none;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover {
+            color: var(--primary-pink);
+        }
+
+        /* --- Hero Section (Ref 1: Title, Car image, Subtitle) --- */
+        #hero {
+            padding-top: 150px; /* Adjust for fixed header */
+            padding-bottom: 100px;
             text-align: center;
+            background-color: var(--white);
+            border-bottom-left-radius: 50% 10%;
+            border-bottom-right-radius: 50% 10%;
         }
 
-        /* 4. FLOATING CONTACT WIDGET */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            color: white;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUpFade 0.8s ease forwards 0.2s;
         }
 
-        /* 5. PRICING TABLE SECTION */
-        .section-padding { padding: 80px 10%; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-
-        .price-card {
-            border: 3px solid var(--funky-purple);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .price-card.popular { background: var(--funky-purple); color: white; transform: scale(1.05); }
-        .price-card h2 { font-size: 3rem; margin: 20px 0; }
-
-        /* 6. INSTRUCTOR PROFILES */
-        .instructor-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--funky-cyan);
-            object-fit: cover;
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUpFade 0.8s ease forwards 0.4s;
         }
 
-        /* 7. PROGRESS TRACKER VISUAL */
-        .progress-bar-container {
-            background: #eee;
-            border-radius: 20px;
-            height: 30px;
-            width: 100%;
-            margin: 20px 0;
-        }
-        .progress-fill {
-            background: linear-gradient(90deg, var(--funky-orange), var(--funky-yellow));
-            width: 75%;
-            height: 100%;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 10px;
-            color: white;
-            font-size: 0.8rem;
-        }
-
-        /* 8. TESTIMONIALS / PASS GALLERY */
-        .pass-gallery {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px 0;
-        }
-        .pass-thumb {
-            min-width: 250px;
-            height: 300px;
-            background: #ddd;
-            border-radius: 15px;
+        .car-container {
+            max-width: 600px;
+            margin: 0 auto;
             position: relative;
-            background-size: cover;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.6s;
         }
-        .pass-tag {
+
+        .car-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        /* --- Input & Form Section (Ref 1: Form & Geometry background) --- */
+        #booking {
+            padding: 100px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* The geometry shapes from Ref 1 reproduced in CSS */
+        #booking::before {
+            content: '';
             position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background: var(--neon-green);
-            color: black;
-            padding: 5px 10px;
-            font-size: 0.7rem;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-pink);
+            clip-path: polygon(0 45%, 100% 25%, 100% 100%, 0 100%);
+            z-index: -2;
         }
 
-        /* 9. COVERAGE MAP AREA */
-        .map-section { background: #f0f0f0; border-radius: 30px; padding: 40px; }
+        #booking::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            clip-path: polygon(0 60%, 100% 40%, 100% 100%, 0 100%);
+            z-index: -1;
+        }
 
-        /* 10. FAQS */
-        details { background: white; padding: 20px; margin-bottom: 10px; border-radius: 10px; cursor: pointer; }
-        summary { font-weight: bold; color: var(--funky-purple); }
+        .booking-card {
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: slideUpFade 0.8s ease forwards 1s;
+        }
 
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-pink);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d63384;
+            font-size: 1.1rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px 15px 15px 50px; /* Padding for the icon */
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box; /* Crucial for padding */
+            transition: var(--transition-smooth);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 4px rgba(214, 51, 132, 0.1);
+        }
+
+        .book-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: var(--primary-pink);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            margin-top: 10px;
+        }
+
+        .book-btn:hover {
+            background-color: #bb2d72;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+        }
+
+        /* --- Review Section (New Feature for 2026 design) --- */
+        #reviews {
+            background-color: var(--primary-pink);
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .reviews-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+            transition: var(--transition-smooth);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .star-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .reviewer-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .reviewer-info h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .reviewer-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* --- Footer Section (Ref 1: Logo & Nav items) --- */
+        footer {
+            background-color: var(--white);
+            padding: 50px 20px 30px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            margin-bottom: 30px;
+        }
+
+        .footer-logo span {
+            color: var(--text-dark);
+            font-weight: 300;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-pink);
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        /* --- Animations --- */
+        @keyframes slideUpFade {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes popIn {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .header-content { padding: 15px 20px; }
+            nav ul { display: none; } /* Hide main nav, show menu on mobile */
+            .hero-title { font-size: 2.5rem; }
+            #hero { padding-top: 120px; border-bottom-left-radius: 50% 5%; border-bottom-right-radius: 50% 5%; }
+            .booking-card { padding: 30px 20px; }
+            .input-group { margin-bottom: 15px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- 1. Announcement Bar -->
-    <div class="top-bar">🔥 WINTER SPECIAL: Get your first 5 lessons for the price of 3! Offer ends Sunday.</div>
-
-    <!-- 2. Header & Login -->
+    <!-- Header Section (Ref 1: Basic structure, updated with branding) -->
     <header>
-        <a href="#" class="logo-box">
-            <svg width="50" height="50" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="45" fill="var(--funky-purple)" />
-                <text x="50%" y="65%" text-anchor="middle" fill="white" font-size="40">F</text>
-            </svg>
-            <div class="logo-text"><b>FUNKY</b><br><small>WHEELS</small></div>
-        </a>
-        <nav class="nav-links">
-            <a href="#prices">Prices</a>
-            <a href="#instructors">Instructors</a>
-            <a href="#theory">Theory Pro</a>
-            <a href="#gift">Gift Cards</a>
-            <a href="#" class="btn-login">Pupil Login</a>
-        </nav>
+        <div class="header-content">
+            <a href="#" class="logo">DRIVE<span>Masters</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Learn</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- 3. Hero Section -->
-    <section class="hero">
-        <h1 style="font-size: 5rem; text-shadow: 4px 4px var(--funky-orange);">PASS FIRST TIME.</h1>
-        <p style="font-size: 1.5rem; background: var(--dark); padding: 5px 20px;">The #1 Electric Driving School in London</p>
-        <div style="margin-top: 30px;">
-            <button style="padding: 20px 40px; background: var(--funky-yellow); border: none; font-size: 1.2rem; cursor: pointer; border-radius: 50px;">Check Availability</button>
+    <!-- Hero Section (Ref 1: Title, Subtitle, Pink Car Image) -->
+    <section id="hero">
+        <h1 class="hero-title">Learn to Drive</h1>
+        <p class="hero-subtitle">Master the road with our expert instruction.</p>
+        <div class="car-container">
+            <!-- Using an illustration to represent the pink car, as requested -->
+            <img src="https://image.shutterstock.com/image-photo/brandless-modern-car-isolated-on-260nw-2115160867.jpg" alt="A modern pink sedan" class="car-image">
         </div>
     </section>
 
-    <!-- 4. Quick Stats Bar -->
-    <div style="display: flex; justify-content: space-around; background: var(--dark); color: white; padding: 30px 5%;">
-        <div><h3>98%</h3><p>Pass Rate</p></div>
-        <div><h3>15+</h3><p>ID3 Buzz Fleet</p></div>
-        <div><h3>4.9/5</h3><p>Google Rating</p></div>
-        <div><h3>24h</h3><p>Booking Speed</p></div>
-    </div>
-
-    <!-- 5. Lesson Packages -->
-    <section id="prices" class="section-padding">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">CHOOSE YOUR PATH</h2>
-        <div class="grid-3">
-            <div class="price-card">
-                <h3>Pay As You Go</h3>
-                <h2>£45</h2>
-                <p>Per 1 Hour Lesson</p>
-                <hr style="margin: 20px 0;">
-                <p>Perfect for refreshing skills</p>
-                <button style="margin-top:20px;">Book Now</button>
+    <!-- Reviews Section (New 2026 Feature - card-based feedback) -->
+    <section id="reviews">
+        <h2 style="margin-bottom: 50px; font-weight: 600;">What Our Students Say</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="star-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"The instructors are so patient and knowledgeable. I passed my test on the first try! Highly recommend."</p>
+                <div class="reviewer">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="reviewer-avatar">
+                    <div class="reviewer-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Licensed July 2026</p>
+                    </div>
+                </div>
             </div>
-            <div class="price-card popular">
-                <div style="background: var(--funky-orange); padding: 5px; font-size: 0.7rem; border-radius: 10px;">MOST POPULAR</div>
-                <h3>The Fast Track</h3>
-                <h2>£400</h2>
-                <p>10 Hour Block + Theory App</p>
-                <hr style="margin: 20px 0;">
-                <p>Priority Test Booking Included</p>
-                <button style="margin-top:20px; background: white; color: var(--funky-purple);">Book Block</button>
-            </div>
-            <div class="price-card">
-                <h3>Intensive Pass</h3>
-                <h2>£1,200</h2>
-                <p>30 Hours (2 Weeks)</p>
-                <hr style="margin: 20px 0;">
-                <p>Includes Practical Test Fee</p>
-                <button style="margin-top:20px;">Go Intensive</button>
+            <div class="review-card">
+                <div class="star-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="review-text">"Great flexible scheduling. Helped me fit lessons around my work. Friendly and professional service."</p>
+                <div class="reviewer">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mark Thompson" class="reviewer-avatar">
+                    <div class="reviewer-info">
+                        <h4>Mark Thompson</h4>
+                        <p>Licensed May 2026</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. Features Grid (Theory, Parent Portal, Eco) -->
-    <section class="section-padding" style="background: #f4f4f4;">
-        <div class="grid-3">
-            <div style="background:white; padding:30px; border-radius: 20px;">
-                <i class="fas fa-book-open" style="font-size: 2rem; color: var(--funky-cyan);"></i>
-                <h4>Theory Pro App</h4>
-                <p>Free access to our premium hazard perception and mock test suite.</p>
-            </div>
-            <div style="background:white; padding:30px; border-radius: 20px;">
-                <i class="fas fa-users" style="font-size: 2rem; color: var(--funky-orange);"></i>
-                <h4>Parent's Portal</h4>
-                <p>Real-time updates for parents to track progress and lesson reports.</p>
-            </div>
-            <div style="background:white; padding:30px; border-radius: 20px;">
-                <i class="fas fa-leaf" style="font-size: 2rem; color: var(--neon-green);"></i>
-                <h4>100% Electric</h4>
-                <p>Learn in the ID3 Buzz (featured in image.png) - the future of driving.</p>
-            </div>
+    <!-- Booking Section (Ref 1: Input Form and Geometry background) -->
+    <section id="booking">
+        <div class="booking-card">
+            <h3 class="card-title">Book a Lesson</h3>
+            <form>
+                <div class="input-group">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" class="input-field" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" class="input-field" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-calendar-alt input-icon"></i>
+                    <input type="text" class="input-field" id="date-picker" placeholder="Select Preferred Date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                </div>
+                <button type="submit" class="book-btn">Request Booking</button>
+            </form>
         </div>
     </section>
 
-    <!-- 7. Progress Visualization -->
-    <section class="section-padding">
-        <h2>Your Journey to the Pink License</h2>
-        <div class="progress-bar-container">
-            <div class="progress-fill">75% - Almost Test Ready!</div>
+    <!-- Footer Section (Ref 1: Copyright and Social Icons) -->
+    <footer>
+        <div class="footer-logo">DRIVE<span>Masters</span></div>
+        <div class="social-links">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
-        <div class="grid-3" style="font-size: 0.8rem; text-align: center;">
-            <div><i class="fas fa-check-circle"></i> Controls & Moving</div>
-            <div><i class="fas fa-check-circle"></i> Junctions & Roundabouts</div>
-            <div><i class="fas fa-circle-notch"></i> Maneuvers & High Speed</div>
-        </div>
-    </section>
-
-    <!-- 8. Pass Gallery (Social Proof) -->
-    <section class="section-padding" style="background: var(--dark); color: white;">
-        <h2>The Wall of Fame</h2>
-        <div class="pass-gallery">
-            <div class="pass-thumb" style="background-image: url('https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=60&w=400');">
-                <div class="pass-tag">PASSED: 0 MINORS</div>
-            </div>
-            <div class="pass-thumb" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=60&w=400');">
-                <div class="pass-tag">PASSED: FIRST TIME</div>
-            </div>
-            <div class="pass-thumb" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=60&w=400');">
-                <div class="pass-tag">PASSED: 3 WEEKS</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. Gift Voucher Section -->
-    <section class="section-padding" id="gift" style="text-align: center;">
-        <div style="background: linear-gradient(45deg, var(--funky-orange), var(--funky-purple)); padding: 60px; border-radius: 40px; color: white;">
-            <h2>Give the Gift of Freedom</h2>
-            <p>Purchase digital gift vouchers for birthdays or graduations.</p>
-            <button style="margin-top: 20px; background: white; color: var(--funky-purple); padding: 15px 30px; border-radius: 10px; border: none; font-weight: bold;">Buy Gift Voucher</button>
-        </div>
-    </section>
-
-    <!-- 10. Area Coverage & FAQ -->
-    <section class="section-padding grid-3">
-        <div class="map-section">
-            <h3>Find Your Area</h3>
-            <input type="text" placeholder="Enter Postcode (e.g. W1)" style="width:100%; padding: 10px; margin: 10px 0;">
-            <p><i class="fas fa-map-marker-alt"></i> Currently serving: London Central, West End, Camden, and Southwark.</p>
-        </div>
-        <div style="grid-column: span 2;">
-            <h3>Common Questions</h3>
-            <details>
-                <summary>How many lessons do I need?</summary>
-                <p>The average is 45 hours with an instructor, but our "Funky Method" usually gets pupils ready in 35!</p>
-            </details>
-            <details>
-                <summary>Can I learn in an Automatic?</summary>
-                <p>Yes! Our entire ID3 Buzz fleet is automatic-only, making it easier to focus on the road.</p>
-            </details>
-            <details>
-                <summary>Do you offer weekend lessons?</summary>
-                <p>Absolutely. We operate 7am - 9pm, 7 days a week at no extra cost.</p>
-            </details>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="background: #111; color: #777; padding: 50px 5%; text-align: center;">
-        <p>Funky Wheels Driving School Ltd. Registered in England & Wales.</p>
-        <div style="margin: 20px 0; font-size: 1.5rem;">
-            <i class="fab fa-instagram" style="margin: 0 10px;"></i>
-            <i class="fab fa-tiktok" style="margin: 0 10px;"></i>
-            <i class="fab fa-facebook" style="margin: 0 10px;"></i>
-        </div>
-        <p style="font-size: 0.7rem;">Privacy Policy | Terms of Service | Instructor Login</p>
+        <p class="copyright">&copy; 2026 Drive Masters School. All rights reserved.</p>
     </footer>
 
-    <!-- WhatsApp Widget -->
-    <a href="#" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- JavaScript for dynamic effects -->
+    <script>
+        // Smooth Scrolling for Navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple Form Submission Alert (replace with real backend logic)
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page reload
+            alert('Thank you! We received your booking request for Drive Masters and will contact you soon.');
+            form.reset(); // Clear the form
+        });
+    </script>
 
 </body>
 </html>
