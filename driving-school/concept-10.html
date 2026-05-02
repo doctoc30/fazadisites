@@ -8,68 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        :root {
-            --mint: #D1FAE5;
-            --peach: #FFEDD5;
-            --electric: #4F46E5;
-            --ink: #0F172A;
-        }
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #ffffff;
-            color: var(--ink);
-            overflow-x: hidden;
-        }
-        h1, h2, h3, .funky-font {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, var(--mint) 0%, var(--peach) 100%);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
-            animation: float 20s infinite alternate;
-        }
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 50px) scale(1.1); }
-        }
-        .card-shadow {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .card-shadow:hover {
-            transform: translateY(-10px) rotate(2deg);
-        }
-        .btn-funky {
-            background-color: var(--electric);
-            color: white;
-            border-radius: 999px;
-            transition: transform 0.2s;
-        }
-        .btn-funky:hover {
-            transform: scale(1.05) rotate(-2deg);
-        }
-        .nav-link:after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 3px;
-            background: var(--electric);
-            transition: width .3s;
-        }
+        :root { --mint: #D1FAE5; --peach: #FFEDD5; --electric: #4F46E5; --ink: #0F172A; }
+        body { font-family: 'Outfit', sans-serif; background-color: #ffffff; color: var(--ink); overflow-x: hidden; }
+        h1, h2, h3, .funky-font { font-family: 'Space Grotesk', sans-serif; }
+        .blob { position: absolute; width: 500px; height: 500px; background: linear-gradient(135deg, var(--mint) 0%, var(--peach) 100%); filter: blur(80px); border-radius: 50%; z-index: -1; animation: float 20s infinite alternate; }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(100px, 50px) scale(1.1); } }
+        .card-shadow { box-shadow: 0 20px 40px rgba(0,0,0,0.03); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card-shadow:hover { transform: translateY(-10px) rotate(2deg); }
+        .btn-funky { background-color: var(--electric); color: white; border-radius: 999px; transition: transform 0.2s; }
+        .btn-funky:hover { transform: scale(1.05) rotate(-2deg); }
+        .nav-link:after { content: ''; display: block; width: 0; height: 3px; background: var(--electric); transition: width .3s; }
         .nav-link:hover:after { width: 100%; }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.3); }
     </style>
 </head>
-<body x-data="{ openBooking: false }">
+<body x-data="{ openBooking: false, activeFaq: null }">
 
-    <!-- Blobs for "Airy" feel -->
     <div class="blob top-[-100px] left-[-100px]"></div>
-    <div class="blob bottom-0 right-[-100px]" style="background: var(--peach); opacity: 0.5;"></div>
 
     <!-- Navigation -->
     <nav class="px-8 py-6 flex justify-between items-center max-w-7xl mx-auto sticky top-0 bg-white/80 backdrop-blur-md z-50 rounded-full mt-4 border border-slate-100">
@@ -79,173 +36,216 @@
             </div>
             <span class="text-2xl font-bold tracking-tighter italic">Glow<span class="text-indigo-600">Drive</span></span>
         </div>
-        
         <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
-            <a href="#about" class="nav-link">Our Vibe</a>
-            <a href="#lessons" class="nav-link">Lessons</a>
-            <a href="#instructors" class="nav-link">Team</a>
+            <a href="#about" class="nav-link">Meet Joe</a>
+            <a href="#pricing" class="nav-link">Plans</a>
+            <a href="#faq" class="nav-link">Help</a>
         </div>
-
-        <button @click="openBooking = true" class="btn-funky px-8 py-3 font-bold text-sm">
-            Book a Slot ✨
-        </button>
+        <button @click="openBooking = true" class="btn-funky px-8 py-3 font-bold text-sm">Get a Quote ✨</button>
     </nav>
 
     <!-- Hero Section -->
-    <header class="container mx-auto px-6 py-24 flex flex-col lg:flex-row items-center justify-between">
-        <div class="lg:w-1/2 space-y-8 mb-12 lg:mb-0">
-            <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
-                Based in London • Est. 2001
-            </span>
-            <h1 class="text-7xl md:text-8xl font-bold leading-[0.9] tracking-tighter">
-                Drive like <br><span class="text-indigo-600 italic">yourself.</span>
-            </h1>
-            <p class="text-xl text-slate-500 max-w-md font-light leading-relaxed">
-                Zero stress. Zero boredom. Just high-energy coaching to get you licensed and confident.
-            </p>
-            <div class="flex space-x-4">
-                <button @click="openBooking = true" class="bg-slate-900 text-white px-10 py-5 rounded-3xl font-bold hover:bg-indigo-600 transition-colors">
-                    Start Learning
-                </button>
-                <div class="flex items-center -space-x-3">
-                    <img src="https://i.pravatar.cc/100?u=1" class="w-12 h-12 rounded-full border-4 border-white">
-                    <img src="https://i.pravatar.cc/100?u=2" class="w-12 h-12 rounded-full border-4 border-white">
-                    <div class="w-12 h-12 rounded-full bg-peach flex items-center justify-center border-4 border-white text-xs font-bold">
-                        95%
-                    </div>
-                </div>
+    <header class="container mx-auto px-6 py-20 flex flex-col lg:flex-row items-center justify-between">
+        <div class="lg:w-1/2 space-y-8 mb-12">
+            <h1 class="text-7xl md:text-8xl font-bold leading-[0.9] tracking-tighter">Drive with <br><span class="text-indigo-600 italic">Confidence.</span></h1>
+            <p class="text-xl text-slate-500 max-w-md font-light">London's high-energy driving academy. From first-timers to test-day ready.</p>
+            <div class="bg-indigo-50 p-3 rounded-[30px] flex gap-2 max-w-md shadow-inner">
+                <input type="text" placeholder="Enter London Postcode" class="bg-transparent px-4 flex-1 outline-none font-bold text-indigo-900">
+                <button class="bg-indigo-600 text-white px-6 py-3 rounded-[24px] font-bold">Check</button>
             </div>
         </div>
-        <div class="lg:w-1/2 relative">
-            <!-- Funky Image Mask -->
-            <div class="w-full h-[500px] bg-slate-200 rounded-[60px] overflow-hidden rotate-3 relative shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover -rotate-3 scale-110" alt="Fun Driver">
-            </div>
-            <!-- Floating badge -->
-            <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 flex items-center space-x-4 animate-bounce">
-                <div class="p-3 bg-mint rounded-2xl text-emerald-600 text-2xl">
-                    <i class="fa fa-award"></i>
-                </div>
-                <div>
-                    <p class="font-bold">Pass First Time</p>
-                    <p class="text-xs text-slate-400 font-medium italic">Our Specialty</p>
-                </div>
-            </div>
+        <div class="lg:w-5/12 grid grid-cols-2 gap-4 rotate-3">
+            <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400" class="rounded-[40px] shadow-xl" alt="Pass 1">
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=400" class="rounded-[40px] shadow-xl mt-8" alt="Pass 2">
         </div>
     </header>
 
-    <!-- Postcode Locator Section -->
-    <section class="max-w-4xl mx-auto px-6 mb-32">
-        <div class="bg-indigo-50 p-4 rounded-[40px] flex flex-col md:flex-row gap-4">
-            <div class="flex-1 flex items-center px-6">
-                <i class="fa fa-map-pin text-indigo-400 mr-4"></i>
-                <input type="text" placeholder="Where do you live? (e.g. CR0)" class="bg-transparent w-full outline-none font-medium text-indigo-900 placeholder:text-indigo-300">
+    <!-- Meet Joe Section -->
+    <section id="about" class="py-24 container mx-auto px-6">
+        <div class="bg-peach rounded-[60px] p-12 lg:p-20 flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-1/2">
+                <div class="relative">
+                    <img src="https://i.pravatar.cc/500?u=joe_london" class="rounded-[50px] shadow-2xl border-8 border-white grayscale hover:grayscale-0 transition duration-500" alt="Joe">
+                    <div class="absolute -bottom-6 -right-6 bg-white py-4 px-8 rounded-2xl shadow-xl font-bold rotate-6">10+ Years Pro</div>
+                </div>
             </div>
-            <button class="bg-white text-indigo-600 px-10 py-4 rounded-[30px] font-bold hover:bg-indigo-600 hover:text-white transition-all shadow-sm">
-                Check Availability
-            </button>
-        </div>
-    </section>
-
-    <!-- Services Grid -->
-    <section id="lessons" class="py-24 bg-slate-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center mb-20 tracking-tighter">Choose Your Speed</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-white p-10 rounded-[40px] card-shadow border border-slate-100 group">
-                    <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl mb-8">
-                        <i class="fa fa-bolt"></i>
+            <div class="lg:w-1/2 space-y-6">
+                <h2 class="text-5xl font-bold tracking-tighter">I'm Joe, your London lead.</h2>
+                <p class="text-lg text-slate-700 leading-relaxed font-light">With over a decade of teaching across the busy streets of London, I’ve built a reputation for patience, clarity, and an unmatched 95% pass rate. My establishment isn't just about passing tests; it's about creating safe, confident drivers for life.</p>
+                <div class="flex gap-4">
+                    <div class="p-4 bg-white rounded-3xl flex-1 text-center border border-orange-200">
+                        <span class="block text-3xl font-bold text-orange-500">12k+</span>
+                        <span class="text-xs uppercase font-bold text-slate-400">Lessons Taught</span>
                     </div>
-                    <h3 class="text-3xl font-bold mb-4">Intensive</h3>
-                    <p class="text-slate-500 mb-8 font-light">Zero to license in 14 days. Intense but highly effective.</p>
-                    <a href="#" class="font-bold text-indigo-600 group-hover:underline">Learn more &rarr;</a>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-white p-10 rounded-[40px] card-shadow border border-slate-100 group">
-                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-8">
-                        <i class="fa fa-coffee"></i>
+                    <div class="p-4 bg-white rounded-3xl flex-1 text-center border border-orange-200">
+                        <span class="block text-3xl font-bold text-orange-500">Grade A</span>
+                        <span class="text-xs uppercase font-bold text-slate-400">Instructor Status Status</span>
                     </div>
-                    <h3 class="text-3xl font-bold mb-4">Chilled</h3>
-                    <p class="text-slate-500 mb-8 font-light">Weekly lessons at your own pace. No pressure, just vibes.</p>
-                    <a href="#" class="font-bold text-indigo-600 group-hover:underline">Learn more &rarr;</a>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-white p-10 rounded-[40px] card-shadow border border-slate-100 group">
-                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-8">
-                        <i class="fa fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold mb-4">Mastery</h3>
-                    <p class="text-slate-500 mb-8 font-light">Pass Plus and advanced motorway techniques for the pros.</p>
-                    <a href="#" class="font-bold text-indigo-600 group-hover:underline">Learn more &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Instructors -->
-    <section id="instructors" class="py-32 container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <h2 class="text-6xl font-bold tracking-tighter">Meet the <br>Glow-Getters.</h2>
-            <p class="text-slate-400 max-w-xs italic">Grade-A certified, but actually fun to talk to.</p>
+    <!-- Clickable Service Grids -->
+    <section class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-6">
+            <div @click="openBooking = true" class="bg-white p-8 rounded-[40px] card-shadow cursor-pointer border border-white hover:border-indigo-200 group">
+                <div class="text-3xl mb-4 group-hover:scale-125 transition-transform">✅</div>
+                <h3 class="font-bold text-xl mb-2">Guaranteed Pass</h3>
+                <p class="text-sm text-slate-400">Unlimited support until you get that license.</p>
+            </div>
+            <div @click="openBooking = true" class="bg-white p-8 rounded-[40px] card-shadow cursor-pointer border border-white hover:border-indigo-200 group">
+                <div class="text-3xl mb-4 group-hover:scale-125 transition-transform">⚡</div>
+                <h3 class="font-bold text-xl mb-2">Crash Course</h3>
+                <p class="text-sm text-slate-400">Intensive learning for fast-tracked results.</p>
+            </div>
+            <div @click="openBooking = true" class="bg-white p-8 rounded-[40px] card-shadow cursor-pointer border border-white hover:border-indigo-200 group">
+                <div class="text-3xl mb-4 group-hover:scale-125 transition-transform">🛠️</div>
+                <h3 class="font-bold text-xl mb-2">Show Me Tell Me</h3>
+                <p class="text-sm text-slate-400">Deep dive into vehicle safety & mechanics.</p>
+            </div>
+            <div @click="openBooking = true" class="bg-white p-8 rounded-[40px] card-shadow cursor-pointer border border-white hover:border-indigo-200 group">
+                <div class="text-3xl mb-4 group-hover:scale-125 transition-transform">📝</div>
+                <h3 class="font-bold text-xl mb-2">Mock Driving Test</h3>
+                <p class="text-sm text-slate-400">Realistic exam conditions to calm your nerves.</p>
+            </div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            <template x-for="i in 10">
-                <div class="group cursor-pointer">
-                    <div class="aspect-[4/5] bg-slate-100 rounded-[40px] overflow-hidden mb-4 grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <img :src="`https://i.pravatar.cc/400?u=glow${i}`" class="w-full h-full object-cover">
+    </section>
+
+    <!-- Student Pass Gallery -->
+    <section class="py-24">
+        <h2 class="text-5xl font-bold text-center mb-16 tracking-tighter">Wall of Fame</h2>
+        <div class="flex overflow-x-auto gap-8 px-10 pb-10 no-scrollbar">
+            <template x-for="i in 6">
+                <div class="min-w-[300px] bg-white rounded-[40px] overflow-hidden shadow-lg border border-slate-100">
+                    <img :src="`https://images.unsplash.com/photo-1517672688015-68048286287c?auto=format&fit=crop&q=80&w=400&i=${i}`" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <p class="font-bold text-indigo-600">Passed First Time! 🎖️</p>
+                        <p class="text-xs text-slate-400 font-medium">Hendon Test Centre</p>
                     </div>
-                    <h4 class="font-bold text-xl">Instructor Name</h4>
-                    <p class="text-indigo-600 font-medium text-sm">DVSA Approved</p>
                 </div>
             </template>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white rounded-t-[60px] pt-24 pb-12">
-        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-20 border-b border-slate-800 pb-20 mb-10">
-            <div>
-                <h3 class="text-4xl font-bold mb-6 italic uppercase tracking-tighter">GlowDrive</h3>
-                <p class="text-slate-400 font-light leading-relaxed">Making the roads of London a better place, one driver at a time. Since 2001.</p>
-            </div>
-            <div class="space-y-4">
-                <h5 class="text-indigo-400 font-bold uppercase text-xs tracking-widest">Connect</h5>
-                <div class="flex space-x-6 text-2xl">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-spotify"></i></a>
+    <!-- Google Reviews (Static Representation) -->
+    <section class="py-16 container mx-auto px-6 text-center">
+        <div class="inline-flex items-center gap-2 bg-indigo-50 px-6 py-3 rounded-full mb-8">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo_Old.png" class="h-4 opacity-50" alt="Google">
+            <div class="flex text-yellow-400"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <span class="font-bold text-indigo-900">4.9/5 Rating</span>
+        </div>
+    </section>
+
+    <!-- Price Cards (4 Grid) -->
+    <section id="pricing" class="py-24 bg-indigo-900 rounded-[60px] text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="p-10 rounded-[40px] border border-indigo-700 hover:bg-indigo-800 transition">
+                    <h4 class="text-indigo-300 font-bold uppercase text-xs mb-4">The Taster</h4>
+                    <p class="text-4xl font-bold mb-6">£35 <span class="text-sm font-light opacity-50">/hr</span></p>
+                    <ul class="text-sm space-y-3 opacity-70 mb-8">
+                        <li>Introductory Session</li>
+                        <li>Postcode Check</li>
+                    </ul>
+                    <button @click="openBooking = true" class="w-full py-3 bg-white text-indigo-900 rounded-full font-bold">Choose</button>
+                </div>
+                <div class="p-10 rounded-[40px] border-2 border-indigo-400 bg-indigo-800 relative scale-105">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-400 text-xs font-bold py-1 px-4 rounded-full">POPULAR</div>
+                    <h4 class="text-indigo-300 font-bold uppercase text-xs mb-4">10 Hour Pack</h4>
+                    <p class="text-4xl font-bold mb-6">£330</p>
+                    <ul class="text-sm space-y-3 opacity-70 mb-8">
+                        <li>Bulk Discount</li>
+                        <li>Theory App Pro</li>
+                    </ul>
+                    <button @click="openBooking = true" class="w-full py-3 bg-indigo-400 text-indigo-900 rounded-full font-bold">Choose</button>
+                </div>
+                <!-- Repeat for 2 more cards -->
+                <div class="p-10 rounded-[40px] border border-indigo-700 hover:bg-indigo-800 transition">
+                    <h4 class="text-indigo-300 font-bold uppercase text-xs mb-4">20 Hour Pack</h4>
+                    <p class="text-4xl font-bold mb-6">£640</p>
+                    <button @click="openBooking = true" class="w-full py-3 bg-white text-indigo-900 rounded-full font-bold mt-8">Choose</button>
+                </div>
+                <div class="p-10 rounded-[40px] border border-indigo-700 hover:bg-indigo-800 transition">
+                    <h4 class="text-indigo-300 font-bold uppercase text-xs mb-4">Intensive</h4>
+                    <p class="text-4xl font-bold mb-6">£1.2k</p>
+                    <button @click="openBooking = true" class="w-full py-3 bg-white text-indigo-900 rounded-full font-bold mt-8">Choose</button>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Map & Referral -->
+    <section class="py-24 container mx-auto px-6 grid md:grid-cols-2 gap-12">
+        <div class="bg-mint rounded-[50px] p-12 text-center">
+            <div class="text-5xl mb-6">🎁</div>
+            <h3 class="text-3xl font-bold mb-4">Refer a Friend</h3>
+            <p class="text-slate-600 mb-8 italic">Get 1 Hour Free for every friend who signs up!</p>
+            <button class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold">Get Your Code</button>
+        </div>
+        <div class="rounded-[50px] overflow-hidden grayscale border-8 border-slate-50 min-h-[400px]">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.47340003058!2d-0.24168146445582236!3d51.52877184089069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon!5e0!3m2!1sen!2suk!4v1714567890123!5m2!1sen!2suk" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 tracking-tighter">Your Questions</h2>
             <div class="space-y-4">
-                <h5 class="text-indigo-400 font-bold uppercase text-xs tracking-widest">Legal</h5>
-                <ul class="text-slate-400 space-y-2 text-sm">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Vibes</a></li>
-                </ul>
+                <template x-for="i in 10">
+                    <div class="bg-white rounded-3xl border border-slate-100 overflow-hidden">
+                        <button @click="activeFaq = (activeFaq === i ? null : i)" class="w-full text-left p-6 font-bold flex justify-between items-center">
+                            <span>How many lessons do I actually need?</span>
+                            <i class="fa fa-chevron-down text-indigo-400 transition" :class="activeFaq === i && 'rotate-180'"></i>
+                        </button>
+                        <div x-show="activeFaq === i" x-collapse class="px-6 pb-6 text-slate-500 font-light">
+                            While the UK average is 45 hours, Joe's students typically pass in 35 thanks to our high-energy coaching.
+                        </div>
+                    </div>
+                </template>
             </div>
         </div>
-        <p class="text-center text-xs text-slate-500 uppercase tracking-widest font-bold">© 2026 GlowDrive Academy. Stay Safe.</p>
-    </footer>
+    </section>
 
-    <!-- Booking Modal -->
-    <div x-show="openBooking" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-indigo-900/40 backdrop-blur-xl" x-transition>
-        <div @click.away="openBooking = false" class="bg-white w-full max-w-4xl h-[80vh] rounded-[50px] shadow-2xl relative overflow-hidden flex flex-col">
-            <button @click="openBooking = false" class="absolute top-8 right-8 text-3xl font-light hover:rotate-90 transition-transform">&times;</button>
-            <div class="p-12 text-center">
-                <h2 class="text-4xl font-bold mb-2">Snag Your Slot</h2>
-                <p class="text-slate-400 italic">Select a time that suits your lifestyle.</p>
-            </div>
-            <div class="flex-1 bg-slate-50 flex items-center justify-center border-t border-slate-100">
-                <p class="text-slate-300 font-bold uppercase tracking-widest">[Calendly Widget Space]</p>
-            </div>
+    <!-- Bottom CTA Dock (Device-Aware) -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-lg">
+        <div class="glass border-slate-200 rounded-full p-2 flex justify-between items-center shadow-2xl">
+            <a href="tel:02081234567" class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xl"><i class="fa fa-phone"></i></a>
+            <a href="https://wa.me/123" class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center text-xl"><i class="fab fa-whatsapp"></i></a>
+            <button @click="openBooking = true" class="bg-indigo-900 text-white px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest">Get Quote</button>
+            <a href="sms:02081234567" class="w-12 h-12 bg-slate-200 text-indigo-900 rounded-full flex items-center justify-center text-xl"><i class="fa fa-message"></i></a>
         </div>
     </div>
 
-    <!-- Floating WhatsApp -->
-    <a href="#" class="fixed bottom-10 right-10 w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl z-[60] hover:scale-110 transition-transform">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Social Footer -->
+    <footer class="bg-slate-900 text-white pt-24 pb-32">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-8 mb-12 text-3xl">
+                <a href="#" class="text-slate-500 hover:text-indigo-400"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-slate-500 hover:text-indigo-400"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-slate-500 hover:text-indigo-400"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p class="text-xs text-slate-600 uppercase tracking-widest font-bold">© 2026 GlowDrive Academy. Designed for London.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div x-show="openBooking" class="fixed inset-0 z-[1000] bg-indigo-900/60 backdrop-blur-md flex items-center justify-center p-6" x-transition>
+        <div class="bg-white w-full max-w-xl p-12 rounded-[50px] relative">
+            <button @click="openBooking = false" class="absolute top-8 right-8 text-2xl font-light">&times;</button>
+            <h2 class="text-3xl font-bold mb-6">Instant Quote</h2>
+            <form class="space-y-4">
+                <input type="text" placeholder="Full Name" class="w-full p-4 bg-slate-50 rounded-2xl outline-none border border-transparent focus:border-indigo-400">
+                <input type="email" placeholder="Email Address" class="w-full p-4 bg-slate-50 rounded-2xl outline-none border border-transparent focus:border-indigo-400">
+                <select class="w-full p-4 bg-slate-50 rounded-2xl outline-none border border-transparent focus:border-indigo-400">
+                    <option>Automatic Tuition</option>
+                    <option>Manual Tuition</option>
+                </select>
+                <button class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold">Send Quote Request ✨</button>
+            </form>
+        </div>
+    </div>
 
 </body>
 </html>
