@@ -19,8 +19,6 @@
         ::-webkit-scrollbar-track { background: var(--cream); }
         ::-webkit-scrollbar-thumb { background: var(--gold-500); }
         .nav-blur { background: rgba(250, 249, 246, 0.9); backdrop-filter: blur(12px); }
-        .animate-marquee { display: flex; width: 200%; animation: marquee 30s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .vertical-text { writing-mode: vertical-rl; transform: rotate(180deg); }
         .swiper-pagination-bullet-active { background: var(--gold-500) !important; }
         .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(197, 160, 89, 0.2); }
@@ -36,20 +34,8 @@
 x-init="setTimeout(() => showOffer = true, 5000)" 
 @mouseleave.window="if (!exitIntent) { exitIntent = true }">
 
-    <!-- 1. Top Section Hero Slider (Container) & 18. Sticky Nav -->
+    <!-- 18. Sticky Navigation (Banner removed as requested) -->
     <header class="fixed top-0 w-full z-[100]">
-        <!-- Premium Announcement Bar -->
-        <div class="bg-stone-900 text-stone-300 py-2 text-[10px] tracking-[0.2em] uppercase overflow-hidden">
-            <div class="animate-marquee">
-                <span class="mx-10">Established 2001 - 25 Years of Excellence</span>
-                <span class="mx-10 italic">95% First-Time Pass Rate</span>
-                <span class="mx-10">Complimentary Theory Training</span>
-                <span class="mx-10">DVSA Grade-A Certified</span>
-                <span class="mx-10">Established 2001 - 25 Years of Excellence</span>
-                <span class="mx-10 italic">95% First-Time Pass Rate</span>
-            </div>
-        </div>
-
         <nav class="nav-blur border-b border-stone-200">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <a href="#" class="text-3xl serif tracking-tighter">Drive<span class="text-gold-500">Elite</span></a>
@@ -83,21 +69,21 @@ x-init="setTimeout(() => showOffer = true, 5000)"
     <section class="hero-slider relative swiper mySwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide relative bg-stone-800">
-                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1600" class="w-full h-full object-cover opacity-50 grayscale">
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1600" class="w-full h-full object-cover opacity-50 grayscale" alt="Luxury Interior">
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
                     <h1 class="text-6xl md:text-8xl serif mb-6" data-aos="fade-up">Master the Road.</h1>
                     <button @click="openBooking = true" class="bg-gold-500 px-12 py-5 uppercase tracking-[0.3em] text-xs font-bold hover:bg-white hover:text-stone-900 transition shadow-2xl">Start Your Journey</button>
                 </div>
             </div>
             <div class="swiper-slide relative">
-                <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1600" class="w-full h-full object-cover opacity-60">
+                <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1600" class="w-full h-full object-cover opacity-60" alt="Driving Session">
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
                     <h2 class="text-6xl serif mb-4">Precision Coaching.</h2>
                     <p class="uppercase tracking-widest text-xs">Modern Fleets • Expert Tutors</p>
                 </div>
             </div>
         </div>
-        <!-- 37. Postcode Locator (Just below hero content) -->
+        <!-- 37. Postcode Locator -->
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-50 w-full max-w-xl px-6">
             <div class="bg-white p-2 rounded-none shadow-2xl flex items-center border border-gold-500/20">
                 <i class="fa fa-location-dot text-gold-500 px-4"></i>
@@ -107,7 +93,7 @@ x-init="setTimeout(() => showOffer = true, 5000)"
         </div>
     </section>
 
-    <!-- 7. Animated Stats -->
+    <!-- 7. Animated Stats Counter -->
     <section class="py-12 bg-stone-900 text-white border-b border-stone-800">
         <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div data-aos="fade-up">
@@ -129,12 +115,11 @@ x-init="setTimeout(() => showOffer = true, 5000)"
         </div>
     </section>
 
-    <!-- 36. About the Establishment (Long Bio) -->
+    <!-- 36. About & Long Bio -->
     <section id="about" class="py-32 container mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-20 items-center">
             <div class="relative">
                 <img src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=800" class="grayscale border-l-8 border-gold-500 p-4" alt="Legacy">
-                <!-- 11. Before/After Transform -->
                 <div class="absolute -bottom-10 -right-10 glass-card p-6 hidden md:block">
                     <span class="text-xs uppercase tracking-widest block mb-2">Success Rate</span>
                     <div class="flex items-end space-x-2">
@@ -146,10 +131,10 @@ x-init="setTimeout(() => showOffer = true, 5000)"
             <div data-aos="fade-left">
                 <span class="text-gold-500 text-[11px] uppercase tracking-[0.4em] font-bold">Our Legacy</span>
                 <h2 class="text-6xl serif mt-6 mb-8 italic">Driving London Forward Since 2001.</h2>
-                <p class="text-stone-500 leading-relaxed mb-6 font-light">Founded in the heart of South London, DriveElite has set the gold standard for premium driving tuition for a quarter of a century. What began as a boutique service with one car has evolved into London's most prestigious driving academy.</p>
-                <p class="text-stone-500 leading-relaxed mb-10 font-light">We specialize in calm, patient, and methodical training. Our 25-year reputation is built on the trust of over 12,000 students who are now safe, confident drivers on the road. We don't just teach the test; we teach the art of mastery.</p>
+                <p class="text-stone-500 leading-relaxed mb-6 font-light">Founded in the heart of South London, DriveElite has set the gold standard for premium driving tuition for 25 years. We specialize in turning beginners into sophisticated, safe drivers.</p>
+                <p class="text-stone-500 leading-relaxed mb-10 font-light">Joe Harrison has refined a patient, high-calibre method. As a Grade-A ADI, Joe doesn't just teach you to pass; he mentors you to command the road with calm authority.</p>
                 <div class="flex space-x-6">
-                    <img src="https://i.pravatar.cc/100?u=joe" class="w-16 h-16 rounded-full border-2 border-gold-500">
+                    <img src="https://i.pravatar.cc/100?u=joe" class="w-16 h-16 rounded-full border-2 border-gold-500" alt="Joe Harrison">
                     <div>
                         <h4 class="font-bold uppercase tracking-widest text-xs">Joe Harrison</h4>
                         <p class="text-xs text-stone-400">Founder & Senior Lead ADI</p>
@@ -169,40 +154,39 @@ x-init="setTimeout(() => showOffer = true, 5000)"
                 <div class="group bg-white p-10 border border-stone-200 hover:border-gold-500 transition-all cursor-pointer">
                     <h3 class="serif text-2xl mb-4">Guarantee Pass</h3>
                     <p class="text-xs text-stone-400 mb-6 leading-relaxed">Our comprehensive package with unlimited lessons until you succeed.</p>
-                    <a href="#" class="text-gold-500 text-[10px] uppercase font-bold tracking-widest">Inquire &rarr;</a>
+                    <span class="text-gold-500 text-[10px] uppercase font-bold tracking-widest">Inquire &rarr;</span>
                 </div>
                 <div class="group bg-white p-10 border border-stone-200 hover:border-gold-500 transition-all cursor-pointer">
                     <h3 class="serif text-2xl mb-4">Crash Course</h3>
                     <p class="text-xs text-stone-400 mb-6 leading-relaxed">Zero to licensed in as little as 10 days for busy professionals.</p>
-                    <a href="#" class="text-gold-500 text-[10px] uppercase font-bold tracking-widest">Inquire &rarr;</a>
+                    <span class="text-gold-500 text-[10px] uppercase font-bold tracking-widest">Inquire &rarr;</span>
                 </div>
                 <div class="group bg-white p-10 border border-stone-200 hover:border-gold-500 transition-all cursor-pointer">
                     <h3 class="serif text-2xl mb-4">Show Me Tell Me</h3>
                     <p class="text-xs text-stone-400 mb-6 leading-relaxed">Deep-dive technical workshops on vehicle maintenance and safety.</p>
-                    <a href="#" class="text-gold-500 text-[10px] uppercase font-bold tracking-widest">Inquire &rarr;</a>
+                    <span class="text-gold-500 text-[10px] uppercase font-bold tracking-widest">Inquire &rarr;</span>
                 </div>
                 <div class="group bg-white p-10 border border-stone-200 hover:border-gold-500 transition-all cursor-pointer">
                     <h3 class="serif text-2xl mb-4">Mock Driving Test</h3>
                     <p class="text-xs text-stone-400 mb-6 leading-relaxed">Authentic exam simulations with DVSA Grade-A evaluators.</p>
-                    <a href="#" class="text-gold-500 text-[10px] uppercase font-bold tracking-widest">Inquire &rarr;</a>
+                    <span class="text-gold-500 text-[10px] uppercase font-bold tracking-widest">Inquire &rarr;</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 38. Choose Instructors List -->
+    <!-- 38. Choose Instructors List (10 Items) -->
     <section id="instructors" class="py-32 container mx-auto px-6">
         <h2 class="text-5xl serif text-center mb-16">The Master Instructors</h2>
         <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
-            <!-- Example of instructor card (repeat for 10) -->
             <template x-for="i in 10">
                 <div class="text-center group cursor-pointer" @click="openBooking = true">
                     <div class="relative overflow-hidden mb-4">
-                        <img :src="`https://i.pravatar.cc/300?u=instructor${i}`" class="grayscale hover:grayscale-0 transition duration-700 w-full aspect-square object-cover">
+                        <img :src="`https://i.pravatar.cc/300?u=instructor${i}`" class="grayscale hover:grayscale-0 transition duration-700 w-full aspect-square object-cover" alt="Instructor">
                         <div class="absolute inset-0 bg-gold-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
-                    <h4 class="serif text-xl">Instructor Name</h4>
-                    <p class="text-[9px] uppercase tracking-widest text-stone-400">10+ Years Experience</p>
+                    <h4 class="serif text-xl">Elite Instructor</h4>
+                    <p class="text-[9px] uppercase tracking-widest text-stone-400">Senior Grade-A ADI</p>
                 </div>
             </template>
         </div>
@@ -216,20 +200,20 @@ x-init="setTimeout(() => showOffer = true, 5000)"
                     <h2 class="text-5xl serif">Success Stories</h2>
                     <div class="flex text-gold-500 mt-4 space-x-1">
                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                        <span class="text-white text-[10px] uppercase tracking-widest ml-4">4.9/5 on Google</span>
+                        <span class="text-white text-[10px] uppercase tracking-widest ml-4">4.9/5 Average Rating</span>
                     </div>
                 </div>
-                <p class="text-stone-400 text-sm max-w-xs mt-6 md:mt-0 italic">"The most professional instructors in South London. Simply unmatched quality."</p>
+                <p class="text-stone-400 text-sm max-w-xs mt-6 md:mt-0 italic font-light">"Simply unmatched quality in instruction and patience."</p>
             </div>
             
             <div class="swiper reviewSwiper pb-12">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide glass-card p-12 text-center">
-                        <p class="serif text-2xl italic mb-8">"I was so nervous, but Joe made me feel like a pro from day one. Passed first time with zero faults!"</p>
+                        <p class="serif text-2xl italic mb-8">"Joe made me feel like a pro from day one. Passed first time with zero faults!"</p>
                         <h5 class="uppercase tracking-widest text-xs font-bold text-gold-500">— Sarah Mitchell</h5>
                     </div>
                     <div class="swiper-slide glass-card p-12 text-center">
-                        <p class="serif text-2xl italic mb-8">"The intensive course is the real deal. Licensed in 12 days and ready for the M25."</p>
+                        <p class="serif text-2xl italic mb-8">"The intensive course is the real deal. Licensed in 12 days and ready for London roads."</p>
                         <h5 class="uppercase tracking-widest text-xs font-bold text-gold-500">— David Chen</h5>
                     </div>
                 </div>
@@ -248,8 +232,6 @@ x-init="setTimeout(() => showOffer = true, 5000)"
                     <div class="flex items-center"><span class="w-2 h-2 bg-gold-500 rounded-full mr-3"></span> Bromley</div>
                     <div class="flex items-center"><span class="w-2 h-2 bg-gold-500 rounded-full mr-3"></span> Lewisham</div>
                     <div class="flex items-center"><span class="w-2 h-2 bg-gold-500 rounded-full mr-3"></span> Greenwich</div>
-                    <div class="flex items-center"><span class="w-2 h-2 bg-gold-500 rounded-full mr-3"></span> Dulwich</div>
-                    <div class="flex items-center"><span class="w-2 h-2 bg-gold-500 rounded-full mr-3"></span> Brixton</div>
                 </div>
             </div>
             <div class="bg-stone-200 aspect-video grayscale hover:grayscale-0 transition duration-1000">
@@ -264,9 +246,9 @@ x-init="setTimeout(() => showOffer = true, 5000)"
             <h2 class="text-4xl serif text-center mb-12">Essential Questions</h2>
             <div x-data="{ active: 0 }" class="space-y-4">
                 <template x-for="(faq, index) in [
-                    { q: 'How many lessons will I need?', a: 'While the DVSA average is 45 hours, our precision coaching often reduces this by 20%.' },
-                    { q: 'Do you offer weekend lessons?', a: 'Yes, our instructors operate 7 days a week from 7am to 9pm at no extra cost.' },
-                    { q: 'Can I choose my instructor?', a: 'Absolutely. We encourage selecting an instructor that fits your personality and learning style.' }
+                    { q: 'How many lessons will I need?', a: 'While the average is 45 hours, our precision coaching often reduces this by 20%.' },
+                    { q: 'Do you offer weekend lessons?', a: 'Yes, we operate 7 days a week from 7am to 9pm at no extra cost.' },
+                    { q: 'Can I choose my instructor?', a: 'Absolutely. We encourage selecting an instructor that fits your personality.' }
                 ]">
                     <div class="bg-white border border-stone-200">
                         <button @click="active = (active === index ? -1 : index)" class="w-full text-left p-6 flex justify-between items-center text-xs uppercase tracking-widest font-bold">
@@ -292,13 +274,13 @@ x-init="setTimeout(() => showOffer = true, 5000)"
         </div>
     </div>
 
-    <!-- 20. Bottom CTA Dock -->
+    <!-- 20. Bottom CTA Dock (Mobile) -->
     <div class="fixed bottom-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-t border-stone-200 py-3 md:hidden">
         <div class="flex justify-around items-center">
             <a href="tel:02081234567" class="text-center text-stone-900"><i class="fa fa-phone mb-1 block"></i><span class="text-[8px] uppercase">Call</span></a>
             <a href="https://wa.me/123" class="text-center text-green-600"><i class="fab fa-whatsapp mb-1 block text-lg"></i><span class="text-[8px] uppercase">WhatsApp</span></a>
             <button @click="openBooking = true" class="bg-stone-900 text-white px-8 py-2 rounded-none text-[10px] uppercase font-bold tracking-widest">Book</button>
-            <a href="#about" class="text-center text-stone-900"><i class="fa fa-info-circle mb-1 block"></i><span class="text-[8px] uppercase">Quote</span></a>
+            <a href="sms:02081234567" class="text-center text-stone-900"><i class="fa fa-message mb-1 block"></i><span class="text-[8px] uppercase">Text</span></a>
         </div>
     </div>
 
@@ -307,10 +289,10 @@ x-init="setTimeout(() => showOffer = true, 5000)"
         <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 border-b border-stone-800 pb-20">
             <div class="col-span-2">
                 <h3 class="serif text-4xl text-white mb-6">DriveElite</h3>
-                <p class="max-w-md text-sm leading-relaxed mb-8">London’s most prestigious driving academy. Dedicated to the craft of patient, professional, and elite tuition since 2001.</p>
+                <p class="max-w-md text-sm leading-relaxed mb-8">London’s most prestigious driving academy. Patient, professional, and elite tuition since 2001.</p>
                 <!-- 6. Newsletter -->
                 <div class="flex max-w-sm border-b border-stone-700 py-2">
-                    <input type="email" placeholder="Subscribe to Journal" class="bg-transparent outline-none text-xs w-full">
+                    <input type="email" placeholder="Subscribe to Journal" class="bg-transparent outline-none text-xs w-full text-stone-300">
                     <button class="text-gold-500 uppercase text-[10px] font-bold">Join</button>
                 </div>
             </div>
@@ -326,20 +308,20 @@ x-init="setTimeout(() => showOffer = true, 5000)"
             </div>
         </div>
         <div class="container mx-auto px-6 pt-10 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em]">
-            <p>&copy; 2026 DriveElite. All Rights Reserved.</p>
+            <p>&copy; 2026 DriveElite Ltd. All Rights Reserved.</p>
             <div class="flex space-x-8 mt-6 md:mt-0 opacity-40">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
             </div>
         </div>
     </footer>
 
     <!-- 14. Scroll to Top -->
-    <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-24 right-6 bg-gold-500 text-stone-900 w-12 h-12 flex items-center justify-center shadow-2xl z-50">
+    <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-24 right-6 bg-gold-500 text-stone-900 w-12 h-12 flex items-center justify-center shadow-2xl z-50 hover:bg-stone-900 hover:text-white transition-colors">
         <i class="fa fa-chevron-up"></i>
     </button>
 
-    <!-- 2. Booking Modal with Calendly Integration -->
+    <!-- 2. Booking Modal -->
     <div x-show="openBooking" class="fixed inset-0 z-[300] bg-stone-900/90 backdrop-blur-md flex items-center justify-center p-6" x-transition>
         <div class="bg-white max-w-5xl w-full h-[90vh] grid md:grid-cols-3 relative">
             <button @click="openBooking = false" class="absolute top-6 right-6 text-2xl font-light z-10">&times;</button>
@@ -347,17 +329,15 @@ x-init="setTimeout(() => showOffer = true, 5000)"
                 <h2 class="serif text-4xl mb-6">Reserve Time</h2>
                 <p class="text-xs text-stone-400 mb-8 uppercase tracking-widest">Choose your preferred slot</p>
                 <ul class="space-y-4 text-xs tracking-widest uppercase opacity-70">
-                    <li><i class="fa fa-calendar text-gold-500 mr-3"></i> Syncs with Google</li>
-                    <li><i class="fa fa-clock text-gold-500 mr-3"></i> Instant Confirmation</li>
-                    <li><i class="fa fa-shield text-gold-500 mr-3"></i> No Payment Required</li>
+                    <li><i class="fa fa-calendar text-gold-500 mr-3"></i> Instant Confirmation</li>
+                    <li><i class="fa fa-shield text-gold-500 mr-3"></i> Safe & Insured</li>
                 </ul>
             </div>
             <div class="md:col-span-2 overflow-y-auto">
-                <!-- 2. Calendly Placeholder -->
                 <div class="h-full w-full bg-stone-100 flex items-center justify-center italic text-stone-400 p-8">
                     <div class="text-center">
                         <i class="fa fa-calendar-check text-4xl mb-4"></i>
-                        <p>[Calendly Live Booking System Embed Ready]</p>
+                        <p>[Calendly Booking Interface Live Here]</p>
                     </div>
                 </div>
             </div>
