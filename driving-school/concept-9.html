@@ -3,324 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DriveElite | Premium Driving School</title>
-    <!-- Tailwind for Layout -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Serif for Headings, Sans for body -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <!-- AOS for Scroll Animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
+    <title>Shift - Premium Driving Academy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Alpine JS for UI Logic -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    
     <style>
         :root {
-            --brand-orange: #D35400;
-            --brand-light: #F5E9D3;
-            --brand-dark: #642C0B;
-        }
-        body { font-family: 'Inter', sans-serif; background-color: var(--brand-light); color: var(--brand-dark); }
-        h1, h2, h3, .serif { font-family: 'DM+Serif+Display', serif; }
-        .bg-brand { background-color: var(--brand-orange); }
-        .text-brand { color: var(--brand-orange); }
-        .btn-premium { 
-            background-color: var(--brand-orange); 
-            color: white; 
-            padding: 12px 28px; 
-            border-radius: 12px;
-            transition: all 0.3s;
-            display: inline-block;
-            font-weight: 600;
-        }
-        .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(211, 84, 0, 0.3); }
-        .glass-card { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); }
-        
-        /* Floating Action Bar */
-        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: white; display: flex; justify-content: space-around; padding: 10px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 100; }
-        
-        /* Vertical Request Callback */
-        .callback-tab { 
-            position: fixed; right: 0; top: 50%; transform: translateY(-50%) rotate(-90deg); 
-            transform-origin: right bottom; background: var(--brand-orange); color: white;
-            padding: 10px 20px; cursor: pointer; z-index: 90; border-radius: 8px 8px 0 0;
+            --primary: #2563eb;
+            --accent: #fbbf24;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.1);
         }
 
-        .blob-shape { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-        .sticky-nav { position: sticky; top: 0; z-index: 1000; background: rgba(245, 233, 211, 0.95); backdrop-filter: blur(5px); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-nav {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+        }
+
+        .hero-content h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-main {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .primary-btn { background: var(--primary); color: white; }
+        .accent-btn { background: var(--accent); color: var(--dark); }
+
+        .btn-main:hover { transform: translateY(-3px); }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 5rem 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: -50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover { transform: translateY(-10px); }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Pricing --- */
+        .pricing {
+            padding: 5rem 10%;
+            background: #f1f5f9;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .price-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .price-card.popular {
+            border-color: var(--primary);
+            position: relative;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .price-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .price { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .price span { font-size: 1rem; color: #64748b; }
+
+        .price-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .price-list li { margin-bottom: 0.8rem; }
+        .price-list i { color: #22c55e; margin-right: 10px; }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 10% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 { margin-bottom: 1.5rem; color: var(--accent); }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
     </style>
 </head>
-<body x-data="{ openBooking: false, showOffer: false }" x-init="setTimeout(() => showOffer = true, 5000)">
+<body>
 
-    <!-- 1. Top Section Hero Slider & 22. Sticky Nav -->
-    <header class="sticky-nav border-b border-orange-200">
-        <div class="bg-brand text-white text-xs py-2 overflow-hidden whitespace-nowrap">
-            <div class="inline-block animate-marquee">
-                <span class="mx-8">★ 15 Years Experience</span>
-                <span class="mx-8">★ Established 2005</span>
-                <span class="mx-8">★ Free Theory Test Training</span>
-                <span class="mx-8">★ 95% First Time Pass Rate</span>
-                <span class="mx-8">★ High-Quality Modern Fleet</span>
-            </div>
-        </div>
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold serif text-brand">DriveElite</div>
-            <div class="hidden md:flex space-x-8 font-semibold">
-                <a href="#packages" class="hover:text-brand">Packages</a>
-                <a href="#areas" class="hover:text-brand">Areas</a>
-                <a href="#fleet" class="hover:text-brand">Our Fleet</a>
-                <a href="#faq" class="hover:text-brand">FAQs</a>
-            </div>
-            <button @click="openBooking = true" class="btn-premium">Book Now</button>
-        </nav>
-    </header>
+    <nav>
+        <div class="logo">SHI<span>FT</span></div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#instructors">Instructors</a></li>
+            <li><a href="#contact" class="btn-nav">Book Lesson</a></li>
+        </ul>
+    </nav>
 
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden pt-10 pb-20">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <h1 class="text-6xl md:text-7xl leading-tight mb-6">Learn To Drive <br><span class="text-brand">With Confidence</span></h1>
-                <p class="text-lg mb-8 opacity-80">Premium manual and automatic lessons tailored to your pace. Expert instructors serving South London since 2005.</p>
-                <div class="flex flex-wrap gap-4">
-                    <button @click="openBooking = true" class="btn-premium text-lg">Book First Lesson</button>
-                    <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-orange-100">
-                        <i class="fa fa-search text-brand"></i>
-                        <input type="text" placeholder="Enter Postcode..." class="bg-transparent outline-none w-32">
-                    </div>
-                </div>
-            </div>
-            <div class="relative" data-aos="zoom-in">
-                <div class="blob-shape bg-brand w-full aspect-square absolute -z-10 opacity-20 animate-pulse"></div>
-                <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=800" alt="Driving Instructor Car" class="rounded-3xl shadow-2xl">
-                <!-- 11. Animated Stats -->
-                <div class="absolute -bottom-10 -left-10 glass-card p-6 rounded-2xl shadow-xl border-l-4 border-brand">
-                    <div class="text-3xl font-bold text-brand">500+</div>
-                    <div class="text-sm">Students Passed</div>
-                </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Master the Road with Confidence.</h1>
+            <p>Expert instruction, flexible scheduling, and a 98% first-time pass rate.</p>
+            <div class="hero-btns">
+                <a href="#pricing" class="btn-main primary-btn">View Packages</a>
+                <a href="#" class="btn-main accent-btn">Learn More</a>
             </div>
         </div>
     </section>
 
-    <!-- 3. Lesson Packages -->
-    <section id="packages" class="py-20 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl serif mb-4" data-aos="fade-up">Lesson Packages</h2>
-            <p class="mb-12 opacity-70">Invest in your future with our high-value bundles</p>
-            
-            <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Single Lesson -->
-                <div class="border-2 border-orange-50 p-8 rounded-3xl hover:border-brand transition group" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="serif text-xl mb-4">Starter</h3>
-                    <div class="text-4xl font-bold text-brand mb-6">£35</div>
-                    <ul class="text-sm space-y-3 mb-8 text-left">
-                        <li><i class="fa fa-check text-green-500 mr-2"></i> 1 Full Hour</li>
-                        <li><i class="fa fa-check text-green-500 mr-2"></i> Assessment</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-xl border border-brand text-brand group-hover:bg-brand group-hover:text-white transition">Buy Now</button>
-                </div>
-                <!-- 10 Lesson (Best Value) -->
-                <div class="border-2 border-brand bg-orange-50 p-8 rounded-3xl relative scale-105" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand text-white text-xs px-4 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
-                    <h3 class="serif text-xl mb-4">Intensive</h3>
-                    <div class="text-4xl font-bold text-brand mb-6">£320</div>
-                    <p class="text-xs mb-4">10 Lessons Package</p>
-                    <ul class="text-sm space-y-3 mb-8 text-left">
-                        <li><i class="fa fa-check text-green-500 mr-2"></i> Fast-Track Prep</li>
-                        <li><i class="fa fa-check text-green-500 mr-2"></i> Free Theory App</li>
-                    </ul>
-                    <button class="w-full btn-premium">Buy Now</button>
-                </div>
-                <!-- Add other 3 packages here similarly -->
-            </div>
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-car-side"></i>
+            <h3>Modern Fleet</h3>
+            <p>Learn in the latest 2024 models equipped with dual controls for maximum safety.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h3>Flexible Hours</h3>
+            <p>Early morning, evening, or weekend slots available to fit your busy lifestyle.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-id-card"></i>
+            <h3>Certified Pros</h3>
+            <p>All our instructors are fully certified and background-checked for your peace of mind.</p>
         </div>
     </section>
 
-    <!-- 4. Auto vs Manual & 6. Trust -->
-    <section class="py-20 bg-[#FDF8F0]">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-right">
-                <h2 class="text-4xl serif mb-6">Why Choose Us?</h2>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
-                        <i class="fa fa-car-side text-3xl text-brand mb-4"></i>
-                        <h4 class="font-bold">Manual & Auto</h4>
-                        <p class="text-sm opacity-70">Modern dual-control cars for both preferences.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
-                        <i class="fa fa-shield-alt text-3xl text-brand mb-4"></i>
-                        <h4 class="font-bold">DVSA Approved</h4>
-                        <p class="text-sm opacity-70">Fully insured, Grade-A instructors.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
-                        <i class="fa fa-brain text-3xl text-brand mb-4"></i>
-                        <h4 class="font-bold">Nervous Specialists</h4>
-                        <p class="text-sm opacity-70">Calm, patient methods for anxious learners.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
-                        <i class="fa fa-calendar-check text-3xl text-brand mb-4"></i>
-                        <h4 class="font-bold">Flexible Slots</h4>
-                        <p class="text-sm opacity-70">Evenings and weekends at no extra cost.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white p-10 rounded-[3rem] shadow-xl" data-aos="fade-left">
-                <h3 class="text-2xl serif mb-6">Instructor Profile</h3>
-                <div class="flex items-center space-x-6 mb-6">
-                    <img src="https://i.pravatar.cc/150?u=instructor" class="w-24 h-24 rounded-2xl object-cover" alt="Instructor">
-                    <div>
-                        <h4 class="text-xl font-bold">John Harrison</h4>
-                        <p class="text-brand font-semibold">Senior ADI (Grade A)</p>
-                        <div class="flex text-yellow-400 text-sm mt-1">
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="opacity-80 italic mb-6">"I specialize in turning nervous beginners into confident, safe drivers. My goal isn't just to help you pass, but to ensure you're ready for the road for life."</p>
-                <div class="flex justify-between border-t pt-6">
-                    <div><span class="block font-bold">98%</span> <span class="text-xs uppercase">Pass Rate</span></div>
-                    <div><span class="block font-bold">18yr</span> <span class="text-xs uppercase">Experience</span></div>
-                    <div><span class="block font-bold">ADHD</span> <span class="text-xs uppercase">Specialist</span></div>
-                </div>
-            </div>
+    <section class="pricing" id="pricing">
+        <div class="section-title">
+            <h2>Driving Packages</h2>
+            <p>Choose the plan that fits your pace</p>
         </div>
-    </section>
-
-    <!-- 5. Areas Covered -->
-    <section id="areas" class="py-20 bg-brand text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl serif mb-10">Areas We Cover</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-white/20 px-6 py-2 rounded-full backdrop-blur-md">Croydon</span>
-                <span class="bg-white/20 px-6 py-2 rounded-full backdrop-blur-md">Bromley</span>
-                <span class="bg-white/20 px-6 py-2 rounded-full backdrop-blur-md">Lewisham</span>
-                <span class="bg-white/20 px-6 py-2 rounded-full backdrop-blur-md">Greenwich</span>
-                <span class="bg-white/20 px-6 py-2 rounded-full backdrop-blur-md">South London</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 13. Pass Gallery (Lightbox logic would go here) -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl serif text-center mb-12">Success Stories</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=400" class="rounded-2xl hover:scale-105 transition duration-500 cursor-pointer" alt="Pass Student">
-                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=400" class="rounded-2xl hover:scale-105 transition duration-500 cursor-pointer" alt="Pass Student">
-                <img src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=400" class="rounded-2xl hover:scale-105 transition duration-500 cursor-pointer" alt="Pass Student">
-                <img src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&q=80&w=400" class="rounded-2xl hover:scale-105 transition duration-500 cursor-pointer" alt="Pass Student">
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. FAQ Accordion -->
-    <section id="faq" class="py-20 bg-white">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-4xl serif text-center mb-12">Got Questions?</h2>
-            <div x-data="{ active: 0 }" class="space-y-4">
-                <div class="border rounded-2xl overflow-hidden">
-                    <button @click="active = (active === 1 ? 0 : 1)" class="w-full flex justify-between p-5 font-bold bg-orange-50">
-                        How many lessons will I need?
-                        <i class="fa fa-chevron-down"></i>
-                    </button>
-                    <div x-show="active === 1" class="p-5 bg-white border-t">The DVSA states the average is 45 hours, but we aim for efficiency based on your skill level.</div>
-                </div>
-                <div class="border rounded-2xl overflow-hidden">
-                    <button @click="active = (active === 2 ? 0 : 2)" class="w-full flex justify-between p-5 font-bold bg-orange-50">
-                        Do you offer weekend lessons?
-                        <i class="fa fa-chevron-down"></i>
-                    </button>
-                    <div x-show="active === 2" class="p-5 bg-white border-t">Yes! We offer lessons 7 days a week, including early mornings and evenings.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 43. Request Callback Tab -->
-    <div class="callback-tab serif font-bold shadow-lg" @click="openBooking = true">
-        Request a Callback
-    </div>
-
-    <!-- 24. Bottom CTA Dock -->
-    <div class="cta-dock md:hidden">
-        <a href="tel:0123456789" class="text-brand text-center"><i class="fa fa-phone text-xl"></i><span class="block text-[10px]">Call</span></a>
-        <a href="https://wa.me/123" class="text-green-600 text-center"><i class="fab fa-whatsapp text-xl"></i><span class="block text-[10px]">WhatsApp</span></a>
-        <button @click="openBooking = true" class="bg-brand text-white px-6 py-2 rounded-full font-bold text-sm">Book Now</button>
-    </div>
-
-    <!-- 2. Booking Modal (Calendly Integration Placeholder) -->
-    <div x-show="openBooking" class="fixed inset-0 z-[2000] bg-black/60 flex items-center justify-center p-6" x-transition>
-        <div class="bg-white rounded-3xl w-full max-w-2xl relative overflow-hidden">
-            <button @click="openBooking = false" class="absolute top-4 right-4 text-2xl">&times;</button>
-            <div class="p-8">
-                <h2 class="text-3xl serif mb-4">Book Your Slot</h2>
-                <!-- Replace this with your Calendly Embed -->
-                <div class="bg-gray-100 aspect-video rounded-xl flex items-center justify-center">
-                    <p class="text-gray-500">[Calendly / Booking System Widget Here]</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 9. Popup Offer -->
-    <div x-show="showOffer" x-transition class="fixed bottom-24 left-6 z-[1500] w-72">
-        <div class="bg-brand text-white p-6 rounded-3xl shadow-2xl relative">
-            <button @click="showOffer = false" class="absolute top-2 right-3 text-xl">&times;</button>
-            <h4 class="font-bold text-xl mb-2">New Learner Deal!</h4>
-            <p class="text-sm mb-4">Get your first lesson for just £25 when you book today.</p>
-            <button @click="openBooking = true; showOffer = false" class="bg-white text-brand px-4 py-2 rounded-full text-xs font-bold uppercase">Claim Offer</button>
-        </div>
-    </div>
-
-    <!-- 23. Footer -->
-    <footer class="bg-brand text-white pt-20 pb-32 md:pb-10">
-        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12">
-            <div>
-                <h3 class="text-2xl serif mb-6">DriveElite</h3>
-                <p class="opacity-70 text-sm">Helping South London drive since 2005. Professional, reliable, and patient.</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4">Quick Links</h4>
-                <ul class="text-sm space-y-2 opacity-80">
-                    <li><a href="#">Intensive Courses</a></li>
-                    <li><a href="#">Mock Tests</a></li>
-                    <li><a href="#">Refresher Lessons</a></li>
-                    <li><a href="#">Pass Plus</a></li>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Starter Pack</h3>
+                <div class="price">$199<span>/ 5 hrs</span></div>
+                <ul class="price-list">
+                    <li><i class="fas fa-check"></i> 5 Hours of Instruction</li>
+                    <li><i class="fas fa-check"></i> Basic Road Skills</li>
+                    <li><i class="fas fa-check"></i> Pick-up & Drop-off</li>
+                    <li><i class="fas fa-times" style="color: #ef4444"></i> Mock Test</li>
                 </ul>
+                <a href="#" class="btn-main primary-btn">Get Started</a>
             </div>
-            <div>
-                <h4 class="font-bold mb-4">Contact</h4>
-                <ul class="text-sm space-y-2 opacity-80">
-                    <li><i class="fa fa-phone mr-2"></i> 020 8123 4567</li>
-                    <li><i class="fa fa-envelope mr-2"></i> hello@driveelite.co.uk</li>
-                    <li><i class="fa fa-map-marker-alt mr-2"></i> Croydon, CR0 1XX</li>
+
+            <div class="price-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Standard Pro</h3>
+                <div class="price">$375<span>/ 10 hrs</span></div>
+                <ul class="price-list">
+                    <li><i class="fas fa-check"></i> 10 Hours of Instruction</li>
+                    <li><i class="fas fa-check"></i> Defensive Driving Intro</li>
+                    <li><i class="fas fa-check"></i> Freeway Experience</li>
+                    <li><i class="fas fa-check"></i> 1 Mock Driving Test</li>
                 </ul>
+                <a href="#" class="btn-main primary-btn">Get Started</a>
             </div>
-            <div>
-                <h4 class="font-bold mb-4">Stay Updated</h4>
-                <div class="flex">
-                    <input type="email" placeholder="Your Email" class="px-4 py-2 rounded-l-xl text-black w-full outline-none">
-                    <button class="bg-brand border border-white px-4 rounded-r-xl">Join</button>
-                </div>
+
+            <div class="price-card">
+                <h3>The License Closer</h3>
+                <div class="price">$650<span>/ 20 hrs</span></div>
+                <ul class="price-list">
+                    <li><i class="fas fa-check"></i> 20 Hours of Instruction</li>
+                    <li><i class="fas fa-check"></i> Advanced Road Mastery</li>
+                    <li><i class="fas fa-check"></i> Car Rental for Exam</li>
+                    <li><i class="fas fa-check"></i> Unlimited Mock Tests</li>
+                </ul>
+                <a href="#" class="btn-main primary-btn">Get Started</a>
             </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="color: white">SHI<span>FT</span></div>
+                <p>Teaching the drivers of tomorrow, today.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <p>About Us</p>
+                <p>Safety Standards</p>
+                <p>Reviews</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> hello@shiftdrive.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Street, City, State</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Shift Driving Academy. All Rights Reserved.
         </div>
     </footer>
 
-    <!-- AOS Animation Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-    </script>
-
-    <style>
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .animate-marquee {
-            display: inline-block;
-            animation: marquee 25s linear infinite;
-        }
-    </style>
 </body>
 </html>
