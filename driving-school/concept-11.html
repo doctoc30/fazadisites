@@ -3,305 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aussie School - Learn to Drive | London Driving Lessons</title>
+    <title>Aussie School - Master the Road | London's #1 Driving Tuition</title>
     
-    <!-- FontAwesome & Google Fonts -->
+    <!-- External Assets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <!-- GSAP for Animations -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
         :root {
-            /* Precise branding from image.png */
             --color-lime: #BEFB7A; 
             --color-green-btn: #44883A;
             --color-dark-bg: #1D1D1D;
-            --color-text-dark: #000000;
             --color-white: #FFFFFF;
-            
-            --font-main: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --radius: 12px;
+            --font-main: 'Inter', sans-serif;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--font-main);
-            background-color: var(--color-lime);
-            color: var(--color-text-dark);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* --- NAVIGATION --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: #fdfdfd; color: #333; overflow-x: hidden; }
+        
+        /* 22. Sticky Nav */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--color-lime);
-            transition: 0.3s;
+            position: fixed; top: 0; width: 100%; z-index: 2000;
+            background: var(--color-lime); padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center; transition: 0.3s;
+        }
+        header.scrolled { box-shadow: var(--shadow); padding: 10px 5%; }
+        .logo { font-weight: 800; font-size: 1.5rem; text-decoration: none; color: #000; }
+
+        /* 1. Hero & Offer Slider */
+        .offer-bar {
+            background: var(--color-dark-bg); color: #fff; padding: 10px 0;
+            overflow: hidden; white-space: nowrap; font-size: 0.9rem;
+        }
+        .offer-track { display: inline-block; animation: scrollText 20s linear infinite; }
+        @keyframes scrollText { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        .hero { 
+            background: var(--color-lime); padding: 120px 5% 60px; 
+            text-align: center; position: relative; 
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; }
+        .hero-img-wrap { max-width: 700px; margin: 30px auto -80px; position: relative; z-index: 2; }
+        .hero-img-wrap img { width: 100%; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2)); }
+
+        /* 2. Booking & Postcode */
+        .booking-card {
+            background: white; max-width: 900px; margin: 0 auto; 
+            padding: 40px; border-radius: 20px; box-shadow: var(--shadow);
+            position: relative; z-index: 3; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
         }
 
-        header.scrolled {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        /* 11. Stats Counter */
+        .stats-grid { display: flex; justify-content: space-around; padding: 60px 5%; background: var(--color-dark-bg); color: white; }
+        .stat-item h2 { font-size: 3rem; color: var(--color-lime); }
+
+        /* 3 & 12. Packages */
+        .package-section { padding: 80px 5%; background: #f4f4f4; text-align: center; }
+        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+        .package-card { 
+            background: white; padding: 30px; border-radius: 15px; border-top: 5px solid var(--color-green-btn);
+            transition: 0.3s; cursor: pointer;
+        }
+        .package-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+        .price { font-size: 2rem; font-weight: 800; margin: 15px 0; }
+
+        /* 7. FAQ Accordion */
+        .faq-wrap { max-width: 800px; margin: 50px auto; }
+        .faq-item { border-bottom: 1px solid #ddd; padding: 20px 0; cursor: pointer; }
+        .faq-answer { display: none; padding-top: 15px; color: #666; }
+
+        /* 24. Bottom CTA Dock */
+        .cta-dock {
+            position: fixed; bottom: 0; width: 100%; background: white;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid #eee; z-index: 3000; height: 65px;
+        }
+        .dock-item { display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: #333; font-size: 0.7rem; }
+        .dock-item i { font-size: 1.2rem; margin-bottom: 3px; color: var(--color-green-btn); }
+
+        /* 43. Callback Button */
+        .callback-btn {
+            position: fixed; right: -45px; top: 50%; transform: rotate(-90deg);
+            background: var(--color-green-btn); color: white; padding: 10px 20px;
+            border-radius: 5px 5px 0 0; z-index: 2500; font-weight: 600; text-decoration: none;
         }
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.4rem;
-            text-decoration: none;
-            color: var(--color-text-dark);
+        /* 9. Popup */
+        #promo-popup {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 5000; display: none; align-items: center; justify-content: center;
+        }
+        .popup-content { background: var(--color-lime); padding: 40px; border-radius: 20px; text-align: center; position: relative; max-width: 400px; }
+        
+        /* 44. Fleet Section */
+        .fleet-gallery { display: flex; gap: 20px; overflow-x: auto; padding: 20px; scroll-snap-type: x mandatory; }
+        .fleet-car { min-width: 300px; background: #eee; border-radius: 10px; scroll-snap-align: start; }
+
+        .btn { 
+            background: var(--color-green-btn); color: white; padding: 15px 30px; 
+            border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block;
+            border: none; cursor: pointer;
         }
 
-        .contact-pill {
-            background: transparent;
-            border: 2px solid var(--color-text-dark);
-            padding: 8px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--color-text-dark);
-            font-weight: 600;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding-top: 100px;
-            text-align: center;
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        .hero-cars {
-            max-width: 600px;
-            width: 90%;
-            margin-bottom: -40px; /* Overlap with search box */
-            z-index: 2;
-            position: relative;
-        }
-
-        /* --- SEARCH BOX --- */
-        .search-container {
-            background: var(--color-white);
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            z-index: 3;
-            margin-bottom: 60px;
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 18px;
-            border: 1px solid #ddd;
-            border-radius: var(--radius);
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .search-btn {
-            width: 100%;
-            background-color: var(--color-green-btn);
-            color: white;
-            border: none;
-            padding: 18px;
-            border-radius: var(--radius);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .search-btn:hover {
-            filter: brightness(1.1);
-        }
-
-        /* --- ABOUT & CONTENT --- */
-        .section-white {
-            background: white;
-            padding: 80px 5%;
-            border-radius: 40px 40px 0 0;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: #f9f9f9;
-            padding: 30px;
-            border-radius: var(--radius);
-            border: 1px solid #eee;
-        }
-
-        /* --- FLOATING ACTIONS --- */
-        .floating-contact {
-            position: fixed;
-            left: 20px;
-            bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 1001;
-        }
-
-        .float-btn {
-            width: 55px;
-            height: 55px;
-            background-color: var(--color-green-btn);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            font-size: 1.5rem;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: var(--color-dark-bg);
-            color: white;
-            padding: 60px 5%;
-            text-align: center;
-        }
-
-        @media (max-width: 600px) {
-            .hero-cars { margin-bottom: -20px; }
-            .section-white { padding: 50px 20px; }
+        @media (max-width: 768px) {
+            .booking-card { grid-template-columns: 1fr; }
+            .hero-img-wrap { margin-bottom: -40px; }
         }
     </style>
 </head>
 <body>
 
-    <header id="main-header">
-        <a href="#" class="logo">aussieschool.com</a>
-        <a href="#contact" class="contact-pill">Contact</a>
-    </header>
-
-    <div class="floating-contact">
-        <a href="#" class="float-btn"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="tel:02081234567" class="float-btn"><i class="fa-solid fa-phone"></i></a>
+    <!-- 9. Popup Offer -->
+    <div id="promo-popup">
+        <div class="popup-content">
+            <button onclick="closePopup()" style="position:absolute; right:10px; top:10px; background:none; border:none; font-size:1.5rem;">&times;</button>
+            <h2>🎉 SPECIAL OFFER</h2>
+            <p>First Lesson Only £25 for new students!</p>
+            <a href="#booking" class="btn" onclick="closePopup()">Claim Discount</a>
+        </div>
     </div>
 
+    <!-- 1. Offer Slider -->
+    <div class="offer-bar">
+        <div class="offer-track">
+            <span>• Established 2005 • 15 Years Experience • Free Theory Test Training • DVSA Approved Grade A • Nervous Driver Specialist • </span>
+            <span>• Established 2005 • 15 Years Experience • Free Theory Test Training • DVSA Approved Grade A • Nervous Driver Specialist • </span>
+        </div>
+    </div>
+
+    <!-- 22. Navigation -->
+    <header id="navbar">
+        <a href="#" class="logo">aussieschool.com</a>
+        <nav style="display: flex; gap: 20px;">
+            <a href="#packages" style="text-decoration: none; color: #000; font-weight: 600;">Pricing</a>
+            <a href="#areas" style="text-decoration: none; color: #000; font-weight: 600;">Areas</a>
+            <a href="#booking" class="btn" style="padding: 8px 15px;">Book Now</a>
+        </nav>
+    </header>
+
+    <!-- 43. Callback -->
+    <a href="tel:02081234567" class="callback-btn">Request a Callback</a>
+
+    <!-- 1. Hero -->
     <section class="hero">
-        <div class="hero-text">
-            <h1>Book a Lesson</h1>
-            <p>Get started on the road to driving today</p>
-        </div>
+        <h1>Start Learning <br> To Drive Today</h1>
+        <p>Premium Manual & Automatic Lessons in South London</p>
         
-        <!-- Hero Image (as seen in image.png) -->
-        <img src="images/hero-cars.png" alt="Driving School Cars" class="hero-cars" id="hero-img">
-
-        <div class="search-container" id="search-box">
-            <form action="#">
-                <div class="input-group">
-                    <input type="text" placeholder="Enter your location" required>
-                </div>
-                <button type="submit" class="search-btn">Search</button>
-            </form>
+        <div class="hero-img-wrap">
+            <img src="https://via.placeholder.com/600x300/333/BEFB7A?text=Instructor+Car+Fleet" alt="Instructor Car">
         </div>
-    </section>
 
-    <section class="section-white">
-        <div class="content-wrap">
-            <h2 style="font-size: 2.5rem; font-weight: 800;">ABOUT US</h2>
-            <p style="max-width: 600px; color: #555; margin-top: 15px;">
-                With over 15 years of experience, Aussie School provides premium driving tuition across South London. 
-                Our Grade A DVSA instructors ensure you don't just pass your test, but become a confident driver for life.
-            </p>
-
-            <div class="grid">
-                <div class="card">
-                    <i class="fa-solid fa-car" style="font-size: 2rem; color: var(--color-green-btn); margin-bottom: 15px;"></i>
-                    <h3>Manual & Auto</h3>
-                    <p>Modern, dual-control vehicles tailored to your transmission preference.</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-graduation-cap" style="font-size: 2rem; color: var(--color-green-btn); margin-bottom: 15px;"></i>
-                    <h3>Grade A Tuition</h3>
-                    <p>Learn from the best. Our instructors are ranked in the highest DVSA tier.</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-calendar-check" style="font-size: 2rem; color: var(--color-green-btn); margin-bottom: 15px;"></i>
-                    <h3>Flexible Slots</h3>
-                    <p>Early mornings, evenings, or weekends. We fit around your busy schedule.</p>
-                </div>
+        <!-- 2. Booking & Postcode -->
+        <div class="booking-card" id="booking">
+            <div class="booking-form">
+                <h3 style="margin-bottom: 15px;">Search Availability</h3>
+                <input type="text" placeholder="Enter Postcode (e.g. SE15)" style="width:100%; padding:15px; border:1px solid #ddd; border-radius:10px; margin-bottom:15px;">
+                <button class="btn" style="width:100%;">Find Lessons</button>
+            </div>
+            <div class="calendar-link" style="background: #f9f9f9; padding: 20px; border-radius: 10px;">
+                <h3>Instant Booking</h3>
+                <p style="font-size: 0.8rem; margin: 10px 0;">Reserve your slot via our live instructor calendar.</p>
+                <a href="#" class="btn" style="background: #000;">Open Calendar</a>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Aussie School of Motoring. All rights reserved.</p>
+    <!-- 11. Stats -->
+    <div class="stats-grid">
+        <div class="stat-item"><h2><span class="count">500</span>+</h2><p>Passed</p></div>
+        <div class="stat-item"><h2><span class="count">15</span></h2><p>Years Exp</p></div>
+        <div class="stat-item"><h2><span class="count">95</span>%</h2><p>Pass Rate</p></div>
+    </div>
+
+    <!-- 3. Buy Now Packages -->
+    <section class="package-section" id="packages">
+        <h2>Lesson Packages</h2>
+        <p>Purchase online and save up to 15%</p>
+        
+        <!-- 39. Filters -->
+        <div style="margin-top: 20px;">
+            <button class="btn" style="background:#eee; color:#333; padding:5px 15px;">Manual</button>
+            <button class="btn" style="background:#eee; color:#333; padding:5px 15px;">Automatic</button>
+        </div>
+
+        <div class="package-grid">
+            <div class="package-card" data-aos="fade-up">
+                <h3>Starter</h3>
+                <p>1 Lesson</p>
+                <div class="price">£35</div>
+                <a href="#" class="btn">Buy Now</a>
+            </div>
+            <div class="package-card" style="border-color: #000; transform: scale(1.05);">
+                <span style="background:var(--color-lime); font-size:0.7rem; padding:2px 10px; border-radius:20px;">MOST POPULAR</span>
+                <h3>Beginner Bundle</h3>
+                <p>5 Lessons</p>
+                <div class="price">£165</div>
+                <a href="#" class="btn">Buy Now</a>
+            </div>
+            <div class="package-card">
+                <h3>Fast Pass</h3>
+                <p>20 Lessons</p>
+                <div class="price">£640</div>
+                <a href="#" class="btn">Buy Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 & 28. Instructor Profile -->
+    <section style="padding: 80px 5%; display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+        <div style="flex: 1; min-width: 300px;">
+            <img src="https://via.placeholder.com/400x500" alt="Instructor" style="width:100%; border-radius: 20px; box-shadow: var(--shadow);">
+        </div>
+        <div style="flex: 1.5; min-width: 300px;">
+            <span style="color: var(--color-green-btn); font-weight: 700;">DVSA APPROVED GRADE A</span>
+            <h2 style="font-size: 3rem; margin: 10px 0;">Meet Your Instructor</h2>
+            <p>I specialize in nervous drivers and intensive fast-track courses. My teaching style is calm, patient, and tailored to how you learn best.</p>
+            <ul style="margin: 20px 0; list-style: none;">
+                <li><i class="fa-solid fa-check-circle" style="color:var(--color-green-btn);"></i> Full Instructor Insurance</li>
+                <li><i class="fa-solid fa-check-circle" style="color:var(--color-green-btn);"></i> Dual Control Fleet</li>
+                <li><i class="fa-solid fa-check-circle" style="color:var(--color-green-btn);"></i> Theory Test Support</li>
+            </ul>
+            <a href="#contact" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- 13. Pass Gallery -->
+    <section style="padding: 80px 5%; background: #000; color: white; text-align: center;">
+        <h2>Success Stories</h2>
+        <div class="package-grid">
+            <!-- 21. Lightbox placeholder -->
+            <img src="https://via.placeholder.com/300x300?text=Pass+1" alt="Pass" style="border-radius:10px; cursor:pointer;">
+            <img src="https://via.placeholder.com/300x300?text=Pass+2" alt="Pass" style="border-radius:10px; cursor:pointer;">
+            <img src="https://via.placeholder.com/300x300?text=Pass+3" alt="Pass" style="border-radius:10px; cursor:pointer;">
+            <img src="https://via.placeholder.com/300x300?text=Pass+4" alt="Pass" style="border-radius:10px; cursor:pointer;">
+        </div>
+    </section>
+
+    <!-- 5. Areas Covered -->
+    <section id="areas" style="padding: 80px 5%;">
+        <h2>Areas Covered</h2>
+        <div class="grid" style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+            <span class="btn" style="background:#f4f4f4; color:#333;">Croydon</span>
+            <span class="btn" style="background:#f4f4f4; color:#333;">Bromley</span>
+            <span class="btn" style="background:#f4f4f4; color:#333;">Lewisham</span>
+            <span class="btn" style="background:#f4f4f4; color:#333;">Greenwich</span>
+            <span class="btn" style="background:#f4f4f4; color:#333;">South London</span>
+        </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section class="section" style="padding: 80px 5%; background: #fdfdfd;">
+        <h2 style="text-align:center;">Frequently Asked Questions</h2>
+        <div class="faq-wrap">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div style="display:flex; justify-content:space-between; font-weight:700;">
+                    <span>Do you offer weekend lessons?</span>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-answer">Yes, we offer both Saturday and Sunday slots at no extra cost.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div style="display:flex; justify-content:space-between; font-weight:700;">
+                    <span>How long is each lesson?</span>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-answer">Lessons are standard 2 hours long to maximize learning efficiency.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Subscribe -->
+    <section style="padding: 60px 5%; background: var(--color-lime); text-align: center;">
+        <h3>Get Free Theory Tips</h3>
+        <form style="margin-top: 20px; display: flex; justify-content: center; gap: 10px;">
+            <input type="email" placeholder="Email Address" style="padding:15px; border:none; border-radius:10px; width:300px;">
+            <button class="btn" style="background:#000;">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- 23. Footer -->
+    <footer style="padding: 80px 5% 100px; background: var(--color-dark-bg); color: white;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+            <div>
+                <h4 style="color:var(--color-lime);">Aussie School</h4>
+                <p>Driving success since 2005 in South London.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <p><a href="#packages" style="color:#ccc;">Lesson Prices</a></p>
+                <p><a href="#booking" style="color:#ccc;">Book Now</a></p>
+                <p><a href="#" style="color:#ccc;">Gift Vouchers</a></p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>📞 020 8123 4567</p>
+                <p>📧 hello@aussieschool.com</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- 24. Floating Dock -->
+    <div class="cta-dock">
+        <a href="tel:02081234567" class="dock-item"><i class="fa-solid fa-phone"></i>Call</a>
+        <a href="https://wa.me/yourlink" class="dock-item"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+        <a href="#booking" class="dock-item"><i class="fa-solid fa-calendar"></i>Book</a>
+        <a href="#packages" class="dock-item"><i class="fa-solid fa-tags"></i>Prices</a>
+    </div>
+
     <script>
+        // 8. GSAP Scroll Animations
         gsap.registerPlugin(ScrollTrigger);
 
-        // Initial Load Animations
-        window.addEventListener('load', () => {
-            const tl = gsap.timeline();
-
-            tl.from(".hero-text", { y: 30, opacity: 0, duration: 0.8, ease: "power4.out" })
-              .from("#hero-img", { scale: 0.9, opacity: 0, duration: 1, ease: "back.out(1.7)" }, "-=0.4")
-              .from("#search-box", { y: 50, opacity: 0, duration: 0.6 }, "-=0.6");
+        gsap.from(".package-card", {
+            scrollTrigger: ".package-grid",
+            y: 50, opacity: 0, duration: 0.8, stagger: 0.2
         });
 
-        // Sticky Header effect
+        gsap.from(".stat-item h2", {
+            scrollTrigger: ".stats-grid",
+            innerText: 0, duration: 2, snap: { innerText: 1 },
+            ease: "power1.out"
+        });
+
+        // 22. Sticky Nav Logic
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Scroll Reveal for Cards
-        gsap.from(".card", {
-            scrollTrigger: {
-                trigger: ".grid",
-                start: "top 80%",
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power2.out"
+        // 7. Toggle FAQ
+        function toggleFaq(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('i');
+            const isOpen = answer.style.display === 'block';
+            answer.style.display = isOpen ? 'none' : 'block';
+            icon.classList.toggle('fa-minus', !isOpen);
+            icon.classList.toggle('fa-plus', isOpen);
+        }
+
+        // 9. Popup Logic
+        setTimeout(() => {
+            document.getElementById('promo-popup').style.display = 'flex';
+        }, 3000);
+
+        function closePopup() {
+            document.getElementById('promo-popup').style.display = 'none';
+        }
+
+        // 26. Exit Intent
+        document.addEventListener("mouseleave", (e) => {
+            if (e.clientY < 0) {
+                document.getElementById('promo-popup').style.display = 'flex';
+            }
         });
     </script>
 </body>
