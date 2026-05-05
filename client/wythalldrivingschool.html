@@ -120,6 +120,29 @@
         /* ADD-ON: Footer social icons hover enhancement */
         .footer-social-icon { transition: transform 0.2s, color 0.2s; cursor: pointer; }
         .footer-social-icon:hover { transform: translateY(-3px); color: var(--brand-red); }
+   
+    
+    .road-indicator {
+    height: 8px;
+    background: #1e293b;
+    width: 100%;
+    position: absolute;
+    bottom: 50px;  /* MOVED UP - track now meets wheels */
+    z-index: 5;
+    border-top: 2px solid #94a3b8;
+}
+
+#panningCar {
+    width: 650px;
+    height: 380px;
+    object-fit: contain;
+    position: absolute;
+    bottom: 55px;  /* ADJUSTED - car sits on track */
+    z-index: 20;
+    animation: driveForward 12s linear infinite;
+    will-change: transform;
+}
+    
     </style>
 </head>
 <body class="text-slate-900"> 
