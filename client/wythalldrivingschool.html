@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Wythall Driving School | Experienced, Friendly & Reputable</title>
+    <title>Wythall Driving School | Certified, Friendly & Reputable</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -36,42 +36,43 @@
         
         /* Logo styling */
         .logo-container { display: flex; align-items: center; gap: 10px; }
-        .wythall-logo { width: 200px; height: auto; } 
+        .wythall-logo { width: 210px; height: auto; } 
 
-        /* ===== HERO CAR SECTION - PUSHED MASSIVELY HIGHER ===== */
+        /* ===== HERO CAR SECTION - CAR NOW MASSIVE, ROAD TRACK THINNER ===== */
         .car-hero-container {
             position: relative;
             z-index: 10;
             width: 100%;
-            min-height: 520px; /* reduced slightly to allow car to be more visible above fold */
+            min-height: 560px; /* ample space for giant car */
             display: flex;
             align-items: flex-end; 
             justify-content: center;
             overflow: visible;
             background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
-            margin-top: -45px; /* pulls the entire car container UP for better placement */
-            margin-bottom: 0px;
+            margin-top: -50px; /* pulls everything up for better visual */
+            margin-bottom: -10px;
         }
         
-        /* Massive, Dominant Car Image - Pushed UP more */
+        /* MASSIVE, DOMINANT CAR IMAGE - SIGNIFICANTLY LARGER */
         #panningCar {
             width: 100%;
-            max-width: 1300px;
+            max-width: 1500px; /* drastically increased size */
             height: auto;
             object-fit: contain; 
             position: relative;
-            bottom: -25px; /* adjusted to lift car relative to road, making car higher visually */
+            bottom: -20px; /* wheels touch track */
             z-index: 25; 
-            animation: driveForward 14s linear infinite;
+            animation: driveForward 16s linear infinite;
             will-change: transform;
             display: block;
             margin: 0 auto;
-            filter: drop-shadow(0 20px 15px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 25px 20px rgba(0,0,0,0.2));
+            transform: scale(1.08); /* extra scaling for massive presence */
         }
 
         @keyframes driveForward {
-            0% { transform: translateX(-120%); }
-            100% { transform: translateX(100vw); }
+            0% { transform: translateX(-130%) scale(1.08); }
+            100% { transform: translateX(100vw) scale(1.08); }
         }
 
         /* HAMBURGER MENU */
@@ -84,18 +85,18 @@
             transform: translateX(0);
         }
 
-        /* === ROAD TRACKS - RAISED HIGHER, ALIGNED WITH WHEELS === */
+        /* === ROAD TRACKS - NOW THINNER & ELEGANT, TOUCHING WHEELS === */
         .road-indicator {
-            height: 22px;
+            height: 6px; /* THINNER ROAD TRACK (was 22px) */
             background: transparent; 
             width: 100%;
             position: absolute;
-            bottom: 40px; /* RAISED significantly: used to be 68px, now wheels touch track higher up */
+            bottom: 36px; /* perfectly aligned with larger car wheels */
             left: 0;
             z-index: 15; 
             pointer-events: none;
         }
-        /* Animated dashed line */
+        /* Thinner, clean dashed line for the road */
         .road-indicator::after {
             content: '';
             position: absolute;
@@ -106,27 +107,28 @@
             background-image: repeating-linear-gradient(
                 to right,
                 #334155 0px,
-                #334155 40px,
-                transparent 40px,
-                transparent 90px
+                #334155 30px,
+                transparent 30px,
+                transparent 80px
             );
-            background-size: 130px 100%;
-            animation: roadMove 0.6s linear infinite;
+            background-size: 110px 100%;
+            animation: roadMove 0.5s linear infinite;
         }
         @keyframes roadMove {
             0% { background-position: 0 0; }
-            100% { background-position: -130px 0; }
+            100% { background-position: -110px 0; }
         }
 
+        /* Very subtle shadow under car (optional, keeps realism) */
         .road-shadow {
             position: absolute;
-            bottom: 34px;
+            bottom: 30px;
             left: 0;
             width: 100%;
-            height: 8px;
-            background: rgba(0,0,0,0.08);
+            height: 4px;
+            background: rgba(0,0,0,0.06);
             z-index: 12;
-            border-radius: 4px;
+            border-radius: 2px;
         }
 
         .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); }
@@ -160,58 +162,63 @@
         .footer-social-icon { transition: transform 0.2s, color 0.2s; cursor: pointer; }
         .footer-social-icon:hover { transform: translateY(-3px); color: var(--brand-red); }
 
-        /* ===== CRITICAL FIX FOR MOBILE PORTRAIT - CAR IS NOW HIGHER & FULLY VISIBLE ===== */
+        /* ===== MOBILE: CAR EVEN LARGER, THINNER TRACK VISIBLE ===== */
         @media (max-width: 768px) {
             .car-hero-container {
-                min-height: 380px; /* Balanced height so car sits higher, not hidden */
-                margin-top: -60px; /* PUSH entire car section UP dramatically */
+                min-height: 440px;
+                margin-top: -70px;
                 margin-bottom: -20px;
             }
             #panningCar {
-                max-width: 1000px;
-                bottom: -10px; /* Fine-tuned to avoid clipping, yet car appears much higher up */
-                transform: scale(1.05);
+                max-width: 1200px;
+                transform: scale(1.1);
+                bottom: -12px;
+            }
+            @keyframes driveForward {
+                0% { transform: translateX(-140%) scale(1.1); }
+                100% { transform: translateX(100vw) scale(1.1); }
             }
             .road-indicator {
-                bottom: 32px; /* Raised track line touches wheels on mobile */
-                height: 16px;
+                bottom: 28px;
+                height: 5px; /* thinner on mobile */
+            }
+            .road-indicator::after {
+                background-size: 90px 100%;
             }
             .road-shadow {
-                bottom: 26px;
+                bottom: 22px;
+                height: 3px;
             }
-            .hero-content-space {
-                margin-top: 0px;
-            }
-            h1.hero-main {
-                font-size: 3rem !important;
+            .hero-main {
+                font-size: 3.2rem !important;
             }
         }
 
         @media (max-width: 480px) {
             .car-hero-container {
-                min-height: 340px;
-                margin-top: -70px;
+                min-height: 380px;
+                margin-top: -80px;
             }
             #panningCar {
-                max-width: 850px;
-                bottom: -5px;
+                max-width: 1000px;
+                transform: scale(1.15);
+                bottom: -8px;
             }
             .road-indicator {
-                bottom: 28px;
+                bottom: 24px;
+                height: 4px;
             }
             .road-shadow {
-                bottom: 22px;
+                bottom: 18px;
             }
         }
-
-        /* additional lift for the entire hero area */
+        
         .hero-content-space {
-            margin-top: 20px;
+            margin-top: 15px;
             position: relative;
             z-index: 20;
         }
         
-        /* ensure the car image container does not clip on any device */
         .car-outer {
             overflow: visible;
         }
@@ -274,21 +281,21 @@
         </div>
     </div>
 
-    <!-- HERO SECTION WITH ENLARGED CAR PUSHED MASSIVELY HIGHER (FIX FOR MOBILE) -->
-    <section class="relative min-h-[75vh] flex flex-col items-center justify-start bg-slate-50 pt-0 pb-16 overflow-visible">
-        <!-- CAR & ROAD CONTAINER: Car is now RAISED HIGHER, visible fully on portrait -->
+    <!-- HERO SECTION: MASSIVE CAR + THINNER ROAD TRACK -->
+    <section class="relative min-h-[78vh] flex flex-col items-center justify-start bg-slate-50 pt-0 pb-12 overflow-visible">
+        <!-- CAR & ROAD CONTAINER -->
         <div class="w-full relative car-outer">
             <div class="car-hero-container">
-                <!-- Road shadow and track that now aligns properly with wheels -->
+                <!-- Thinner road shadow & track -->
                 <div class="road-shadow"></div>
                 <div class="road-indicator"></div>
-                <!-- Enlarged Hero Car Image - lifted upwards -->
-                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3853.png" alt="Wythall Driving School Car - Professional Tuition">
+                <!-- MASSIVE HERO CAR (enlarged drastically) -->
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3853.png" alt="Wythall Driving School Car - Premium Tuition">
             </div>
         </div>
         
-        <!-- Headline Content (pushed slightly down but not interfering with car visibility) -->
-        <div class="max-w-5xl mx-auto px-6 text-center z-20 hero-content-space mt-2">
+        <!-- Headline Content -->
+        <div class="max-w-5xl mx-auto px-6 text-center z-20 hero-content-space mt-4">
             <div class="animate__animated animate__fadeInUp">
                 <h1 class="text-6xl md:text-9xl font-black text-slate-900 leading-tight mb-6 uppercase tracking-tighter hero-main">
                     Safe. <span class="text-red-700">Confident.</span>
