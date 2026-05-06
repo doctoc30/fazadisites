@@ -39,44 +39,43 @@
         .logo-container { display: flex; align-items: center; gap: 10px; }
         .wythall-logo { width: 210px; height: auto; } 
 
-        /* ===== HERO CAR SECTION - CLEAN & WORKING ===== */
+        /* ===== HERO CAR SECTION ===== */
         .car-hero-container {
             position: relative;
             z-index: 10;
             width: 100%;
-            min-height: 560px;
+            min-height: 520px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
             overflow: visible;
             background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
-            margin-top: -50px;
+            margin-top: -40px;
             margin-bottom: -10px;
         }
 
-        /* MASSIVE CAR IMAGE - positioned to touch track */
+        /* MASSIVE CAR IMAGE - using transform to position wheels correctly */
         #panningCar {
             width: 100%;
-            max-width: 1500px;
+            max-width: 1400px;
             height: auto;
             object-fit: contain;
             position: relative;
-            bottom: -8px;
             z-index: 25;
             animation: driveForward 22s linear infinite;
             will-change: transform;
             display: block;
             margin: 0 auto;
             filter: drop-shadow(0 25px 20px rgba(0,0,0,0.15));
-            transform: scale(1.08);
+            transform: scale(1.08) translateY(12px);
         }
 
         @keyframes driveForward {
-            0% { transform: translateX(-130%) scale(1.08); }
-            100% { transform: translateX(100vw) scale(1.08); }
+            0% { transform: translateX(-130%) scale(1.08) translateY(12px); }
+            100% { transform: translateX(100vw) scale(1.08) translateY(12px); }
         }
 
-        /* === ROAD TRACK - ANCHORED TO BOTTOM OF CONTAINER === */
+        /* === ROAD TRACK - VISIBLE LINE === */
         .road-indicator {
             height: 5px;
             background: transparent;
@@ -89,7 +88,6 @@
             overflow: visible;
         }
 
-        /* Stable base line */
         .road-indicator::before {
             content: '';
             position: absolute;
@@ -102,7 +100,6 @@
             border-radius: 2px;
         }
 
-        /* Animated dashed line */
         .road-indicator::after {
             content: '';
             position: absolute;
@@ -179,52 +176,40 @@
         .footer-social-icon { transition: transform 0.2s, color 0.2s; cursor: pointer; }
         .footer-social-icon:hover { transform: translateY(-3px); color: var(--brand-red); }
 
-        /* ===== LANDSCAPE ORIENTATION FIX ===== */
+        /* ===== LANDSCAPE ORIENTATION ===== */
         @media (orientation: landscape) {
             .car-hero-container {
-                min-height: 420px;
-                margin-top: -35px;
+                min-height: 400px;
+                margin-top: -30px;
             }
             #panningCar {
-                bottom: -6px;
+                transform: scale(0.92) translateY(10px);
                 max-width: 1300px;
-                transform: scale(0.95);
             }
             @keyframes driveForward {
-                0% { transform: translateX(-130%) scale(0.95); }
-                100% { transform: translateX(100vw) scale(0.95); }
-            }
-            .road-indicator {
-                bottom: 0px;
-            }
-            .road-shadow {
-                bottom: -2px;
+                0% { transform: translateX(-130%) scale(0.92) translateY(10px); }
+                100% { transform: translateX(100vw) scale(0.92) translateY(10px); }
             }
         }
 
         /* ===== PORTRAIT MOBILE ===== */
         @media (orientation: portrait) and (max-width: 768px) {
             .car-hero-container {
-                min-height: 440px;
-                margin-top: -70px;
+                min-height: 420px;
+                margin-top: -60px;
             }
             #panningCar {
-                bottom: -6px;
-                transform: scale(1.12);
+                transform: scale(1.12) translateY(14px);
             }
             @keyframes driveForward {
-                0% { transform: translateX(-140%) scale(1.12); }
-                100% { transform: translateX(100vw) scale(1.12); }
+                0% { transform: translateX(-140%) scale(1.12) translateY(14px); }
+                100% { transform: translateX(100vw) scale(1.12) translateY(14px); }
             }
             .road-indicator {
-                bottom: 0px;
                 height: 4px;
             }
             .road-indicator::after {
                 height: 4px;
-            }
-            .road-shadow {
-                bottom: -2px;
             }
             .hero-main {
                 font-size: 3rem !important;
@@ -234,22 +219,15 @@
         /* ===== SMALL PHONES ===== */
         @media (max-width: 480px) {
             .car-hero-container {
-                min-height: 380px;
-                margin-top: -80px;
+                min-height: 360px;
+                margin-top: -70px;
             }
             #panningCar {
-                bottom: -5px;
-                transform: scale(1.16);
+                transform: scale(1.16) translateY(16px);
             }
             @keyframes driveForward {
-                0% { transform: translateX(-140%) scale(1.16); }
-                100% { transform: translateX(100vw) scale(1.16); }
-            }
-            .road-indicator {
-                bottom: 0px;
-            }
-            .road-shadow {
-                bottom: -2px;
+                0% { transform: translateX(-140%) scale(1.16) translateY(16px); }
+                100% { transform: translateX(100vw) scale(1.16) translateY(16px); }
             }
         }
         
