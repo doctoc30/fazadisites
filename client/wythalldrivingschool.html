@@ -39,7 +39,7 @@
         .logo-container { display: flex; align-items: center; gap: 10px; }
         .wythall-logo { width: 210px; height: auto; } 
 
-        /* ===== HERO CAR SECTION ===== */
+        /* ===== HERO CAR SECTION - STABILIZED ===== */
         .car-hero-container {
             position: relative;
             z-index: 10;
@@ -54,36 +54,46 @@
             margin-bottom: -10px;
         }
 
-        /* MASSIVE CAR IMAGE - FRONT LAYER */
+        /* Combined wrapper to keep track and car locked together */
+        .road-environment {
+            position: absolute;
+            bottom: 60px; /* Fixed anchor point for the road */
+            width: 100%;
+            height: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* MASSIVE CAR IMAGE */
         #panningCar {
             width: 100%;
             max-width: 1400px;
             height: auto;
             object-fit: contain;
-            position: relative;
-            z-index: 25; /* Higher than road-indicator */
+            position: absolute;
+            bottom: -22px; /* Pulls wheels down to the line */
+            z-index: 25;
             animation: driveForward 22s linear infinite;
             will-change: transform;
             display: block;
-            margin: 0 auto;
             filter: drop-shadow(0 25px 20px rgba(0,0,0,0.15));
-            transform: scale(1.08) translateY(12px);
         }
 
         @keyframes driveForward {
-            0% { transform: translateX(-130%) scale(1.08) translateY(12px); }
-            100% { transform: translateX(100vw) scale(1.08) translateY(12px); }
+            0% { transform: translateX(-130%) scale(1.08); }
+            100% { transform: translateX(100vw) scale(1.08); }
         }
 
-        /* === ROAD TRACK - BACKGROUND LAYER TOUCHING TIRES === */
+        /* === ROAD TRACK - VISIBLE LINE === */
         .road-indicator {
             height: 5px;
             background: transparent;
             width: 100%;
             position: absolute;
-            bottom: 52px; /* Adjusted to meet the bottom of the tires */
+            bottom: 0;
             left: 0;
-            z-index: 15; /* Lower than car */
+            z-index: 15;
             pointer-events: none;
             overflow: visible;
         }
@@ -126,13 +136,13 @@
         /* Shadow under car */
         .road-shadow {
             position: absolute;
-            bottom: 45px;
+            bottom: -5px;
             left: 0;
             width: 100%;
-            height: 6px;
-            background: rgba(0,0,0,0.12);
+            height: 10px;
+            background: rgba(0,0,0,0.08);
             z-index: 12;
-            border-radius: 3px;
+            filter: blur(4px);
         }
 
         /* HAMBURGER MENU */
@@ -179,18 +189,11 @@
         /* ===== LANDSCAPE ORIENTATION ===== */
         @media (orientation: landscape) {
             .car-hero-container {
-                min-height: 400px;
+                min-height: 380px;
                 margin-top: -30px;
             }
-            #panningCar {
-                transform: scale(0.92) translateY(10px);
-                max-width: 1300px;
-            }
-            @keyframes driveForward {
-                0% { transform: translateX(-130%) scale(0.92) translateY(10px); }
-                100% { transform: translateX(100vw) scale(0.92) translateY(10px); }
-            }
-            .road-indicator { bottom: 42px; }
+            .road-environment { bottom: 45px; }
+            #panningCar { bottom: -18px; }
         }
 
         /* ===== PORTRAIT MOBILE ===== */
@@ -199,22 +202,11 @@
                 min-height: 420px;
                 margin-top: -60px;
             }
-            #panningCar {
-                transform: scale(1.12) translateY(14px);
-            }
-            @keyframes driveForward {
-                0% { transform: translateX(-140%) scale(1.12) translateY(14px); }
-                100% { transform: translateX(100vw) scale(1.12) translateY(14px); }
-            }
-            .road-indicator {
-                height: 4px;
-                bottom: 48px;
-            }
             .hero-main {
                 font-size: 3rem !important;
             }
         }
-
+        
         .hero-content-space {
             margin-top: 20px;
             position: relative;
@@ -284,18 +276,22 @@
         </div>
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION: MASSIVE CAR + TRACK NOW LOCKED TOGETHER -->
     <section class="relative min-h-[78vh] flex flex-col items-center justify-start bg-slate-50 pt-0 pb-12 overflow-visible">
         <div class="w-full relative car-outer">
             <div class="car-hero-container">
-                <div class="road-shadow"></div>
-                <!-- ROAD IS BEHIND -->
-                <div class="road-indicator"></div>
-                <!-- CAR IS IN FRONT -->
-                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3853.png" alt="Wythall Driving School Car">
+                <div class="road-environment">
+                    <!-- Road shadow beneath -->
+                    <div class="road-shadow"></div>
+                    <!-- Road track - STABILIZED -->
+                    <div class="road-indicator"></div>
+                    <!-- MASSIVE CAR IMAGE -->
+                    <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3853.png" alt="Wythall Driving School Car">
+                </div>
             </div>
         </div>
         
+        <!-- Headline Content -->
         <div class="max-w-5xl mx-auto px-6 text-center z-20 hero-content-space mt-4">
             <div class="animate__animated animate__fadeInUp">
                 <h1 class="text-6xl md:text-9xl font-black text-slate-900 leading-tight mb-6 uppercase tracking-tighter hero-main">
@@ -316,8 +312,60 @@
         </div>
     </section>
 
-    <!-- [Rest of your sections: Services, About, Intensive, Pricing, Footer remain exactly as in your original file] -->
-    <!-- ... Rest of Code ... -->
+    <section id="services" class="py-24 bg-white border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div class="reveal p-14 border-4 border-slate-900 text-center hover:bg-slate-50 transition">
+                <i data-lucide="settings" class="w-16 h-16 mx-auto mb-6 text-red-700"></i>
+                <h3 class="text-3xl font-black uppercase tracking-tighter mb-6">Manual Lessons</h3>
+                <p class="text-base font-bold text-slate-500 uppercase leading-relaxed">Master the gears with our experienced instructors. Perfect for those wanting full control and the ability to drive any vehicle.</p>
+            </div>
+            <div class="reveal p-14 border-4 border-slate-900 text-center hover:bg-slate-50 transition">
+                <i data-lucide="zap" class="w-16 h-16 mx-auto mb-6 text-red-700"></i>
+                <h3 class="text-3xl font-black uppercase tracking-tighter mb-6">Automatic Lessons</h3>
+                <p class="text-base font-bold text-slate-500 uppercase leading-relaxed">Focus entirely on the road without gear changes. A faster, stress-free way to gain your license.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+            <div class="text-center"><i data-lucide="check-circle" class="w-10 h-10 mx-auto mb-4 text-green-600"></i><p class="text-sm font-black uppercase">DVSA Approved</p></div>
+            <div class="text-center"><i data-lucide="shield" class="w-10 h-10 mx-auto mb-4 text-blue-600"></i><p class="text-sm font-black uppercase">Fully Insured</p></div>
+            <div class="text-center"><i data-lucide="heart" class="w-10 h-10 mx-auto mb-4 text-red-600"></i><p class="text-sm font-black uppercase">Nervous Specialist</p></div>
+            <div class="text-center"><i data-lucide="award" class="w-10 h-10 mx-auto mb-4 text-yellow-600"></i><p class="text-sm font-black uppercase">High Pass Rates</p></div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal"><div class="bg-slate-200 aspect-square rounded-2xl overflow-hidden mb-10 relative flex items-center justify-center"><span class="font-black text-slate-500 uppercase text-xl">Friendly Instructor</span></div>
+                <div class="bg-red-50 p-8 border-2 border-red-200 flex items-center gap-6"><div class="bg-red-700 text-white p-4 rounded-full"><i data-lucide="user"></i></div><div><p class="text-base font-black uppercase">Female Instructor Available</p><p class="text-xs font-bold text-slate-500 uppercase">Book with confidence for a comfortable environment.</p></div></div>
+            </div>
+            <div class="reveal"><h2 class="text-5xl font-black uppercase tracking-tighter mb-8">Meet Your <span class="text-red-700">Expert Tutor</span></h2>
+                <p class="text-slate-700 font-medium text-lg mb-10 leading-relaxed">With over 15 years of experience, we provide a friendly and reputable teaching style that adapts to your individual pace.</p>
+                <ul class="space-y-6 mb-12"><li class="flex items-center gap-4"><i data-lucide="check" class="text-red-700"></i><span class="font-black uppercase">Grade A DVSA Registered</span></li><li class="flex items-center gap-4"><i data-lucide="check" class="text-red-700"></i><span class="font-black uppercase">Advanced Driving Specialist</span></li><li class="flex items-center gap-4"><i data-lucide="check" class="text-red-700"></i><span class="font-black uppercase">Patient & Friendly Approach</span></li></ul>
+                <a href="tel:+447818542962" class="btn-brand px-12 py-5 font-black uppercase text-sm inline-block">Book with our Lead Instructor</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-slate-900 text-white"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-24"><h2 class="text-5xl font-black uppercase tracking-tighter">Fast-Track <span class="text-red-700">Crash Courses</span></h2><p class="text-sm font-bold uppercase tracking-widest opacity-60 mt-4">Get your license in weeks, not months.</p></div><div class="grid md:grid-cols-2 gap-14"><div class="border-4 border-slate-700 p-14 hover:border-red-700 transition"><h3 class="text-3xl font-black uppercase mb-6">1-Week Intensive</h3><p class="text-base opacity-70 mb-10 uppercase font-bold">30 hours + test booking. Designed for prior experience.</p><a href="https://wa.me/447818542962" class="text-red-700 font-black uppercase text-xs tracking-widest border-b-2 border-red-700 pb-1">Enquire Now →</a></div><div class="border-4 border-slate-700 p-14 hover:border-red-700 transition"><h3 class="text-3xl font-black uppercase mb-6">2-Week Fast-Pass</h3><p class="text-base opacity-70 mb-10 uppercase font-bold">45 hours intensive. Complete package for beginners.</p><a href="https://wa.me/447818542962" class="text-red-700 font-black uppercase text-xs tracking-widest border-b-2 border-red-700 pb-1">Enquire Now →</a></div></div></div></section>
+
+    <section class="py-32 bg-white border-y border-slate-100"><div class="max-w-4xl mx-auto px-6 text-center"><h2 class="text-5xl font-black uppercase mb-16">Nervous Driver <span class="text-red-700">Quiz</span></h2><div class="bg-slate-50 p-12 border-2 border-slate-200"><p class="font-black text-lg uppercase mb-10">Q: How do you feel about roundabouts?</p><div class="grid gap-6"><div class="quiz-option p-6 bg-white font-bold uppercase">A) Totally fine, ready to go</div><div class="quiz-option p-6 bg-white font-bold uppercase">B) A little anxious but willing</div><div class="quiz-option p-6 bg-white font-bold uppercase">C) Very stressed, I avoid them</div></div><p class="mt-12 text-sm font-black uppercase text-red-700">Recommended: Calm Starter Package (5 Lessons)</p></div></div></section>
+
+    <section class="py-32 bg-slate-50"><div class="max-w-5xl mx-auto px-6"><h2 class="text-5xl font-black uppercase tracking-tighter text-center mb-20">Hazard <span class="text-red-700">Perception</span></h2><div class="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl flex items-center justify-center relative group"><i data-lucide="play-circle" class="w-24 h-24 text-white opacity-50 group-hover:opacity-100 transition"></i><div class="absolute bottom-6 left-6 bg-red-700 text-white px-6 py-2 text-xs font-black uppercase">Sample Clip: Pedestrian Crossing</div></div><div class="mt-12 grid md:grid-cols-2 gap-10 text-sm font-bold uppercase tracking-widest"><div class="p-8 bg-white border-l-8 border-red-700">Scan 100 meters ahead for potential developing hazards.</div><div class="p-8 bg-white border-l-8 border-red-700">Click as soon as you see a reason to change speed or direction.</div></div></div></section>
+
+    <section class="py-32 bg-white overflow-hidden"><div class="max-w-7xl mx-auto px-6 text-center mb-20"><h2 class="text-5xl font-black uppercase">Success <span class="text-red-700">Stories</span></h2></div><div class="testimonial-track space-x-12" style="display: flex; overflow-x: auto; scroll-behavior: smooth; padding: 0 20px;"><div class="min-w-[400px] p-12 bg-slate-50 border-2 border-slate-200"><div class="flex text-yellow-400 mb-6"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div><p class="text-base font-medium italic mb-6">"Passed first time! My instructor was so patient and explained everything clearly."</p><p class="text-xs font-black uppercase">— Sarah M.</p></div><div class="min-w-[400px] p-12 bg-slate-50 border-2 border-slate-200"><div class="flex text-yellow-400 mb-6"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div><p class="text-base font-medium italic mb-6">"I was a very nervous driver, but Wythall school made me feel at ease instantly."</p><p class="text-xs font-black uppercase">— James K.</p></div></div></section>
+
+    <section id="services-2" class="py-32 bg-slate-50"><div class="max-w-7xl mx-auto px-6"><h2 class="text-5xl font-black uppercase tracking-tighter text-center mb-24">Lesson <span class="text-red-700">Types</span></h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"><div class="p-10 bg-white shadow-md"><i data-lucide="navigation" class="text-red-700 mb-6 w-10 h-10"></i><h3 class="font-black uppercase text-2xl mb-4">Standard</h3><p class="text-sm text-slate-500 font-bold uppercase">Essential driving skills for Manual / Auto.</p></div><div class="p-10 bg-white shadow-md"><i data-lucide="trending-up" class="text-red-700 mb-6 w-10 h-10"></i><h3 class="font-black uppercase text-2xl mb-4">Pass Plus</h3><p class="text-sm text-slate-500 font-bold uppercase">Advanced skills for higher confidence.</p></div><div class="p-10 bg-white shadow-md"><i data-lucide="car" class="text-red-700 mb-6 w-10 h-10"></i><h3 class="font-black uppercase text-2xl mb-4">Taxi Standards</h3><p class="text-sm text-slate-500 font-bold uppercase">Specialist training for taxi professionals.</p></div><div class="p-10 bg-white shadow-md"><i data-lucide="milestone" class="text-red-700 mb-6 w-10 h-10"></i><h3 class="font-black uppercase text-2xl mb-4">Motorway</h3><p class="text-sm text-slate-500 font-bold uppercase">2-hour sessions for high-speed confidence.</p></div></div></div></section>
+
+    <section class="py-32 bg-white border-y border-slate-100"><div class="max-w-5xl mx-auto px-6"><h2 class="text-5xl font-black uppercase tracking-tighter text-center mb-16">Weekly <span class="text-red-700">Availability</span></h2><div class="grid grid-cols-2 md:grid-cols-4 gap-8"><div class="p-8 border-2 border-slate-100 text-center"><p class="text-xs font-black uppercase mb-4">Mon-Fri (Day)</p><div class="avail-dot bg-red-700 mx-auto"></div><p class="text-xs font-bold mt-4 text-slate-400">BOOKED</p></div><div class="p-8 border-2 border-slate-100 text-center"><p class="text-xs font-black uppercase mb-4">Mon-Fri (Eve)</p><div class="avail-dot bg-green-600 mx-auto"></div><p class="text-xs font-bold mt-4 text-green-600">AVAILABLE</p></div><div class="p-8 border-2 border-slate-100 text-center"><p class="text-xs font-black uppercase mb-4">Saturday</p><div class="avail-dot bg-green-600 mx-auto"></div><p class="text-xs font-bold mt-4 text-green-600">AVAILABLE</p></div><div class="p-8 border-2 border-slate-100 text-center"><p class="text-xs font-black uppercase mb-4">Sunday</p><div class="avail-dot bg-red-700 mx-auto"></div><p class="text-xs font-bold mt-4 text-slate-400">LTD SLOTS</p></div></div></div></section>
+
+    <section id="pricing" class="py-32 bg-white"><div class="max-w-7xl mx-auto px-6 text-center mb-24"><h2 class="text-6xl font-black uppercase tracking-tighter">Tuition <span class="text-red-700">Pricing</span></h2></div><div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12"><div class="reveal bg-white p-14 shadow-xl border-t-[10px] border-slate-200"><h4 class="text-2xl font-bold mb-10 uppercase">Standard</h4><div class="text-6xl font-black mb-12">£40</div><ul class="space-y-6 mb-12 text-sm font-bold text-slate-400 uppercase"><li>★ 1 Hour Lesson</li><li>★ Learn Essential Skills</li><li>★ Experienced Instructors</li></ul><a href="tel:+447818542962" class="block text-center py-6 bg-slate-900 text-white font-black uppercase text-xs">Call 07818 542962</a></div><div class="reveal bg-white p-14 shadow-2xl border-t-[10px] border-red-700 relative scale-110 z-10"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-red-700 text-white px-8 py-2 text-xs font-black uppercase">Most Popular</div><h4 class="text-2xl font-bold mb-10 uppercase">Pass Plus</h4><div class="text-6xl font-black mb-12">£270</div><ul class="space-y-6 mb-12 text-sm font-bold text-slate-400 uppercase"><li>★ 6 Hour Course</li><li>★ Advanced Road Skills</li><li>★ Higher Confidence</li></ul><a href="https://wa.me/447818542962" class="block text-center py-6 btn-brand font-black uppercase text-xs">WhatsApp Wythall</a></div><div class="reveal bg-white p-14 shadow-xl border-t-[10px] border-slate-200"><h4 class="text-2xl font-bold mb-10 uppercase">Motorway</h4><div class="text-6xl font-black mb-12">£95</div><ul class="space-y-6 mb-12 text-sm font-bold text-slate-400 uppercase"><li>★ 2 Hour Lesson</li><li>★ Professional Training</li><li>★ High-Speed Experience</li></ul><a href="tel:+447818542962" class="block text-center py-6 bg-slate-900 text-white font-black uppercase text-xs">Call 07818 542962</a></div></div></section>
+
+    <footer class="bg-white text-slate-900 pt-24 pb-40 border-t border-slate-100"><div class="max-w-7xl mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12"><div class="logo-container"><svg class="wythall-logo" viewBox="0 0 260 85" fill="none"><rect x="5" y="5" width="50" height="50" rx="4" fill="white" stroke="#d31018" stroke-width="4"/><text x="17" y="45" font-family="Archivo Black" font-size="40" fill="#d31018">L</text><text x="65" y="32" font-family="Montserrat" font-weight="900" font-size="24" fill="black">WYTHALL</text><text x="65" y="52" font-family="Montserrat" font-weight="700" font-size="14" fill="black">DRIVING SCHOOL</text></svg></div><div class="grid grid-cols-2 gap-12 mt-12 md:mt-0 text-xs font-black uppercase"><div class="flex flex-col space-y-4"><a href="#services" class="hover:text-red-700">Manual Lessons</a><a href="#services" class="hover:text-red-700">Automatic Lessons</a><a href="#pricing" class="hover:text-red-700">Pass Plus</a></div><div class="flex flex-col space-y-4"><a href="tel:+447818542962" class="hover:text-red-700">Call Us</a><a href="https://wa.me/447818542962" class="hover:text-red-700">WhatsApp</a></div></div></div><div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-slate-100 gap-10"><div class="text-center md:text-left"><p class="text-3xl font-black tracking-tight text-red-700">07818 542962</p><p class="text-xs text-slate-400 font-bold uppercase mt-4">Wythall Driving School © 2026</p></div><div class="flex space-x-8"><i data-lucide="facebook" class="footer-social-icon hover:text-red-700 w-6 h-6"></i><i data-lucide="instagram" class="footer-social-icon hover:text-red-700 w-6 h-6"></i><i data-lucide="twitter" class="footer-social-icon hover:text-red-700 w-6 h-6"></i></div></div></div></footer>
+
+    <div class="cta-dock md:hidden"><a href="tel:+447818542962"><i data-lucide="phone" class="w-6 h-6 mb-2"></i>CALL</a><a href="https://wa.me/447818542962"><i data-lucide="message-square" class="w-6 h-6 mb-2"></i>WHATSAPP</a><a href="sms:+447818542962"><i data-lucide="smartphone" class="w-6 h-6 mb-2"></i>TEXT</a><a href="tel:+447818542962" class="bg-red-700"><i data-lucide="phone-call" class="w-6 h-6 mb-2"></i>CALLBACK</a></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -331,7 +379,15 @@
                     maxZoom: 18
                 }).addTo(map);
                 L.marker([52.3792, -1.8819]).addTo(map).bindPopup('<b>Wythall Driving School</b><br/>07818 542962').openPopup();
+                L.circle([52.3792, -1.8819], { radius: 8000, color: '#d31018', weight: 2, fillOpacity: 0.1 }).addTo(map);
             }
+            
+            document.querySelectorAll('.faq-item button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const item = btn.parentElement;
+                    item.classList.toggle('active');
+                });
+            });
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp'); });
@@ -342,8 +398,10 @@
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
         if(menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
         if(closeBtn) closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
     </script>
 </body>
 </html>
