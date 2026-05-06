@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Wythall Driving School | Certified, Friendly & Reputable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Wythall Driving School | Experienced, Friendly & Reputable</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -34,32 +34,33 @@
             font-size: 1.1rem; 
         }
         
-        /* Replicated Logo SVG Logic - Logo significantly larger */
+        /* Logo styling */
         .logo-container { display: flex; align-items: center; gap: 10px; }
         .wythall-logo { width: 200px; height: auto; } 
 
-        /* ===== ENLARGED HERO CAR SECTION - PUSHED UPWARDS ===== */
+        /* ===== HERO CAR SECTION - PUSHED MASSIVELY HIGHER ===== */
         .car-hero-container {
             position: relative;
             z-index: 10;
             width: 100%;
-            min-height: 680px; /* Increased height to push car up and give breathing room */
+            min-height: 520px; /* reduced slightly to allow car to be more visible above fold */
             display: flex;
             align-items: flex-end; 
             justify-content: center;
-            overflow: visible; /* changed from hidden to ensure car is fully visible */
+            overflow: visible;
             background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
-            margin-top: -20px; /* subtle negative margin to pull section higher */
+            margin-top: -45px; /* pulls the entire car container UP for better placement */
+            margin-bottom: 0px;
         }
         
-        /* Massive, Dominant Car Image */
+        /* Massive, Dominant Car Image - Pushed UP more */
         #panningCar {
             width: 100%;
-            max-width: 1300px; /* drastically larger size (previously 1400px was overflow) */
+            max-width: 1300px;
             height: auto;
             object-fit: contain; 
             position: relative;
-            bottom: -15px; /* fine-tuned so wheels kiss the road track */
+            bottom: -25px; /* adjusted to lift car relative to road, making car higher visually */
             z-index: 25; 
             animation: driveForward 14s linear infinite;
             will-change: transform;
@@ -83,18 +84,18 @@
             transform: translateX(0);
         }
 
-        /* === ROAD TRACKS - RAISED HIGHER & ALIGNED WITH WHEELS === */
+        /* === ROAD TRACKS - RAISED HIGHER, ALIGNED WITH WHEELS === */
         .road-indicator {
-            height: 22px; /* thicker road markings for enlarged scale */
+            height: 22px;
             background: transparent; 
             width: 100%;
             position: absolute;
-            bottom: 68px; /* CRITICAL: Pushed road line up to touch car wheels (based on new car bottom position) */
+            bottom: 40px; /* RAISED significantly: used to be 68px, now wheels touch track higher up */
             left: 0;
             z-index: 15; 
             pointer-events: none;
         }
-        /* Animated dashed line effect */
+        /* Animated dashed line */
         .road-indicator::after {
             content: '';
             position: absolute;
@@ -117,10 +118,9 @@
             100% { background-position: -130px 0; }
         }
 
-        /* secondary shadow road underlayer for realism (makes track visible) */
         .road-shadow {
             position: absolute;
-            bottom: 62px;
+            bottom: 34px;
             left: 0;
             width: 100%;
             height: 8px;
@@ -146,7 +146,6 @@
         .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 1.5rem; }
         .faq-item.active i { transform: rotate(180deg); }
         
-        /* Enhanced CTA Dock */
         .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-dark); display: flex; z-index: 100; border-top: 3px solid var(--brand-red); }
         .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 0; color: white; font-size: 12px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
         .cta-dock a:last-child { border-right: none; }
@@ -161,40 +160,60 @@
         .footer-social-icon { transition: transform 0.2s, color 0.2s; cursor: pointer; }
         .footer-social-icon:hover { transform: translateY(-3px); color: var(--brand-red); }
 
-        /* Mobile fine-tuning for larger car & higher tracks */
+        /* ===== CRITICAL FIX FOR MOBILE PORTRAIT - CAR IS NOW HIGHER & FULLY VISIBLE ===== */
         @media (max-width: 768px) {
             .car-hero-container {
-                min-height: 480px;
-                margin-top: 0px;
+                min-height: 380px; /* Balanced height so car sits higher, not hidden */
+                margin-top: -60px; /* PUSH entire car section UP dramatically */
+                margin-bottom: -20px;
             }
             #panningCar {
-                max-width: 950px;
-                bottom: -10px;
+                max-width: 1000px;
+                bottom: -10px; /* Fine-tuned to avoid clipping, yet car appears much higher up */
+                transform: scale(1.05);
             }
             .road-indicator {
-                bottom: 58px;
-                height: 18px;
+                bottom: 32px; /* Raised track line touches wheels on mobile */
+                height: 16px;
             }
             .road-shadow {
-                bottom: 52px;
+                bottom: 26px;
             }
-            .hero-headline {
+            .hero-content-space {
+                margin-top: 0px;
+            }
+            h1.hero-main {
                 font-size: 3rem !important;
             }
         }
 
         @media (max-width: 480px) {
+            .car-hero-container {
+                min-height: 340px;
+                margin-top: -70px;
+            }
             #panningCar {
-                max-width: 750px;
+                max-width: 850px;
+                bottom: -5px;
             }
             .road-indicator {
-                bottom: 52px;
+                bottom: 28px;
+            }
+            .road-shadow {
+                bottom: 22px;
             }
         }
 
         /* additional lift for the entire hero area */
         .hero-content-space {
-            margin-top: 30px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 20;
+        }
+        
+        /* ensure the car image container does not clip on any device */
+        .car-outer {
+            overflow: visible;
         }
     </style>
 </head>
@@ -255,23 +274,23 @@
         </div>
     </div>
 
-    <!-- HERO SECTION WITH ENLARGED CAR PUSHED UP & TRACKS TOUCHING WHEELS -->
-    <section class="relative min-h-[85vh] flex flex-col items-center justify-start bg-slate-50 pt-8 pb-24 overflow-visible">
-        <!-- CAR & ROAD CONTAINER: Pushed upward, car massive -->
-        <div class="w-full relative">
+    <!-- HERO SECTION WITH ENLARGED CAR PUSHED MASSIVELY HIGHER (FIX FOR MOBILE) -->
+    <section class="relative min-h-[75vh] flex flex-col items-center justify-start bg-slate-50 pt-0 pb-16 overflow-visible">
+        <!-- CAR & ROAD CONTAINER: Car is now RAISED HIGHER, visible fully on portrait -->
+        <div class="w-full relative car-outer">
             <div class="car-hero-container">
-                <!-- Animated Road track that touches wheels exactly (raised position) -->
+                <!-- Road shadow and track that now aligns properly with wheels -->
                 <div class="road-shadow"></div>
                 <div class="road-indicator"></div>
-                <!-- Enlarged Hero Car Image (actual vehicle) -->
+                <!-- Enlarged Hero Car Image - lifted upwards -->
                 <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3853.png" alt="Wythall Driving School Car - Professional Tuition">
             </div>
         </div>
         
-        <!-- Headline Content (pushed down a bit for balance) -->
-        <div class="max-w-5xl mx-auto px-6 text-center z-20 hero-content-space mt-6">
+        <!-- Headline Content (pushed slightly down but not interfering with car visibility) -->
+        <div class="max-w-5xl mx-auto px-6 text-center z-20 hero-content-space mt-2">
             <div class="animate__animated animate__fadeInUp">
-                <h1 class="text-6xl md:text-9xl font-black text-slate-900 leading-tight mb-6 uppercase tracking-tighter">
+                <h1 class="text-6xl md:text-9xl font-black text-slate-900 leading-tight mb-6 uppercase tracking-tighter hero-main">
                     Safe. <span class="text-red-700">Confident.</span>
                 </h1>
                 <p class="text-slate-600 font-bold uppercase tracking-[0.25em] text-xl mb-12">Professional Driving Tuition for All Levels</p>
@@ -342,9 +361,7 @@
 
     <section class="py-32 bg-slate-50"><div class="max-w-7xl mx-auto px-6"><h2 class="text-5xl font-black uppercase text-center mb-20">Where We <span class="text-red-700">Teach</span></h2><div class="grid md:grid-cols-3 gap-12"><div class="md:col-span-2 rounded-xl overflow-hidden shadow-lg bg-white"><div id="realMap"></div></div><div class="space-y-8"><div class="p-10 bg-white shadow-sm border-l-8 border-red-700"><h4 class="font-black uppercase text-sm mb-4">Coverage Areas</h4><p class="text-xs font-bold text-slate-500 uppercase">Wythall, Hollywood, Shirley, Solihull, Kings Norton, Alvechurch.</p></div><div class="p-10 bg-white shadow-sm border-l-8 border-slate-900"><h4 class="font-black uppercase text-sm mb-4">Local Test Centres</h4><p class="text-xs font-bold text-slate-500 uppercase">Shirley (Solihull), Kings Heath, Redditch.</p></div></div></div></div></section>
 
-    <section class="py-32 bg-white"><div class="max-w-3xl mx-auto px-6"><h2 class="text-5xl font-black uppercase text-center mb-20">Your <span class="text-red-700">Questions</span></h2><div class="space-y-8"><div class="faq-item active"><button class="w-full py-6 flex justify-between font-black uppercase text-xs tracking-widest">How much are lessons? <i data-lucide="chevron-down"></i></button><div class="faq-answer text-xs font-bold uppercase text-slate-500">Standard lessons are £40 per hour. Block bookings for courses like Pass Plus are £270.</div></div><div class="faq-item"><button class="w-full py-6 flex justify-between font-black uppercase text-xs tracking-widest">Do you do weekend lessons? <i data-lucide="chevron-down"></i></button><div class="faq-answer text-xs font-bold uppercase text-slate-500">Yes, we have availability for evenings and Saturdays. Sundays have limited slots.</div></div><div class="faq-item"><button class="w-full py-6 flex justify-between font-black uppercase text-xs tracking-widest">How do I pay? <i data-lucide="chevron-down"></i></button><div class="faq-answer text-xs font-bold uppercase text-slate-500">We accept Bank Transfer, Cash, or payment via our secure booking link.</div></div></div></div></section>
-
-    <footer class="bg-white text-slate-900 pt-24 pb-40 border-t border-slate-100"><div class="max-w-7xl mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12"><div class="logo-container"><svg class="wythall-logo" viewBox="0 0 260 85" fill="none"><rect x="5" y="5" width="50" height="50" rx="4" fill="white" stroke="#d31018" stroke-width="4"/><text x="17" y="45" font-family="Archivo Black" font-size="40" fill="#d31018">L</text><text x="65" y="32" font-family="Montserrat" font-weight="900" font-size="24" fill="black">WYTHALL</text><text x="65" y="52" font-family="Montserrat" font-weight="700" font-size="14" fill="black">DRIVING SCHOOL</text></svg></div><div class="grid grid-cols-2 gap-12 mt-12 md:mt-0 text-xs font-black uppercase"><div class="flex flex-col space-y-4"><a href="#services" class="hover:text-red-700">Manual Lessons</a><a href="#services" class="hover:text-red-700">Automatic Lessons</a><a href="#pricing" class="hover:text-red-700">Pass Plus</a></div><div class="flex flex-col space-y-4"><a href="tel:+447818542962" class="hover:text-red-700">Call Us</a><a href="https://wa.me/447818542962" class="hover:text-red-700">WhatsApp</a><a href="mailto:info@wythalldrivingschool.com" class="hover:text-red-700">Email</a></div></div></div><div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-slate-100 gap-10"><div class="text-center md:text-left"><p class="text-3xl font-black tracking-tight text-red-700">07818 542962</p><p class="text-xs text-slate-400 font-bold uppercase mt-4">Wythall Driving School © 2026</p></div><div class="flex space-x-8"><i data-lucide="facebook" class="footer-social-icon hover:text-red-700 w-6 h-6"></i><i data-lucide="instagram" class="footer-social-icon hover:text-red-700 w-6 h-6"></i><i data-lucide="twitter" class="footer-social-icon hover:text-red-700 w-6 h-6"></i></div></div></div></footer>
+    <footer class="bg-white text-slate-900 pt-24 pb-40 border-t border-slate-100"><div class="max-w-7xl mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12"><div class="logo-container"><svg class="wythall-logo" viewBox="0 0 260 85" fill="none"><rect x="5" y="5" width="50" height="50" rx="4" fill="white" stroke="#d31018" stroke-width="4"/><text x="17" y="45" font-family="Archivo Black" font-size="40" fill="#d31018">L</text><text x="65" y="32" font-family="Montserrat" font-weight="900" font-size="24" fill="black">WYTHALL</text><text x="65" y="52" font-family="Montserrat" font-weight="700" font-size="14" fill="black">DRIVING SCHOOL</text></svg></div><div class="grid grid-cols-2 gap-12 mt-12 md:mt-0 text-xs font-black uppercase"><div class="flex flex-col space-y-4"><a href="#services" class="hover:text-red-700">Manual Lessons</a><a href="#services" class="hover:text-red-700">Automatic Lessons</a><a href="#pricing" class="hover:text-red-700">Pass Plus</a></div><div class="flex flex-col space-y-4"><a href="tel:+447818542962" class="hover:text-red-700">Call Us</a><a href="https://wa.me/447818542962" class="hover:text-red-700">WhatsApp</a></div></div></div><div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-slate-100 gap-10"><div class="text-center md:text-left"><p class="text-3xl font-black tracking-tight text-red-700">07818 542962</p><p class="text-xs text-slate-400 font-bold uppercase mt-4">Wythall Driving School © 2026</p></div><div class="flex space-x-8"><i data-lucide="facebook" class="footer-social-icon hover:text-red-700 w-6 h-6"></i><i data-lucide="instagram" class="footer-social-icon hover:text-red-700 w-6 h-6"></i><i data-lucide="twitter" class="footer-social-icon hover:text-red-700 w-6 h-6"></i></div></div></div></footer>
 
     <div class="cta-dock md:hidden"><a href="tel:+447818542962"><i data-lucide="phone" class="w-6 h-6 mb-2"></i>CALL</a><a href="https://wa.me/447818542962"><i data-lucide="message-square" class="w-6 h-6 mb-2"></i>WHATSAPP</a><a href="sms:+447818542962"><i data-lucide="smartphone" class="w-6 h-6 mb-2"></i>TEXT</a><a href="tel:+447818542962" class="bg-red-700"><i data-lucide="phone-call" class="w-6 h-6 mb-2"></i>CALLBACK</a></div>
 
@@ -359,7 +376,7 @@
                     subdomains: 'abcd',
                     maxZoom: 18
                 }).addTo(map);
-                L.marker([52.3792, -1.8819]).addTo(map).bindPopup('<b>Wythall Driving School</b><br>07818 542962').openPopup();
+                L.marker([52.3792, -1.8819]).addTo(map).bindPopup('<b>Wythall Driving School</b><br/>07818 542962').openPopup();
                 L.circle([52.3792, -1.8819], { radius: 8000, color: '#d31018', weight: 2, fillOpacity: 0.1 }).addTo(map);
             }
             
