@@ -179,14 +179,38 @@
         </div>
     </div>
 
+
     <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white py-20 overflow-hidden">
-        <div class="w-full mb-16">
-            <div class="car-hero-container">
-                <div class="road-indicator"></div>
-                <!-- Replaced car image with a transparent cutout mockup based on user images -->
-                <img id="panningCar" src="https://i.ibb.co/XrnZz8W/millers-car.png" alt="Miller's Driving School Car" onerror="this.src='https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3918.png'">
-            </div>
+    
+    <div class="w-full mb-16">
+        <div class="car-hero-container relative">
+            
+            <div class="road-indicator"></div>
+
+            <!-- Car Image -->
+            <img 
+                id="panningCar"
+                src="https://i.ibb.co/XrnZz8W/millers-car.png"
+                alt="Miller's Driving School Car"
+                class="mx-auto max-w-full h-auto object-contain"
+                loading="eager"
+                onerror="
+                    if (!this.dataset.fallback) {
+                        this.dataset.fallback = '1';
+                        this.src = 'https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3918.png';
+                    } else {
+                        this.onerror = null;
+                        this.src = 'https://via.placeholder.com/600x300?text=Car+Image';
+                    }
+                "
+            >
+
         </div>
+    </div>
+
+</section>
+
+  
 
         <div class="max-w-4xl mx-auto px-6 text-center z-20">
             <div class="animate__animated animate__fadeInUp">
