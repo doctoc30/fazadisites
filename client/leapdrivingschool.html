@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap Driving School | Professional Driving Tuition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-black: #000000; 
+            --brand-red: #e11d48; /* Red from Leap Logo */
+            --brand-green: #15803d; /* Green from Leap Logo */
+            --brand-silver: #f8fafc;
+        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
+        
+        /* Leap Logo SVG Replication */
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+        }
+        .leap-l { color: var(--brand-red); }
+        .leap-ea { color: var(--brand-black); }
+        .leap-p { color: var(--brand-green); }
+        
+        .sub-logo {
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--brand-black);
+            display: block;
+            margin-top: -5px;
+            font-weight: 900;
+        }
+
+        /* Continuous Smooth Driving Animation */
+        .car-hero-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 320px; 
+            display: flex;
+            align-items: flex-end; 
+            overflow: hidden; 
+        }
+        
+        #panningCar {
+            width: 480px;
+            height: auto; 
+            position: absolute;
+            bottom: 30px; 
+            z-index: 20; 
+            animation: driveForward 12s linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes driveForward {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+
+        /* Hamburger Menu Styles */
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateX(100%);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .road-indicator {
+            height: 4px;
+            background: var(--brand-silver);
+            width: 100%;
+            position: absolute;
+            bottom: 35px; 
+            z-index: 5; 
+        }
+        .road-indicator::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, var(--brand-red) 33%, var(--brand-black) 33%, var(--brand-black) 66%, var(--brand-green) 66%);
+            background-size: 60px 100%;
+            animation: roadMove 0.5s linear infinite;
+        }
+        @keyframes roadMove {
+            0% { background-position: 0 0; }
+            100% { background-position: -60px 0; }
+        }
+
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); }
+        .premium-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-top: 4px solid transparent; }
+        .premium-card:hover { transform: translateY(-12px); border-color: var(--brand-green); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
+        .ticker-wrap { overflow: hidden; background: var(--brand-black); color: white; padding: 12px 0; border-bottom: 3px solid var(--brand-green); }
+        .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .btn-leap { background-color: var(--brand-red); color: white; transition: 0.3s; }
+        .btn-leap:hover { background-color: var(--brand-green); transform: scale(1.05); }
+
+        .faq-item { border-bottom: 1px solid #edf2f7; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 1.5rem; }
+        .faq-item.active i { transform: rotate(180deg); }
+        
+        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-black); display: flex; z-index: 100; border-top: 3px solid var(--brand-green); }
+        .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
+        
+        .gallery-scroll { display: flex; overflow-x: auto; gap: 1rem; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .gallery-item { min-width: 280px; height: 350px; scroll-snap-align: start; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
+        
+        .service-grid-item { border: 1px solid #e2e8f0; transition: all 0.3s ease; cursor: pointer; }
+        .service-grid-item:hover { border-color: var(--brand-red); background: #fff; transform: translateY(-5px); }
+
+        .slider-wrap { position: relative; overflow: hidden; }
+        .slide { display: none; }
+        .slide.active { display: block; animation: fadeIn 0.5s; }
+
+        /* ADDON: Referral Modal Styles */
+        #referModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 999; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        #referModal.active { display: flex; }
+    </style>
+</head>
+<body class="text-slate-900"> 
+    <nav class="sticky top-0 z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex flex-col">
+                <div class="logo-wrap">
+                    <span class="leap-l">L</span><span class="leap-ea">EA</span><span class="leap-p">P</span>
+                </div>
+                <span class="sub-logo">DRIVING SCHOOL</span>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-10 font-bold text-xs uppercase tracking-widest">
+                <a href="#services" class="hover:text-[var(--brand-red)] transition">Lessons</a>
+                <a href="#pricing" class="hover:text-[var(--brand-red)] transition">Pricing</a>
+                <a href="https://leap-drivingschool.co.uk" class="hover:text-[var(--brand-red)] transition">leap-drivingschool.co.uk</a>
+                <a href="tel:07555555555" class="btn-leap px-6 py-3 rounded-sm shadow-lg">Call to Book</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-[var(--brand-black)]">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full sm:w-80 bg-black z-[100] p-10 flex flex-col shadow-2xl">
+        <button id="close-btn" class="self-end text-white mb-12">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <div class="flex flex-col space-y-8 text-white font-black text-2xl uppercase tracking-tighter">
+            <a href="#services" class="mobile-link">Tuition Types</a>
+            <a href="#pricing" class="mobile-link">Lesson Prices</a>
+            <a href="tel:07555555555" class="mobile-link text-red-500">Call Now</a>
+            <a href="https://wa.me/447555555555" class="text-green-500 mobile-link">WhatsApp Us</a>
+        </div>
+        <div class="mt-auto border-t border-white/10 pt-8">
+            <div class="flex space-x-6 text-white/50">
+                <i data-lucide="facebook"></i>
+                <i data-lucide="instagram"></i>
+                <i data-lucide="globe"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticker-wrap font-bold uppercase text-[10px] tracking-[0.2em]">
+        <div class="ticker space-x-16">
+            <span>★ DVSA Approved Instructor</span>
+            <span>★ Motorway & Refresher Lessons</span>
+            <span>★ 98% Recommend Rate</span>
+            <span>★ Manual & Automatic Tuition</span>
+            <span>★ Established Local Expert</span>
+        </div>
+    </div>
+
+    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white py-20 overflow-hidden">
+        <div class="w-full mb-16">
+            <div class="car-hero-container">
+                <div class="road-indicator"></div>
+                <!-- Replaced with the Leap Driving School Car from your images -->
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/tony.jpg" alt="Leap Driving School Car">
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 text-center z-20">
+            <div class="animate__animated animate__fadeInUp">
+                <h1 class="text-5xl md:text-7xl font-black text-black leading-tight mb-4 uppercase tracking-tighter">
+                    Make the <span class="text-red-600">Leap</span> to <span class="text-green-600">Freedom.</span>
+                </h1>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.2em] mb-10">Driving, Motorway & Refresher Lessons Available</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="tel:07555555555" class="px-12 py-5 btn-leap font-black uppercase tracking-widest text-xs">Call Instructor</a>
+                    <a href="https://wa.me/447555555555" class="px-12 py-5 border-2 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition">WhatsApp Leap</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-6">Expert Tuition for <span class="text-green-600">All Ages</span></h2>
+                <p class="text-slate-600 font-medium mb-6 leading-relaxed">Leap Driving School provides professional, reliable, and patient instruction tailored to your needs. Whether you are at least 17 years old picking up a steering wheel for the first time or a full license holder looking for a refresher, we build the confidence you need to master the UK roads.</p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="border-l-4 border-red-600 pl-4">
+                        <p class="text-2xl font-black text-black">98%</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-wrap">Recommended by Students</p>
+                    </div>
+                    <div class="border-l-4 border-green-600 pl-4">
+                        <p class="text-2xl font-black text-black">Fully</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Licensed ADI Pros</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal bg-gradient-to-tr from-slate-100 to-white rounded-2xl h-80 flex flex-col items-center justify-center border-2 border-dashed border-slate-200 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-5 pointer-events-none">
+                    <svg width="100%" height="100%"><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/></pattern><rect width="100%" height="100%" fill="url(#grid)" /></svg>
+                </div>
+                <div class="w-32 h-32 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-red-600 mb-6 z-10">
+                    <i data-lucide="shield-check" class="w-16 h-16 text-green-600"></i>
+                </div>
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500 z-10">DVSA Certified Standards</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Tuition <span class="text-red-600">Services</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="service-grid-item p-8 bg-white">
+                    <i data-lucide="user-plus" class="text-red-600 mb-4"></i>
+                    <h3 class="font-black uppercase tracking-tight text-xl mb-2 text-wrap">New Learners</h3>
+                    <p class="text-xs text-slate-500 font-bold uppercase leading-relaxed">From your first lesson to your final test, we guide you every step.</p>
+                </div>
+                <div class="service-grid-item p-8 bg-white">
+                    <i data-lucide="milestone" class="text-green-600 mb-4"></i>
+                    <h3 class="font-black uppercase tracking-tight text-xl mb-2 text-wrap">Motorway Skills</h3>
+                    <p class="text-xs text-slate-500 font-bold uppercase leading-relaxed">Specialized training for high-speed road confidence and safety.</p>
+                </div>
+                <div class="service-grid-item p-8 bg-white">
+                    <i data-lucide="refresh-cw" class="text-black mb-4"></i>
+                    <h3 class="font-black uppercase tracking-tight text-xl mb-2 text-wrap">Refresher Courses</h3>
+                    <p class="text-xs text-slate-500 font-bold uppercase leading-relaxed">Perfect for license holders who haven't driven in a while.</p>
+                </div>
+                <div class="service-grid-item p-8 bg-white">
+                    <i data-lucide="check-circle" class="text-red-600 mb-4"></i>
+                    <h3 class="font-black uppercase tracking-tight text-xl mb-2 text-wrap">Mock Driving Tests</h3>
+                    <p class="text-xs text-slate-500 font-bold uppercase leading-relaxed">Realistic test scenarios to ensure you are 100% ready.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[var(--brand-silver)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                <div class="reveal">
+                    <div class="text-5xl font-black text-black mb-2" id="stat1">739+</div>
+                    <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Followers</div>
+                </div>
+                <div class="reveal">
+                    <div class="text-5xl font-black text-red-600 mb-2" id="stat2">29+</div>
+                    <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Verified Reviews</div>
+                </div>
+                <div class="reveal">
+                    <div class="text-5xl font-black text-green-600 mb-2" id="stat3">98%</div>
+                    <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Recommend Rate</div>
+                </div>
+                <div class="reveal">
+                    <div class="text-5xl font-black text-black mb-2" id="stat4">100%</div>
+                    <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">DVSA Standard</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-12">Leap <span class="text-green-600">Wall of Fame</span></h2>
+            <div class="gallery-scroll">
+                <div class="gallery-item flex flex-col items-center justify-center p-4">
+                    <div class="w-full h-64 bg-slate-200 mb-4 rounded flex items-center justify-center"><i data-lucide="image" class="text-slate-400 w-12 h-12"></i></div>
+                    <p class="font-black uppercase text-xs tracking-tighter">Student Success Story</p>
+                </div>
+                <div class="gallery-item flex flex-col items-center justify-center p-4">
+                    <div class="w-full h-64 bg-slate-200 mb-4 rounded flex items-center justify-center"><i data-lucide="image" class="text-slate-400 w-12 h-12"></i></div>
+                    <p class="font-black uppercase text-xs tracking-tighter">First Time Pass</p>
+                </div>
+                <div class="gallery-item flex flex-col items-center justify-center p-4">
+                    <div class="w-full h-64 bg-slate-200 mb-4 rounded flex items-center justify-center"><i data-lucide="image" class="text-slate-400 w-12 h-12"></i></div>
+                    <p class="font-black uppercase text-xs tracking-tighter">Motorway Mastery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-black text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div id="story-slider" class="slider-wrap">
+                <div class="slide active">
+                    <p class="text-2xl font-bold italic mb-4">"Professional, patient, and highly reliable instruction. Couldn't have passed without them!"</p>
+                    <p class="text-green-500 font-black uppercase tracking-widest text-xs">Leap Driving School Reviewer</p>
+                </div>
+                <div class="slide">
+                    <p class="text-2xl font-bold italic mb-4">"The best in the area. 98% recommendation rate for a reason!"</p>
+                    <p class="text-red-500 font-black uppercase tracking-widest text-xs">Facebook Testimonial</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-32 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-20">
+            <h2 class="text-5xl font-black uppercase tracking-tighter text-black">Competitive <span class="text-red-600">Rates</span></h2>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+            <div class="reveal bg-white p-10 shadow-xl border-t-8 border-black">
+                <h4 class="text-xl font-bold mb-10 uppercase tracking-tighter">Single Hour</h4>
+                <div class="text-5xl font-black text-black mb-10">£38</div>
+                <ul class="space-y-4 mb-10 text-xs font-bold text-slate-400 uppercase tracking-widest text-left">
+                    <li>★ Pay-As-You-Go</li>
+                    <li>★ Local Pickup</li>
+                </ul>
+                <a href="tel:07555555555" class="block text-center py-5 bg-black text-white font-black uppercase tracking-widest text-[10px]">Call to Book</a>
+            </div>
+            <div class="reveal bg-white p-10 shadow-2xl border-t-8 border-green-600 relative scale-105 z-10">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-1 text-[10px] font-black uppercase tracking-widest">Most Popular</div>
+                <h4 class="text-xl font-bold mb-10 uppercase tracking-tighter">10 Hour Block</h4>
+                <div class="text-5xl font-black text-black mb-10">£360</div>
+                <ul class="space-y-4 mb-10 text-xs font-bold text-slate-400 uppercase tracking-widest text-left">
+                    <li>★ Save £20</li>
+                    <li>★ Priority Booking</li>
+                </ul>
+                <a href="https://wa.me/447555555555" class="block text-center py-5 bg-green-600 text-white font-black uppercase tracking-widest text-[10px]">WhatsApp to Save</a>
+            </div>
+            <div class="reveal bg-white p-10 shadow-xl border-t-8 border-red-600">
+                <h4 class="text-xl font-bold mb-10 uppercase tracking-tighter">Motorway Pro</h4>
+                <div class="text-5xl font-black text-black mb-10">£80</div>
+                <ul class="space-y-4 mb-10 text-xs font-bold text-slate-400 uppercase tracking-widest text-left">
+                    <li>★ 2 Hour Intensive</li>
+                    <li>★ High Speed Road Safety</li>
+                </ul>
+                <a href="tel:07555555555" class="block text-center py-5 btn-leap font-black uppercase tracking-widest text-[10px]">Call to Book</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-3xl font-black uppercase tracking-tighter mb-8">Recent <span class="text-green-600">Feedback</span></h2>
+                <div class="bg-slate-50 p-8 rounded border border-slate-100 mb-4">
+                    <div class="flex text-yellow-400 mb-4"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+                    <p class="font-bold text-slate-700 italic">"Passed first time! Leap Driving School made me feel so calm and ready for the big day."</p>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-3xl font-black uppercase tracking-tighter mb-8">Our <span class="text-red-600">Location</span></h2>
+                <div class="bg-slate-100 p-8 rounded border border-slate-200 flex flex-col justify-center items-center text-center">
+                    <i data-lucide="map-pin" class="text-red-600 w-10 h-10 mb-4"></i>
+                    <p class="font-black uppercase tracking-widest text-sm mb-2 text-black">Operating Region</p>
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-tighter">Check our Facebook for local pass photos in your area!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-green-700 text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black uppercase tracking-tight mb-4 text-white">Refer a Friend</h2>
+            <p class="font-bold opacity-90 uppercase text-xs tracking-widest mb-8">Love our teaching? Refer a friend and get a discount on your next block booking!</p>
+            <button onclick="toggleReferModal()" class="px-8 py-4 bg-white text-green-700 font-black uppercase text-[10px] tracking-widest">Referral Info</button>
+        </div>
+    </section>
+
+    <section id="callback" class="py-24 bg-black text-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">Quick <span class="text-red-600">Inquiry</span></h2>
+                <p class="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Leave your number and we'll call you back</p>
+            </div>
+            <form class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/10 p-5 font-bold text-xs uppercase focus:outline-none focus:border-green-600 transition">
+                    <input type="tel" placeholder="Mobile Number" class="w-full bg-white/5 border border-white/10 p-5 font-bold text-xs uppercase focus:outline-none focus:border-green-600 transition">
+                </div>
+                <button type="submit" class="w-full btn-leap py-6 font-black uppercase tracking-widest text-xs">Send Request</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-12 text-center">FAQs <span class="text-green-600">Knowledge</span></h2>
+            <div id="faq-container">
+                <div class="faq-item active">
+                    <button class="w-full py-6 flex justify-between items-center text-left font-black uppercase text-sm tracking-widest">
+                        What age can I start?
+                        <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-slate-500 font-medium">You must be at least 17 years old and hold either a provisional or full UK license to start lessons.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="w-full py-6 flex justify-between items-center text-left font-black uppercase text-sm tracking-widest">
+                        Do you offer motorway training?
+                        <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-slate-500 font-medium">Yes! We provide specialized motorway and refresher lessons for all license holders.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white pt-20 pb-32 border-t border-white/5"> 
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="flex flex-col">
+                    <div class="logo-wrap !text-white">
+                        <span class="leap-l">L</span><span class="leap-ea">EA</span><span class="leap-p">P</span>
+                    </div>
+                    <span class="sub-logo !text-white/50">DRIVING SCHOOL</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" target="_blank" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition duration-500 text-white">
+                        <i data-lucide="facebook" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://wa.me/447555555555" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-green-600 hover:border-green-600 transition duration-500 text-white">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-8">
+                <div class="text-center md:text-left">
+                    <p class="text-xl font-black tracking-tight text-green-500">leap-drivingschool.co.uk</p>
+                    <p class="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-2">Fully Insured & DVSA Registered Instructor</p>
+                </div>
+                <p class="text-[9px] text-slate-500 font-black uppercase tracking-[0.4em]">&copy; 2026 LEAP DRIVING SCHOOL</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="referModal">
+        <div class="bg-white p-12 max-w-md w-full rounded-2xl relative animate__animated animate__zoomIn">
+            <button onclick="toggleReferModal()" class="absolute top-6 right-6 text-slate-400 hover:text-red-600 transition"><i data-lucide="x"></i></button>
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8">
+                <i data-lucide="gift" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-black uppercase tracking-tighter text-center mb-4">Refer & <span class="text-green-600">Save</span></h3>
+            <p class="text-slate-500 text-center font-medium mb-8 leading-relaxed">Help a friend start their journey with Leap Driving School. Once they book, you'll receive a discount on your next block!</p>
+            <button class="w-full btn-leap py-5 font-black uppercase tracking-widest text-[10px]">Share via WhatsApp</button>
+        </div>
+    </div>
+
+    <div class="cta-dock md:hidden">
+        <a href="tel:07555555555"><i data-lucide="phone" class="w-5 h-5 mb-1"></i>CALL</a>
+        <a href="https://wa.me/447555555555"><i data-lucide="message-square" class="w-5 h-5 mb-1"></i>WHATSAPP</a>
+        <a href="mailto:info@leap-drivingschool.co.uk"><i data-lucide="mail" class="w-5 h-5 mb-1"></i>EMAIL</a>
+        <a href="#callback" class="bg-green-600 !border-none"><i data-lucide="clock" class="w-5 h-5 mb-1"></i>CALLBACK</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            lucide.createIcons(); 
+        });
+        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            if(!obj) return;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start) + (end > 95 ? '%' : '+');
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                animateValue('stat1', 0, 739, 2000);
+                animateValue('stat2', 0, 29, 2000);
+                animateValue('stat3', 0, 98, 2000);
+                animateValue('stat4', 0, 100, 2000);
+                statsObserver.unobserve(entries[0].target);
+            }
+        });
+        const statEl = document.getElementById('stat1');
+        if(statEl) statsObserver.observe(statEl);
+
+        document.querySelectorAll('.faq-item button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.classList.toggle('active');
+            });
+        });
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        setInterval(() => {
+            if(slides.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+        }, 5000);
+
+        function toggleReferModal() {
+            document.getElementById('referModal').classList.toggle('active');
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
