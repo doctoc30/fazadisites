@@ -38,36 +38,36 @@
         .logo-container { display: flex; align-items: center; gap: 10px; }
         .wythall-logo { width: 210px; height: auto; } 
 
-        /* ===== HERO CAR SECTION - CAR NOW MASSIVE, ROAD TRACK THINNER ===== */
+        /* ===== HERO CAR SECTION - MASSIVE CAR, SMOOTH ROAD TRACK ===== */
         .car-hero-container {
             position: relative;
             z-index: 10;
             width: 100%;
-            min-height: 560px; /* ample space for giant car */
+            min-height: 560px;
             display: flex;
             align-items: flex-end; 
             justify-content: center;
             overflow: visible;
             background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
-            margin-top: -50px; /* pulls everything up for better visual */
+            margin-top: -50px;
             margin-bottom: -10px;
         }
         
-        /* MASSIVE, DOMINANT CAR IMAGE - SIGNIFICANTLY LARGER */
+        /* MASSIVE CAR IMAGE */
         #panningCar {
             width: 100%;
-            max-width: 1500px; /* drastically increased size */
+            max-width: 1500px;
             height: auto;
             object-fit: contain; 
             position: relative;
-            bottom: -20px; /* wheels touch track */
+            bottom: -20px;
             z-index: 25; 
             animation: driveForward 16s linear infinite;
             will-change: transform;
             display: block;
             margin: 0 auto;
             filter: drop-shadow(0 25px 20px rgba(0,0,0,0.2));
-            transform: scale(1.08); /* extra scaling for massive presence */
+            transform: scale(1.08);
         }
 
         @keyframes driveForward {
@@ -85,48 +85,63 @@
             transform: translateX(0);
         }
 
-        /* === ROAD TRACKS - NOW THINNER & ELEGANT, TOUCHING WHEELS === */
+        /* === FIXED: SMOOTH NON-FLICKERING ROAD TRACK (THINNER) === */
         .road-indicator {
-            height: 6px; /* THINNER ROAD TRACK (was 22px) */
+            height: 5px; /* thinner track */
             background: transparent; 
             width: 100%;
             position: absolute;
-            bottom: 36px; /* perfectly aligned with larger car wheels */
+            bottom: 36px;
             left: 0;
             z-index: 15; 
             pointer-events: none;
+            overflow: hidden;
         }
-        /* Thinner, clean dashed line for the road */
-        .road-indicator::after {
+        
+        /* Solid base road line for stability */
+        .road-indicator::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-image: repeating-linear-gradient(
+            height: 2px;
+            background: #334155;
+            opacity: 0.35;
+        }
+        
+        /* Animated dashed overlay - smoother animation */
+        .road-indicator::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 5px;
+            background: repeating-linear-gradient(
                 to right,
                 #334155 0px,
-                #334155 30px,
-                transparent 30px,
-                transparent 80px
+                #334155 28px,
+                transparent 28px,
+                transparent 70px
             );
-            background-size: 110px 100%;
-            animation: roadMove 0.5s linear infinite;
+            animation: roadMoveSmooth 1.2s linear infinite;
+            will-change: transform;
         }
-        @keyframes roadMove {
-            0% { background-position: 0 0; }
-            100% { background-position: -110px 0; }
+        
+        @keyframes roadMoveSmooth {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        /* Very subtle shadow under car (optional, keeps realism) */
+        /* Very subtle shadow under car */
         .road-shadow {
             position: absolute;
             bottom: 30px;
             left: 0;
             width: 100%;
             height: 4px;
-            background: rgba(0,0,0,0.06);
+            background: rgba(0,0,0,0.05);
             z-index: 12;
             border-radius: 2px;
         }
@@ -162,7 +177,7 @@
         .footer-social-icon { transition: transform 0.2s, color 0.2s; cursor: pointer; }
         .footer-social-icon:hover { transform: translateY(-3px); color: var(--brand-red); }
 
-        /* ===== MOBILE: CAR EVEN LARGER, THINNER TRACK VISIBLE ===== */
+        /* ===== MOBILE RESPONSIVE - SMOOTH TRACK ===== */
         @media (max-width: 768px) {
             .car-hero-container {
                 min-height: 440px;
@@ -180,10 +195,11 @@
             }
             .road-indicator {
                 bottom: 28px;
-                height: 5px; /* thinner on mobile */
+                height: 4px;
             }
             .road-indicator::after {
-                background-size: 90px 100%;
+                height: 4px;
+                background-size: 60px 100%;
             }
             .road-shadow {
                 bottom: 22px;
@@ -281,15 +297,16 @@
         </div>
     </div>
 
-    <!-- HERO SECTION: MASSIVE CAR + THINNER ROAD TRACK -->
+    <!-- HERO SECTION: MASSIVE CAR + SMOOTH NON-FLICKERING THIN ROAD TRACK -->
     <section class="relative min-h-[78vh] flex flex-col items-center justify-start bg-slate-50 pt-0 pb-12 overflow-visible">
         <!-- CAR & ROAD CONTAINER -->
         <div class="w-full relative car-outer">
             <div class="car-hero-container">
-                <!-- Thinner road shadow & track -->
+                <!-- Thin stable road shadow -->
                 <div class="road-shadow"></div>
+                <!-- Smooth non-flickering road track -->
                 <div class="road-indicator"></div>
-                <!-- MASSIVE HERO CAR (enlarged drastically) -->
+                <!-- MASSIVE HERO CAR -->
                 <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3853.png" alt="Wythall Driving School Car - Premium Tuition">
             </div>
         </div>
