@@ -38,7 +38,7 @@
         .logo-container { display: flex; align-items: center; gap: 10px; }
         .wythall-logo { width: 210px; height: auto; } 
 
-        /* ===== HERO CAR SECTION - MASSIVE CAR, SMOOTH ROAD TRACK ===== */
+        /* ===== HERO CAR SECTION - MASSIVE CAR ===== */
         .car-hero-container {
             position: relative;
             z-index: 10;
@@ -53,20 +53,20 @@
             margin-bottom: -10px;
         }
         
-        /* MASSIVE CAR IMAGE */
+        /* MASSIVE CAR IMAGE - wheels aligned with track */
         #panningCar {
             width: 100%;
             max-width: 1500px;
             height: auto;
             object-fit: contain; 
             position: relative;
-            bottom: -20px;
+            bottom: -8px; /* FINE-TUNED: wheels now rest exactly on track */
             z-index: 25; 
-            animation: driveForward 16s linear infinite;
+            animation: driveForward 20s linear infinite; /* slower, smoother drive */
             will-change: transform;
             display: block;
             margin: 0 auto;
-            filter: drop-shadow(0 25px 20px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 25px 20px rgba(0,0,0,0.15));
             transform: scale(1.08);
         }
 
@@ -85,20 +85,20 @@
             transform: translateX(0);
         }
 
-        /* === FIXED: SMOOTH NON-FLICKERING ROAD TRACK (THINNER) === */
+        /* === ROAD TRACK - SLOW, SMOOTH, WHEELS TOUCHING === */
         .road-indicator {
-            height: 5px; /* thinner track */
+            height: 5px;
             background: transparent; 
             width: 100%;
             position: absolute;
-            bottom: 36px;
+            bottom: 12px; /* CRITICAL: raised track to meet wheels (car bottom is at -8px relative, so track sits higher) */
             left: 0;
             z-index: 15; 
             pointer-events: none;
-            overflow: hidden;
+            overflow: visible;
         }
         
-        /* Solid base road line for stability */
+        /* Stable base line under the car */
         .road-indicator::before {
             content: '';
             position: absolute;
@@ -106,44 +106,44 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: #334155;
-            opacity: 0.35;
+            background: #1e293b;
+            opacity: 0.4;
         }
         
-        /* Animated dashed overlay - smoother animation */
+        /* Slower animated dashed line - no flicker, smooth scroll */
         .road-indicator::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 200%;
+            width: 300%;
             height: 5px;
             background: repeating-linear-gradient(
                 to right,
                 #334155 0px,
-                #334155 28px,
-                transparent 28px,
-                transparent 70px
+                #334155 30px,
+                transparent 30px,
+                transparent 75px
             );
-            animation: roadMoveSmooth 1.2s linear infinite;
+            animation: roadMoveSmooth 2.5s linear infinite; /* MUCH SLOWER */
             will-change: transform;
         }
         
         @keyframes roadMoveSmooth {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-33.33%); }
         }
 
-        /* Very subtle shadow under car */
+        /* Subtle shadow beneath the car for realism */
         .road-shadow {
             position: absolute;
-            bottom: 30px;
+            bottom: 6px;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: rgba(0,0,0,0.05);
+            height: 6px;
+            background: rgba(0,0,0,0.08);
             z-index: 12;
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
         .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); }
@@ -177,7 +177,7 @@
         .footer-social-icon { transition: transform 0.2s, color 0.2s; cursor: pointer; }
         .footer-social-icon:hover { transform: translateY(-3px); color: var(--brand-red); }
 
-        /* ===== MOBILE RESPONSIVE - SMOOTH TRACK ===== */
+        /* ===== MOBILE: wheels touching track perfectly ===== */
         @media (max-width: 768px) {
             .car-hero-container {
                 min-height: 440px;
@@ -187,23 +187,22 @@
             #panningCar {
                 max-width: 1200px;
                 transform: scale(1.1);
-                bottom: -12px;
+                bottom: -6px;
             }
             @keyframes driveForward {
                 0% { transform: translateX(-140%) scale(1.1); }
                 100% { transform: translateX(100vw) scale(1.1); }
             }
             .road-indicator {
-                bottom: 28px;
+                bottom: 8px;
                 height: 4px;
             }
             .road-indicator::after {
                 height: 4px;
-                background-size: 60px 100%;
+                animation: roadMoveSmooth 2.5s linear infinite;
             }
             .road-shadow {
-                bottom: 22px;
-                height: 3px;
+                bottom: 2px;
             }
             .hero-main {
                 font-size: 3.2rem !important;
@@ -218,14 +217,17 @@
             #panningCar {
                 max-width: 1000px;
                 transform: scale(1.15);
-                bottom: -8px;
+                bottom: -4px;
             }
             .road-indicator {
-                bottom: 24px;
+                bottom: 6px;
                 height: 4px;
             }
+            .road-indicator::after {
+                animation: roadMoveSmooth 2.5s linear infinite;
+            }
             .road-shadow {
-                bottom: 18px;
+                bottom: 0px;
             }
         }
         
@@ -297,17 +299,16 @@
         </div>
     </div>
 
-    <!-- HERO SECTION: MASSIVE CAR + SMOOTH NON-FLICKERING THIN ROAD TRACK -->
+    <!-- HERO SECTION: MASSIVE CAR + SLOW SMOOTH TRACK, WHEELS TOUCHING -->
     <section class="relative min-h-[78vh] flex flex-col items-center justify-start bg-slate-50 pt-0 pb-12 overflow-visible">
-        <!-- CAR & ROAD CONTAINER -->
         <div class="w-full relative car-outer">
             <div class="car-hero-container">
-                <!-- Thin stable road shadow -->
+                <!-- Road shadow beneath -->
                 <div class="road-shadow"></div>
-                <!-- Smooth non-flickering road track -->
+                <!-- Road track - adjusted to touch wheels perfectly -->
                 <div class="road-indicator"></div>
-                <!-- MASSIVE HERO CAR -->
-                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3853.png" alt="Wythall Driving School Car - Premium Tuition">
+                <!-- MASSIVE CAR IMAGE -->
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3853.png" alt="Wythall Driving School Car">
             </div>
         </div>
         
@@ -382,8 +383,6 @@
     <section class="py-32 bg-white border-y border-slate-100"><div class="max-w-5xl mx-auto px-6"><h2 class="text-5xl font-black uppercase tracking-tighter text-center mb-16">Weekly <span class="text-red-700">Availability</span></h2><div class="grid grid-cols-2 md:grid-cols-4 gap-8"><div class="p-8 border-2 border-slate-100 text-center"><p class="text-xs font-black uppercase mb-4">Mon-Fri (Day)</p><div class="avail-dot bg-red-700 mx-auto"></div><p class="text-xs font-bold mt-4 text-slate-400">BOOKED</p></div><div class="p-8 border-2 border-slate-100 text-center"><p class="text-xs font-black uppercase mb-4">Mon-Fri (Eve)</p><div class="avail-dot bg-green-600 mx-auto"></div><p class="text-xs font-bold mt-4 text-green-600">AVAILABLE</p></div><div class="p-8 border-2 border-slate-100 text-center"><p class="text-xs font-black uppercase mb-4">Saturday</p><div class="avail-dot bg-green-600 mx-auto"></div><p class="text-xs font-bold mt-4 text-green-600">AVAILABLE</p></div><div class="p-8 border-2 border-slate-100 text-center"><p class="text-xs font-black uppercase mb-4">Sunday</p><div class="avail-dot bg-red-700 mx-auto"></div><p class="text-xs font-bold mt-4 text-slate-400">LTD SLOTS</p></div></div></div></section>
 
     <section id="pricing" class="py-32 bg-white"><div class="max-w-7xl mx-auto px-6 text-center mb-24"><h2 class="text-6xl font-black uppercase tracking-tighter">Tuition <span class="text-red-700">Pricing</span></h2></div><div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12"><div class="reveal bg-white p-14 shadow-xl border-t-[10px] border-slate-200"><h4 class="text-2xl font-bold mb-10 uppercase">Standard</h4><div class="text-6xl font-black mb-12">£40</div><ul class="space-y-6 mb-12 text-sm font-bold text-slate-400 uppercase"><li>★ 1 Hour Lesson</li><li>★ Learn Essential Skills</li><li>★ Experienced Instructors</li></ul><a href="tel:+447818542962" class="block text-center py-6 bg-slate-900 text-white font-black uppercase text-xs">Call 07818 542962</a></div><div class="reveal bg-white p-14 shadow-2xl border-t-[10px] border-red-700 relative scale-110 z-10"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-red-700 text-white px-8 py-2 text-xs font-black uppercase">Most Popular</div><h4 class="text-2xl font-bold mb-10 uppercase">Pass Plus</h4><div class="text-6xl font-black mb-12">£270</div><ul class="space-y-6 mb-12 text-sm font-bold text-slate-400 uppercase"><li>★ 6 Hour Course</li><li>★ Advanced Road Skills</li><li>★ Higher Confidence</li></ul><a href="https://wa.me/447818542962" class="block text-center py-6 btn-brand font-black uppercase text-xs">WhatsApp Wythall</a></div><div class="reveal bg-white p-14 shadow-xl border-t-[10px] border-slate-200"><h4 class="text-2xl font-bold mb-10 uppercase">Motorway</h4><div class="text-6xl font-black mb-12">£95</div><ul class="space-y-6 mb-12 text-sm font-bold text-slate-400 uppercase"><li>★ 2 Hour Lesson</li><li>★ Professional Training</li><li>★ High-Speed Experience</li></ul><a href="tel:+447818542962" class="block text-center py-6 bg-slate-900 text-white font-black uppercase text-xs">Call 07818 542962</a></div></div></section>
-
-    <section class="py-32 bg-slate-50"><div class="max-w-7xl mx-auto px-6"><h2 class="text-5xl font-black uppercase text-center mb-20">Where We <span class="text-red-700">Teach</span></h2><div class="grid md:grid-cols-3 gap-12"><div class="md:col-span-2 rounded-xl overflow-hidden shadow-lg bg-white"><div id="realMap"></div></div><div class="space-y-8"><div class="p-10 bg-white shadow-sm border-l-8 border-red-700"><h4 class="font-black uppercase text-sm mb-4">Coverage Areas</h4><p class="text-xs font-bold text-slate-500 uppercase">Wythall, Hollywood, Shirley, Solihull, Kings Norton, Alvechurch.</p></div><div class="p-10 bg-white shadow-sm border-l-8 border-slate-900"><h4 class="font-black uppercase text-sm mb-4">Local Test Centres</h4><p class="text-xs font-bold text-slate-500 uppercase">Shirley (Solihull), Kings Heath, Redditch.</p></div></div></div></div></section>
 
     <footer class="bg-white text-slate-900 pt-24 pb-40 border-t border-slate-100"><div class="max-w-7xl mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12"><div class="logo-container"><svg class="wythall-logo" viewBox="0 0 260 85" fill="none"><rect x="5" y="5" width="50" height="50" rx="4" fill="white" stroke="#d31018" stroke-width="4"/><text x="17" y="45" font-family="Archivo Black" font-size="40" fill="#d31018">L</text><text x="65" y="32" font-family="Montserrat" font-weight="900" font-size="24" fill="black">WYTHALL</text><text x="65" y="52" font-family="Montserrat" font-weight="700" font-size="14" fill="black">DRIVING SCHOOL</text></svg></div><div class="grid grid-cols-2 gap-12 mt-12 md:mt-0 text-xs font-black uppercase"><div class="flex flex-col space-y-4"><a href="#services" class="hover:text-red-700">Manual Lessons</a><a href="#services" class="hover:text-red-700">Automatic Lessons</a><a href="#pricing" class="hover:text-red-700">Pass Plus</a></div><div class="flex flex-col space-y-4"><a href="tel:+447818542962" class="hover:text-red-700">Call Us</a><a href="https://wa.me/447818542962" class="hover:text-red-700">WhatsApp</a></div></div></div><div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-slate-100 gap-10"><div class="text-center md:text-left"><p class="text-3xl font-black tracking-tight text-red-700">07818 542962</p><p class="text-xs text-slate-400 font-bold uppercase mt-4">Wythall Driving School © 2026</p></div><div class="flex space-x-8"><i data-lucide="facebook" class="footer-social-icon hover:text-red-700 w-6 h-6"></i><i data-lucide="instagram" class="footer-social-icon hover:text-red-700 w-6 h-6"></i><i data-lucide="twitter" class="footer-social-icon hover:text-red-700 w-6 h-6"></i></div></div></div></footer>
 
