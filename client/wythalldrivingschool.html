@@ -10,7 +10,7 @@
     <!-- Leaflet.js for REAL interactive map (ADD-ON: replaces placeholder with real map) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand-silver: #e2e8f0; 
@@ -18,18 +18,18 @@
             --brand-dark: #1a1a1a;
             --brand-gray: #4a4a4a;
         }
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; font-size: 1.1rem; }
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; font-size: 1.1rem; }
         
         /* Replicated Logo SVG Logic - Logo significantly larger */
         .logo-container { display: flex; align-items: center; gap: 10px; }
         .wythall-logo { width: 220px; height: auto; } 
 
-        /* Continuous Smooth Driving Animation */
+        /* Continuous Smooth Driving Animation - ENLARGED PROPORTIONS */
         .car-hero-container {
             position: relative;
             z-index: 10;
             width: 100%;
-            height: 450px; 
+            height: 550px; /* Increased height for larger car */
             display: flex;
             align-items: flex-end; 
             overflow: hidden; 
@@ -37,18 +37,18 @@
         }
         
         #panningCar {
-            width: 700px; 
+            width: 1000px; /* Massive increase in size */
             height: auto;
             object-fit: contain; 
             position: absolute;
-            bottom: 25px; /* Aligned to touch the road track */
+            bottom: 65px; /* Raised to sit properly on the road track */
             z-index: 20; 
             animation: driveForward 12s linear infinite;
             will-change: transform;
         }
 
         @keyframes driveForward {
-            0% { transform: translateX(-100%); }
+            0% { transform: translateX(-110%); }
             100% { transform: translateX(100vw); }
         }
 
@@ -62,15 +62,15 @@
             transform: translateX(0);
         }
 
-        /* REDESIGNED ROAD: UPDATED TO REMOVE SOLID LINE */
+        /* REDESIGNED ROAD: RAISED TO MATCH NEW CAR SIZE */
         .road-indicator {
-            height: 12px;
-            background: transparent; /* Removed solid background */
+            height: 18px; /* Slightly thicker for the larger scale */
+            background: transparent; 
             width: 100%;
             position: absolute;
-            bottom: 25px; 
+            bottom: 75px; /* Raised significantly to meet large wheels */
             z-index: 5; 
-            border-bottom: 0px solid transparent; /* Removed solid border line */
+            border-bottom: 0px solid transparent; 
         }
         .road-indicator::after {
             content: '';
@@ -78,14 +78,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Created dashed cuts between each segment */
             background-image: linear-gradient(to right, #334155 60%, transparent 60%);
-            background-size: 80px 100%;
-            animation: roadMove 0.5s linear infinite;
+            background-size: 120px 100%; /* Wider segments for scale */
+            animation: roadMove 0.4s linear infinite;
         }
         @keyframes roadMove {
             0% { background-position: 0 0; }
-            100% { background-position: -80px 0; }
+            100% { background-position: -120px 0; }
         }
 
         .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); }
@@ -123,15 +122,15 @@
         /* MOBILE FIXES FOR VISIBILITY */
         @media (max-width: 768px) {
             .car-hero-container {
-                height: 350px; /* Taller container to ensure visibility */
+                height: 400px; 
             }
             #panningCar {
-                width: 500px; /* Significantly larger car on mobile */
-                bottom: 60px; /* Lifted up from bottom */
+                width: 750px; /* Larger on mobile for visual impact */
+                bottom: 80px; 
             }
             .road-indicator {
-                bottom: 60px; /* Lifted up to match car */
-                height: 8px; /* Thinner road for mobile aesthetic */
+                bottom: 90px; 
+                height: 12px;
             }
         }
     </style>
@@ -145,9 +144,9 @@
                     <svg class="wythall-logo" viewBox="0 0 250 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="5" y="5" width="50" height="50" rx="4" fill="white" stroke="#d31018" stroke-width="4"/>
                         <text x="17" y="45" font-family="Archivo Black" font-size="40" fill="#d31018">L</text>
-                        <text x="65" y="32" font-family="Archivo Black" font-size="24" fill="black">WYTHALL</text>
-                        <text x="65" y="52" font-family="Inter" font-weight="900" font-size="14" fill="black" letter-spacing="1">DRIVING SCHOOL</text>
-                        <text x="65" y="72" font-family="Inter" font-weight="700" font-size="16" fill="black">07818 542962</text>
+                        <text x="65" y="32" font-family="Montserrat" font-weight="900" font-size="24" fill="black">WYTHALL</text>
+                        <text x="65" y="52" font-family="Montserrat" font-weight="800" font-size="14" fill="black" letter-spacing="1">DRIVING SCHOOL</text>
+                        <text x="65" y="72" font-family="Montserrat" font-weight="700" font-size="16" fill="black">07818 542962</text>
                     </svg>
                 </a>
             </div>
@@ -522,8 +521,8 @@
                     <svg class="wythall-logo" viewBox="0 0 250 80" fill="none">
                         <rect x="5" y="5" width="50" height="50" rx="4" fill="white" stroke="#d31018" stroke-width="4"/>
                         <text x="17" y="45" font-family="Archivo Black" font-size="40" fill="#d31018">L</text>
-                        <text x="65" y="32" font-family="Archivo Black" font-size="24" fill="black">WYTHALL</text>
-                        <text x="65" y="52" font-family="Inter" font-weight="900" font-size="14" fill="black">DRIVING SCHOOL</text>
+                        <text x="65" y="32" font-family="Montserrat" font-weight="900" font-size="24" fill="black">WYTHALL</text>
+                        <text x="65" y="52" font-family="Montserrat" font-weight="700" font-size="14" fill="black">DRIVING SCHOOL</text>
                     </svg>
                 </div>
                 <div class="grid grid-cols-2 gap-12 mt-12 md:mt-0 text-xs font-black uppercase tracking-widest">
