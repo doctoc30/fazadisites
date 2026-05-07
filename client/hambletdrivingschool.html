@@ -1,1 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamblet Driving School | Patient & Professional Tuition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #1e40af; /* Matches the VW Polo Blue */
+            --brand-black: #0f172a;
+            --brand-silver: #f8fafc;
+        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
+        
+        /* Logo Logic - Replicating Hamblet's Roof Sign */
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: var(--brand-black);
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+        .l-plate-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 3px solid #ef4444;
+            width: 38px;
+            height: 38px;
+            margin-right: 10px;
+            border-radius: 4px;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+        .l-plate-icon span {
+            color: #ef4444;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        /* Continuous Smooth Driving Animation */
+        .car-hero-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 320px; 
+            display: flex;
+            align-items: flex-end; 
+            overflow: hidden; 
+        }
+        
+        #panningCar {
+            width: 450px;
+            height: auto; 
+            position: absolute;
+            bottom: 30px; 
+            z-index: 20; 
+            animation: driveForward 12s linear infinite;
+            will-change: transform;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+        }
+
+        @keyframes driveForward {
+            0% { transform: translateX(-110%); }
+            100% { transform: translateX(100vw); }
+        }
+
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateX(100%);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .road-indicator {
+            height: 8px;
+            background: #334155;
+            width: 100%;
+            position: absolute;
+            bottom: 35px; 
+            z-index: 5; 
+        }
+        .road-indicator::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-image: linear-gradient(to right, white 50%, transparent 50%);
+            background-size: 80px 100%;
+            animation: roadMove 0.3s linear infinite;
+        }
+        @keyframes roadMove {
+            0% { background-position: 0 0; }
+            100% { background-position: -80px 0; }
+        }
+
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); }
+        .premium-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-top: 4px solid transparent; }
+        .premium-card:hover { transform: translateY(-12px); border-color: var(--brand-blue); box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.2); }
+        
+        .ticker-wrap { overflow: hidden; background: var(--brand-black); color: white; padding: 12px 0; border-bottom: 4px solid var(--brand-blue); }
+        .ticker { display: flex; animation: ticker 40s linear infinite; white-space: nowrap; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .btn-blue { background-color: var(--brand-blue); color: white; transition: 0.3s; }
+        .btn-blue:hover { background-color: #1d4ed8; transform: scale(1.05); }
+
+        .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; font-size: 0.875rem; border-bottom: 1px solid #f1f5f9; }
+        .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 200px; padding: 1rem 0; }
+        
+        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-black); display: flex; z-index: 100; border-top: 4px solid var(--brand-blue); }
+        .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
+        
+        .gallery-scroll { display: flex; overflow-x: auto; gap: 1.5rem; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 20px; }
+        .gallery-item { min-width: 300px; height: 400px; scroll-snap-align: start; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        
+        .service-grid-item { border: 1px solid #e2e8f0; transition: all 0.3s ease; cursor: pointer; border-radius: 8px; }
+        .service-grid-item:hover { border-color: var(--brand-blue); background: #fff; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        #promoPopup { display: none; position: fixed; bottom: 80px; left: 20px; z-index: 1000; width: 320px; background: white; border-top: 5px solid var(--brand-blue); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3); padding: 25px; border-radius: 12px; }
+        .availability-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+    </style>
+</head>
+<body class="text-slate-900"> 
+    <div id="promoPopup" class="animate__animated animate__slideInLeft">
+        <button onclick="document.getElementById('promoPopup').style.display='none'" class="float-right text-slate-400 hover:text-blue-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <span class="bg-blue-700 text-white text-[10px] px-2 py-1 font-black uppercase rounded">Limited Space</span>
+        <h4 class="font-black text-xl mt-2 tracking-tighter">New Driver Special!</h4>
+        <p class="text-xs text-slate-500 mt-1 mb-4 font-bold uppercase">Tracey's 100% recommendation rate ensures you pass with confidence.</p>
+        <a href="tel:07902045836" class="btn-blue px-6 py-3 text-[11px] font-black uppercase inline-block rounded-lg">Call Tracey Now</a>
+    </div>
+
+    <nav class="sticky top-0 z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="logo-wrap">
+                    <div class="l-plate-icon"><span>L</span></div>
+                    HAMBLET
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-10 font-bold text-xs uppercase tracking-widest">
+                <a href="#services" class="hover:text-[var(--brand-blue)] transition">Lessons</a>
+                <a href="#pricing" class="hover:text-[var(--brand-blue)] transition">Rates</a>
+                <a href="tel:07902045836" class="flex items-center text-blue-800"><i data-lucide="phone" class="w-4 h-4 mr-2"></i>07902 045836</a>
+                <a href="mailto:traceyhamblet@icloud.com" class="btn-blue px-8 py-4 rounded shadow-lg font-black">Message Tracey</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-[var(--brand-black)]">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full sm:w-80 bg-[var(--brand-black)] z-[100] p-10 flex flex-col shadow-2xl">
+        <button id="close-btn" class="self-end text-white mb-12">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <div class="flex flex-col space-y-8 text-white font-black text-2xl uppercase tracking-tighter">
+            <a href="#services" class="mobile-link">Our Lessons</a>
+            <a href="#pricing" class="mobile-link">Pricing Plans</a>
+            <a href="tel:07902045836" class="mobile-link">Call 07902 045836</a>
+            <a href="mailto:traceyhamblet@icloud.com" class="text-blue-400 mobile-link">Email Tracey</a>
+        </div>
+    </div>
+
+    <div class="ticker-wrap font-bold uppercase text-[10px] tracking-[0.2em]">
+        <div class="ticker space-x-16">
+            <span>★ Excellent First Time Pass Rate</span>
+            <span>★ 100% Recommendation (29 Reviews)</span>
+            <span>★ Bury & Surrounding Areas</span>
+            <span>★ Patient & Professional Instructor</span>
+            <span>★ Very High Success Rates</span>
+            <span>★ Excellent First Time Pass Rate</span>
+            <span>★ 100% Recommendation</span>
+        </div>
+    </div>
+
+    <section class="relative min-h-[80vh] flex flex-col items-center justify-center bg-white py-20 overflow-hidden">
+        <div class="w-full mb-16">
+            <div class="car-hero-container">
+                <div class="road-indicator"></div>
+                <img 
+                    id="panningCar" 
+                    src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3957.png" 
+                    alt="Hamblet Driving School Car"
+                >
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center z-20">
+            <div class="animate__animated animate__fadeInUp">
+                <h1 class="text-6xl md:text-9xl font-black text-[var(--brand-black)] leading-tight mb-4 uppercase tracking-tighter">
+                    Pass with <span class="text-blue-700">Hamblet.</span>
+                </h1>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-10">Bury's Leading First-Time Pass Specialists</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-5">
+                    <a href="tel:07902045836" class="px-14 py-6 btn-blue font-black uppercase tracking-widest text-xs rounded-md">Call 07902 045836</a>
+                    <a href="https://fb.me/hambletsdrivingschool" target="_blank" class="px-14 py-6 border-2 border-[var(--brand-black)] text-[var(--brand-black)] font-black uppercase tracking-widest text-xs hover:bg-[var(--brand-black)] hover:text-white transition rounded-md">View Facebook Page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6">Expert Tuition by <span class="text-blue-700">Tracey</span></h2>
+                <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-5 py-2 rounded-full mb-8 font-black text-[11px] uppercase tracking-widest">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                    <span>Patient & Professional Instructor</span>
+                </div>
+                <p class="text-slate-600 font-medium mb-8 leading-relaxed text-lg">
+                    At Hamblet Driving School, we pride ourselves on a calm, patient atmosphere that helps even the most nervous students succeed. With an <b>excellent first-time pass rate</b> and a 100% recommendation score from 29 students, your journey to freedom starts here in Bury.
+                </p>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="border-l-4 border-blue-700 pl-5">
+                        <p class="text-3xl font-black text-[var(--brand-black)]">BURY</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">United Kingdom Coverage</p>
+                    </div>
+                    <div class="border-l-4 border-blue-700 pl-5">
+                        <p class="text-3xl font-black text-[var(--brand-black)]">100%</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Student Recommendation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal bg-slate-100 rounded-3xl p-6 shadow-inner">
+                <div class="bg-white rounded-2xl h-96 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 opacity-5">
+                        <svg width="100%" height="100%"><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="blue" stroke-width="0.5"/></pattern><rect width="100%" height="100%" fill="url(#grid)" /></svg>
+                    </div>
+                    <i data-lucide="award" class="w-24 h-24 text-blue-700 mb-6 z-10"></i>
+                    <p class="text-base font-black uppercase tracking-[0.4em] text-[var(--brand-black)] z-10">Top Rated Bury</p>
+                    <p class="text-xs font-bold text-slate-400 uppercase mt-2 z-10">Highly Recommended School</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Lessons <span class="text-blue-700">Available</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="service-grid-item p-10 bg-white">
+                    <i data-lucide="user-plus" class="text-blue-700 mb-5 w-12 h-12"></i>
+                    <h3 class="font-black uppercase tracking-tight text-xl mb-3">Beginners</h3>
+                    <p class="text-xs text-slate-500 font-bold uppercase leading-relaxed">Personalized pacing for complete beginners to build core driving confidence.</p>
+                </div>
+                <div class="service-grid-item p-10 bg-white">
+                    <i data-lucide="refresh-cw" class="text-blue-700 mb-5 w-12 h-12"></i>
+                    <h3 class="font-black uppercase tracking-tight text-xl mb-3">Refreshers</h3>
+                    <p class="text-xs text-slate-500 font-bold uppercase leading-relaxed">For license holders who haven't driven in a while and need a confidence boost.</p>
+                </div>
+                <div class="service-grid-item p-10 bg-white">
+                    <i data-lucide="target" class="text-blue-700 mb-5 w-12 h-12"></i>
+                    <h3 class="font-black uppercase tracking-tight text-xl mb-3">Test Ready</h3>
+                    <p class="text-xs text-slate-500 font-bold uppercase leading-relaxed">Targeted sessions to polish skills and eliminate minor faults before your test.</p>
+                </div>
+                <div class="service-grid-item p-10 bg-white">
+                    <i data-lucide="smile" class="text-blue-700 mb-5 w-12 h-12"></i>
+                    <h3 class="font-black uppercase tracking-tight text-xl mb-3">Nervous Pupils</h3>
+                    <p class="text-xs text-slate-500 font-bold uppercase leading-relaxed">Specialist patient approach to help manage anxiety behind the wheel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-32 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-20">
+            <h2 class="text-5xl font-black uppercase tracking-tighter text-[var(--brand-black)]">Tuition <span class="text-blue-700">Rates</span></h2>
+            <p class="text-slate-400 font-bold mt-4">Transparent Pricing for Bury & Surrounding Areas</p>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+            <div class="reveal bg-white p-12 shadow-xl border-t-8 border-slate-100 rounded-2xl text-center">
+                <h4 class="text-2xl font-black mb-8 uppercase tracking-tighter">Individual Lesson</h4>
+                <div class="text-6xl font-black text-[var(--brand-black)] mb-8">Competitive<span class="text-lg">/hr</span></div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">Contact Tracey for current hourly rates and availability.</p>
+                <a href="tel:07902045836" class="block text-center py-6 bg-[var(--brand-black)] text-white font-black uppercase tracking-widest text-[11px] rounded-xl hover:bg-slate-800 transition">Call to Inquire</a>
+            </div>
+            <div class="reveal bg-white p-12 shadow-2xl border-t-8 border-blue-700 relative scale-105 z-10 rounded-2xl text-center">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-700 text-white px-8 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg">Popular Choice</div>
+                <h4 class="text-2xl font-black mb-8 uppercase tracking-tighter">Block Bookings</h4>
+                <div class="text-6xl font-black text-[var(--brand-black)] mb-8">Value Plans</div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">Save money by booking in blocks of 10 or 20 hours.</p>
+                <a href="tel:07902045836" class="block text-center py-6 btn-blue font-black uppercase tracking-widest text-[11px] rounded-xl shadow-blue-200 shadow-lg">Get Block Price</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-12 text-center">Common <span class="text-blue-700">Questions</span></h2>
+            <div class="space-y-4">
+                <div class="faq-item reveal bg-white px-6 rounded-xl border border-slate-200">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Where do you pick up from? <i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="faq-content"><p class="text-xs text-slate-500 font-bold uppercase tracking-widest">We offer home, college, or work pickups across Bury and nearby villages.</p></div>
+                </div>
+                <div class="faq-item reveal bg-white px-6 rounded-xl border border-slate-200">
+                    <button class="faq-btn" onclick="toggleFaq(this)">What is your first-time pass rate? <i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="faq-content"><p class="text-xs text-slate-500 font-bold uppercase tracking-widest">We maintain an excellent first-time pass rate thanks to our thorough, patient tuition style.</p></div>
+                </div>
+                <div class="faq-item reveal bg-white px-6 rounded-xl border border-slate-200">
+                    <button class="faq-btn" onclick="toggleFaq(this)">How do I book? <i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="faq-content"><p class="text-xs text-slate-500 font-bold uppercase tracking-widest">Call or text Tracey directly on 07902 045836 or send an email to book your first slot.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[var(--brand-black)] text-white pt-20 pb-36 border-t border-white/5"> 
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16">
+                <div class="logo-wrap !text-white mb-10 md:mb-0">
+                    <div class="l-plate-icon"><span>L</span></div>
+                    HAMBLET DRIVING
+                </div>
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="text-3xl font-black text-blue-500 mb-2">07902 045836</p>
+                    <p class="text-slate-400 font-bold uppercase tracking-widest text-xs">traceyhamblet@icloud.com</p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-10">
+                <div class="text-center md:text-left">
+                    <p class="text-sm font-bold text-slate-500 uppercase tracking-widest">Location: Bury, United Kingdom</p>
+                    <p class="text-[10px] text-slate-600 font-black uppercase mt-4">Registered DVSA Approved Instructor</p>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="https://fb.me/hambletsdrivingschool" target="_blank" class="text-slate-400 hover:text-blue-500 transition"><i data-lucide="facebook" class="w-8 h-8"></i></a>
+                </div>
+                <p class="text-[9px] text-slate-500 font-black uppercase tracking-[0.4em]">© 2026 HAMBLET DRIVING SCHOOL</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cta-dock md:hidden">
+        <a href="tel:07902045836"><i data-lucide="phone" class="w-6 h-6 mb-1"></i>CALL</a>
+        <a href="mailto:traceyhamblet@icloud.com"><i data-lucide="mail" class="w-6 h-6 mb-1"></i>EMAIL</a>
+        <a href="sms:07902045836"><i data-lucide="message-square" class="w-6 h-6 mb-1"></i>TEXT</a>
+        <a href="https://fb.me/hambletsdrivingschool" class="bg-blue-700 !border-none"><i data-lucide="thumbs-up" class="w-6 h-6 mb-1"></i>REVIEWS</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            setTimeout(() => {
+                const popup = document.getElementById('promoPopup');
+                if(popup) popup.style.display = 'block';
+            }, 3000);
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    </script>
+</body>
+</html>
 
