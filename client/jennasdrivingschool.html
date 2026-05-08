@@ -114,14 +114,13 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* NEW STYLE: Pricing Table */
-        .price-table { border-collapse: separate; border-spacing: 0 10px; }
-        .price-row { background: white; transition: 0.3s; }
-        .price-row:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-
-        /* NEW STYLE: Quiz */
-        .quiz-option { border: 2px solid #eee; transition: 0.3s; cursor: pointer; }
-        .quiz-option:hover { border-color: var(--brand-pink); }
+        /* NEW ADDITION: Pricing Table Styles */
+        .price-card { border: 2px solid #f1f5f9; transition: 0.3s; }
+        .price-card:hover { border-color: var(--brand-pink); transform: translateY(-5px); }
+        
+        /* NEW ADDITION: Quiz Styles */
+        .quiz-opt { border: 2px solid #eee; cursor: pointer; transition: 0.2s; }
+        .quiz-opt:hover { border-color: var(--brand-blue); background: #f8fafc; }
     </style>
 </head>
 <body class="text-slate-900"> 
@@ -162,7 +161,7 @@
         <button id="close-btn" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
         <div class="flex flex-col space-y-8 text-white font-black text-3xl uppercase tracking-tighter">
             <a href="#services">Manual Tuition</a>
-            <a href="#pricing">Lesson Prices</a>
+            <a href="#pricing">Prices</a>
             <a href="#about">Test Nerves</a>
             <a href="tel:07436401467">Call Now</a>
             <a href="sms:07436401467" class="gradient-text">Book Lesson</a>
@@ -204,19 +203,19 @@
         </div>
     </section>
 
-    <section class="py-16 bg-black text-white">
+    <section class="py-16 bg-black text-white border-y border-white/10">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div class="reveal">
-                <p class="text-6xl font-black gradient-text mb-2 counter" data-target="500">0</p>
-                <p class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Students Passed</p>
+                <div class="text-5xl font-black gradient-text mb-2"><span class="counter" data-target="500">0</span>+</div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Students Passed</p>
             </div>
             <div class="reveal">
-                <p class="text-6xl font-black text-white mb-2 counter" data-target="10">0</p>
-                <p class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Years Experience</p>
+                <div class="text-5xl font-black text-white mb-2"><span class="counter" data-target="10">0</span>+</div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Years Experience</p>
             </div>
             <div class="reveal">
-                <p class="text-6xl font-black gradient-text mb-2 counter" data-target="95">0</p>
-                <p class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">% Pass Rate</p>
+                <div class="text-5xl font-black gradient-text mb-2"><span class="counter" data-target="95">0</span>%</div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Pass Rate</p>
             </div>
         </div>
     </section>
@@ -238,35 +237,22 @@
         </div>
     </section>
 
-    <section class="py-24 bg-white overflow-hidden">
+    <section class="py-24 bg-white border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="flex-1 reveal">
-                    <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Choose Your <span class="gradient-text">Transmission</span></h2>
-                    <div class="space-y-8">
-                        <div class="flex gap-6">
-                            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center shrink-0">
-                                <i data-lucide="settings-2" class="text-[#E30613]"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-black uppercase text-lg">Manual Lessons</h4>
-                                <p class="text-slate-500 text-sm">Full control over your gears. I teach in a stylish Fiat 500, perfect for mastering clutch control and becoming a versatile driver.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center shrink-0">
-                                <i data-lucide="zap" class="text-[#4FA5E0]"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-black uppercase text-lg">Automatic Lessons</h4>
-                                <p class="text-slate-500 text-sm">Focus strictly on the road. No stalling, no gear changes—ideal for those wanting a simpler path to getting their license.</p>
-                            </div>
-                        </div>
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Choose Your <span class="gradient-text">Transmission</span></h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="reveal bg-slate-50 p-10 rounded-3xl flex gap-6 items-start">
+                    <div class="bg-black p-4 rounded-2xl"><i data-lucide="settings-2" class="text-white"></i></div>
+                    <div>
+                        <h4 class="text-2xl font-black uppercase mb-2">Manual Lessons</h4>
+                        <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed">Full control. Learn in our signature Fiat 500. Perfect for those who want to drive any small car in the future.</p>
                     </div>
                 </div>
-                <div class="flex-1 relative reveal">
-                    <div class="w-full aspect-square bg-slate-100 rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                <div class="reveal bg-slate-50 p-10 rounded-3xl flex gap-6 items-start opacity-60">
+                    <div class="bg-pink-600 p-4 rounded-2xl"><i data-lucide="zap" class="text-white"></i></div>
+                    <div>
+                        <h4 class="text-2xl font-black uppercase mb-2">Automatic</h4>
+                        <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed">Stress-free. No gears, no stalling. Focus 100% on the road and your surroundings (Availability varies).</p>
                     </div>
                 </div>
             </div>
@@ -287,156 +273,128 @@
             <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#D8268D]">
                 <i data-lucide="heart" class="w-12 h-12 mb-6 text-[#D8268D]"></i>
                 <h3 class="text-2xl font-black uppercase mb-4">Anxiety & Nerves</h3>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">I use specific techniques to help you combat fear and build confidence.</p>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Test nerves are real. I use specific techniques to help you build confidence.</p>
                 <a href="tel:07436401467" class="status-tag inline-block">Book a Calm Lesson</a>
             </div>
             <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#4FA5E0]">
                 <i data-lucide="refresh-cw" class="w-12 h-12 mb-6 text-[#4FA5E0]"></i>
                 <h3 class="text-2xl font-black uppercase mb-4">Refresher Lessons</h3>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Been away from the wheel? Nervous about returning to driving? We'll get you back on track safely.</p>
-                <a href="tel:07436401467" class="status-tag inline-block">Renew Your Skills</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing" class="py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-black uppercase tracking-tighter">Transparent <span class="gradient-text">Pricing</span></h2>
-                <p class="text-slate-500 font-bold uppercase text-xs mt-2">No Hidden Fees. Just Quality Tuition.</p>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full price-table">
-                    <thead>
-                        <tr class="text-left text-[10px] font-black uppercase tracking-widest text-slate-400">
-                            <th class="pb-4">Package</th>
-                            <th class="pb-4">Hours</th>
-                            <th class="pb-4">Price</th>
-                            <th class="pb-4">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-sm font-bold uppercase">
-                        <tr class="price-row shadow-sm">
-                            <td class="p-6 rounded-l-xl">Single Intro Lesson</td>
-                            <td class="p-6">1.5 Hr</td>
-                            <td class="p-6">£55</td>
-                            <td class="p-6 rounded-r-xl"><a href="tel:07436401467" class="text-[#D8268D]">Pay Now &rarr;</a></td>
-                        </tr>
-                        <tr class="price-row shadow-sm">
-                            <td class="p-6 rounded-l-xl">Standard Block</td>
-                            <td class="p-6">10 Hrs</td>
-                            <td class="p-6">£360</td>
-                            <td class="p-6 rounded-r-xl"><a href="tel:07436401467" class="text-[#D8268D]">Pay Now &rarr;</a></td>
-                        </tr>
-                        <tr class="price-row shadow-sm border-2 border-[#D8268D]">
-                            <td class="p-6 rounded-l-xl">Pass Starter (Nervous)</td>
-                            <td class="p-6">5 Hrs</td>
-                            <td class="p-6">£185</td>
-                            <td class="p-6 rounded-r-xl"><a href="tel:07436401467" class="text-[#D8268D]">Pay Now &rarr;</a></td>
-                        </tr>
-                        <tr class="price-row shadow-sm">
-                            <td class="p-6 rounded-l-xl">Mock Driving Test</td>
-                            <td class="p-6">2 Hrs</td>
-                            <td class="p-6">£75</td>
-                            <td class="p-6 rounded-r-xl"><a href="tel:07436401467" class="text-[#D8268D]">Pay Now &rarr;</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-slate-50">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Behind the <span class="gradient-text">Wheel</span></h2>
-            <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer shadow-2xl border-8 border-white">
-                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-24 h-24 btn-brand rounded-full flex items-center justify-center animate-pulse">
-                        <i data-lucide="play" class="w-10 h-10 fill-white text-white"></i>
-                    </div>
-                </div>
-                <div class="absolute bottom-8 left-8 text-white font-black uppercase text-xs tracking-widest">A Look Inside Jenna's Lessons</div>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">For nervous or returning drivers. Get back your independence on the road with ease.</p>
+                <a href="tel:07436401467" class="status-tag inline-block">Get Back Driving</a>
             </div>
         </div>
     </section>
 
     <section class="py-24 bg-white">
-        <div class="max-w-3xl mx-auto px-6 bg-slate-50 p-12 rounded-3xl border border-slate-100">
-            <h2 class="text-3xl font-black uppercase tracking-tighter mb-4 text-center">Are You a <span class="gradient-text">Nervous Driver?</span></h2>
-            <p class="text-center text-slate-500 font-bold uppercase text-[10px] mb-10">Take the quiz to find your perfect starter package.</p>
-            
-            <div id="quiz-container" class="space-y-8">
-                <div class="quiz-step">
-                    <p class="font-black uppercase text-sm mb-4">1. How do you feel about the first time behind the wheel?</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="quiz-option p-4 rounded-xl text-xs font-bold uppercase text-center" onclick="alert('Recommendation: Calm Starter Package')">Very Anxious</div>
-                        <div class="quiz-option p-4 rounded-xl text-xs font-bold uppercase text-center" onclick="alert('Recommendation: Standard 10 Hour Block')">Excited</div>
-                    </div>
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="reveal relative rounded-3xl overflow-hidden shadow-2xl aspect-video bg-slate-900 group">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" alt="Driving Lesson" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <button class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition">
+                        <i data-lucide="play" class="fill-black text-black ml-1"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-white border-t border-slate-100">
+    <section id="pricing" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col items-center mb-16">
-                <div class="flex mb-4">
-                    <i data-lucide="star" class="fill-amber-400 text-amber-400"></i>
-                    <i data-lucide="star" class="fill-amber-400 text-amber-400"></i>
-                    <i data-lucide="star" class="fill-amber-400 text-amber-400"></i>
-                    <i data-lucide="star" class="fill-amber-400 text-amber-400"></i>
-                    <i data-lucide="star" class="fill-amber-400 text-amber-400"></i>
-                </div>
-                <h2 class="text-3xl font-black uppercase tracking-tighter">Real <span class="gradient-text">Success Stories</span></h2>
-            </div>
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Transparent <span class="gradient-text">Pricing</span></h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100">
-                    <p class="text-xs font-bold italic mb-6">"Jenna was amazing. I was so nervous about roundabouts but her calm approach changed everything for me!"</p>
-                    <p class="font-black uppercase text-[10px]">— Sarah T., Crawley</p>
+                <div class="reveal price-card bg-white p-8 rounded-2xl text-center">
+                    <h4 class="font-black uppercase text-xs text-slate-400 mb-2">Introductory</h4>
+                    <div class="text-4xl font-black mb-6">£40</div>
+                    <ul class="text-[10px] font-black uppercase space-y-3 mb-8 text-slate-500">
+                        <li>First 1 Hour Lesson</li>
+                        <li>Vehicle Familiarity</li>
+                        <li>No Hidden Costs</li>
+                    </ul>
+                    <a href="sms:07436401467" class="btn-brand block py-4 rounded-lg text-xs">Pay Online</a>
                 </div>
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100">
-                    <p class="text-xs font-bold italic mb-6">"Passed first time! The Fiat 500 is such a great car to learn in and Jenna is so patient."</p>
-                    <p class="font-black uppercase text-[10px]">— Mike R., Horley</p>
+                <div class="reveal price-card bg-white p-8 rounded-2xl text-center border-brand-pink shadow-xl">
+                    <span class="status-tag mb-4 inline-block">Best Value</span>
+                    <h4 class="font-black uppercase text-xs text-slate-400 mb-2">Block Booking</h4>
+                    <div class="text-4xl font-black mb-6">£380</div>
+                    <ul class="text-[10px] font-black uppercase space-y-3 mb-8 text-slate-500">
+                        <li>10 Hours of Lessons</li>
+                        <li>Full Theory Support</li>
+                        <li>Mock Test Included</li>
+                    </ul>
+                    <a href="sms:07436401467" class="btn-brand block py-4 rounded-lg text-xs">Pay Online</a>
                 </div>
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100">
-                    <p class="text-xs font-bold italic mb-6">"If you have driving anxiety, Jenna is the only person you should call. Best instructor in Crawley."</p>
-                    <p class="font-black uppercase text-[10px]">— Emma L., Gatwick</p>
+                <div class="reveal price-card bg-white p-8 rounded-2xl text-center">
+                    <h4 class="font-black uppercase text-xs text-slate-400 mb-2">Refresher</h4>
+                    <div class="text-4xl font-black mb-6">£45</div>
+                    <ul class="text-[10px] font-black uppercase space-y-3 mb-8 text-slate-500">
+                        <li>Per 1 Hour Session</li>
+                        <li>Motorway Skills</li>
+                        <li>Parking Mastery</li>
+                    </ul>
+                    <a href="sms:07436401467" class="btn-brand block py-4 rounded-lg text-xs">Pay Online</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="coverage" class="py-24 bg-slate-50">
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="reveal">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-6">Where We <span class="gradient-text">Drive</span></h2>
-                <div class="grid grid-cols-2 gap-4 mb-10">
-                    <div class="flex items-center gap-2 bg-white p-4 rounded-xl shadow-sm">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-[#D8268D]"></i>
-                        <span class="text-xs font-black uppercase">Crawley</span>
-                    </div>
-                    <div class="flex items-center gap-2 bg-white p-4 rounded-xl shadow-sm">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-[#D8268D]"></i>
-                        <span class="text-xs font-black uppercase">Horley</span>
-                    </div>
-                    <div class="flex items-center gap-2 bg-white p-4 rounded-xl shadow-sm">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-[#D8268D]"></i>
-                        <span class="text-xs font-black uppercase">Gatwick</span>
-                    </div>
-                    <div class="flex items-center gap-2 bg-white p-4 rounded-xl shadow-sm">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-[#D8268D]"></i>
-                        <span class="text-xs font-black uppercase">East Grinstead</span>
-                    </div>
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Where We <span class="gradient-text">Teach</span></h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-center gap-3 font-black uppercase text-xs"><i data-lucide="map-pin" class="text-pink-600"></i> Crawley</div>
+                    <div class="flex items-center gap-3 font-black uppercase text-xs"><i data-lucide="map-pin" class="text-pink-600"></i> Horley</div>
+                    <div class="flex items-center gap-3 font-black uppercase text-xs"><i data-lucide="map-pin" class="text-pink-600"></i> Gatwick</div>
+                    <div class="flex items-center gap-3 font-black uppercase text-xs"><i data-lucide="map-pin" class="text-pink-600"></i> Copthorne</div>
                 </div>
-                <h4 class="font-black uppercase text-xs mb-4 text-slate-400">Local Test Centres:</h4>
-                <ul class="space-y-2">
-                    <li class="text-sm font-bold uppercase flex items-center gap-2">🏁 Crawley (Pease Pottage)</li>
-                    <li class="text-sm font-bold uppercase flex items-center gap-2">🏁 Redhill (Aerodrome)</li>
-                </ul>
+                <div class="mt-12 p-6 bg-slate-50 rounded-2xl">
+                    <h5 class="font-black uppercase text-xs mb-2">Driving Test Centres:</h5>
+                    <p class="text-xs font-bold text-slate-500 uppercase">Crawley (Pease Pottage) & Redhill (Aerodrome)</p>
+                </div>
             </div>
-            <div class="reveal rounded-3xl overflow-hidden shadow-2xl h-[400px] border-8 border-white">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40237.11342672304!2d-0.218552155823727!3d51.117621980836934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875f0376f9266e9%3A0xc367292a8327d5f0!2sCrawley!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="reveal h-96 bg-slate-200 rounded-3xl overflow-hidden grayscale">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40167.33245464195!2d-0.22271813133379403!3d51.10921200389332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875ef214739501d%3A0x679693998b2512f4!2sCrawley!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-1 mb-4">
+                <i data-lucide="star" class="fill-yellow-400 text-yellow-400 w-5 h-5"></i>
+                <i data-lucide="star" class="fill-yellow-400 text-yellow-400 w-5 h-5"></i>
+                <i data-lucide="star" class="fill-yellow-400 text-yellow-400 w-5 h-5"></i>
+                <i data-lucide="star" class="fill-yellow-400 text-yellow-400 w-5 h-5"></i>
+                <i data-lucide="star" class="fill-yellow-400 text-yellow-400 w-5 h-5"></i>
+            </div>
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Rated 5 Stars on Google</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
+                    <p class="text-xs font-bold uppercase text-slate-500 mb-6 italic">"Jenna made me feel so calm. I passed first time after being terrified of driving for years."</p>
+                    <h6 class="font-black uppercase text-[10px]">- Sarah W.</h6>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
+                    <p class="text-xs font-bold uppercase text-slate-500 mb-6 italic">"Best instructor in Crawley. The Fiat 500 is a dream to learn in!"</p>
+                    <h6 class="font-black uppercase text-[10px]">- James M.</h6>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
+                    <p class="text-xs font-bold uppercase text-slate-500 mb-6 italic">"Patient, professional and very supportive. Highly recommended for nervous drivers."</p>
+                    <h6 class="font-black uppercase text-[10px]">- Chloe R.</h6>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6 bg-slate-50 p-12 rounded-3xl reveal">
+            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-8">Nervous Driver <span class="gradient-text">Quiz</span></h2>
+            <div id="quiz-box">
+                <p class="font-black uppercase text-xs mb-6 text-center">How do you feel about your first lesson?</p>
+                <div class="grid gap-4">
+                    <div class="quiz-opt p-5 rounded-xl font-black uppercase text-[10px]" onclick="alert('We recommend our Calm Starter Package!')">A) Very Anxious - I need a patient approach.</div>
+                    <div class="quiz-opt p-5 rounded-xl font-black uppercase text-[10px]" onclick="alert('Our Standard Block is perfect for you!')">B) A little nervous but excited to start.</div>
+                    <div class="quiz-opt p-5 rounded-xl font-black uppercase text-[10px]" onclick="alert('Standard Block Booking would suit you best!')">C) Confident, just need to learn the rules.</div>
+                </div>
             </div>
         </div>
     </section>
@@ -453,17 +411,21 @@
                     <button class="faq-btn" onclick="toggleFaq(this)">What car will I learn in? <i data-lucide="chevron-down" class="w-5 h-5 text-[#4FA5E0]"></i></button>
                     <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">All lessons are conducted in a manual Fiat 500, which is highly rated for its ease of use for learners.</div>
                 </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Can you help with test anxiety? <i data-lucide="chevron-down" class="w-5 h-5 text-[#4FA5E0]"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Yes! This is my specialty. I use proven techniques to help students manage stress and perform their best during the test.</div>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="py-24 bg-black text-white">
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">Pass Your <span class="gradient-text">Theory</span></h2>
-            <p class="text-slate-400 font-bold uppercase text-[10px] mb-10 tracking-widest">Sign up for driving tips, theory support & test route updates.</p>
+        <div class="max-w-xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-black uppercase mb-4">Get Driving <span class="gradient-text">Tips</span></h3>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">Weekly theory support and practical tips delivered to your inbox.</p>
             <form class="flex flex-col sm:flex-row gap-4">
-                <input type="email" placeholder="YOUR EMAIL ADDRESS" class="flex-1 bg-white/10 border border-white/20 p-5 text-xs font-black rounded-sm focus:outline-none focus:border-[#D8268D]">
-                <button type="submit" class="btn-brand px-10 py-5 text-xs uppercase">Join Now</button>
+                <input type="email" placeholder="Email Address" class="flex-1 px-6 py-4 rounded-lg bg-white/10 border border-white/20 text-white text-xs font-bold uppercase outline-none focus:border-pink-600">
+                <button type="submit" class="btn-brand px-8 py-4 rounded-lg text-xs uppercase font-black">Subscribe</button>
             </form>
         </div>
     </section>
@@ -482,14 +444,15 @@
                         <h5 class="font-black uppercase text-[#D8268D] text-xs mb-6">Contact Details</h5>
                         <p class="text-sm font-bold uppercase tracking-widest mb-2">07436 401467</p>
                         <p class="text-[10px] text-slate-400 font-bold uppercase mb-4">jennapatmoredriving@gmail.com</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase">Crawley, United Kingdom</p>
                     </div>
                     <div>
                         <h5 class="font-black uppercase text-[#4FA5E0] text-xs mb-6">Connect</h5>
                         <div class="flex space-x-6">
-                            <a href="#"><i data-lucide="facebook" class="w-6 h-6 hover:text-[#D8268D] transition"></i></a>
-                            <a href="#"><i data-lucide="instagram" class="w-6 h-6 hover:text-[#D8268D] transition"></i></a>
-                            <a href="#"><i data-lucide="youtube" class="w-6 h-6 hover:text-[#D8268D] transition"></i></a>
-                            <a href="#"><i data-lucide="message-circle" class="w-6 h-6 hover:text-[#D8268D] transition"></i></a>
+                            <a href="#"><i data-lucide="facebook" class="w-6 h-6 hover:text-[#D8268D] cursor-pointer transition"></i></a>
+                            <a href="#"><i data-lucide="instagram" class="w-6 h-6 hover:text-[#D8268D] cursor-pointer transition"></i></a>
+                            <a href="#"><i data-lucide="youtube" class="w-6 h-6 hover:text-[#D8268D] cursor-pointer transition"></i></a>
+                            <a href="tel:07436401467"><i data-lucide="phone" class="w-6 h-6 hover:text-[#D8268D] cursor-pointer transition"></i></a>
                         </div>
                     </div>
                 </div>
@@ -508,26 +471,35 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
+            // Show popup after 3 seconds
             setTimeout(() => { document.getElementById('promoPopup').style.display = 'block'; }, 3000);
 
-            // NEW: Animated Counter Logic
+            // ➕ Stats Counter Animation
             const counters = document.querySelectorAll('.counter');
             const speed = 200;
-            const startCounters = (entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        const target = +entry.target.getAttribute('data-target');
-                        const count = +entry.target.innerText;
-                        const inc = target / speed;
-                        if(count < target) {
-                            entry.target.innerText = Math.ceil(count + inc);
-                            setTimeout(() => startCounters([entry]), 1);
-                        } else { entry.target.innerText = target; }
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animateCounters, 20);
+                    } else {
+                        counter.innerText = target;
                     }
                 });
-            };
-            const counterObserver = new IntersectionObserver(startCounters, {threshold: 0.5});
-            counters.forEach(c => counterObserver.observe(c));
+            }
+
+            // Trigger animation on scroll
+            const statsSection = document.querySelector('.counter').parentElement;
+            const observerStats = new IntersectionObserver((entries) => {
+                if(entries[0].isIntersecting) {
+                    animateCounters();
+                    observerStats.disconnect();
+                }
+            }, {threshold: 0.5});
+            observerStats.observe(statsSection);
         });
 
         // Mobile Menu Toggle
