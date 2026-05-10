@@ -116,6 +116,12 @@
         .gradient-text {
             color: var(--brand-green);
         }
+
+        /* NEW ADDITIONS CSS */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .review-card { background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .star-rating { color: #fbbf24; }
     </style>
 </head>
 <body class="text-slate-900"> 
@@ -194,6 +200,35 @@
         </div>
     </section>
 
+    <section class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black uppercase tracking-tighter">Automatic <span class="text-slate-300">vs</span> Manual</h2>
+                <p class="text-slate-500 font-bold uppercase text-xs mt-2">Which path is right for you?</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="reveal p-8 rounded-3xl bg-slate-50 border-2 border-slate-100">
+                    <i data-lucide="cog" class="w-12 h-12 text-[var(--brand-green)] mb-6"></i>
+                    <h3 class="text-2xl font-black uppercase mb-4">Manual Lessons</h3>
+                    <ul class="space-y-3 text-sm font-bold text-slate-600 uppercase">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i> Full control over gear shifts</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i> License covers all vehicles</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i> Usually cheaper to purchase cars</li>
+                    </ul>
+                </div>
+                <div class="reveal p-8 rounded-3xl bg-[var(--brand-green)] text-white">
+                    <i data-lucide="zap" class="w-12 h-12 text-green-300 mb-6"></i>
+                    <h3 class="text-2xl font-black uppercase mb-4">Automatic Lessons</h3>
+                    <ul class="space-y-3 text-sm font-bold uppercase opacity-90">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4"></i> No clutch or gear management</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4"></i> Faster learning curve for many</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4"></i> Ideal for heavy Wirral traffic</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-12 bg-white border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="reveal">
@@ -207,6 +242,34 @@
             <div class="reveal">
                 <p class="text-5xl font-black text-[var(--brand-green)] mb-2 counter" data-target="100">0</p>
                 <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">% Professional Service</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-900 text-white overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-black uppercase tracking-tighter">See Us In <span class="text-green-500">Action</span></h2>
+            </div>
+            <div class="video-container shadow-2xl reveal">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="reveal p-10 bg-slate-50 rounded-3xl border-l-8 border-[var(--brand-green)]">
+                    <h3 class="text-3xl font-black uppercase mb-4">Intensive Courses</h3>
+                    <p class="text-sm font-bold text-slate-500 uppercase mb-6 leading-relaxed">The fast-track to your license. 1-week and 2-week intensive blocks designed to get you test-ready in record time.</p>
+                    <a href="tel:07377086779" class="btn-brand px-6 py-3 text-xs uppercase inline-block">Enquire Fast Pass</a>
+                </div>
+                <div class="reveal p-10 bg-slate-50 rounded-3xl border-l-8 border-slate-800">
+                    <h3 class="text-3xl font-black uppercase mb-4">Refresher Lessons</h3>
+                    <p class="text-sm font-bold text-slate-500 uppercase mb-6 leading-relaxed">Nervous or returning to the road? Our refresher sessions build confidence and update your skills for modern driving.</p>
+                    <a href="tel:07377086779" class="btn-brand px-6 py-3 text-xs uppercase inline-block">Book Refresher</a>
+                </div>
             </div>
         </div>
     </section>
@@ -237,24 +300,104 @@
         </div>
     </section>
 
-    <section id="pricing" class="py-24 bg-white">
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Premium <span class="text-green-600">Bundles</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="reveal border-2 border-slate-100 p-6 rounded-2xl">
+                    <h4 class="font-black uppercase text-xl mb-2">Bronze</h4>
+                    <p class="text-xs font-bold text-slate-400 mb-4 uppercase">5 Hour Starter</p>
+                    <a href="tel:07377086779" class="text-[var(--brand-green)] font-black text-xs uppercase">Call To Book</a>
+                </div>
+                <div class="reveal border-2 border-slate-100 p-6 rounded-2xl">
+                    <h4 class="font-black uppercase text-xl mb-2">Silver</h4>
+                    <p class="text-xs font-bold text-slate-400 mb-4 uppercase">10 Hour Block</p>
+                    <a href="tel:07377086779" class="text-[var(--brand-green)] font-black text-xs uppercase">Call To Book</a>
+                </div>
+                <div class="reveal border-2 border-[var(--brand-green)] p-6 rounded-2xl bg-green-50">
+                    <h4 class="font-black uppercase text-xl mb-2">Gold</h4>
+                    <p class="text-xs font-bold text-slate-400 mb-4 uppercase">20 Hour Pass Plus</p>
+                    <a href="tel:07377086779" class="text-[var(--brand-green)] font-black text-xs uppercase">Call To Book</a>
+                </div>
+                <div class="reveal bg-black text-white p-6 rounded-2xl">
+                    <h4 class="font-black uppercase text-xl mb-2 text-green-400">VIP FastPass</h4>
+                    <p class="text-xs font-bold text-slate-400 mb-4 uppercase">40 Hour Ultimate</p>
+                    <a href="tel:07377086779" class="text-green-400 font-black text-xs uppercase">Call To Book</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div class="reveal">
+                <h3 class="text-3xl font-black uppercase mb-8">Weekly Availability</h3>
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl">
+                    <table class="w-full text-left text-xs uppercase font-black">
+                        <thead class="bg-[var(--brand-green)] text-white">
+                            <tr><th class="p-4">Day</th><th class="p-4">Morning</th><th class="p-4">Evening/Weekend</th></tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-4">Mon-Fri</td><td class="p-4 text-green-600">Available</td><td class="p-4 text-orange-500">Limited Slots</td></tr>
+                            <tr><td class="p-4">Saturday</td><td class="p-4 text-orange-500">Pre-Booked</td><td class="p-4 text-orange-500">Pre-Booked</td></tr>
+                            <tr><td class="p-4">Sunday</td><td class="p-4 text-slate-300">Closed</td><td class="p-4 text-slate-300">Closed</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="reveal bg-[var(--brand-green)] p-10 rounded-3xl text-white">
+                <i data-lucide="gift" class="w-12 h-12 mb-6"></i>
+                <h3 class="text-3xl font-black uppercase mb-4">Refer A Friend</h3>
+                <p class="text-sm font-bold uppercase mb-8 opacity-80">Love your lessons? Recommend Peninsula to a friend and get a reward! When they book their first 10-hour block, you get a special bonus.</p>
+                <div class="p-4 border-2 border-dashed border-green-300 rounded-xl text-center">
+                    <p class="text-xs font-black uppercase">Ask your instructor for details!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Start Your <span class="gradient-text">Journey</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="reveal p-8 border-2 border-slate-100 rounded-xl hover:border-[var(--brand-green)] transition">
-                    <p class="text-xs font-black uppercase mb-2">Single Lesson</p>
-                    <p class="text-3xl font-black mb-4">Standard Rate</p>
-                    <a href="tel:07377086779" class="btn-brand w-full block py-3 text-[10px] uppercase">Call 07377 086 779</a>
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-12">Student <span class="text-green-600">Reviews</span></h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="review-card reveal">
+                    <div class="star-rating mb-2"><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i></div>
+                    <p class="text-xs font-bold uppercase text-slate-600">"Professional and patient. Passed first time on the Wirral routes!"</p>
+                    <p class="mt-4 text-[10px] font-black text-slate-400 uppercase">- James T.</p>
                 </div>
-                <div class="reveal p-8 bg-[var(--brand-green)] text-white rounded-xl transform scale-105 shadow-2xl">
-                    <p class="text-xs font-black uppercase mb-2 text-green-200">Recommended</p>
-                    <p class="text-3xl font-black mb-4">10 Hour Block</p>
-                    <a href="tel:07377086779" class="bg-white text-[var(--brand-green)] w-full block py-3 text-[10px] font-black uppercase">Call 07377 086 779</a>
+                <div class="review-card reveal">
+                    <div class="star-rating mb-2"><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i></div>
+                    <p class="text-xs font-bold uppercase text-slate-600">"The best driving school in Birkenhead. Highly recommend Peninsula!"</p>
+                    <p class="mt-4 text-[10px] font-black text-slate-400 uppercase">- Sarah L.</p>
                 </div>
-                <div class="reveal p-8 border-2 border-slate-100 rounded-xl hover:border-[var(--brand-green)] transition">
-                    <p class="text-xs font-black uppercase mb-2">Extended</p>
-                    <p class="text-3xl font-black mb-4">20 Hour Block</p>
-                    <a href="tel:07377086779" class="btn-brand w-full block py-3 text-[10px] uppercase">Call 07377 086 779</a>
+                <div class="review-card reveal">
+                    <div class="star-rating mb-2"><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i><i data-lucide="star" class="inline w-4 h-4 fill-current"></i></div>
+                    <p class="text-xs font-bold uppercase text-slate-600">"Great automatic lessons. Very calm environment for nervous drivers."</p>
+                    <p class="mt-4 text-[10px] font-black text-slate-400 uppercase">- David W.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Your <span class="text-green-600">Questions</span></h2>
+            <div class="space-y-4">
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">What are your lesson prices? <i data-lucide="chevron-down" class="w-5 h-5 text-green-600"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">We offer competitive rates for single lessons and discounted block bookings. Contact us for our current Wirral price list.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Do you offer weekend lessons? <i data-lucide="chevron-down" class="w-5 h-5 text-green-600"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Yes, we provide weekend and evening slots, though these are high demand and should be booked in advance.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">What payment methods do you accept? <i data-lucide="chevron-down" class="w-5 h-5 text-green-600"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">We accept bank transfers, cash, and digital payments. Block bookings must be paid in advance.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">How long is each lesson? <i data-lucide="chevron-down" class="w-5 h-5 text-green-600"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Standard lessons are 1 hour or 2 hours. 2-hour sessions are recommended for faster progress.</div>
                 </div>
             </div>
         </div>
@@ -394,6 +537,13 @@
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
     </script>
 </body>
 </html>
