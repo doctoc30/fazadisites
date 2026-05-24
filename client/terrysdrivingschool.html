@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terry's Driving School | Professional Driving Tuition in Ludlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-black: #0c0f12; 
+            --brand-blue: #185adb; 
+            --brand-white: #ffffff;
+            --brand-gray: #1e293b;
+            --brand-light-blue: #eff6ff;
+        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
+        
+        /* Custom SVG Logo Logic matching Terry's Driving School Branding */
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-text {
+            font-family: 'Archivo Black', sans-serif;
+            line-height: 1.1;
+        }
+
+        /* Hero Track Styling */
+        .car-hero-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 350px; 
+            display: flex;
+            align-items: flex-end; 
+            overflow: hidden; 
+            background: linear-gradient(to bottom, #ffffff, #f8fafc);
+        }
+        
+        #panningCar {
+            width: 450px;
+            height: auto; 
+            position: absolute;
+            bottom: 25px; 
+            z-index: 20; 
+            animation: driveForward 18s linear infinite; 
+            will-change: transform;
+            filter: drop-shadow(0 15px 20px rgba(24, 90, 219, 0.15)); 
+        }
+
+        @keyframes driveForward {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+
+        .road-indicator {
+            height: 6px; 
+            background: var(--brand-gray);
+            width: 100%;
+            position: absolute;
+            bottom: 30px; 
+            z-index: 5; 
+        }
+        .road-indicator::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            width: 100%;
+            height: 2px; 
+            background-image: linear-gradient(to right, white 50%, transparent 50%);
+            background-size: 60px 100%;
+            animation: roadMove 0.6s linear infinite; 
+        }
+        @keyframes roadMove {
+            0% { background-position: 0 0; }
+            100% { background-position: -60px 0; }
+        }
+
+        /* Feature Styles */
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateX(100%);
+            background: var(--brand-black);
+        }
+        #mobile-menu.open { transform: translateX(0); }
+        .glass { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); }
+        .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-blue); }
+        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(24, 90, 219, 0.2); }
+        .ticker-wrap { overflow: hidden; background: var(--brand-black); color: var(--brand-white); padding: 15px 0; border-bottom: 4px solid var(--brand-blue); }
+        .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        .btn-brand { background-color: var(--brand-blue); color: white; transition: 0.3s; font-weight: 900; }
+        .btn-brand:hover { background-color: #0f44b0; transform: scale(1.03); }
+        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-black); display: flex; z-index: 100; border-top: 4px solid var(--brand-blue); }
+        .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 300px; padding: 1rem 0; }
+        .blue-tag { background: var(--brand-blue); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
+        
+        #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 300px; background: white; border-top: 5px solid var(--brand-blue); box-shadow: 0 20px 40px rgba(0,0,0,0.15); border-radius: 8px; padding: 20px; }
+    </style>
+</head>
+<body class="text-slate-900"> 
+
+    <div id="promoPopup" class="animate__animated animate__fadeInUp">
+        <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2"><i data-lucide="x" class="w-4 h-4"></i></button>
+        <span class="blue-tag mb-2 inline-block">Highly Recommended</span>
+        <h4 class="font-black text-xl leading-tight mb-2">98% Recommendation Rate</h4>
+        <p class="text-xs font-bold text-slate-500 uppercase mb-4">Based on 64 verified student reviews!</p>
+        <div class="flex flex-col gap-2">
+            <a href="tel:07765501264" class="btn-brand px-4 py-2 text-[10px] uppercase inline-block text-center tracking-wider">Call Terry: 07765 501264</a>
+            <a href="tel:07733529575" class="bg-slate-900 text-white font-black px-4 py-2 text-[10px] uppercase inline-block text-center tracking-wider hover:bg-slate-800 transition">Call Amy: 07733 529575</a>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="logo-wrap">
+                <svg width="55" height="42" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="180" height="140" rx="20" fill="#185adb" />
+                    <rect x="25" y="25" width="150" height="110" rx="12" fill="#ffffff" />
+                    <text x="100" y="112" font-family="'Archivo Black', sans-serif" font-size="95" font-weight="900" fill="#185adb" text-anchor="middle">L</text>
+                </svg>
+                <div class="logo-text">
+                    <span class="text-xl font-black tracking-tight block text-slate-900">TERRY'S</span>
+                    <span class="text-[11px] font-black tracking-[0.18em] text-[#185adb] uppercase block">DRIVING SCHOOL</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 font-black text-xs uppercase tracking-widest">
+                <a href="#services" class="hover:text-[#185adb] transition">Tuition Options</a>
+                <a href="#areas" class="hover:text-[#185adb] transition">Ludlow Areas</a>
+                <div class="flex flex-col text-right border-l pl-6 border-slate-200">
+                    <a href="tel:07765501264" class="text-slate-900 hover:text-[#185adb] transition font-black">Terry: 07765 501264</a>
+                    <a href="tel:07733529575" class="text-slate-900 hover:text-[#185adb] transition font-black">Amy: 07733 529575</a>
+                </div>
+                <a href="mailto:terrysdriving@hotmail.co.uk" class="btn-brand px-5 py-3 rounded-sm shadow-md uppercase tracking-wider text-[11px]">Email Booking</a>
+            </div>
+            <button id="menu-btn" class="md:hidden"><i data-lucide="menu" class="w-8 h-8 text-slate-900"></i></button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[100] p-10 flex flex-col shadow-2xl">
+        <button id="close-btn" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
+        <div class="flex flex-col space-y-6 text-white font-black text-2xl uppercase tracking-tighter">
+            <a href="#services" onclick="mobileMenu.classList.remove('open')">Our Lessons</a>
+            <a href="#areas" onclick="mobileMenu.classList.remove('open')">Ludlow Coverage</a>
+            <div class="h-[2px] bg-white/10 my-4"></div>
+            <p class="text-xs tracking-widest text-[#185adb]">CALL OR TEXT DIRECTLY:</p>
+            <a href="tel:07765501264" class="text-white">Terry: 07765 501264</a>
+            <a href="tel:07733529575" class="text-white">Amy: 07733 529575</a>
+            <a href="mailto:terrysdriving@hotmail.co.uk" class="text-sm text-slate-400 font-bold lowercase">terrysdriving@hotmail.co.uk</a>
+        </div>
+    </div>
+
+    <div class="ticker-wrap font-bold uppercase text-xs tracking-widest">
+        <div class="ticker space-x-16">
+            <span>⭐ 98% Recommended by Local Students</span>
+            <span>📍 Based in Ludlow, Shropshire & Surrounding Districts</span>
+            <span>🚗 Twin-Car Fleet Fleet (As Featured in Profile)</span>
+            <span>📝 DVSA Approved Professional Tuition Standards</span>
+            <span>📞 Direct Booking: Call or Text Terry on 07765501264 or Amy on 07733529575</span>
+        </div>
+    </div>
+
+    <section class="relative min-h-[80vh] flex flex-col items-center justify-center bg-white py-12 overflow-hidden">
+        <div class="w-full mb-10">
+            <div class="car-hero-container">
+                <div class="road-indicator"></div>
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3990.png" alt="Terry's Driving School Fleet Vehicles" style="filter: drop-shadow(0 15px 20px rgba(24,90,219,0.25));">
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center z-20">
+            <div class="animate__animated animate__fadeInUp">
+                <span class="blue-tag mb-4 inline-block">Top Rated Local Instruction</span>
+                <h1 class="text-5xl md:text-8xl font-black text-black leading-none mb-6 uppercase tracking-tighter">
+                    TERRY'S <span class="text-[#185adb]">DRIVING.</span>
+                </h1>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.25em] mb-12 text-sm md:text-base">Comprehensive Driving Lessons Across Ludlow & Border Regions</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 bg-slate-50 p-6 rounded-xl border border-slate-200 max-w-3xl mx-auto">
+                    <div class="flex-1 p-4 bg-white rounded-lg shadow-sm border border-slate-100">
+                        <p class="text-[10px] font-black text-[#185adb] uppercase tracking-wider mb-1">Call / Text Instructor</p>
+                        <a href="tel:07765501264" class="text-xl font-black text-slate-900 hover:text-[#185adb] block">Terry: 07765 501264</a>
+                    </div>
+                    <div class="flex-1 p-4 bg-white rounded-lg shadow-sm border border-slate-100">
+                        <p class="text-[10px] font-black text-[#185adb] uppercase tracking-wider mb-1">Call / Text Instructor</p>
+                        <a href="tel:07733529575" class="text-xl font-black text-slate-900 hover:text-[#185adb] block">Amy: 07733 529575</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="reveal">
+                <p class="text-5xl font-black text-black mb-2 counter" data-target="64">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Verified Client Reviews</p>
+            </div>
+            <div class="reveal">
+                <p class="text-5xl font-black text-black mb-2 counter" data-target="386">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Successful Community Posts</p>
+            </div>
+            <div class="reveal">
+                <p class="text-5xl font-black text-[#185adb] mb-2 counter" data-target="98">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">% Student Recommendation Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto text-center mb-16 px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter">Your Road To <span class="text-[#185adb]">Independence</span></h2>
+            <p class="text-slate-500 font-bold uppercase text-xs tracking-wider mt-2">Tailored training frameworks designed to turn learners into confident drivers</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black shadow-sm">
+                <i data-lucide="shield-check" class="w-12 h-12 mb-6 text-black"></i>
+                <h3 class="text-2xl font-black uppercase mb-4">Beginner Driving Essentials</h3>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Perfect for absolute beginners. We build your core control mechanics, steering accuracy, clutch management, and general road positioning step-by-step around quiet Ludlow neighborhoods before tackling more complex road situations.</p>
+                <div class="pt-4 border-t border-slate-100">
+                    <p class="text-[11px] font-black text-slate-400 uppercase mb-2">Book with Terry or Amy:</p>
+                    <p class="text-xs font-black text-slate-800">SMS / CALL: 07765 501264 / 07733 529575</p>
+                </div>
+            </div>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#185adb] shadow-sm">
+                <i data-lucide="navigation-2" class="w-12 h-12 mb-6 text-[#185adb]"></i>
+                <h3 class="text-2xl font-black uppercase mb-4">Test Centre Familiarisation</h3>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Designed for individuals getting close to test standard. Gain absolute familiarity with local rural test junctions, dual carriageways, tricky roundabouts, and specific maneuver locations typically utilized by regional examiners.</p>
+                <div class="pt-4 border-t border-slate-100">
+                    <p class="text-[11px] font-black text-slate-400 uppercase mb-2">Inquire via Email Address:</p>
+                    <a href="mailto:terrysdriving@hotmail.co.uk" class="text-xs font-black text-[#185adb] underline lowercase">terrysdriving@hotmail.co.uk</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">Lesson <span class="text-[#185adb]">Arrangements</span></h2>
+            <p class="text-slate-500 font-bold uppercase text-xs tracking-wider mb-16">Contact us directly to discuss transparent competitive pricing structural tiers (£)</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#185adb] transition">
+                    <p class="text-xs font-black uppercase mb-2">Evaluation</p>
+                    <p class="text-2xl font-black mb-4">Single Lesson</p>
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400 mb-4">Assess vehicle handling</p>
+                    <a href="tel:07765501264" class="btn-brand w-full block py-3 text-[9px] uppercase tracking-wider">Call 07765501264</a>
+                </div>
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#185adb] transition">
+                    <p class="text-xs font-black uppercase mb-2">Foundational</p>
+                    <p class="text-2xl font-black mb-4">Block of 5</p>
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400 mb-4">Build muscle memory</p>
+                    <a href="tel:07733529575" class="btn-brand w-full block py-3 text-[9px] uppercase tracking-wider">Call 07733529575</a>
+                </div>
+                <div class="reveal p-6 bg-slate-900 text-white rounded-xl transform scale-105 shadow-xl">
+                    <p class="text-xs font-black uppercase mb-2 text-[#185adb]">Popular Option</p>
+                    <p class="text-2xl font-black mb-4">Block of 10</p>
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400 mb-4">Accelerated skill block</p>
+                    <a href="sms:+447765501264" class="btn-brand w-full block py-3 text-[9px] uppercase tracking-wider">Text Terry</a>
+                </div>
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#185adb] transition">
+                    <p class="text-xs font-black uppercase mb-2">Comprehensive</p>
+                    <p class="text-2xl font-black mb-4">Block of 20</p>
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400 mb-4">Complete novice package</p>
+                    <a href="sms:+447733529575" class="btn-brand w-full block py-3 text-[9px] uppercase tracking-wider">Text Amy</a>
+                </div>
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#185adb] transition">
+                    <p class="text-xs font-black uppercase mb-2">Refresher</p>
+                    <p class="text-2xl font-black mb-4">Custom Block</p>
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400 mb-4">Rebuild road confidence</p>
+                    <a href="mailto:terrysdriving@hotmail.co.uk" class="btn-brand w-full block py-3 text-[9px] uppercase tracking-wider">Email Inquiry</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Confidence Behind <span class="text-[#185adb]">The Wheel</span></h2>
+            <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700" alt="Driving school instruction background">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 bg-[#185adb] rounded-full flex items-center justify-center shadow-lg"><i data-lucide="award" class="w-8 h-8 text-white"></i></div>
+                </div>
+                <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs tracking-wider">Terry's Driving School Fleet Vehicles Equipped with Dual Controls</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#185adb]">FAQs</span></h2>
+            <div class="space-y-4">
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">How do I coordinate bookings with Terry or Amy? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">You can call or text either instructor directly based on current availability. Texting Terry on 07765501264 or Amy on 07733529575 is often the fastest way to arrange a schedule while they are conducting active on-road tuition.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">What kind of cars do you use for training? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">As shown in our official social media profile photos, we run a uniform fleet of modern hatchback vehicles, perfectly sized for making maneuvers effortless and ensuring optimal clear visibility for learners.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Are your instructors fully certified? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Yes, our instructors are fully DVSA certified and approved professional educators. Our 98% student recommendation score reflects our commitment to safe, professional, and patient teaching styles.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">What is your cancellation policy? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">We require at least 48 hours notice for lesson cancellations so we can allocate the booking slot to other students on our waiting list. Contact your designated instructor directly to reschedule.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="areas" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Ludlow & <span class="text-[#185adb]">Surrounds</span></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#185adb]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Ludlow Central</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Shropshire Core Territory</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#185adb]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Clee Hill</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Regional Surrounding Routes</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#185adb]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Craven Arms</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">North Ludlow Highways</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#185adb]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Tenbury Wells</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Border Region Coverage</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-[300px] bg-slate-200 rounded-3xl overflow-hidden shadow-md">
+                    <iframe src="https://maps.google.com/maps?q=Ludlow,%20UK&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9);" allowfullscreen=""></iframe>
+                </div>
+            </div>
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#185adb]">Availability</span></h2>
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                    <table class="w-full text-left text-xs uppercase font-black">
+                        <thead class="bg-black text-white">
+                            <tr>
+                                <th class="p-4">Training Block</th>
+                                <th class="p-4">Weekdays</th>
+                                <th class="p-4">Weekends</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-4 bg-slate-50">Morning Slots</td>
+                                <td class="p-4 text-green-600">Active Bookings</td>
+                                <td class="p-4 text-amber-500">Pre-Arranged Only</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 bg-slate-50">Afternoon Slots</td>
+                                <td class="p-4 text-green-600">Active Bookings</td>
+                                <td class="p-4 text-amber-500">Limited Openings</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 bg-slate-50">Evening Tracks</td>
+                                <td class="p-4 text-amber-500">By Request</td>
+                                <td class="p-4 text-slate-400">Restricted</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100">
+                        <p class="text-[9px] text-slate-500 font-bold">* Please call Terry or Amy directly to check dynamic calendar gaps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Community <span class="text-[#185adb]">Success Posts</span></h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="reveal bg-slate-50 p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Massive congratulations to Chelsey on her absolute first-time pass! Such a fantastic drive, well deserved after putting in the consistent effort during lessons."</p>
+                    <p class="font-black uppercase text-[10px]">— Terry's Driving School Post Highlight</p>
+                </div>
+                <div class="reveal bg-slate-50 p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Amazing experience learning with Terry's Driving School. The 98% recommendation rate is completely accurate. Patient instruction, practical knowledge, and great tips for the local test route."</p>
+                    <p class="font-black uppercase text-[10px]">— Verified Student Review</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-xl mx-auto text-center">
+                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Ludlow Test Updates & <span class="text-[#185adb]">Advice</span></h3>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Get theoretical insights, local road advisories, and scheduling priority notifications.</p>
+                <form class="flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Terry\'s Driving School updates!');">
+                    <input type="email" required placeholder="Your Professional Email Address" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#185adb] transition text-white">
+                    <button type="submit" class="btn-brand px-8 py-4 text-xs uppercase tracking-wider">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white pt-20 pb-32"> 
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
+                <div class="logo-wrap mb-10 md:mb-0">
+                    <div class="logo-text !text-white">
+                        <span class="text-2xl font-black block tracking-tight">TERRY'S</span>
+                        <span class="text-[9px] font-black tracking-[0.25em] text-[#185adb] uppercase block">Driving School</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+                    <div>
+                        <h5 class="font-black uppercase text-[#185adb] text-xs mb-6">Contact Instructors</h5>
+                        <p class="text-sm font-black uppercase tracking-wider mb-1">Terry: 07765 501264</p>
+                        <p class="text-sm font-black uppercase tracking-wider mb-3">Amy: 07733 529575</p>
+                        <a href="mailto:terrysdriving@hotmail.co.uk" class="text-[10px] text-slate-400 font-bold lowercase block hover:text-[#185adb] transition">terrysdriving@hotmail.co.uk</a>
+                    </div>
+                    <div>
+                        <h5 class="font-black uppercase text-[#185adb] text-xs mb-6">Ludlow Hubs</h5>
+                        <ul class="text-[10px] font-bold uppercase space-y-2 text-slate-400">
+                            <li>Ludlow Central</li>
+                            <li>Shropshire Outskirts</li>
+                            <li>Clee Hill & Borders</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-black uppercase text-[#185adb] text-xs mb-6">Social Contacts</h5>
+                        <div class="flex space-x-4">
+                            <a href="mailto:terrysdriving@hotmail.co.uk" aria-label="Email Terry's Driving School"><i data-lucide="mail" class="w-5 h-5 hover:text-[#185adb] transition"></i></a>
+                            <a href="tel:07765501264" aria-label="Call Terry"><i data-lucide="phone" class="w-5 h-5 hover:text-[#185adb] transition"></i></a>
+                            <a href="sms:+447733529575" aria-label="Text Amy"><i data-lucide="message-square" class="w-5 h-5 hover:text-[#185adb] transition"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-[10px] text-slate-500 font-black uppercase tracking-[0.5em]">© 2026 TERRY'S DRIVING SCHOOL. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <div class="cta-dock md:hidden">
+        <a href="tel:07765501264"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#185adb]"></i>CALL TERRY</a>
+        <a href="tel:07733529575"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#185adb]"></i>CALL AMY</a>
+        <a href="sms:+447765501264"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#185adb]"></i>TEXT TERRY</a>
+        <a href="mailto:terrysdriving@hotmail.co.uk" class="bg-[#185adb] !text-white !border-none"><i data-lucide="mail" class="w-5 h-5 mb-1"></i>EMAIL</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons Vector graphics layout
+            lucide.createIcons();
+            
+            // Activate Promotion Engagement Panel after small operational window delay
+            setTimeout(() => { document.getElementById('promoPopup').style.display = 'block'; }, 3000);
+            
+            // Performance Incremental Counter Mechanism
+            const counters = document.querySelectorAll('.counter');
+            const speed = 150;
+            const startCounters = (entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const target = +entry.target.getAttribute('data-target');
+                        const updateCount = () => {
+                            const count = +entry.target.innerText;
+                            const inc = Math.ceil(target / speed);
+                            if(count < target) {
+                                entry.target.innerText = count + inc;
+                                setTimeout(updateCount, 15);
+                            } else { entry.target.innerText = target; }
+                        };
+                        updateCount();
+                    }
+                });
+            };
+            const counterObserver = new IntersectionObserver(startCounters, {threshold: 0.3});
+            counters.forEach(c => counterObserver.observe(c));
+        });
+
+        // Mobile Nav Drawer Toggle Handlers
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+        // Intersection Reveal System Mechanics
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp'); }
+            });
+        }, { threshold: 0.05 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Accordion Toggle Controls for FAQ Framework
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    </script>
+</body>
+</html>
