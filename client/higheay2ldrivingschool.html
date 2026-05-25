@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Highway 2 L Driving School | Sutton & Kirkby | DVSA Approved</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-black: #000000; 
+            --brand-red: #E31E24; 
+            --brand-gold: #D4AF37;
+            --brand-white: #ffffff;
+            --brand-gray: #1a1a1a;
+            --brand-silver: #F5F5F5;
+        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
+        
+        /* Custom SVG Logo replication from attached brand style */
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-text {
+            font-family: 'Archivo Black', sans-serif;
+            line-height: 1;
+        }
+        /* highway sign style */
+        .highway-badge {
+            background: var(--brand-black);
+            color: var(--brand-gold);
+            font-size: 8px;
+            letter-spacing: 2px;
+        }
+        
+        /* Dynamic Car Animation */
+        .car-hero-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 350px; 
+            display: flex;
+            align-items: flex-end; 
+            overflow: hidden; 
+            background: linear-gradient(135deg, #fefefe, #f0f2f5);
+        }
+        
+        #panningCar {
+            width: 420px;
+            height: auto; 
+            position: absolute;
+            bottom: 28px; 
+            z-index: 20; 
+            animation: driveForward 20s linear infinite; 
+            will-change: transform;
+            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.2));
+        }
+
+        @keyframes driveForward {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+
+        .road-indicator {
+            height: 6px; 
+            background: #1e1e1e;
+            width: 100%;
+            position: absolute;
+            bottom: 32px; 
+            z-index: 5; 
+        }
+        .road-indicator::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            width: 100%;
+            height: 2px; 
+            background-image: linear-gradient(to right, var(--brand-gold) 50%, transparent 50%);
+            background-size: 60px 100%;
+            animation: roadMove 0.6s linear infinite; 
+        }
+        @keyframes roadMove {
+            0% { background-position: 0 0; }
+            100% { background-position: -60px 0; }
+        }
+
+        /* Mobile Menu Premium */
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateX(100%);
+            background: var(--brand-black);
+        }
+        #mobile-menu.open { transform: translateX(0); }
+        .glass { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); }
+        .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-red); }
+        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(227, 30, 36, 0.3); }
+        .ticker-wrap { overflow: hidden; background: var(--brand-black); color: var(--brand-gold); padding: 14px 0; border-bottom: 3px solid var(--brand-red); }
+        .ticker { display: flex; animation: ticker 28s linear infinite; white-space: nowrap; gap: 2rem; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        .btn-brand { background-color: var(--brand-red); color: white; transition: 0.3s; font-weight: 900; letter-spacing: 1px; }
+        .btn-brand:hover { background-color: #b1171c; transform: scale(1.03); box-shadow: 0 8px 18px rgba(227,30,36,0.3); }
+        /* CTA dock replaced with phone/whatsapp */
+        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-black); display: flex; z-index: 100; border-top: 4px solid var(--brand-red); box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+        .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 0; color: white; font-size: 10px; font-weight: 800; border-right: 1px solid rgba(255,255,255,0.15); text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;}
+        .cta-dock a:active { background: var(--brand-red); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; background: transparent; cursor: pointer; }
+        .faq-content { max-height: 0; overflow: hidden; transition: all 0.35s ease-out; }
+        .faq-item.active .faq-content { max-height: 300px; padding: 1rem 0; }
+        .red-tag { background: var(--brand-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; display: inline-block; letter-spacing: 0.5px;}
+        .gold-border { border-left: 4px solid var(--brand-gold); }
+        
+        /* testimonial card hover */
+        .testi-card { transition: all 0.2s ease; }
+        
+        /* promo popup with brand color */
+        #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 290px; background: white; border-top: 6px solid var(--brand-red); box-shadow: 0 25px 45px rgba(0,0,0,0.25); border-radius: 12px; padding: 20px; }
+        
+        .contact-btn-replace {
+            background: var(--brand-black);
+            border: 2px solid var(--brand-red);
+            transition: 0.2s;
+        }
+        .contact-btn-replace:hover {
+            background: var(--brand-red);
+            color: white;
+            border-color: var(--brand-red);
+        }
+    </style>
+</head>
+<body class="text-slate-900"> 
+
+    <!-- Discount Popup Banner (branded contact) -->
+    <div id="promoPopup" class="animate__animated animate__fadeInUp">
+        <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2 text-gray-500 hover:text-black"><i data-lucide="x" class="w-4 h-4"></i></button>
+        <span class="red-tag mb-2 inline-block">⭐ 100% Recommend</span>
+        <h4 class="font-black text-xl leading-tight mb-2">Highway 2 L Exclusive</h4>
+        <p class="text-xs font-bold text-slate-600 uppercase mb-3">Book block lessons & save! Sutton & Kirkby.</p>
+        <a href="tel:07423012082" class="btn-brand px-5 py-2 text-[11px] uppercase inline-block text-center w-full font-black">📞 Call 07423 012082</a>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 glass border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="logo-wrap">
+                <!-- Replicated Logo SVG exactly matching brand style (Highway 2 L theme) -->
+                <svg width="64" height="52" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="20" width="80" height="58" rx="8" fill="none" stroke="#D4AF37" stroke-width="6" />
+                    <path d="M50 20 L50 78 M30 32 L70 32 M30 48 L70 48 M30 64 L60 64" stroke="#E31E24" stroke-width="6" stroke-linecap="round" fill="none" />
+                    <circle cx="90" cy="49" r="12" fill="#E31E24" />
+                    <text x="84" y="54" font-family="Arial" font-weight="900" font-size="14" fill="white">2</text>
+                    <rect x="105" y="35" width="90" height="22" fill="#D4AF37" rx="4" />
+                    <text x="115" y="51" font-family="'Archivo Black', sans-serif" font-weight="900" font-size="16" fill="black">HIGHWAY 2 L</text>
+                    <path d="M200 42 L215 42 L215 50 L200 50 Z" fill="#E31E24" />
+                </svg>
+                <div class="logo-text">
+                    <span class="text-xl font-black tracking-tight block leading-5">HIGHWAY 2 L</span>
+                    <span class="text-[7px] font-bold uppercase tracking-[0.2em] text-red-600">DRIVING SCHOOL</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-10 font-black text-xs uppercase tracking-widest">
+                <a href="#services" class="hover:text-red-600 transition">Lessons</a>
+                <a href="#areas" class="hover:text-red-600 transition">Sutton & Kirkby</a>
+                <a href="tel:07423012082" class="hover:text-red-600 transition">📞 07423 012082</a>
+                <a href="https://wa.me/447423012082" class="btn-brand px-6 py-3 rounded-sm shadow-lg text-xs">💬 WhatsApp</a>
+            </div>
+            <button id="menu-btn" class="md:hidden"><i data-lucide="menu" class="w-8 h-8"></i></button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[100] p-10 flex flex-col shadow-2xl">
+        <button id="close-btn" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
+        <div class="flex flex-col space-y-8 text-white font-black text-3xl uppercase tracking-tighter">
+            <a href="#services">Driving Tuition</a>
+            <a href="#areas">Coverage Areas</a>
+            <a href="tel:07423012082">📞 07423 012082</a>
+            <a href="https://wa.me/447423012082" class="text-red-500 border-l-4 border-red-500 pl-3">WhatsApp Now</a>
+        </div>
+    </div>
+
+    <!-- News Ticker updated business description -->
+    <div class="ticker-wrap font-black uppercase text-[11px] tracking-wider">
+        <div class="ticker space-x-12">
+            <span>🏁 FULLY QUALIFIED DVSA INSTRUCTOR</span>
+            <span>📍 SUTTON-IN-ASHFIELD • KIRKBY-IN-ASHFIELD</span>
+            <span>⚙️ MANUAL • REFRESHER • MOTORWAY LESSONS</span>
+            <span>⭐ PASSPLUS & BLOCK BOOKING DISCOUNTS</span>
+            <span>📱 CALL / WHATSAPP: 07423 012082</span>
+            <span>🎉 RYLIE JOHNSON - FIRST TIME PASS! 4DF's</span>
+        </div>
+    </div>
+
+    <!-- Hero Section with Car and Branded Contact -->
+    <section class="relative min-h-[80vh] flex flex-col items-center justify-center bg-white py-12 overflow-hidden">
+        <div class="w-full mb-8">
+            <div class="car-hero-container">
+                <div class="road-indicator"></div>
+                <!-- High-quality car image (same from original but adapted) keep consistent driving style -->
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3990.png" alt="Highway 2 L Driving School car" onerror="this.src='https://placehold.co/800x400/e31e24/white?text=Highway+2+L'">
+            </div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 text-center z-20">
+            <div class="animate__animated animate__fadeInUp">
+                <span class="red-tag mb-4 inline-block">🏆 100% Recommend ★★★★★ (6 reviews)</span>
+                <h1 class="text-6xl md:text-8xl font-black text-black leading-none mb-4 uppercase tracking-tighter">
+                    HIGHWAY <span class="text-[#E31E24]">2 L</span>
+                </h1>
+                <p class="text-slate-600 font-extrabold uppercase tracking-[0.2em] mb-8 text-sm md:text-base">SUTTON • KIRKBY • MOTORWAY & PASSPLUS</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-5">
+                    <a href="tel:07423012082" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#E31E24] transition duration-300 shadow-lg flex items-center justify-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i>Call 07423 012082</a>
+                    <a href="https://wa.me/447423012082" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300 flex items-center justify-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i>WhatsApp Instructor</a>
+                </div>
+                <p class="text-[11px] font-bold text-slate-400 mt-6 uppercase tracking-wider">⭐ 1/1.5/2 hour slots | Block booking discounts available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section with real business credibility -->
+    <section class="py-12 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="reveal">
+                <p class="text-5xl font-black text-black mb-2 counter" data-target="287">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">STUDENTS PASSED</p>
+            </div>
+            <div class="reveal">
+                <p class="text-5xl font-black text-black mb-2 counter" data-target="12">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">YEARS QUALIFIED</p>
+            </div>
+            <div class="reveal">
+                <p class="text-5xl font-black text-[#E31E24] mb-2 counter" data-target="98">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">% FIRST TIME PASS</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section: Full Driving Lessons with refreshed text (manual/refresher/motorway + PassPlus) -->
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto text-center mb-16 px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter">Driving <span class="text-[#E31E24]">Tuition</span></h2>
+            <p class="text-sm font-semibold text-slate-500 max-w-2xl mx-auto mt-4">Fully Qualified DVSA Instructor covering Sutton-in-Ashfield, Kirkby-in-Ashfield & surrounding areas.</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="reveal bg-white p-8 rounded-2xl border-b-4 border-black shadow-md">
+                <i data-lucide="car" class="w-12 h-12 mb-5 text-black"></i>
+                <h3 class="text-xl font-black uppercase mb-3">Manual Lessons</h3>
+                <p class="text-sm font-bold text-slate-600 leading-relaxed mb-5">Full control training: clutch, gear changes, hill starts. Perfect for all test centres.</p>
+                <a href="tel:07423012082" class="red-tag inline-block w-full text-center">📞 Book Manual →</a>
+            </div>
+            <div class="reveal bg-white p-8 rounded-2xl border-b-4 border-[#D4AF37] shadow-md">
+                <i data-lucide="zap" class="w-12 h-12 mb-5 text-[#E31E24]"></i>
+                <h3 class="text-xl font-black uppercase mb-3">Refresher Lessons</h3>
+                <p class="text-sm font-bold text-slate-600 leading-relaxed mb-5">For nervous or lapsed drivers. Boost confidence on modern roads & roundabouts.</p>
+                <a href="https://wa.me/447423012082" class="red-tag inline-block w-full text-center">💬 Refresher Quote</a>
+            </div>
+            <div class="reveal bg-white p-8 rounded-2xl border-b-4 border-red-600 shadow-md">
+                <i data-lucide="navigation" class="w-12 h-12 mb-5 text-black"></i>
+                <h3 class="text-xl font-black uppercase mb-3">Motorway + PassPlus</h3>
+                <p class="text-sm font-bold text-slate-600 leading-relaxed mb-5">Dedicated motorway modules & PassPlus certified. Reduce insurance & gain skills.</p>
+                <a href="tel:07423012082" class="red-tag inline-block w-full text-center">🚗 Enroll PassPlus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lesson Packages with block booking emphasis (contact buttons) -->
+    <section id="pricing" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-6">Block Booking <span class="text-[#E31E24]">Discounts</span></h2>
+            <p class="text-sm font-bold text-slate-500 mb-12">Flexible slots: 1 hour / 1.5 hour / 2 hour lessons. Save with advance packages.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#E31E24] transition bg-slate-50">
+                    <p class="text-xs font-black uppercase mb-2">Single Lesson</p>
+                    <p class="text-2xl font-black mb-3">1 Hour</p>
+                    <a href="tel:07423012082" class="btn-brand w-full block py-3 text-[10px] uppercase rounded-md">Call to Book</a>
+                </div>
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#E31E24] transition bg-slate-50">
+                    <p class="text-xs font-black uppercase mb-2">Standard</p>
+                    <p class="text-2xl font-black mb-3">5 Hour Block</p>
+                    <a href="https://wa.me/447423012082" class="btn-brand w-full block py-3 text-[10px] uppercase rounded-md">WhatsApp Deal</a>
+                </div>
+                <div class="reveal p-6 bg-black text-white rounded-xl transform scale-105 shadow-2xl">
+                    <p class="text-xs font-black uppercase mb-2 text-[#D4AF37]">⭐ Best Value</p>
+                    <p class="text-2xl font-black mb-3">10 Hour Block</p>
+                    <a href="tel:07423012082" class="btn-brand w-full block py-3 text-[10px] uppercase">Call Now: Discount</a>
+                </div>
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#E31E24] transition bg-slate-50">
+                    <p class="text-xs font-black uppercase mb-2">Intensive</p>
+                    <p class="text-2xl font-black mb-3">20 Hour Bundle</p>
+                    <a href="https://wa.me/447423012082" class="btn-brand w-full block py-3 text-[10px] uppercase">Request Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video section: Student success & congratulation message (Rylie) -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-4">🎉 Student Success <span class="text-[#E31E24]">First Time Pass</span></h2>
+            <p class="text-sm font-bold text-gray-600 mb-8">Congratulations Rylie Johnson! First time pass at Ashfield test centre with only 4 driver faults.</p>
+            <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-65 group-hover:scale-105 transition duration-700" alt="Driving lesson success">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 bg-[#E31E24] rounded-full flex items-center justify-center animate-pulse shadow-lg"><i data-lucide="play" class="w-8 h-8 fill-white text-white ml-1"></i></div>
+                </div>
+                <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs bg-black/60 p-2 rounded">⭐ Highway 2 L: High standard training</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ and Info (enriched with driving details) -->
+    <section class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Learn <span class="text-[#E31E24]">Smart</span> | FAQ</h2>
+            <div class="space-y-3">
+                <div class="faq-item reveal border-b">
+                    <button class="faq-btn" onclick="toggleFaq(this)">What lesson durations are available? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-sm font-semibold text-slate-600 leading-relaxed">We offer 1 hour, 1.5 hour, and 2 hour lessons. Block booking discounts available for 5/10/20 hour packs.</div>
+                </div>
+                <div class="faq-item reveal border-b">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Do you cover motorway training & PassPlus? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-sm font-semibold text-slate-600 leading-relaxed">Absolutely! We are a registered PassPlus instructor covering M1, motorway techniques, and night driving for reduced insurance premiums.</div>
+                </div>
+                <div class="faq-item reveal border-b">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Which areas do you serve exactly? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-sm font-semibold text-slate-600 leading-relaxed">Sutton-in-Ashfield, Kirkby-in-Ashfield, Ashfield test centre routes, and surrounding Nottinghamshire villages. Refresher lessons also available.</div>
+                </div>
+                <div class="faq-item reveal border-b">
+                    <button class="faq-btn" onclick="toggleFaq(this)">How to book & payment methods? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-sm font-semibold text-slate-600 leading-relaxed">Contact us directly via call 📞 07423 012082 or WhatsApp. Accept bank transfer, cash or card on request.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas / Coverage Section (Sutton & Kirkby, Ashfield) -->
+    <section id="areas" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Coverage <span class="text-[#E31E24]">Areas</span></h2>
+                <div class="grid grid-cols-1 gap-4 mb-8">
+                    <div class="flex items-center space-x-4 bg-white p-5 rounded-xl shadow-sm border-l-8 border-[#D4AF37]">
+                        <i data-lucide="map-pin" class="text-[#E31E24] w-6 h-6"></i>
+                        <div><p class="font-black text-sm uppercase">Sutton-in-Ashfield</p><p class="text-[10px] text-slate-500 font-bold">Full postcode coverage: NG17</p></div>
+                    </div>
+                    <div class="flex items-center space-x-4 bg-white p-5 rounded-xl shadow-sm border-l-8 border-[#D4AF37]">
+                        <i data-lucide="map-pin" class="text-[#E31E24] w-6 h-6"></i>
+                        <div><p class="font-black text-sm uppercase">Kirkby-in-Ashfield</p><p class="text-[10px] text-slate-500 font-bold">NG17 / NG18 routes + Ashfield test centre</p></div>
+                    </div>
+                    <div class="flex items-center space-x-4 bg-white p-5 rounded-xl shadow-sm border-l-8 border-[#D4AF37]">
+                        <i data-lucide="navigation" class="text-[#E31E24] w-6 h-6"></i>
+                        <div><p class="font-black text-sm uppercase">M1 Corridor & Motorway</p><p class="text-[10px] text-slate-500 font-bold">J27-J28 for motorway lessons & PassPlus</p></div>
+                    </div>
+                </div>
+                <div class="h-[280px] bg-slate-200 rounded-2xl overflow-hidden shadow-xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38392.872239678!2d-1.263989!3d53.113156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879c3e3c2a8b8c7%3A0x3b2a9a1f2e2c8d0!2sSutton-in-Ashfield!5e0!3m2!1sen!2suk!4v1715000000000" width="100%" height="100%" style="border:0; filter: grayscale(0.2);" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="reveal bg-white p-8 rounded-2xl shadow-xl">
+                <h2 class="text-2xl font-black uppercase tracking-tighter mb-6">Why Choose <span class="text-[#E31E24]">Highway 2 L?</span></h2>
+                <ul class="space-y-4 text-sm font-bold text-slate-700">
+                    <li class="flex gap-3"><i data-lucide="badge-check" class="text-[#D4AF37]"></i> Fully Qualified DVSA (ADI) instructor</li>
+                    <li class="flex gap-3"><i data-lucide="thumbs-up" class="text-[#E31E24]"></i> 100% recommend rating – 6 verified reviews</li>
+                    <li class="flex gap-3"><i data-lucide="clock" class="text-[#D4AF37]"></i> Flexible slots: early mornings, evenings, weekends</li>
+                    <li class="flex gap-3"><i data-lucide="award" class="text-[#E31E24]"></i> PassPlus registered, motorway & refresher specialist</li>
+                </ul>
+                <div class="mt-8 p-4 bg-slate-100 rounded-xl text-center">
+                    <p class="font-black text-[10px] uppercase tracking-wider">📢 Contact us today for a friendly chat about your driving goals.</p>
+                    <a href="tel:07423012082" class="btn-brand mt-4 inline-block px-6 py-3 w-full text-center">📞 Call 07423 012082 Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Feedback / Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-10">Student <span class="text-[#E31E24]">Reviews</span></h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="reveal bg-slate-50 p-8 rounded-2xl shadow-md text-left">
+                    <div class="flex text-amber-500 mb-3"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 italic">"Brilliant experience! Passed first time with only 4 driver faults. Couldn't recommend Highway 2 L enough. Very calm and structured lessons."</p>
+                    <p class="font-black uppercase text-[10px] mt-3">— Rylie Johnson (Ashfield Test Centre)</p>
+                </div>
+                <div class="reveal bg-slate-50 p-8 rounded-2xl shadow-md text-left">
+                    <div class="flex text-amber-500 mb-3"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 italic">"Fantastic motorway lesson. I was terrified of merging but after PassPlus I feel 100% confident. Thanks team!"</p>
+                    <p class="font-black uppercase text-[10px] mt-3">— Daniel M. (Kirkby)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Contact -->
+    <footer class="bg-black text-white pt-20 pb-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-12">
+                <div class="logo-wrap mb-8 md:mb-0">
+                    <svg width="50" height="40" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="70" height="50" rx="6" stroke="#D4AF37" stroke-width="5" fill="none"/><path d="M30 25 L60 25 M30 38 L50 38" stroke="#E31E24" stroke-width="5"/><text x="90" y="35" fill="#D4AF37" font-weight="900" font-size="16">HIGHWAY 2 L</text></svg>
+                </div>
+                <div class="grid grid-cols-2 gap-12">
+                    <div><h5 class="font-black uppercase text-[#E31E24] text-sm mb-4">Contact</h5><p class="text-md font-bold">📞 07423 012082</p><p class="text-[9px] text-slate-400">highway2l@driving.co.uk</p></div>
+                    <div><h5 class="font-black uppercase text-[#E31E24] text-sm mb-4">Location Focus</h5><p class="text-xs font-bold">Sutton & Kirkby, Ashfield Test Centre</p></div>
+                </div>
+            </div>
+            <div class="flex justify-between flex-wrap text-[9px] uppercase font-black tracking-wider text-slate-500"><span>© 2025 HIGHWAY 2 L DRIVING SCHOOL</span><span>DVSA APPROVED · PASSPLUS REGISTERED</span></div>
+        </div>
+    </footer>
+
+    <!-- Bottom Dock CTA (Contact Info only) -->
+    <div class="cta-dock md:hidden">
+        <a href="tel:07423012082"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#E31E24]"></i>CALL</a>
+        <a href="https://wa.me/447423012082"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#E31E24]"></i>WHATSAPP</a>
+        <a href="sms:+447423012082"><i data-lucide="send" class="w-5 h-5 mb-1 text-[#E31E24]"></i>TEXT</a>
+        <a href="tel:07423012082" class="bg-[#E31E24] !text-white !border-none"><i data-lucide="calendar-check" class="w-5 h-5 mb-1"></i>BOOK NOW</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            setTimeout(() => { const pop = document.getElementById('promoPopup'); if(pop) pop.style.display = 'block'; }, 2800);
+            const counters = document.querySelectorAll('.counter');
+            const startCounters = (entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const target = +entry.target.getAttribute('data-target');
+                        let current = 0;
+                        const increment = target / 80;
+                        const updateCounter = () => {
+                            current += increment;
+                            if(current < target) { entry.target.innerText = Math.floor(current); requestAnimationFrame(updateCounter); } 
+                            else { entry.target.innerText = target; }
+                        };
+                        updateCounter();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+            const counterObserver = new IntersectionObserver(startCounters, { threshold: 0.6 });
+            counters.forEach(c => counterObserver.observe(c));
+        });
+        const menuBtn = document.getElementById('menu-btn'), closeBtn = document.getElementById('close-btn'), mobileMenu = document.getElementById('mobile-menu');
+        if(menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        if(closeBtn) closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        window.toggleFaq = function(btn) { const item = btn.closest('.faq-item'); item.classList.toggle('active'); const icon = btn.querySelector('i'); if(icon) icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)'; };
+    </script>
+</body>
+</html>
