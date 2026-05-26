@@ -10,14 +10,14 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== BRAND COLOUR REFRESH: All previous red/pink/rose replaced with #00A651 (Lights Ahead Green) ===== */
+        /* ===== BRAND COLOUR REFRESH: All previous red/pink/rose replaced with #3b7637 (Lights Ahead Green) ===== */
         :root {
             --brand-black: #000000;
-            --brand-green: #00A651;     /* The exact green from logo "LIGHTS AHEAD" */
+            --brand-green: #3b7637;     /* The exact green specified by user */
             --brand-gold: #D4AF37;
             --brand-white: #ffffff;
             --brand-gray: #1a1a1a;
-            --brand-darkgreen: #008a43;
+            --brand-darkgreen: #2c5a2a;
         }
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
         
@@ -95,7 +95,7 @@
         
         /* Cards - green accent border (replacing old red-ish) */
         .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-green); }
-        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(0, 166, 81, 0.3); }
+        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(59, 118, 55, 0.3); }
         
         .ticker-wrap { overflow: hidden; background: var(--brand-black); color: var(--brand-white); padding: 15px 0; border-bottom: 4px solid var(--brand-green); }
         .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
@@ -115,7 +115,7 @@
         .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
         .faq-item.active .faq-content { max-height: 300px; padding: 1rem 0; }
         
-        /* All tag and accent classes now using brand green */
+        /* All tag and accent classes now using brand green #3b7637 */
         .green-tag { background: var(--brand-green); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
         .green-accent { color: var(--brand-green); }
         .border-green-accent { border-color: var(--brand-green); }
@@ -126,7 +126,7 @@
         
         /* Additional green overrides: previously any red links, hover states */
         a:not(.btn-brand):hover { color: var(--brand-green); transition: 0.2s; }
-        .hover\:text-\[\#00A651\]:hover { color: #00A651 !important; }
+        .hover\:text-\[\#00A651\]:hover { color: #3b7637 !important; }
     </style>
 </head>
 <body class="text-slate-900"> 
@@ -144,27 +144,27 @@
     <nav class="sticky top-0 z-50 glass border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="logo-wrap">
-                <!-- SVG Logo fully reflecting LIGHTS (black) and AHEAD (green) -->
+                <!-- SVG Logo fully reflecting LIGHTS (black) and AHEAD (green #3b7637) -->
                 <svg width="70" height="50" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
                     <rect x="15" y="35" width="150" height="22" rx="4" fill="#000000" />
                     <path d="M165 40 L180 35 L180 57 L165 57 Z" fill="#000000" />
-                    <path d="M40 30 L55 20 L65 30 L50 40 Z" fill="#00A651" />
-                    <circle cx="40" cy="57" r="9" fill="#333" stroke="#00A651" stroke-width="2" />
-                    <circle cx="140" cy="57" r="9" fill="#333" stroke="#00A651" stroke-width="2" />
-                    <circle cx="40" cy="57" r="3" fill="#00A651" />
-                    <circle cx="140" cy="57" r="3" fill="#00A651" />
-                    <path d="M15 42 L8 42 L8 52 L15 52 Z" fill="#00A651" />
-                    <text x="110" y="52" font-family="'Archivo Black', sans-serif" font-size="20" fill="#00A651" font-weight="900" text-anchor="middle">LA</text>
+                    <path d="M40 30 L55 20 L65 30 L50 40 Z" fill="#3b7637" />
+                    <circle cx="40" cy="57" r="9" fill="#333" stroke="#3b7637" stroke-width="2" />
+                    <circle cx="140" cy="57" r="9" fill="#333" stroke="#3b7637" stroke-width="2" />
+                    <circle cx="40" cy="57" r="3" fill="#3b7637" />
+                    <circle cx="140" cy="57" r="3" fill="#3b7637" />
+                    <path d="M15 42 L8 42 L8 52 L15 52 Z" fill="#3b7637" />
+                    <text x="110" y="52" font-family="'Archivo Black', sans-serif" font-size="20" fill="#3b7637" font-weight="900" text-anchor="middle">LA</text>
                 </svg>
                 <div class="logo-text">
-                    <span class="text-3xl font-black italic block">LIGHTS <span class="text-[#00A651]">AHEAD</span></span>
+                    <span class="text-3xl font-black italic block">LIGHTS <span class="text-[#3b7637]">AHEAD</span></span>
                     <span class="text-[8px] font-bold tracking-[0.3em] uppercase block text-black">Driving School</span>
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-10 font-black text-xs uppercase tracking-widest">
-                <a href="#services" class="hover:text-[#00A651] transition">Lessons</a>
-                <a href="#areas" class="hover:text-[#00A651] transition">Locations</a>
-                <a href="tel:07808791182" class="hover:text-[#00A651] transition">07808 791182</a>
+                <a href="#services" class="hover:text-[#3b7637] transition">Lessons</a>
+                <a href="#areas" class="hover:text-[#3b7637] transition">Locations</a>
+                <a href="tel:07808791182" class="hover:text-[#3b7637] transition">07808 791182</a>
                 <a href="https://wa.me/447808791182" class="btn-brand px-6 py-3 rounded-sm shadow-lg">WhatsApp Us</a>
             </div>
             <button id="menu-btn" class="md:hidden"><i data-lucide="menu" class="w-8 h-8"></i></button>
@@ -178,7 +178,7 @@
             <a href="#services">Driving Lessons</a>
             <a href="#areas">Areas Covered</a>
             <a href="tel:07808791182">Call Us</a>
-            <a href="https://wa.me/447808791182" class="text-[#00A651]">WhatsApp Now</a>
+            <a href="https://wa.me/447808791182" class="text-[#3b7637]">WhatsApp Now</a>
         </div>
     </div>
 
@@ -206,19 +206,19 @@
             <div class="animate__animated animate__fadeInUp">
                 <span class="green-tag mb-4 inline-block">⭐ 5.0 ★ (134 Reviews)</span>
                 <h1 class="text-6xl md:text-9xl font-black text-black leading-none mb-6 uppercase tracking-tighter">
-                    DRIVE <span class="text-[#00A651]">AHEAD.</span>
+                    DRIVE <span class="text-[#3b7637]">AHEAD.</span>
                 </h1>
                 <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-12 text-sm md:text-lg">Premium Instruction in Croydon & Bromley</p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-6">
-                    <a href="tel:07808791182" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#00A651] transition duration-300">Call 07808 791182</a>
+                    <a href="tel:07808791182" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#3b7637] transition duration-300">Call 07808 791182</a>
                     <a href="https://wa.me/447808791182" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300">WhatsApp Instructor</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats section - green counter value stays green (#00A651) -->
+    <!-- Stats section - green counter value stays green (#3b7637) -->
     <section class="py-12 bg-white border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="reveal">
@@ -230,7 +230,7 @@
                 <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Years Experience</p>
             </div>
             <div class="reveal">
-                <p class="text-5xl font-black text-[#00A651] mb-2 counter" data-target="97">0</p>
+                <p class="text-5xl font-black text-[#3b7637] mb-2 counter" data-target="97">0</p>
                 <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">% Pass Rate</p>
             </div>
         </div>
@@ -239,7 +239,7 @@
     <!-- Services: red replaced by green accents and borders -->
     <section id="services" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto text-center mb-16 px-6">
-            <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#00A651]">Options</span></h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#3b7637]">Options</span></h2>
         </div>
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
             <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black">
@@ -248,8 +248,8 @@
                 <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master clutch control & gear changes. Our patient instructors cover everything from junctions to parallel parking. Perfect for full UK license in Croydon & Bromley area.</p>
                 <a href="https://wa.me/447808791182" class="green-tag inline-block">Book Manual</a>
             </div>
-            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#00A651]">
-                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#00A651]"></i>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#3b7637]">
+                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#3b7637]"></i>
                 <h3 class="text-2xl font-black uppercase mb-4">Automatic Lessons</h3>
                 <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Smooth, modern, and stress-free. No stalling, ideal for busy roads around Croydon, Addiscombe, and Bromley. Fast-track your confidence with ease.</p>
                 <a href="https://wa.me/447808791182" class="green-tag inline-block">Book Automatic</a>
@@ -260,29 +260,29 @@
     <!-- Pricing Packages: All green buttons and highlight the intense course with green border/text accent -->
     <section id="pricing" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#00A651]">Packages</span></h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#3b7637]">Packages</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#00A651] transition">
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#3b7637] transition">
                     <p class="text-xs font-black uppercase mb-2">Pay As You Go</p>
                     <p class="text-3xl font-black mb-4">1 Lesson</p>
                     <a href="https://wa.me/447808791182" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
                 </div>
-                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#00A651] transition">
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#3b7637] transition">
                     <p class="text-xs font-black uppercase mb-2">Saver</p>
                     <p class="text-3xl font-black mb-4">5 Lessons</p>
                     <a href="https://wa.me/447808791182" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
                 </div>
-                <div class="reveal p-6 bg-black text-white rounded-xl transform scale-105 shadow-2xl border-2 border-[#00A651]">
-                    <p class="text-xs font-black uppercase mb-2 text-[#00A651]">Intensive Course</p>
+                <div class="reveal p-6 bg-black text-white rounded-xl transform scale-105 shadow-2xl border-2 border-[#3b7637]">
+                    <p class="text-xs font-black uppercase mb-2 text-[#3b7637]">Intensive Course</p>
                     <p class="text-3xl font-black mb-4">10 Lessons</p>
                     <a href="https://wa.me/447808791182" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
                 </div>
-                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#00A651] transition">
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#3b7637] transition">
                     <p class="text-xs font-black uppercase mb-2">Fast Pass</p>
                     <p class="text-3xl font-black mb-4">20 Lessons</p>
                     <a href="https://wa.me/447808791182" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
                 </div>
-                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#00A651] transition">
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#3b7637] transition">
                     <p class="text-xs font-black uppercase mb-2">Test Ready</p>
                     <p class="text-3xl font-black mb-4">Package</p>
                     <a href="https://wa.me/447808791182" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
@@ -294,11 +294,11 @@
     <!-- Video section : play button green -->
     <section class="py-24 bg-slate-50">
         <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn with <span class="text-[#00A651]">Lights Ahead</span></h2>
+            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn with <span class="text-[#3b7637]">Lights Ahead</span></h2>
             <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
                 <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
                 <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-20 h-20 bg-[#00A651] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
+                    <div class="w-20 h-20 bg-[#3b7637] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
                 </div>
                 <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs">Watch: Intro to Lights Ahead Driving School</div>
             </div>
@@ -308,7 +308,7 @@
     <!-- FAQ section: green icons and accents preserved -->
     <section class="py-24 bg-white">
         <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#00A651]">FAQs</span></h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#3b7637]">FAQs</span></h2>
             <div class="space-y-4">
                 <div class="faq-item reveal">
                     <button class="faq-btn" onclick="toggleFaq(this)">What are your current lesson prices? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
@@ -334,31 +334,31 @@
     <section id="areas" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
             <div class="reveal">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#00A651]">Areas</span></h2>
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#3b7637]">Areas</span></h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                     <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#00A651]"></i>
+                        <i data-lucide="map-pin" class="text-[#3b7637]"></i>
                         <div>
                             <p class="font-black text-xs uppercase">Croydon</p>
                             <p class="text-[9px] text-slate-400 font-bold uppercase">CR0 8SQ & Surrounding</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#00A651]"></i>
+                        <i data-lucide="map-pin" class="text-[#3b7637]"></i>
                         <div>
                             <p class="font-black text-xs uppercase">Bromley</p>
                             <p class="text-[9px] text-slate-400 font-bold uppercase">BR1, BR2 & Test Routes</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#00A651]"></i>
+                        <i data-lucide="map-pin" class="text-[#3b7637]"></i>
                         <div>
                             <p class="font-black text-xs uppercase">Addiscombe</p>
                             <p class="text-[9px] text-slate-400 font-bold uppercase">Near East Croydon</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#00A651]"></i>
+                        <i data-lucide="map-pin" class="text-[#3b7637]"></i>
                         <div>
                             <p class="font-black text-xs uppercase">Shirley</p>
                             <p class="text-[9px] text-slate-400 font-bold uppercase">119 Shirley Ave, CR0 8SQ</p>
@@ -370,7 +370,7 @@
                 </div>
             </div>
             <div class="reveal">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#00A651]">Availability</span></h2>
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#3b7637]">Availability</span></h2>
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
                     <table class="w-full text-left text-xs uppercase font-black">
                         <thead class="bg-black text-white">
@@ -393,7 +393,7 @@
     <!-- Testimonials section - all stars etc kept neutral no red -->
     <section class="py-24 bg-white border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#00A651]">Feedback</span></h2>
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#3b7637]">Feedback</span></h2>
             <div class="flex flex-wrap justify-center gap-6">
                 <div class="reveal bg-slate-50 p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
                     <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
@@ -413,10 +413,10 @@
     <section class="py-24 bg-slate-900 text-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="max-w-xl mx-auto text-center">
-                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Theory Support & <span class="text-[#00A651]">Tips</span></h3>
+                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Theory Support & <span class="text-[#3b7637]">Tips</span></h3>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Sign up for driving tips, theory test help, and local test centre updates (Croydon & Bromley).</p>
                 <form class="flex flex-col sm:flex-row gap-2">
-                    <input type="email" placeholder="Your Email Address" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#00A651] transition">
+                    <input type="email" placeholder="Your Email Address" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#3b7637] transition">
                     <button class="btn-brand px-8 py-4 text-xs uppercase">Sign Up</button>
                 </form>
             </div>
@@ -429,18 +429,18 @@
             <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
                 <div class="logo-wrap mb-10 md:mb-0">
                     <div class="logo-text !text-white">
-                        <span class="text-3xl font-black italic block">LIGHTS <span class="text-[#00A651]">AHEAD</span></span>
+                        <span class="text-3xl font-black italic block">LIGHTS <span class="text-[#3b7637]">AHEAD</span></span>
                         <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">Driving School</span>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
                     <div>
-                        <h5 class="font-black uppercase text-[#00A651] text-xs mb-6">Contact</h5>
+                        <h5 class="font-black uppercase text-[#3b7637] text-xs mb-6">Contact</h5>
                         <p class="text-sm font-bold uppercase tracking-widest mb-2">07808 791182</p>
                         <p class="text-[10px] text-slate-500 font-bold uppercase">lightsaheaddrivingschool@gmail.com</p>
                     </div>
                     <div>
-                        <h5 class="font-black uppercase text-[#00A651] text-xs mb-6">Locations</h5>
+                        <h5 class="font-black uppercase text-[#3b7637] text-xs mb-6">Locations</h5>
                         <ul class="text-[10px] font-bold uppercase space-y-2 text-slate-400">
                             <li>Croydon (CR0 8SQ)</li>
                             <li>Bromley</li>
@@ -448,7 +448,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h5 class="font-black uppercase text-[#00A651] text-xs mb-6">Social</h5>
+                        <h5 class="font-black uppercase text-[#3b7637] text-xs mb-6">Social</h5>
                         <div class="flex space-x-4"><i data-lucide="instagram" class="w-5 h-5"></i><i data-lucide="facebook" class="w-5 h-5"></i><i data-lucide="message-square" class="w-5 h-5"></i></div>
                         <p class="text-[8px] text-slate-500 mt-2">@lightsaheaddrivingschool</p>
                     </div>
@@ -460,10 +460,10 @@
 
     <!-- Mobile dock bar with green icons and background call to action -->
     <div class="cta-dock md:hidden">
-        <a href="tel:07808791182"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#00A651]"></i>CALL</a>
-        <a href="https://wa.me/447808791182"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#00A651]"></i>WHATSAPP</a>
-        <a href="sms:+447808791182"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#00A651]"></i>TEXT</a>
-        <a href="tel:07808791182" class="bg-[#00A651] !text-white !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK</a>
+        <a href="tel:07808791182"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#3b7637]"></i>CALL</a>
+        <a href="https://wa.me/447808791182"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#3b7637]"></i>WHATSAPP</a>
+        <a href="sms:+447808791182"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#3b7637]"></i>TEXT</a>
+        <a href="tel:07808791182" class="bg-[#3b7637] !text-white !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK</a>
     </div>
 
     <script>
