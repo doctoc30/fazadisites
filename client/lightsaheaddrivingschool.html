@@ -2,460 +2,494 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Lights Ahead Driving School | Croydon & Bromley | Manual & Automatic Lessons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lights Ahead Driving School | Croydon & Bromley</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ----- EXACT BRAND COLORS FROM ATTACHED IMAGES (Lights Ahead Driving School) ----- */
         :root {
-            --brand-black: #000000;
-            --brand-red: #E31E24;      /* signature red from 'LIGHTS AHEAD' badge */
-            --brand-gold: #D4AF37;      /* premium accent, used in logo ring */
+            --brand-black: #000000; 
+            --brand-red: #E31E24; 
+            --brand-gold: #D4AF37;
             --brand-white: #ffffff;
-            --brand-gray-bg: #f8f9fc;
-            --brand-dark-charcoal: #1a1a1a;
+            --brand-gray: #1a1a1a;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            scroll-behavior: smooth; 
-            background-color: var(--brand-white); 
-            overflow-x: hidden; 
-        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
         
-        /* ----- REPLICATED LOGO AS SVG (Lights Ahead emblem + text) ----- */
-        .logo-svg-group {
+        /* Custom SVG Logo Logic */
+        .logo-wrap {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
-        .logo-text-custom {
+        .logo-text {
             font-family: 'Archivo Black', sans-serif;
-            line-height: 1.1;
+            line-height: 1;
         }
 
-        /* animated car container (reimagined with LIGHTS AHEAD style) */
-        .hero-car-scene {
+        /* FIXED: Brighter Car and Thinner Track */
+        .car-hero-container {
             position: relative;
+            z-index: 10;
             width: 100%;
-            height: 320px;
+            height: 350px; 
             display: flex;
-            align-items: flex-end;
-            overflow: hidden;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%);
-            margin-bottom: 0;
+            align-items: flex-end; 
+            overflow: hidden; 
+            background: linear-gradient(to bottom, #ffffff, #f3f4f6);
         }
-        #movingCarSvg {
-            width: 460px;
-            height: auto;
+        
+        #panningCar {
+            width: 450px;
+            height: auto; 
             position: absolute;
-            bottom: 20px;
-            z-index: 20;
-            animation: glideForward 20s linear infinite;
-            filter: drop-shadow(0 12px 14px rgba(0,0,0,0.2));
+            bottom: 25px; 
+            z-index: 20; 
+            animation: driveForward 18s linear infinite; 
+            will-change: transform;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15)); 
         }
-        @keyframes glideForward {
-            0% { transform: translateX(-120%); }
-            100% { transform: translateX(120vw); }
+
+        @keyframes driveForward {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
         }
-        .dynamic-road {
-            height: 5px;
-            background: #222;
+
+        .road-indicator {
+            height: 4px; 
+            background: #333;
             width: 100%;
             position: absolute;
-            bottom: 30px;
-            z-index: 5;
+            bottom: 30px; 
+            z-index: 5; 
         }
-        .dynamic-road::after {
+        .road-indicator::after {
             content: '';
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             left: 0;
             width: 100%;
-            height: 2px;
-            background-image: linear-gradient(to right, #FFD966 50%, transparent 50%);
-            background-size: 50px 100%;
-            animation: dashMove 0.9s linear infinite;
+            height: 1px; 
+            background-image: linear-gradient(to right, white 50%, transparent 50%);
+            background-size: 60px 100%;
+            animation: roadMove 0.8s linear infinite; 
         }
-        @keyframes dashMove {
+        @keyframes roadMove {
             0% { background-position: 0 0; }
-            100% { background-position: -50px 0; }
+            100% { background-position: -60px 0; }
         }
 
-        /* mobile menu */
-        #mobile-panel {
+        /* Feature Styles */
+        #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             transform: translateX(100%);
             background: var(--brand-black);
         }
-        #mobile-panel.open { transform: translateX(0); }
-        .glass-nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); }
-        .premium-lesson-card {
-            transition: all 0.3s ease;
-            border-top: 5px solid var(--brand-red);
-        }
-        .premium-lesson-card:hover { transform: translateY(-8px); box-shadow: 0 25px 40px -12px rgba(227, 30, 36, 0.25); }
+        #mobile-menu.open { transform: translateX(0); }
+        .glass { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); }
+        .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-red); }
+        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(227, 30, 36, 0.3); }
+        .ticker-wrap { overflow: hidden; background: var(--brand-black); color: var(--brand-white); padding: 15px 0; border-bottom: 4px solid var(--brand-red); }
+        .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        .btn-brand { background-color: var(--brand-red); color: white; transition: 0.3s; font-weight: 900; }
+        .btn-brand:hover { background-color: #b3161a; transform: scale(1.05); }
+        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-black); display: flex; z-index: 100; border-top: 4px solid var(--brand-red); }
+        .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 300px; padding: 1rem 0; }
+        .red-tag { background: var(--brand-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
         
-        /* scrolling marquee */
-        .info-ticker {
-            overflow: hidden;
-            background: var(--brand-black);
-            color: white;
-            padding: 12px 0;
-            border-bottom: 3px solid var(--brand-red);
-        }
-        .ticker-scroll {
-            display: flex;
-            animation: tickerMove 28s linear infinite;
-            white-space: nowrap;
-            gap: 2rem;
-        }
-        @keyframes tickerMove {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-        .btn-primary-red {
-            background-color: var(--brand-red);
-            color: white;
-            transition: 0.25s;
-            font-weight: 800;
-        }
-        .btn-primary-red:hover { background-color: #b81a1f; transform: scale(1.02); }
-        .fixed-cta-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--brand-black);
-            display: flex;
-            z-index: 1000;
-            border-top: 4px solid var(--brand-red);
-        }
-        .fixed-cta-bar a {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 0;
-            color: white;
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-right: 1px solid rgba(255,255,255,0.1);
-        }
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(35px);
-            transition: all 0.75s ease-out;
-        }
-        .reveal-on-scroll.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .faq-toggle-btn {
-            width: 100%;
-            text-align: left;
-            padding: 1.4rem 0;
-            font-weight: 800;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eaeef5;
-            font-size: 1rem;
-        }
-        .faq-answer-panel {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease-out;
-        }
-        .faq-item.active .faq-answer-panel {
-            max-height: 280px;
-            padding: 1rem 0 1.5rem 0;
-        }
-        .badge-red-sm {
-            background: var(--brand-red);
-            color: white;
-            padding: 4px 12px;
-            font-weight: 800;
-            font-size: 10px;
-            text-transform: uppercase;
-            border-radius: 20px;
-            display: inline-block;
-        }
-        .rating-star { color: #f5b042; }
-        .contact-highlight {
-            background: #fef2f2;
-            border-left: 5px solid var(--brand-red);
-        }
+        #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 280px; background: white; border-top: 5px solid var(--brand-red); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
     </style>
 </head>
-<body class="text-gray-900">
+<body class="text-slate-900"> 
 
-    <!-- ==================== EVERY ELEMENT PRESERVED, NO LINE MISSING ==================== -->
-    <nav class="sticky top-0 z-50 glass-nav border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
-            <!-- REPLICATED SVG LOGO based on attached image style: ring + arrow motif + LIGHTS AHEAD text -->
-            <div class="logo-svg-group">
-                <svg width="64" height="48" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="48" cy="50" r="38" stroke="#D4AF37" stroke-width="6" fill="none" />
-                    <path d="M48 12 A38 38 0 0 1 86 50" stroke="#E31E24" stroke-width="7" fill="none" stroke-linecap="round"/>
-                    <rect x="80" y="43" width="82" height="14" fill="#D4AF37" rx="3" />
-                    <path d="M162 43 L178 43 L178 57 L162 57 Z" fill="#D4AF37" />
-                    <circle cx="48" cy="50" r="6" fill="#E31E24" />
-                    <line x1="48" y1="50" x2="74" y2="24" stroke="#E31E24" stroke-width="4.5" stroke-linecap="round" />
-                    <polygon points="74,24 68,28 72,32" fill="#E31E24" />
+    <div id="promoPopup" class="animate__animated animate__fadeInUp">
+        <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2"><i data-lucide="x" class="w-4 h-4"></i></button>
+        <span class="red-tag mb-2 inline-block">⭐ 5.0 ★ (134 reviews)</span>
+        <h4 class="font-black text-xl leading-tight mb-2">Manual Lessons in Croydon</h4>
+        <p class="text-xs font-bold text-slate-500 uppercase mb-4">Pass your test with Lights Ahead ⚡</p>
+        <a href="tel:07908791192" class="btn-brand px-4 py-2 text-[10px] uppercase inline-block text-center">Call 07908 791192</a>
+    </div>
+
+    <nav class="sticky top-0 z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="logo-wrap">
+                <!-- Similar Logo SVG with Lights Ahead Driving School branding, gold/red theme -->
+                <svg width="60" height="40" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="40" width="140" height="20" rx="4" fill="#D4AF37" />
+                    <path d="M150 45 L165 40 L165 60 L150 55 Z" fill="#D4AF37" />
+                    <path d="M30 35 L45 25 L55 35 L40 45 Z" fill="#E31E24" />
+                    <circle cx="35" cy="50" r="8" fill="#000000" />
+                    <circle cx="125" cy="50" r="8" fill="#000000" />
+                    <path d="M20 45 L10 45 L10 55 L20 55 Z" fill="#D4AF37" />
+                    <text x="70" y="52" font-family="'Archivo Black', sans-serif" font-size="18" fill="#E31E24" font-weight="900" text-anchor="middle">LA</text>
+                    <circle cx="50" cy="50" r="3" fill="white" />
+                    <circle cx="140" cy="50" r="3" fill="white" />
                 </svg>
-                <div class="logo-text-custom">
-                    <span class="text-2xl font-black tracking-tight block leading-5">LIGHTS <span class="text-[#E31E24]">AHEAD</span></span>
-                    <span class="text-[9px] font-extrabold tracking-[0.25em] uppercase text-gray-600 block">DRIVING SCHOOL</span>
+                <div class="logo-text">
+                    <span class="text-2xl font-black italic block">LIGHTS <span class="text-[#E31E24]">AHEAD</span></span>
+                    <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">Driving School</span>
                 </div>
             </div>
-            <div class="hidden md:flex items-center space-x-9 font-extrabold text-[11px] uppercase tracking-wider">
-                <a href="#lessons" class="hover:text-red-600 transition">LESSONS</a>
-                <a href="#areas-cover" class="hover:text-red-600 transition">COVERAGE</a>
-                <a href="tel:07908791192" class="hover:text-red-600 transition">📞 07908 791192</a>
-                <a href="mailto:lightsaheaddrivingschool@gmail.com" class="btn-primary-red px-6 py-2.5 rounded-md shadow-md text-white">📧 EMAIL US</a>
+            <div class="hidden md:flex items-center space-x-10 font-black text-xs uppercase tracking-widest">
+                <a href="#services" class="hover:text-red-600 transition">Lessons</a>
+                <a href="#areas" class="hover:text-red-600 transition">Locations</a>
+                <a href="tel:07908791192" class="hover:text-red-600 transition">07908 791192</a>
+                <a href="https://wa.me/447908791192" class="btn-brand px-6 py-3 rounded-sm shadow-lg">WhatsApp Us</a>
             </div>
-            <button id="mobileMenuButton" class="md:hidden"><i data-lucide="menu" class="w-8 h-8 text-black"></i></button>
+            <button id="menu-btn" class="md:hidden"><i data-lucide="menu" class="w-8 h-8"></i></button>
         </div>
     </nav>
 
-    <!-- mobile drawer panel (preserved fully functional) -->
-    <div id="mobile-panel" class="fixed inset-y-0 right-0 w-full z-[200] p-8 flex flex-col shadow-2xl">
-        <button id="closeMobilePanel" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[100] p-10 flex flex-col shadow-2xl">
+        <button id="close-btn" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
         <div class="flex flex-col space-y-8 text-white font-black text-3xl uppercase tracking-tighter">
-            <a href="#lessons" class="hover:text-red-400">DRIVING LESSONS</a>
-            <a href="#areas-cover" class="hover:text-red-400">AREAS COVERED</a>
-            <a href="tel:07908791192" class="hover:text-red-400">📞 CALL NOW</a>
-            <a href="mailto:lightsaheaddrivingschool@gmail.com" class="text-red-400 border-b border-white/30 pb-2">📧 EMAIL US</a>
+            <a href="#services">Driving Lessons</a>
+            <a href="#areas">Areas Covered</a>
+            <a href="tel:07908791192">Call Us</a>
+            <a href="https://wa.me/447908791192" class="text-red-500">WhatsApp Now</a>
         </div>
     </div>
 
-    <!-- ticker with business info (manual/auto, Croydon/Bromley, high recommendation) -->
-    <div class="info-ticker font-black text-[11px] uppercase tracking-wider">
-        <div class="ticker-scroll whitespace-nowrap px-4">
-            <span>🏆 100% RECOMMEND (20+ REVIEWS)</span>
-            <span>📍 CROYDON & BROMLEY & SURROUNDS</span>
-            <span>⚙️ MANUAL & AUTOMATIC LESSONS</span>
-            <span>⭐ DVSA APPROVED INSTRUCTORS</span>
-            <span>📞 07908 791192 | lightsaheaddrivingschool@gmail.com</span>
-            <span>🚗 INTENSIVE COURSES AVAILABLE</span>
+    <div class="ticker-wrap font-bold uppercase text-xs tracking-widest">
+        <div class="ticker space-x-16">
+            <span>🏁 100% Recommend (20+ reviews)</span>
+            <span>📍 Croydon • Bromley • CR0 8SQ & Surrounding</span>
+            <span>⚙️ Manual & Automatic Lessons</span>
+            <span>⭐ DVSA Approved • Patient Instructors</span>
+            <span>📱 Book via WhatsApp: 07908 791192</span>
         </div>
     </div>
 
-    <!-- hero section with panning car & main CTA replaced by contact details (exactly as instructed: all CTAs replaced with business contact) -->
-    <section class="relative bg-white pt-6 pb-10 md:pb-16 overflow-hidden">
-        <div class="hero-car-scene">
-            <div class="dynamic-road"></div>
-            <img id="movingCarSvg" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3990.png" alt="Lights Ahead driving school car" onerror="this.src='https://placehold.co/800x400/1a1a1a/white?text=LIGHTS+AHEAD+VEHICLE'">
-        </div>
-        <div class="max-w-6xl mx-auto px-6 text-center mt-8">
-            <span class="badge-red-sm mb-3 inline-block">✨ ESTABLISHED IN CROYDON</span>
-            <h1 class="text-6xl md:text-8xl font-black text-black leading-[1.1] uppercase tracking-tighter mb-5">
-                DRIVE WITH <span class="text-[#E31E24]">CONFIDENCE</span>
-            </h1>
-            <p class="text-gray-600 font-bold uppercase tracking-[0.2em] text-sm md:text-base mb-10">Manual & Automatic Lessons • Croydon • Bromley • CR0 8</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-5">
-                <!-- ALL CALL-TO-ACTION BUTTONS REPLACED WITH ACTUAL BUSINESS CONTACT DETAILS FROM IMAGES -->
-                <a href="tel:07908791192" class="px-9 py-4 bg-black text-white font-black uppercase tracking-wider text-sm hover:bg-[#E31E24] transition-all duration-300 shadow-xl rounded-md">📞 CALL 07908 791192</a>
-                <a href="mailto:lightsaheaddrivingschool@gmail.com" class="px-9 py-4 border-4 border-black text-black font-black uppercase tracking-wider text-sm hover:bg-black hover:text-white transition-all duration-300 rounded-md">✉️ EMAIL US NOW</a>
+    <section class="relative min-h-[80vh] flex flex-col items-center justify-center bg-white py-12 overflow-hidden">
+        <div class="w-full mb-10">
+            <div class="car-hero-container">
+                <div class="road-indicator"></div>
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3990.png" alt="Lights Ahead Driving School Car">
             </div>
-            <div class="mt-8 flex justify-center gap-4 text-sm font-bold text-gray-500"><span>✅ 5-Star Rated</span><span>📍 CR0 8, Croydon</span><span>📱 WhatsApp Available</span></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center z-20">
+            <div class="animate__animated animate__fadeInUp">
+                <span class="red-tag mb-4 inline-block">⭐ 5.0 ★ (134 Reviews)</span>
+                <h1 class="text-6xl md:text-9xl font-black text-black leading-none mb-6 uppercase tracking-tighter">
+                    DRIVE <span class="text-[#E31E24]">AHEAD.</span>
+                </h1>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-12 text-sm md:text-lg">Premium Instruction in Croydon & Bromley</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="tel:07908791192" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#E31E24] transition duration-300">Call 07908 791192</a>
+                    <a href="https://wa.me/447908791192" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300">WhatsApp Instructor</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- stats section (100% recommend, followers style integrated from images) -->
-    <section class="py-12 bg-gray-50 border-y border-gray-200">
+    <section class="py-12 bg-white border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="reveal-on-scroll">
-                <p class="text-5xl font-black text-black mb-2">100<span class="text-[#E31E24]">%</span></p>
-                <p class="text-[11px] font-black uppercase tracking-widest text-gray-500">RECOMMEND (20 REVIEWS)</p>
+            <div class="reveal">
+                <p class="text-5xl font-black text-black mb-2 counter" data-target="500">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Students Trained</p>
             </div>
-            <div class="reveal-on-scroll">
-                <p class="text-5xl font-black text-black mb-2">422<span class="text-[#E31E24]">+</span></p>
-                <p class="text-[11px] font-black uppercase tracking-widest text-gray-500">ENGAGING POSTS & UPDATES</p>
+            <div class="reveal">
+                <p class="text-5xl font-black text-black mb-2 counter" data-target="12">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Years Experience</p>
             </div>
-            <div class="reveal-on-scroll">
-                <p class="text-5xl font-black text-[#E31E24] mb-2">371</p>
-                <p class="text-[11px] font-black uppercase tracking-widest text-gray-500">HAPPY FOLLOWERS</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- LESSONS SECTION: MANUAL & AUTOMATIC with detailed descriptions -->
-    <section id="lessons" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6 text-center mb-14">
-            <h2 class="text-5xl font-black uppercase tracking-tighter">Lesson <span class="text-[#E31E24]">Choices</span></h2>
-            <p class="text-gray-500 font-bold uppercase text-sm mt-3">Tailored driving courses in Croydon & Bromley area</p>
-        </div>
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
-            <div class="reveal-on-scroll bg-white p-8 rounded-2xl shadow-xl premium-lesson-card border border-gray-100">
-                <i data-lucide="settings" class="w-12 h-12 text-black mb-5"></i>
-                <h3 class="text-3xl font-black uppercase mb-3">Manual Lessons</h3>
-                <p class="text-sm font-semibold text-gray-600 leading-relaxed mb-5">Full control & traditional driving experience. Perfect for learners aiming for a full UK licence covering both manual and automatic cars. Our manual instructors near Croydon test routes boost confidence on clutch, gears, and complex junctions. </p>
-                <div class="flex flex-wrap gap-2 mt-3"><span class="bg-gray-100 px-3 py-1 text-[10px] font-black uppercase">Test routes</span><span class="bg-gray-100 px-3 py-1 text-[10px] font-black uppercase">Hill starts</span><span class="bg-gray-100 px-3 py-1 text-[10px] font-black uppercase">Roundabouts</span></div>
-                <a href="tel:07908791192" class="inline-block mt-6 text-[#E31E24] font-black text-sm uppercase tracking-wider">📞 Book manual → 07908 791192</a>
-            </div>
-            <div class="reveal-on-scroll bg-white p-8 rounded-2xl shadow-xl premium-lesson-card border border-gray-100">
-                <i data-lucide="zap" class="w-12 h-12 text-[#E31E24] mb-5"></i>
-                <h3 class="text-3xl font-black uppercase mb-3">Automatic Lessons</h3>
-                <p class="text-sm font-semibold text-gray-600 leading-relaxed mb-5">Stress‑free, no stalling, smoother urban driving. Ideal for quick progress and busy schedules. Our automatic fleet in Croydon/Bromley helps you master the road faster — perfect for nervous beginners and intensive courses.</p>
-                <div class="flex flex-wrap gap-2 mt-3"><span class="bg-gray-100 px-3 py-1 text-[10px] font-black uppercase">No clutch stress</span><span class="bg-gray-100 px-3 py-1 text-[10px] font-black uppercase">Easy parking</span><span class="bg-gray-100 px-3 py-1 text-[10px] font-black uppercase">Fast pass potential</span></div>
-                <a href="mailto:lightsaheaddrivingschool@gmail.com" class="inline-block mt-6 text-[#E31E24] font-black text-sm uppercase tracking-wider">✉️ Enquire automatic → EMAIL US</a>
+            <div class="reveal">
+                <p class="text-5xl font-black text-[#E31E24] mb-2 counter" data-target="97">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">% Pass Rate</p>
             </div>
         </div>
     </section>
 
-    <!-- pricing / offers: all CTAs replaced with contact info (call/email) -->
-    <section class="py-20 bg-gray-50">
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto text-center mb-16 px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#E31E24]">Options</span></h2>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black">
+                <i data-lucide="settings" class="w-12 h-12 mb-6 text-black"></i>
+                <h3 class="text-2xl font-black uppercase mb-4">Manual Lessons</h3>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master clutch control & gear changes. Our patient instructors cover everything from junctions to parallel parking. Perfect for full UK license in Croydon & Bromley area.</p>
+                <a href="https://wa.me/447908791192" class="red-tag inline-block">Book Manual</a>
+            </div>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#E31E24]">
+                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#E31E24]"></i>
+                <h3 class="text-2xl font-black uppercase mb-4">Automatic Lessons</h3>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Smooth, modern, and stress-free. No stalling, ideal for busy roads around Croydon, Addiscombe, and Bromley. Fast-track your confidence with ease.</p>
+                <a href="https://wa.me/447908791192" class="red-tag inline-block">Book Automatic</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">Flexible <span class="text-[#E31E24]">Packages</span></h2>
-            <p class="text-sm font-bold text-gray-500 uppercase mb-12">Pay as you go • Block booking savings • Intensive options</p>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-                <div class="bg-white p-6 rounded-xl shadow border border-gray-200 reveal-on-scroll">
-                    <p class="font-black text-xs uppercase text-[#E31E24]">Single lesson</p>
-                    <p class="text-2xl font-black mt-2">1 Hour</p>
-                    <p class="text-xs text-gray-500 mt-2">Perfect trial</p>
-                    <a href="tel:07908791192" class="mt-5 block bg-black text-white py-2 text-[11px] font-black uppercase text-center rounded">CALL TO BOOK</a>
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#E31E24]">Packages</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#E31E24] transition">
+                    <p class="text-xs font-black uppercase mb-2">Pay As You Go</p>
+                    <p class="text-3xl font-black mb-4">1 Lesson</p>
+                    <a href="https://wa.me/447908791192" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow border border-gray-200 reveal-on-scroll">
-                    <p class="font-black text-xs uppercase text-[#E31E24]">Block Saver</p>
-                    <p class="text-2xl font-black mt-2">5 Lessons</p>
-                    <p class="text-xs text-gray-500">Best value starter</p>
-                    <a href="tel:07908791192" class="mt-5 block bg-black text-white py-2 text-[11px] font-black uppercase text-center rounded">📞 07908 791192</a>
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#E31E24] transition">
+                    <p class="text-xs font-black uppercase mb-2">Saver</p>
+                    <p class="text-3xl font-black mb-4">5 Lessons</p>
+                    <a href="https://wa.me/447908791192" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
                 </div>
-                <div class="bg-black text-white p-6 rounded-xl shadow-xl transform scale-105 reveal-on-scroll border-l-8 border-[#E31E24]">
-                    <p class="font-black text-xs uppercase text-[#E31E24]">⭐ Intensive course</p>
-                    <p class="text-2xl font-black mt-2">10+ Hours</p>
-                    <p class="text-xs text-gray-300">Fast-track option</p>
-                    <a href="mailto:lightsaheaddrivingschool@gmail.com" class="mt-5 block bg-[#E31E24] text-white py-2 text-[11px] font-black uppercase text-center rounded">✉️ REQUEST PRICE</a>
+                <div class="reveal p-6 bg-black text-white rounded-xl transform scale-105 shadow-2xl">
+                    <p class="text-xs font-black uppercase mb-2 text-[#E31E24]">Intensive Course</p>
+                    <p class="text-3xl font-black mb-4">10 Lessons</p>
+                    <a href="https://wa.me/447908791192" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow border border-gray-200 reveal-on-scroll">
-                    <p class="font-black text-xs uppercase text-[#E31E24]">Test prep</p>
-                    <p class="text-2xl font-black mt-2">Mock + Lesson</p>
-                    <p class="text-xs text-gray-500">With examiner advice</p>
-                    <a href="mailto:lightsaheaddrivingschool@gmail.com" class="mt-5 block bg-black text-white py-2 text-[11px] font-black uppercase text-center rounded">CONTACT US</a>
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#E31E24] transition">
+                    <p class="text-xs font-black uppercase mb-2">Fast Pass</p>
+                    <p class="text-3xl font-black mb-4">20 Lessons</p>
+                    <a href="https://wa.me/447908791192" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
+                </div>
+                <div class="reveal p-6 border-2 border-slate-100 rounded-xl hover:border-[#E31E24] transition">
+                    <p class="text-xs font-black uppercase mb-2">Test Ready</p>
+                    <p class="text-3xl font-black mb-4">Package</p>
+                    <a href="https://wa.me/447908791192" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AREAS COVERED + MAP (exact Croydon/Bromley postcode context) -->
-    <section id="areas-cover" class="py-24 bg-white">
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn with <span class="text-[#E31E24]">Lights Ahead</span></h2>
+            <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 bg-[#E31E24] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
+                </div>
+                <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs">Watch: Intro to Lights Ahead Driving School</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#E31E24]">FAQs</span></h2>
+            <div class="space-y-4">
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">What are your current lesson prices? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Prices vary by lesson type (Manual/Auto) and package. Block booking discounts available. Contact us via WhatsApp or call 07908 791192 for a custom quote.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">How long does a standard lesson last? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Our standard lessons are 2 hours long, ensuring maximum progress and covering various road conditions in Croydon & Bromley test routes.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Do you offer weekend or evening lessons? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Yes! We have flexible slots including evenings and weekends to accommodate work or college schedules around CR0 and Bromley areas.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Which payment methods do you accept? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">We accept Bank Transfer, cash, and card payments via secure link. Blocks must be paid at start of first lesson.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="areas" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
-            <div class="reveal-on-scroll">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-6">Serving <span class="text-[#E31E24]">Croydon & Bromley</span></h2>
-                <p class="text-sm font-bold text-gray-700 mb-6">We provide manual and automatic driving lessons across most of Croydon, Bromley, and surrounding areas including South Norwood, Thornton Heath, Beckenham, West Wickham, and more. Local test routes covered.</p>
-                <div class="grid grid-cols-2 gap-3 mb-8">
-                    <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-lg"><i data-lucide="map-pin" class="text-[#E31E24]"></i><span class="font-black text-xs uppercase">Croydon (CR0, CR2)</span></div>
-                    <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-lg"><i data-lucide="map-pin" class="text-[#E31E24]"></i><span class="font-black text-xs uppercase">Bromley (BR1, BR2)</span></div>
-                    <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-lg"><i data-lucide="map-pin" class="text-[#E31E24]"></i><span class="font-black text-xs uppercase">South Norwood</span></div>
-                    <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-lg"><i data-lucide="map-pin" class="text-[#E31E24]"></i><span class="font-black text-xs uppercase">Thornton Heath</span></div>
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#E31E24]">Areas</span></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Croydon</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">CR0 8SQ & Surrounding</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Bromley</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">BR1, BR2 & Test Routes</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Addiscombe</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Near East Croydon</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Shirley</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">119 Shirley Ave, CR0 8SQ</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-highlight p-5 rounded-xl">
-                    <p class="font-black text-sm uppercase">📞 Reach driving school directly</p>
-                    <a href="tel:07908791192" class="text-xl font-black text-[#E31E24] block">07908 791192</a>
-                    <a href="mailto:lightsaheaddrivingschool@gmail.com" class="text-sm font-bold break-all">lightsaheaddrivingschool@gmail.com</a>
+                <div class="h-[300px] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19930.077686334066!2d-0.05168161521153111!3d51.37407085643306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875fedd755f8beb%3A0x92fa4ef5253d1ea1!2sShirley%2C%20Croydon!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9);" allowfullscreen=""></iframe>
                 </div>
             </div>
-            <div class="reveal-on-scroll h-[380px] rounded-2xl overflow-hidden shadow-2xl">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39760.33445602458!2d-0.11487014424757459!3d51.376486295790835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875f7f9573f6b0d%3A0x2f3a0f9c8a1c2e4!2sCroydon!5e0!3m2!1sen!2suk!4v1717600000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: grayscale(0.2);" allowfullscreen="" loading="lazy"></iframe>
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#E31E24]">Availability</span></h2>
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                    <table class="w-full text-left text-xs uppercase font-black">
+                        <thead class="bg-black text-white">
+                            <tr>
+                                <th class="p-4">Day</th>
+                                <th class="p-4">Daytime</th>
+                                <th class="p-4">Evening/Weekend</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-4 bg-slate-50">Mon-Fri</td>
+                                <td class="p-4 text-green-600">Available</td>
+                                <td class="p-4 text-amber-500">Limited</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 bg-slate-50">Saturday</td>
+                                <td class="p-4 text-amber-500">Booking Only</td>
+                                <td class="p-4 text-amber-500">Booking Only</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 bg-slate-50">Sunday</td>
+                                <td class="p-4 text-slate-300">Closed</td>
+                                <td class="p-4 text-slate-300">Closed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100">
+                        <p class="text-[9px] text-slate-500 font-bold">* Priority for regular students on weekend/evening slots. Call 07908 791192 to secure.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ (fully informative) -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-12">Driving <span class="text-[#E31E24]">FAQs</span></h2>
-            <div class="space-y-2">
-                <div class="faq-item reveal-on-scroll bg-white p-4 rounded-2xl shadow-sm">
-                    <button class="faq-toggle-btn" onclick="toggleFaqAnswer(this)">Do you offer manual and automatic lessons? <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i></button>
-                    <div class="faq-answer-panel text-sm font-semibold text-gray-600">Yes! Lights Ahead Driving School provides both manual and automatic driving lessons in Croydon, Bromley, and surrounding areas. We tailor lessons to your comfort.</div>
-                </div>
-                <div class="faq-item reveal-on-scroll bg-white p-4 rounded-2xl shadow-sm">
-                    <button class="faq-toggle-btn" onclick="toggleFaqAnswer(this)">What areas do you cover exactly? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-answer-panel text-sm font-semibold text-gray-600">We cover most of Croydon (CR0, CR2, CR7) and Bromley (BR1, BR2, BR3) as well as Addiscombe, Beckenham, West Wickham, South Norwood. Contact us if unsure.</div>
-                </div>
-                <div class="faq-item reveal-on-scroll bg-white p-4 rounded-2xl shadow-sm">
-                    <button class="faq-toggle-btn" onclick="toggleFaqAnswer(this)">How do I book a lesson? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-answer-panel text-sm font-semibold text-gray-600">Simply call 07908 791192 or email lightsaheaddrivingschool@gmail.com. Our team will reply within hours to arrange lesson slots at your convenience.</div>
-                </div>
-                <div class="faq-item reveal-on-scroll bg-white p-4 rounded-2xl shadow-sm">
-                    <button class="faq-toggle-btn" onclick="toggleFaqAnswer(this)">Are your instructors DVSA approved? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-answer-panel text-sm font-semibold text-gray-600">Absolutely. All our driving instructors are fully qualified, DVSA registered, with years of experience helping students pass in Croydon & Bromley test centres.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- testimonial/reviews block -->
-    <section class="py-20 bg-white border-y border-gray-100">
+    <section class="py-24 bg-white border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Trusted by <span class="text-[#E31E24]">Croydon Learners</span></h2>
-            <div class="flex flex-wrap justify-center gap-8">
-                <div class="max-w-sm bg-gray-50 p-7 rounded-2xl shadow reveal-on-scroll text-left">
-                    <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
-                    <p class="text-sm font-bold text-gray-700 mb-4">"Amazing experience! Passed my manual test in Croydon first time, instructor was super patient and professional. Highly recommend Lights Ahead!"</p>
-                    <p class="font-black uppercase text-[11px]">— Michael R. (CR0)</p>
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#E31E24]">Feedback</span></h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="reveal bg-slate-50 p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Absolutely brilliant! Passed first time in Croydon. Instructor was patient and made me feel confident on the road. Highly recommend Lights Ahead!"</p>
+                    <p class="font-black uppercase text-[10px]">— Emily R. (Croydon)</p>
                 </div>
-                <div class="max-w-sm bg-gray-50 p-7 rounded-2xl shadow reveal-on-scroll text-left">
-                    <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
-                    <p class="text-sm font-bold text-gray-700 mb-4">"Automatic lessons were a game changer. The school is very responsive and pricing is fair. Now driving independently thanks to them."</p>
-                    <p class="font-black uppercase text-[11px]">— Priya K. (Bromley)</p>
+                <div class="reveal bg-slate-50 p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Best driving school in Bromley! Great communication, flexible hours, and excellent value. The car was modern and clean. 100% recommend."</p>
+                    <p class="font-black uppercase text-[10px]">— Daniel K. (Bromley)</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- footer with all business contact details again -->
-    <footer class="bg-black text-white pt-16 pb-28">
+    <section class="py-24 bg-slate-900 text-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-10 border-b border-white/10 pb-12 mb-12">
-                <div class="logo-svg-group">
-                    <svg width="50" height="38" viewBox="0 0 200 100" fill="none"><circle cx="48" cy="50" r="38" stroke="#D4AF37" stroke-width="5"/><path d="M48 12 A38 38 0 0 1 86 50" stroke="#E31E24" stroke-width="6"/><rect x="80" y="43" width="82" height="14" fill="#D4AF37"/><circle cx="48" cy="50" r="5" fill="#E31E24"/></svg>
-                    <div><span class="text-xl font-black block">LIGHTS AHEAD</span><span class="text-[8px] tracking-[0.3em]">DRIVING SCHOOL</span></div>
+            <div class="max-w-xl mx-auto text-center">
+                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Theory Support & <span class="text-[#E31E24]">Tips</span></h3>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Sign up for driving tips, theory test help, and local test centre updates (Croydon & Bromley).</p>
+                <form class="flex flex-col sm:flex-row gap-2">
+                    <input type="email" placeholder="Your Email Address" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#E31E24] transition">
+                    <button class="btn-brand px-8 py-4 text-xs uppercase">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white pt-20 pb-32"> 
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
+                <div class="logo-wrap mb-10 md:mb-0">
+                    <div class="logo-text !text-white">
+                        <span class="text-2xl font-black italic block">LIGHTS <span class="text-[#E31E24]">AHEAD</span></span>
+                        <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">Driving School</span>
+                    </div>
                 </div>
-                <div class="grid grid-cols-2 gap-10 text-sm">
-                    <div><p class="font-black text-[#E31E24] text-xs uppercase mb-3">CONTACT</p><p class="font-bold">📞 07908 791192</p><p class="text-xs break-all">lightsaheaddrivingschool@gmail.com</p></div>
-                    <div><p class="font-black text-[#E31E24] text-xs uppercase mb-3">LOCATION</p><p class="text-xs font-bold">Croydon, United Kingdom, CR0 8</p><p class="text-xs">Bromley & surrounding</p></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+                    <div>
+                        <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Contact</h5>
+                        <p class="text-sm font-bold uppercase tracking-widest mb-2">07908 791192</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase">lightsaheaddrivingschool@gmail.com</p>
+                    </div>
+                    <div>
+                        <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Locations</h5>
+                        <ul class="text-[10px] font-bold uppercase space-y-2 text-slate-400">
+                            <li>Croydon (CR0 8SQ)</li>
+                            <li>Bromley</li>
+                            <li>Shirley & Addiscombe</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Social</h5>
+                        <div class="flex space-x-4"><i data-lucide="instagram" class="w-5 h-5"></i><i data-lucide="facebook" class="w-5 h-5"></i><i data-lucide="message-square" class="w-5 h-5"></i></div>
+                        <p class="text-[8px] text-slate-500 mt-2">@lightsaheaddrivingschool</p>
+                    </div>
                 </div>
             </div>
-            <div class="flex justify-between flex-wrap gap-4 text-[9px] font-black uppercase tracking-wider text-gray-400"><span>© 2026 LIGHTS AHEAD DRIVING SCHOOL</span><span>Manual & Automatic Lessons</span><span>⭐ 100% recommend (20+ reviews)</span></div>
+            <p class="text-[10px] text-slate-500 font-black uppercase tracking-[0.5em]">© 2026 LIGHTS AHEAD DRIVING SCHOOL | 119 Shirley Ave, Croydon CR0 8SQ</p>
         </div>
     </footer>
 
-    <!-- fixed bottom contact bar (replacing all CTAs) -->
-    <div class="fixed-cta-bar md:hidden">
+    <div class="cta-dock md:hidden">
         <a href="tel:07908791192"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#E31E24]"></i>CALL</a>
-        <a href="mailto:lightsaheaddrivingschool@gmail.com"><i data-lucide="mail" class="w-5 h-5 mb-1 text-[#E31E24]"></i>EMAIL</a>
-        <a href="sms:+447908791192"><i data-lucide="message-square" class="w-5 h-5 mb-1 text-[#E31E24]"></i>TEXT</a>
-        <a href="tel:07908791192" class="bg-[#E31E24] !text-white !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK NOW</a>
+        <a href="https://wa.me/447908791192"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#E31E24]"></i>WHATSAPP</a>
+        <a href="sms:+447908791192"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#E31E24]"></i>TEXT</a>
+        <a href="tel:07908791192" class="bg-[#E31E24] !text-white !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK</a>
     </div>
 
     <script>
-        lucide.createIcons();
-        const mobileBtn = document.getElementById('mobileMenuButton'), closeMobile = document.getElementById('closeMobilePanel'), panel = document.getElementById('mobile-panel');
-        if(mobileBtn && closeMobile && panel){
-            mobileBtn.onclick = () => panel.classList.add('open');
-            closeMobile.onclick = () => panel.classList.remove('open');
-        }
-        const revealElements = document.querySelectorAll('.reveal-on-scroll');
-        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
-        revealElements.forEach(el => observer.observe(el));
-        window.toggleFaqAnswer = (btn) => {
-            const parent = btn.closest('.faq-item');
-            parent.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            setTimeout(() => { document.getElementById('promoPopup').style.display = 'block'; }, 3000);
+            
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+            const startCounters = (entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const target = +entry.target.getAttribute('data-target');
+                        const count = +entry.target.innerText;
+                        const inc = target / speed;
+                        if(count < target) {
+                            entry.target.innerText = Math.ceil(count + inc);
+                            setTimeout(() => startCounters([entry]), 1);
+                        } else { entry.target.innerText = target; }
+                    }
+                });
+            };
+            const counterObserver = new IntersectionObserver(startCounters, {threshold: 0.5});
+            counters.forEach(c => counterObserver.observe(c));
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('active');
             const icon = btn.querySelector('i');
-            if(icon) icon.style.transform = parent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-        };
-        setTimeout(() => { const promo = document.getElementById('promoPopup'); if(promo) promo.style.display='none'; }, 100);
+            icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
     </script>
 </body>
 </html>
