@@ -2,23 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Lights Ahead Driving School | Croydon & Bromley</title>
+    <!-- Tailwind + Lucide + Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        /* ===== BRAND COLOUR REFRESH: All previous red/pink/rose replaced with #00A651 (Lights Ahead Green) ===== */
         :root {
-            --brand-black: #000000; 
-            --brand-green: #00A651;
+            --brand-black: #000000;
+            --brand-green: #00A651;     /* The exact green from logo "LIGHTS AHEAD" */
             --brand-gold: #D4AF37;
             --brand-white: #ffffff;
             --brand-gray: #1a1a1a;
+            --brand-darkgreen: #008a43;
         }
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
         
-        /* Custom SVG Logo Logic */
         .logo-wrap {
             display: flex;
             align-items: center;
@@ -29,7 +31,7 @@
             line-height: 1;
         }
 
-        /* FIXED: Brighter Car and Thinner Track */
+        /* Car animation background */
         .car-hero-container {
             position: relative;
             z-index: 10;
@@ -82,7 +84,7 @@
             100% { background-position: -60px 0; }
         }
 
-        /* Feature Styles */
+        /* Mobile menu */
         #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             transform: translateX(100%);
@@ -90,30 +92,46 @@
         }
         #mobile-menu.open { transform: translateX(0); }
         .glass { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); }
+        
+        /* Cards - green accent border (replacing old red-ish) */
         .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-green); }
         .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(0, 166, 81, 0.3); }
+        
         .ticker-wrap { overflow: hidden; background: var(--brand-black); color: var(--brand-white); padding: 15px 0; border-bottom: 4px solid var(--brand-green); }
         .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        
+        /* Brand button - green */
         .btn-brand { background-color: var(--brand-green); color: white; transition: 0.3s; font-weight: 900; }
-        .btn-brand:hover { background-color: #008a43; transform: scale(1.05); }
+        .btn-brand:hover { background-color: var(--brand-darkgreen); transform: scale(1.05); }
+        
         .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-black); display: flex; z-index: 100; border-top: 4px solid var(--brand-green); }
         .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
+        
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        
         .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
         .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
         .faq-item.active .faq-content { max-height: 300px; padding: 1rem 0; }
+        
+        /* All tag and accent classes now using brand green */
         .green-tag { background: var(--brand-green); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
         .green-accent { color: var(--brand-green); }
         .border-green-accent { border-color: var(--brand-green); }
         .bg-green-accent { background-color: var(--brand-green); }
         
+        /* Promo popup border green */
         #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 280px; background: white; border-top: 5px solid var(--brand-green); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
+        
+        /* Additional green overrides: previously any red links, hover states */
+        a:not(.btn-brand):hover { color: var(--brand-green); transition: 0.2s; }
+        .hover\:text-\[\#00A651\]:hover { color: #00A651 !important; }
     </style>
 </head>
 <body class="text-slate-900"> 
 
+    <!-- Popup: No red, all green accents -->
     <div id="promoPopup" class="animate__animated animate__fadeInUp">
         <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2"><i data-lucide="x" class="w-4 h-4"></i></button>
         <span class="green-tag mb-2 inline-block">⭐ 5.0 ★ (134 reviews)</span>
@@ -122,10 +140,11 @@
         <a href="tel:07808791182" class="btn-brand px-4 py-2 text-[10px] uppercase inline-block text-center">Call 07808 791182</a>
     </div>
 
+    <!-- Navigation bar - all red replaced (borders, hover effects) -->
     <nav class="sticky top-0 z-50 glass border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="logo-wrap">
-                <!-- Exact Logo SVG matching brand: LIGHTS in BLACK, AHEAD in GREEN -->
+                <!-- SVG Logo fully reflecting LIGHTS (black) and AHEAD (green) -->
                 <svg width="70" height="50" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
                     <rect x="15" y="35" width="150" height="22" rx="4" fill="#000000" />
                     <path d="M165 40 L180 35 L180 57 L165 57 Z" fill="#000000" />
@@ -152,6 +171,7 @@
         </div>
     </nav>
 
+    <!-- Mobile menu green text used -->
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[100] p-10 flex flex-col shadow-2xl">
         <button id="close-btn" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
         <div class="flex flex-col space-y-8 text-white font-black text-3xl uppercase tracking-tighter">
@@ -162,6 +182,7 @@
         </div>
     </div>
 
+    <!-- Ticker strip (green border) already green-accent -->
     <div class="ticker-wrap font-bold uppercase text-xs tracking-widest">
         <div class="ticker space-x-16">
             <span>🏁 100% Recommend (20+ reviews)</span>
@@ -172,6 +193,7 @@
         </div>
     </div>
 
+    <!-- Hero section - primary green used for "DRIVE AHEAD." subtext & buttons -->
     <section class="relative min-h-[80vh] flex flex-col items-center justify-center bg-white py-12 overflow-hidden">
         <div class="w-full mb-10">
             <div class="car-hero-container">
@@ -196,6 +218,7 @@
         </div>
     </section>
 
+    <!-- Stats section - green counter value stays green (#00A651) -->
     <section class="py-12 bg-white border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="reveal">
@@ -213,6 +236,7 @@
         </div>
     </section>
 
+    <!-- Services: red replaced by green accents and borders -->
     <section id="services" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto text-center mb-16 px-6">
             <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#00A651]">Options</span></h2>
@@ -233,6 +257,7 @@
         </div>
     </section>
 
+    <!-- Pricing Packages: All green buttons and highlight the intense course with green border/text accent -->
     <section id="pricing" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#00A651]">Packages</span></h2>
@@ -247,7 +272,7 @@
                     <p class="text-3xl font-black mb-4">5 Lessons</p>
                     <a href="https://wa.me/447808791182" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
                 </div>
-                <div class="reveal p-6 bg-black text-white rounded-xl transform scale-105 shadow-2xl">
+                <div class="reveal p-6 bg-black text-white rounded-xl transform scale-105 shadow-2xl border-2 border-[#00A651]">
                     <p class="text-xs font-black uppercase mb-2 text-[#00A651]">Intensive Course</p>
                     <p class="text-3xl font-black mb-4">10 Lessons</p>
                     <a href="https://wa.me/447808791182" class="btn-brand w-full block py-3 text-[10px] uppercase">Contact to Buy</a>
@@ -266,6 +291,7 @@
         </div>
     </section>
 
+    <!-- Video section : play button green -->
     <section class="py-24 bg-slate-50">
         <div class="max-w-5xl mx-auto px-6">
             <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn with <span class="text-[#00A651]">Lights Ahead</span></h2>
@@ -279,6 +305,7 @@
         </div>
     </section>
 
+    <!-- FAQ section: green icons and accents preserved -->
     <section class="py-24 bg-white">
         <div class="max-w-3xl mx-auto px-6">
             <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#00A651]">FAQs</span></h2>
@@ -303,6 +330,7 @@
         </div>
     </section>
 
+    <!-- Areas & location: green markers, green icons -->
     <section id="areas" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
             <div class="reveal">
@@ -346,28 +374,12 @@
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
                     <table class="w-full text-left text-xs uppercase font-black">
                         <thead class="bg-black text-white">
-                            <tr>
-                                <th class="p-4">Day</th>
-                                <th class="p-4">Daytime</th>
-                                <th class="p-4">Evening/Weekend</th>
-                            </tr>
+                            <tr><th class="p-4">Day</th><th class="p-4">Daytime</th><th class="p-4">Evening/Weekend</th></tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
-                            <tr>
-                                <td class="p-4 bg-slate-50">Mon-Fri</td>
-                                <td class="p-4 text-green-600">Available</td>
-                                <td class="p-4 text-amber-500">Limited</td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 bg-slate-50">Saturday</td>
-                                <td class="p-4 text-amber-500">Booking Only</td>
-                                <td class="p-4 text-amber-500">Booking Only</td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 bg-slate-50">Sunday</td>
-                                <td class="p-4 text-slate-300">Closed</td>
-                                <td class="p-4 text-slate-300">Closed</td>
-                            </tr>
+                            <tr><td class="p-4 bg-slate-50">Mon-Fri</td><td class="p-4 text-green-600">Available</td><td class="p-4 text-amber-500">Limited</td></tr>
+                            <tr><td class="p-4 bg-slate-50">Saturday</td><td class="p-4 text-amber-500">Booking Only</td><td class="p-4 text-amber-500">Booking Only</td></tr>
+                            <tr><td class="p-4 bg-slate-50">Sunday</td><td class="p-4 text-slate-300">Closed</td><td class="p-4 text-slate-300">Closed</td></tr>
                         </tbody>
                     </table>
                     <div class="p-4 bg-slate-50 border-t border-slate-100">
@@ -378,6 +390,7 @@
         </div>
     </section>
 
+    <!-- Testimonials section - all stars etc kept neutral no red -->
     <section class="py-24 bg-white border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#00A651]">Feedback</span></h2>
@@ -396,6 +409,7 @@
         </div>
     </section>
 
+    <!-- Newsletter section: green accent and button -->
     <section class="py-24 bg-slate-900 text-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="max-w-xl mx-auto text-center">
@@ -409,6 +423,7 @@
         </div>
     </section>
 
+    <!-- Footer: green brand used for highlights -->
     <footer class="bg-black text-white pt-20 pb-32"> 
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
@@ -443,6 +458,7 @@
         </div>
     </footer>
 
+    <!-- Mobile dock bar with green icons and background call to action -->
     <div class="cta-dock md:hidden">
         <a href="tel:07808791182"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#00A651]"></i>CALL</a>
         <a href="https://wa.me/447808791182"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#00A651]"></i>WHATSAPP</a>
@@ -477,8 +493,10 @@
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        if(menuBtn && closeBtn) {
+            menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+            closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        }
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -491,8 +509,9 @@
             const item = btn.parentElement;
             item.classList.toggle('active');
             const icon = btn.querySelector('i');
-            icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            if(icon) icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
+        window.toggleFaq = toggleFaq;
     </script>
 </body>
 </html>
