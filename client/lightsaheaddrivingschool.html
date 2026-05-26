@@ -13,7 +13,7 @@
         /* ===== BRAND COLOUR REFRESH: All previous red/pink/rose replaced with #3b7637 (Lights Ahead Green) ===== */
         :root {
             --brand-black: #000000;
-            --brand-green: #3b7637;     /* The exact green specified by user */
+            --brand-green: #3b7637;     /* The exact green specified by user from attached image reference */
             --brand-gold: #D4AF37;
             --brand-white: #ffffff;
             --brand-gray: #1a1a1a;
@@ -127,11 +127,13 @@
         /* Additional green overrides: previously any red links, hover states */
         a:not(.btn-brand):hover { color: var(--brand-green); transition: 0.2s; }
         .hover\:text-\[\#00A651\]:hover { color: #3b7637 !important; }
+        .faq-btn i { transition: transform 0.3s ease; }
+        .faq-item.active .faq-btn i { transform: rotate(180deg); }
     </style>
 </head>
 <body class="text-slate-900"> 
 
-    <!-- Popup: No red, all green accents -->
+    <!-- Popup: all green accents -->
     <div id="promoPopup" class="animate__animated animate__fadeInUp">
         <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2"><i data-lucide="x" class="w-4 h-4"></i></button>
         <span class="green-tag mb-2 inline-block">⭐ 5.0 ★ (134 reviews)</span>
@@ -171,7 +173,7 @@
         </div>
     </nav>
 
-    <!-- Mobile menu green text used -->
+    <!-- Mobile menu -->
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[100] p-10 flex flex-col shadow-2xl">
         <button id="close-btn" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
         <div class="flex flex-col space-y-8 text-white font-black text-3xl uppercase tracking-tighter">
@@ -182,7 +184,7 @@
         </div>
     </div>
 
-    <!-- Ticker strip (green border) already green-accent -->
+    <!-- Ticker strip (green border) -->
     <div class="ticker-wrap font-bold uppercase text-xs tracking-widest">
         <div class="ticker space-x-16">
             <span>🏁 100% Recommend (20+ reviews)</span>
@@ -236,7 +238,7 @@
         </div>
     </section>
 
-    <!-- Services: red replaced by green accents and borders -->
+    <!-- Services: green accents and borders -->
     <section id="services" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto text-center mb-16 px-6">
             <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#3b7637]">Options</span></h2>
@@ -296,9 +298,9 @@
         <div class="max-w-5xl mx-auto px-6">
             <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn with <span class="text-[#3b7637]">Lights Ahead</span></h2>
             <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700" alt="Driving lesson preview">
                 <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-20 h-20 bg-[#3b7637] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
+                    <div class="w-20 h-20 bg-[#3b7637] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white ml-1"></i></div>
                 </div>
                 <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs">Watch: Intro to Lights Ahead Driving School</div>
             </div>
@@ -366,7 +368,7 @@
                     </div>
                 </div>
                 <div class="h-[300px] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19930.077686334066!2d-0.05168161521153111!3d51.37407085643306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875fedd755f8beb%3A0x92fa4ef5253d1ea1!2sShirley%2C%20Croydon!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9);" allowfullscreen=""></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19930.077686334066!2d-0.05168161521153111!3d51.37407085643306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875fedd755f8beb%3A0x92fa4ef5253d1ea1!2sShirley%2C%20Croydon!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9);" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
             <div class="reveal">
@@ -415,7 +417,7 @@
             <div class="max-w-xl mx-auto text-center">
                 <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Theory Support & <span class="text-[#3b7637]">Tips</span></h3>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Sign up for driving tips, theory test help, and local test centre updates (Croydon & Bromley).</p>
-                <form class="flex flex-col sm:flex-row gap-2">
+                <form class="flex flex-col sm:flex-row gap-2" onsubmit="alert('Demo: Thank you for subscribing!'); return false;">
                     <input type="email" placeholder="Your Email Address" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#3b7637] transition">
                     <button class="btn-brand px-8 py-4 text-xs uppercase">Sign Up</button>
                 </form>
@@ -473,20 +475,27 @@
             
             const counters = document.querySelectorAll('.counter');
             const speed = 200;
-            const startCounters = (entries) => {
+            const observerOptions = { threshold: 0.5 };
+            const startCounters = (entries, observer) => {
                 entries.forEach(entry => {
                     if(entry.isIntersecting) {
                         const target = +entry.target.getAttribute('data-target');
-                        const count = +entry.target.innerText;
-                        const inc = target / speed;
-                        if(count < target) {
-                            entry.target.innerText = Math.ceil(count + inc);
-                            setTimeout(() => startCounters([entry]), 1);
-                        } else { entry.target.innerText = target; }
+                        const updateCounter = () => {
+                            const current = +entry.target.innerText;
+                            const inc = target / speed;
+                            if(current < target) {
+                                entry.target.innerText = Math.ceil(current + inc);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                entry.target.innerText = target;
+                                observer.unobserve(entry.target);
+                            }
+                        };
+                        updateCounter();
                     }
                 });
             };
-            const counterObserver = new IntersectionObserver(startCounters, {threshold: 0.5});
+            const counterObserver = new IntersectionObserver(startCounters, observerOptions);
             counters.forEach(c => counterObserver.observe(c));
         });
 
@@ -500,16 +509,18 @@
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp'); }
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         function toggleFaq(btn) {
-            const item = btn.parentElement;
-            item.classList.toggle('active');
-            const icon = btn.querySelector('i');
-            if(icon) icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            const item = btn.closest('.faq-item');
+            if (item) {
+                item.classList.toggle('active');
+                const icon = btn.querySelector('i');
+                if(icon) icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
         }
         window.toggleFaq = toggleFaq;
     </script>
