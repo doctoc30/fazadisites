@@ -1,610 +1,1508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-  <title>E1 Tyres LTD | New & Used Tyres</title>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E1 Tyres Ltd — New & Used Tyres | East London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      background: #f5f2ee;
-      color: #1e1e1e;
-      line-height: 1.5;
-    }
+  :root {
+    --gold: #F5C518;
+    --gold-dark: #D4A800;
+    --black: #0A0A0A;
+    --charcoal: #111111;
+    --grey: #1C1C1C;
+    --grey-mid: #2A2A2A;
+    --grey-light: #444;
+    --white: #FFFFFF;
+    --off-white: #F0EDE8;
+    --red: #CC2200;
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+  html { scroll-behavior: smooth; }
 
-    /* header / brand */
-    .top-bar {
-      background: #0b1a2e;
-      color: #fff;
-      padding: 14px 0;
-      border-bottom: 4px solid #e4b23e;
-    }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-    .top-bar .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-    }
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--gold);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); }
 
-    .brand-logo {
-      background: #e4b23e;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 22px;
-      color: #0b1a2e;
-      box-shadow: 0 0 0 2px #fff;
-    }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--off-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
 
-    .brand h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-    .brand h1 span {
-      color: #e4b23e;
-      font-weight: 300;
-    }
-    .brand .tagline {
-      font-size: 0.85rem;
-      opacity: 0.8;
-      margin-top: 2px;
-      letter-spacing: 0.3px;
-    }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black) !important;
+    padding: 0.5rem 1.25rem;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-dark) !important; color: var(--black) !important; }
 
-    .contact-ribbon {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px 30px;
-      align-items: center;
-      font-size: 0.95rem;
-    }
-    .contact-ribbon i {
-      color: #e4b23e;
-      width: 24px;
-      text-align: center;
-    }
-    .contact-ribbon a {
-      color: #fff;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .contact-ribbon a:hover {
-      color: #e4b23e;
-    }
-    .open-badge {
-      background: #1f8b4c;
-      padding: 6px 18px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.3px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 5rem;
+    overflow: hidden;
+  }
 
-    /* hero */
-    .hero {
-      background: linear-gradient(135deg, #102433 0%, #1d3a5a 100%);
-      color: white;
-      padding: 40px 0 50px;
-      border-bottom: 6px solid #e4b23e;
-      position: relative;
-    }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: var(--storefront-img);
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(0.45) contrast(1.1);
+    transform: scale(1.03);
+    animation: heroZoom 12s ease-out forwards;
+  }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
+  @keyframes heroZoom {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1.0); }
+  }
 
-    .hero-text h2 {
-      font-size: 2.7rem;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-    .hero-text h2 i {
-      color: #e4b23e;
-    }
-    .hero-text p {
-      font-size: 1.2rem;
-      margin: 20px 0 28px;
-      opacity: 0.9;
-      max-width: 500px;
-    }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.2) 0%,
+      rgba(10,10,10,0.1) 40%,
+      rgba(10,10,10,0.85) 75%,
+      rgba(10,10,10,1) 100%
+    );
+  }
 
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .btn {
-      display: inline-block;
-      background: #e4b23e;
-      color: #0b1a2e;
-      font-weight: 700;
-      padding: 14px 34px;
-      border-radius: 60px;
-      text-decoration: none;
-      letter-spacing: 0.3px;
-      transition: 0.2s;
-      border: none;
-      font-size: 1rem;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-    }
-    .btn-outline {
-      background: transparent;
-      color: #fff;
-      border: 2px solid #e4b23e;
-      box-shadow: none;
-    }
-    .btn-outline:hover {
-      background: #e4b23e;
-      color: #0b1a2e;
-    }
-    .btn:hover {
-      transform: scale(1.02);
-      background: #dba52e;
-    }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+  }
 
-    .hero-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255,255,255,0.06);
-      border-radius: 40px;
-      padding: 20px;
-      backdrop-filter: blur(2px);
-      border: 1px solid rgba(255,215,0,0.2);
-    }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.25rem;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+  }
 
-    .tyre-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      width: 100%;
-      max-width: 400px;
-    }
-    .tyre-item {
-      background: rgba(255,255,255,0.08);
-      aspect-ratio: 1/1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #e4b23e;
-      border: 1px solid rgba(228,178,62,0.3);
-      transition: 0.2s;
-      text-shadow: 0 0 10px rgba(228,178,62,0.2);
-    }
-    .tyre-item i {
-      font-size: 2.2rem;
-    }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    line-height: 1.0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
 
-    /* services */
-    .section {
-      padding: 60px 0;
-    }
-    .section-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      position: relative;
-      display: inline-block;
-    }
-    .section-title:after {
-      content: '';
-      display: block;
-      width: 70%;
-      height: 4px;
-      background: #e4b23e;
-      margin-top: 6px;
-    }
-    .section-sub {
-      color: #4a4a4a;
-      margin-bottom: 40px;
-      font-size: 1.1rem;
-    }
+  .hero-title .gold { color: var(--gold); }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
-      gap: 28px;
-    }
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
 
-    .service-card {
-      background: white;
-      padding: 28px 20px;
-      border-radius: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-      border: 1px solid #eae5df;
-      transition: 0.2s;
-      text-align: center;
-    }
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-      border-color: #e4b23e;
-    }
-    .service-card i {
-      font-size: 3rem;
-      color: #0b1a2e;
-      background: #f0ece6;
-      padding: 18px;
-      border-radius: 60px;
-      margin-bottom: 16px;
-    }
-    .service-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 6px;
-    }
-    .service-card .price {
-      font-weight: 700;
-      color: #0b1a2e;
-      background: #e4b23e22;
-      display: inline-block;
-      padding: 4px 18px;
-      border-radius: 40px;
-      font-size: 1.1rem;
-      margin-top: 10px;
-    }
+  .hero-phones {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
 
-    /* pricing table */
-    .pricing-wrap {
-      background: white;
-      border-radius: 40px;
-      padding: 30px 30px 20px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
-      border: 1px solid #e0dbd4;
-    }
+  .hero-phone {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .hero-phone:hover { color: var(--white); }
+  .hero-phone-icon { font-size: 1rem; }
 
-    .pricing-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .pricing-table th {
-      text-align: left;
-      padding: 14px 8px;
-      font-weight: 600;
-      border-bottom: 2px solid #e4b23e;
-      color: #0b1a2e;
-    }
-    .pricing-table td {
-      padding: 14px 8px;
-      border-bottom: 1px solid #eee8e0;
-    }
-    .pricing-table tr:last-child td {
-      border-bottom: 0;
-    }
-    .pricing-table .highlight {
-      background: #faf6f0;
-    }
-    .price-tag {
-      font-weight: 700;
-      color: #0b1a2e;
-    }
-    .tyre-size {
-      font-weight: 600;
-      color: #0b1a2e;
-    }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 
-    /* gallery / branding images */
-    .brand-show {
-      background: #0b1a2e;
-      color: #fff;
-      padding: 40px 0;
-      margin-top: 30px;
-    }
-    .brand-show .container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
-      justify-content: space-between;
-    }
-    .brand-show .brand-block {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-    .brand-show .brand-block i {
-      font-size: 3.8rem;
-      color: #e4b23e;
-    }
-    .brand-show .brand-block .big-text {
-      font-size: 2.8rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
-    .brand-show .brand-block .big-text span {
-      color: #e4b23e;
-    }
+  .btn {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
 
-    .keepout-block {
-      background: #1f1f1f;
-      padding: 14px 30px;
-      border-radius: 80px;
-      border-left: 6px solid #e4b23e;
-      font-size: 1.3rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .keepout-block i {
-      color: #e4b23e;
-    }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--black);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+  }
+  .btn-gold:hover { background: var(--gold-dark); transform: translateX(2px); }
 
-    /* gallery */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 18px;
-      margin: 30px 0;
-    }
-    .gallery-grid .g-item {
-      background: #eae5df;
-      border-radius: 28px;
-      aspect-ratio: 1/0.9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #0b1a2e;
-      border: 2px dashed #b8aea2;
-      transition: 0.2s;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .gallery-grid .g-item i {
-      font-size: 3.4rem;
-      color: #0b1a2e;
-      opacity: 0.8;
-    }
-    .gallery-grid .g-item span {
-      background: #0b1a2e22;
-      padding: 6px 18px;
-      border-radius: 60px;
-      font-size: 0.8rem;
-    }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.4);
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* map / contact */
-    .map-section {
-      background: white;
-      border-radius: 40px;
-      padding: 20px;
-      margin: 40px 0;
-      border: 1px solid #ddd6ce;
-    }
-    .map-placeholder {
-      background: #d6cec4;
-      height: 220px;
-      border-radius: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: #0b1a2e;
-    }
-    .map-placeholder i {
-      font-size: 3.2rem;
-      color: #0b1a2e;
-      margin-bottom: 6px;
-    }
+  /* ─── TRUST BAR ─── */
+  .trust-bar {
+    background: var(--gold);
+    padding: 1rem 2rem;
+    overflow: hidden;
+  }
 
-    .footer {
-      background: #0b1a2e;
-      color: #cdc6bc;
-      padding: 30px 0 20px;
-      border-top: 4px solid #e4b23e;
-      margin-top: 40px;
-    }
-    .footer .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-    .footer a {
-      color: #e4b23e;
-      text-decoration: none;
-    }
-    .footer .small {
-      font-size: 0.85rem;
-      opacity: 0.7;
-    }
+  .trust-scroller {
+    display: flex;
+    gap: 4rem;
+    animation: scrollTrust 18s linear infinite;
+    white-space: nowrap;
+  }
 
-    @media (max-width: 800px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .brand h1 { font-size: 1.4rem; }
-      .contact-ribbon { gap: 10px; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .tyre-grid { max-width: 280px; }
-    }
-    @media (max-width: 500px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .brand-show .brand-block { flex-wrap: wrap; }
-    }
-  </style>
+  @keyframes scrollTrust {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 6rem 2rem; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-body {
+    color: rgba(255,255,255,0.65);
+    max-width: 520px;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── SERVICES ─── */
+  .services-section {
+    background: var(--charcoal);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: var(--gold);
+    border: 1.5px solid var(--gold);
+    margin-top: 3rem;
+  }
+
+  .service-card {
+    background: var(--grey);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+  }
+  .service-card:hover { background: var(--grey-mid); }
+  .service-card:hover .service-icon { transform: scale(1.1) rotate(-5deg); }
+
+  .service-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    display: block;
+    transition: transform 0.3s;
+    line-height: 1;
+  }
+
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .service-tag {
+    margin-top: 1.25rem;
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-top: 1px solid rgba(245,197,24,0.3);
+    padding-top: 0.75rem;
+    width: 100%;
+  }
+
+  /* ─── TYRE VISUALISER ─── */
+  .tyre-section {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tyre-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border: 80px solid rgba(245,197,24,0.04);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .tyre-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* SVG Tyre Graphic */
+  .tyre-graphic-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .tyre-svg-outer {
+    animation: tyreRotate 12s linear infinite;
+    transform-origin: center;
+  }
+  @keyframes tyreRotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .tyre-size-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .tyre-size-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.25rem;
+    background: var(--grey);
+    border-left: 3px solid var(--gold);
+  }
+
+  .tyre-size-code {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .tyre-size-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .tyre-size-avail {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ─── PRICING ─── */
+  .pricing-section {
+    background: var(--charcoal);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--gold);
+    border: 2px solid var(--gold);
+    margin-top: 3rem;
+  }
+
+  .pricing-card {
+    background: var(--grey);
+    padding: 2.5rem 2rem;
+    position: relative;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .pricing-card.featured {
+    background: var(--gold);
+  }
+  .pricing-card.featured .pricing-title,
+  .pricing-card.featured .pricing-price,
+  .pricing-card.featured .pricing-from,
+  .pricing-card.featured .pricing-item { color: var(--black); }
+  .pricing-card.featured .pricing-divider { border-color: rgba(0,0,0,0.2); }
+
+  .pricing-badge {
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--black);
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .pricing-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    color: var(--gold);
+  }
+
+  .pricing-from {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-price {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+  .pricing-price sup { font-size: 1.5rem; vertical-align: super; }
+
+  .pricing-unit {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2rem;
+  }
+  .pricing-card.featured .pricing-unit { color: rgba(0,0,0,0.5); }
+
+  .pricing-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-items {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-item {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem;
+    padding: 0.4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .pricing-item::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .pricing-card.featured .pricing-item::before { color: var(--black); }
+
+  .btn-dark {
+    background: var(--black);
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    width: 100%;
+    text-align: center;
+  }
+  .btn-dark:hover { background: #1a1a1a; }
+
+  .btn-white {
+    background: var(--black);
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    width: 100%;
+    text-align: center;
+  }
+  .btn-white:hover { background: rgba(0,0,0,0.15); }
+
+  /* ─── WHY US ─── */
+  .why-section {
+    background: var(--black);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .why-card {
+    border-top: 3px solid var(--gold);
+    padding-top: 1.5rem;
+  }
+
+  .why-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(245,197,24,0.15);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .why-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+
+  .why-body {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  /* ─── STOREFRONT STRIP ─── */
+  .storefront-strip {
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .storefront-bg {
+    position: absolute;
+    inset: 0;
+    background-image: var(--storefront-img);
+    background-size: cover;
+    background-position: center 30%;
+    filter: brightness(0.35) saturate(0.8);
+  }
+
+  .storefront-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.3) 50%, rgba(10,10,10,0.9) 100%);
+  }
+
+  .storefront-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .storefront-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+
+  .storefront-content h2 span { color: var(--gold); }
+
+  .storefront-hours {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .hour-item {
+    text-align: center;
+  }
+  .hour-day {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .hour-time {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-top: 0.15rem;
+  }
+
+  /* ─── CONTACT / FOOTER ─── */
+  .contact-section {
+    background: var(--charcoal);
+    padding: 5rem 2rem;
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .contact-detail-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .contact-detail-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-detail-value {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+
+  .contact-detail-value a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .contact-detail-value a:hover { color: var(--gold); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-field label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: var(--grey);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    appearance: none;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-field textarea { min-height: 110px; resize: vertical; }
+
+  .form-field select option { background: var(--grey); }
+
+  footer {
+    background: var(--black);
+    border-top: 2px solid rgba(245,197,24,0.2);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+  .footer-logo span { color: var(--white); }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ─── TYRE BRANDS ─── */
+  .brands-section {
+    background: var(--grey);
+    padding: 3rem 2rem;
+    overflow: hidden;
+  }
+
+  .brands-scroller {
+    display: flex;
+    gap: 4rem;
+    animation: scrollBrands 20s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes scrollBrands {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .brand-item {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.25);
+    flex-shrink: 0;
+    transition: color 0.2s;
+  }
+  .brand-item:hover { color: var(--gold); }
+
+  /* ─── EMERGENCY BANNER ─── */
+  .emergency-banner {
+    background: var(--red);
+    padding: 1.25rem 2rem;
+    text-align: center;
+  }
+
+  .emergency-text {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--white);
+  }
+
+  .emergency-text a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .tyre-layout { grid-template-columns: 1fr; }
+    .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 4rem 1.25rem; }
+    .hero { padding-bottom: 4rem; }
+    .hero-phones { flex-direction: column; gap: 0.75rem; }
+  }
+
+  /* Floating call button */
+  .float-call {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.5rem;
+    text-decoration: none;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 20px rgba(245,197,24,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: floatPulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes floatPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(245,197,24,0.4); }
+    50%       { box-shadow: 0 6px 30px rgba(245,197,24,0.7); }
+  }
+
+  .float-call:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245,197,24,0.6);
+  }
+</style>
 </head>
 <body>
 
-<!-- top bar -->
-<div class="top-bar">
-  <div class="container">
-    <div class="brand">
-      <div class="brand-logo"><i class="fas fa-circle"></i></div>
-      <div>
-        <h1>E1 <span>TYRES</span> LTD</h1>
-        <div class="tagline"><i class="fas fa-certificate" style="color:#e4b23e;"></i> NEW & USED · FITTING & BALANCING</div>
-      </div>
+<!-- Floating Call Button -->
+<a href="tel:07715502965" class="float-call">
+  📞 Call Now
+</a>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#" class="nav-logo">E1 <span>TYRES</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#tyres">Tyres</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">⚡ Open 7 Days · East London</div>
+    <h1 class="hero-title">
+      New &amp; Used<br>
+      <span class="gold">Tyres.</span> Fitted<br>
+      Fast.
+    </h1>
+    <p class="hero-subtitle">Fitting · Balancing · Puncture Repair · Same Day</p>
+    <div class="hero-phones">
+      <a href="tel:07715502965" class="hero-phone"><span class="hero-phone-icon">📞</span> 07715 502965</a>
+      <a href="tel:07940958912" class="hero-phone"><span class="hero-phone-icon">📞</span> 07940 958912</a>
     </div>
-    <div class="contact-ribbon">
-      <span><i class="fas fa-phone-alt"></i> <a href="tel:+447715502965">07715 502965</a></span>
-      <span><i class="fas fa-phone-alt"></i> <a href="tel:+447940958912">07940 958912</a></span>
-      <span class="open-badge"><i class="fas fa-clock"></i> OPEN 7 DAYS</span>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn btn-gold">View Prices →</a>
+      <a href="#contact" class="btn btn-outline">Get a Quote</a>
     </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<div class="trust-bar">
+  <div class="trust-scroller" id="trustScroller">
+    <span class="trust-item">✓ Open 7 Days</span>
+    <span class="trust-item">✓ Same-Day Fitting</span>
+    <span class="trust-item">✓ All Vehicle Types</span>
+    <span class="trust-item">✓ Budget to Premium Tyres</span>
+    <span class="trust-item">✓ Free Puncture Check</span>
+    <span class="trust-item">✓ Wheel Balancing</span>
+    <span class="trust-item">✓ TPMS Reset</span>
+    <span class="trust-item">✓ Fast Turnaround</span>
+    <span class="trust-item">✓ Open 7 Days</span>
+    <span class="trust-item">✓ Same-Day Fitting</span>
+    <span class="trust-item">✓ All Vehicle Types</span>
+    <span class="trust-item">✓ Budget to Premium Tyres</span>
+    <span class="trust-item">✓ Free Puncture Check</span>
+    <span class="trust-item">✓ Wheel Balancing</span>
+    <span class="trust-item">✓ TPMS Reset</span>
+    <span class="trust-item">✓ Fast Turnaround</span>
   </div>
 </div>
 
-<!-- hero -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-text">
-      <h2><i class="fas fa-tachometer-alt"></i> Premium <br>tyre service</h2>
-      <p>New & used tyres · Fitting & balancing · Same-day service · Open 7 days</p>
-      <div class="hero-cta">
-        <a href="#pricing" class="btn"><i class="fas fa-tag"></i> View tyre prices</a>
-        <a href="#contact" class="btn btn-outline"><i class="fas fa-map-pin"></i> Find us</a>
+<!-- ─── SERVICES ─── -->
+<section class="services-section" id="services">
+  <div class="container">
+    <p class="section-eyebrow">What We Do</p>
+    <h2 class="section-title">Full Tyre<br>Service Range</h2>
+    <p class="section-body">Everything your vehicle needs — from emergency puncture repairs to full sets of premium tyres, wheel balancing, and TPMS servicing. All fitted while you wait.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-icon">🏎️</span>
+        <div class="service-name">New Tyres</div>
+        <p class="service-desc">Budget, mid-range, and premium tyre brands in stock. All sizes for cars, vans, SUVs, and 4x4s. Fitted same day.</p>
+        <span class="service-tag">From £35 fitted →</span>
       </div>
+
+      <div class="service-card">
+        <span class="service-icon">♻️</span>
+        <div class="service-name">Used Tyres</div>
+        <p class="service-desc">Quality-checked part-worn tyres. Great for older vehicles or budget-conscious drivers. All used tyres are safety inspected before sale.</p>
+        <span class="service-tag">From £15 fitted →</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <div class="service-name">Puncture Repair</div>
+        <p class="service-desc">Quick, reliable puncture repairs while you wait. We assess whether repair or replacement is needed and advise honestly.</p>
+        <span class="service-tag">From £10 →</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">⚖️</span>
+        <div class="service-name">Wheel Balancing</div>
+        <p class="service-desc">Electronic wheel balancing to eliminate vibration and uneven wear. Extends tyre life and improves driving comfort.</p>
+        <span class="service-tag">From £8 per wheel →</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🔄</span>
+        <div class="service-name">Tyre Rotation</div>
+        <p class="service-desc">Extend the life of your tyres by rotating front to rear. Recommended every 5,000–8,000 miles for even wear.</p>
+        <span class="service-tag">From £20 set →</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">📡</span>
+        <div class="service-name">TPMS Service</div>
+        <p class="service-desc">Tyre Pressure Monitoring System sensor reset and replacement. We clear dashboard warnings and restore full sensor function.</p>
+        <span class="service-tag">Ask in store →</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🚐</span>
+        <div class="service-name">Van & 4x4 Tyres</div>
+        <p class="service-desc">Large stock of commercial van and 4x4 tyres. Load-rated options for tradespeople and large vehicles in stock now.</p>
+        <span class="service-tag">Call for availability →</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">⚠️</span>
+        <div class="service-name">Emergency Fitting</div>
+        <p class="service-desc">Broken down nearby? Come straight in. We'll assess your tyre and get you back on the road as fast as possible, seven days a week.</p>
+        <span class="service-tag">Walk-ins welcome →</span>
+      </div>
+
     </div>
-    <div class="hero-image">
-      <div class="tyre-grid">
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
-        <div class="tyre-item"><i class="fas fa-circle"></i></div>
+  </div>
+</section>
+
+<!-- ─── TYRE TYPES ─── -->
+<section class="tyre-section" id="tyres">
+  <div class="container">
+    <div class="tyre-layout">
+      <div>
+        <p class="section-eyebrow">Tyre Stock</p>
+        <h2 class="section-title">Sizes In<br>Stock Now</h2>
+        <p class="section-body">We carry one of East London's largest selections of new and used tyres. Common sizes are always in stock — call us to check availability on specialist sizes.</p>
+        <div class="tyre-size-tags">
+          <div class="tyre-size-row">
+            <div>
+              <div class="tyre-size-code">185/65 R15</div>
+              <div class="tyre-size-label">Most popular city car size</div>
+            </div>
+            <div class="tyre-size-avail">In Stock</div>
+          </div>
+          <div class="tyre-size-row">
+            <div>
+              <div class="tyre-size-code">205/55 R16</div>
+              <div class="tyre-size-label">Golf, Focus, Astra</div>
+            </div>
+            <div class="tyre-size-avail">In Stock</div>
+          </div>
+          <div class="tyre-size-row">
+            <div>
+              <div class="tyre-size-code">225/45 R17</div>
+              <div class="tyre-size-label">BMW, Audi, Mercedes</div>
+            </div>
+            <div class="tyre-size-avail">In Stock</div>
+          </div>
+          <div class="tyre-size-row">
+            <div>
+              <div class="tyre-size-code">235/65 R17</div>
+              <div class="tyre-size-label">SUV & 4x4</div>
+            </div>
+            <div class="tyre-size-avail">In Stock</div>
+          </div>
+          <div class="tyre-size-row">
+            <div>
+              <div class="tyre-size-code">195/65 R15</div>
+              <div class="tyre-size-label">Toyota, Honda, Vauxhall</div>
+            </div>
+            <div class="tyre-size-avail">In Stock</div>
+          </div>
+          <div class="tyre-size-row">
+            <div>
+              <div class="tyre-size-code">Other sizes</div>
+              <div class="tyre-size-label">Van, commercial &amp; specialist</div>
+            </div>
+            <div class="tyre-size-avail">Call Us</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SVG Tyre Graphic -->
+      <div class="tyre-graphic-wrap">
+        <svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer tyre -->
+          <circle cx="160" cy="160" r="155" fill="#0f0f0f" stroke="#F5C518" stroke-width="3"/>
+          <!-- Tyre sidewall texture ring -->
+          <circle cx="160" cy="160" r="148" fill="none" stroke="#1a1a1a" stroke-width="8"/>
+          <!-- Tread blocks - animated group -->
+          <g class="tyre-svg-outer">
+            <!-- Tread pattern repeating blocks -->
+            <g fill="#222">
+              <!-- 12 tread segments -->
+              <path d="M160 8 A152 152 0 0 1 230 30 L220 42 A138 138 0 0 0 160 22 Z" fill="#2a2a2a"/>
+              <path d="M230 30 A152 152 0 0 1 290 90 L278 98 A138 138 0 0 0 220 42 Z" fill="#333"/>
+              <path d="M290 90 A152 152 0 0 1 312 160 L298 160 A138 138 0 0 0 278 98 Z" fill="#2a2a2a"/>
+              <path d="M312 160 A152 152 0 0 1 290 230 L278 222 A138 138 0 0 0 298 160 Z" fill="#333"/>
+              <path d="M290 230 A152 152 0 0 1 230 290 L220 278 A138 138 0 0 0 278 222 Z" fill="#2a2a2a"/>
+              <path d="M230 290 A152 152 0 0 1 160 312 L160 298 A138 138 0 0 0 220 278 Z" fill="#333"/>
+              <path d="M160 312 A152 152 0 0 1 90 290 L100 278 A138 138 0 0 0 160 298 Z" fill="#2a2a2a"/>
+              <path d="M90 290 A152 152 0 0 1 30 230 L42 222 A138 138 0 0 0 100 278 Z" fill="#333"/>
+              <path d="M30 230 A152 152 0 0 1 8 160 L22 160 A138 138 0 0 0 42 222 Z" fill="#2a2a2a"/>
+              <path d="M8 160 A152 152 0 0 1 30 90 L42 98 A138 138 0 0 0 22 160 Z" fill="#333"/>
+              <path d="M30 90 A152 152 0 0 1 90 30 L100 42 A138 138 0 0 0 42 98 Z" fill="#2a2a2a"/>
+              <path d="M90 30 A152 152 0 0 1 160 8 L160 22 A138 138 0 0 0 100 42 Z" fill="#333"/>
+            </g>
+            <!-- Tread grooves -->
+            <circle cx="160" cy="160" r="138" fill="none" stroke="#F5C518" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.3"/>
+            <circle cx="160" cy="160" r="128" fill="none" stroke="#F5C518" stroke-width="1" stroke-dasharray="5 8" opacity="0.2"/>
+          </g>
+          <!-- Rim -->
+          <circle cx="160" cy="160" r="110" fill="#111" stroke="#333" stroke-width="3"/>
+          <circle cx="160" cy="160" r="100" fill="#191919"/>
+          <!-- Spokes -->
+          <g stroke="#3a3a3a" stroke-width="6" stroke-linecap="round">
+            <line x1="160" y1="70" x2="160" y2="250"/>
+            <line x1="70" y1="160" x2="250" y2="160"/>
+            <line x1="93" y1="93" x2="227" y2="227"/>
+            <line x1="227" y1="93" x2="93" y2="227"/>
+          </g>
+          <!-- Rim detail ring -->
+          <circle cx="160" cy="160" r="75" fill="none" stroke="#F5C518" stroke-width="2" opacity="0.4"/>
+          <circle cx="160" cy="160" r="65" fill="#111" stroke="#2a2a2a" stroke-width="2"/>
+          <!-- Hub cap -->
+          <circle cx="160" cy="160" r="28" fill="#1a1a1a" stroke="#F5C518" stroke-width="2"/>
+          <circle cx="160" cy="160" r="16" fill="#F5C518" opacity="0.15"/>
+          <!-- E1 brand mark on hub -->
+          <text x="160" y="156" text-anchor="middle" fill="#F5C518" font-family="Oswald,sans-serif" font-size="11" font-weight="700" letter-spacing="1">E1</text>
+          <text x="160" y="168" text-anchor="middle" fill="rgba(245,197,24,0.6)" font-family="Oswald,sans-serif" font-size="7" font-weight="400" letter-spacing="2">TYRES</text>
+          <!-- Bolt holes -->
+          <circle cx="160" cy="112" r="5" fill="#222" stroke="#444" stroke-width="1.5"/>
+          <circle cx="204" cy="136" r="5" fill="#222" stroke="#444" stroke-width="1.5"/>
+          <circle cx="204" cy="184" r="5" fill="#222" stroke="#444" stroke-width="1.5"/>
+          <circle cx="160" cy="208" r="5" fill="#222" stroke="#444" stroke-width="1.5"/>
+          <circle cx="116" cy="184" r="5" fill="#222" stroke="#444" stroke-width="1.5"/>
+          <circle cx="116" cy="136" r="5" fill="#222" stroke="#444" stroke-width="1.5"/>
+          <!-- Speed rating badge -->
+          <rect x="40" y="250" width="80" height="24" rx="3" fill="#F5C518"/>
+          <text x="80" y="266" text-anchor="middle" fill="#000" font-family="Oswald,sans-serif" font-size="10" font-weight="700" letter-spacing="1">ALL SEASONS</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <p class="section-eyebrow">Transparent Pricing</p>
+    <h2 class="section-title">No Hidden<br>Charges</h2>
+    <p class="section-body">Prices shown include fitting and balancing. What you see is what you pay. Call us to confirm availability for your tyre size.</p>
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-title">Used Tyres</div>
+        <p class="pricing-from">Starting from</p>
+        <div class="pricing-price"><sup>£</sup>15</div>
+        <p class="pricing-unit">per tyre, fitted</p>
+        <hr class="pricing-divider">
+        <ul class="pricing-items">
+          <li class="pricing-item">Quality-checked part-worns</li>
+          <li class="pricing-item">Fitted &amp; balanced included</li>
+          <li class="pricing-item">All common sizes</li>
+          <li class="pricing-item">Safety inspected</li>
+          <li class="pricing-item">Walk-ins welcome</li>
+        </ul>
+        <a href="tel:07715502965" class="btn-dark">Call to Check Stock</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-title">Budget New Tyres</div>
+        <p class="pricing-from">Starting from</p>
+        <div class="pricing-price"><sup>£</sup>35</div>
+        <p class="pricing-unit">per tyre, fitted</p>
+        <hr class="pricing-divider">
+        <ul class="pricing-items">
+          <li class="pricing-item">Brand new budget tyres</li>
+          <li class="pricing-item">Fitting &amp; balancing included</li>
+          <li class="pricing-item">All standard car sizes</li>
+          <li class="pricing-item">TPMS reset included</li>
+          <li class="pricing-item">Same-day service</li>
+        </ul>
+        <a href="tel:07715502965" class="btn-white">Get a Quote</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-title">Premium Tyres</div>
+        <p class="pricing-from">Starting from</p>
+        <div class="pricing-price"><sup>£</sup>70</div>
+        <p class="pricing-unit">per tyre, fitted</p>
+        <hr class="pricing-divider">
+        <ul class="pricing-items">
+          <li class="pricing-item">Michelin, Pirelli, Bridgestone</li>
+          <li class="pricing-item">Continental &amp; Goodyear</li>
+          <li class="pricing-item">Fitting &amp; balancing included</li>
+          <li class="pricing-item">TPMS sensor service</li>
+          <li class="pricing-item">All sizes ordered same day</li>
+        </ul>
+        <a href="tel:07715502965" class="btn-dark">Call for Price</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-title">Van Tyres</div>
+        <p class="pricing-from">Starting from</p>
+        <div class="pricing-price"><sup>£</sup>55</div>
+        <p class="pricing-unit">per tyre, fitted</p>
+        <hr class="pricing-divider">
+        <ul class="pricing-items">
+          <li class="pricing-item">All commercial van sizes</li>
+          <li class="pricing-item">Load-rated C-grade tyres</li>
+          <li class="pricing-item">Transit, Sprinter, Ducato</li>
+          <li class="pricing-item">Fitting &amp; balancing included</li>
+          <li class="pricing-item">Tradespeople priority</li>
+        </ul>
+        <a href="tel:07940958912" class="btn-dark">Call Now</a>
+      </div>
+
+    </div>
+
+    <!-- Extras table -->
+    <div style="margin-top:3rem; background: var(--grey); border: 1px solid rgba(245,197,24,0.15); padding: 2rem;">
+      <p class="section-eyebrow" style="margin-bottom:1.5rem">Additional Services</p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1rem;">
+        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.07); padding-bottom:0.75rem;">
+          <span style="color:rgba(255,255,255,0.7); font-size:0.9rem">Puncture Repair</span>
+          <span style="color:var(--gold); font-family:var(--font-display); font-weight:700">from £10</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.07); padding-bottom:0.75rem;">
+          <span style="color:rgba(255,255,255,0.7); font-size:0.9rem">Wheel Balancing</span>
+          <span style="color:var(--gold); font-family:var(--font-display); font-weight:700">from £8/wheel</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.07); padding-bottom:0.75rem;">
+          <span style="color:rgba(255,255,255,0.7); font-size:0.9rem">Tyre Rotation</span>
+          <span style="color:var(--gold); font-family:var(--font-display); font-weight:700">from £20</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.07); padding-bottom:0.75rem;">
+          <span style="color:rgba(255,255,255,0.7); font-size:0.9rem">TPMS Reset</span>
+          <span style="color:var(--gold); font-family:var(--font-display); font-weight:700">from £15</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.07); padding-bottom:0.75rem;">
+          <span style="color:rgba(255,255,255,0.7); font-size:0.9rem">Valve Replacement</span>
+          <span style="color:var(--gold); font-family:var(--font-display); font-weight:700">from £3</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.07); padding-bottom:0.75rem;">
+          <span style="color:rgba(255,255,255,0.7); font-size:0.9rem">Tyre Disposal</span>
+          <span style="color:var(--gold); font-family:var(--font-display); font-weight:700">£2 per tyre</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- services + pricing -->
-<div class="container section" id="pricing">
-  <h2 class="section-title"><i class="fas fa-wrench" style="color:#e4b23e;"></i> Services & prices</h2>
-  <p class="section-sub">Transparent pricing · fitting & balancing included</p>
-
-  <div class="services-grid">
-    <div class="service-card"><i class="fas fa-circle"></i><h3>New Tyres</h3><p>Premium brands · all sizes</p><div class="price">from £55</div></div>
-    <div class="service-card"><i class="fas fa-sync-alt"></i><h3>Used Tyres</h3><p>Quality checked · great value</p><div class="price">from £25</div></div>
-    <div class="service-card"><i class="fas fa-balance-scale"></i><h3>Fitting & balancing</h3><p>Professional · same day</p><div class="price">£15 / wheel</div></div>
-    <div class="service-card"><i class="fas fa-tools"></i><h3>Puncture repair</h3><p>Fast repair · reliable</p><div class="price">£20</div></div>
-  </div>
-
-  <!-- pricing table -->
-  <div class="pricing-wrap">
-    <h3 style="display:flex; gap:10px; margin-bottom:18px;"><i class="fas fa-list-ul" style="color:#e4b23e;"></i> Tyre price guide (fitted)</h3>
-    <table class="pricing-table">
-      <thead><tr><th>Size</th><th>New</th><th>Used</th></tr></thead>
-      <tbody>
-        <tr><td class="tyre-size">155/80 R13</td><td>£55</td><td>£28</td></tr>
-        <tr class="highlight"><td class="tyre-size">175/65 R14</td><td>£62</td><td>£32</td></tr>
-        <tr><td class="tyre-size">185/60 R15</td><td>£68</td><td>£35</td></tr>
-        <tr class="highlight"><td class="tyre-size">195/55 R16</td><td>£75</td><td>£38</td></tr>
-        <tr><td class="tyre-size">205/50 R17</td><td>£89</td><td>£45</td></tr>
-        <tr class="highlight"><td class="tyre-size">225/45 R18</td><td>£105</td><td>£55</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:18px; font-size:0.9rem; opacity:0.7;"><i class="fas fa-check-circle" style="color:#1f8b4c;"></i> All prices include fitting & balancing · VAT included</p>
+<!-- ─── BRANDS ─── -->
+<div class="brands-section">
+  <div class="brands-scroller" id="brandsScroller">
+    <span class="brand-item">Michelin</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Pirelli</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Bridgestone</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Continental</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Goodyear</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Dunlop</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Hankook</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Falken</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Kumho</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Nexen</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Toyo</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Michelin</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Pirelli</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Bridgestone</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Continental</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Goodyear</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Dunlop</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Hankook</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Falken</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Kumho</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Nexen</span>
+    <span class="brand-item">·</span>
+    <span class="brand-item">Toyo</span>
   </div>
 </div>
 
-<!-- brand & keep out block (exact branding) -->
-<div class="brand-show">
+<!-- ─── WHY US ─── -->
+<section class="why-section" id="about">
   <div class="container">
-    <div class="brand-block">
-      <i class="fas fa-circle"></i>
-      <div class="big-text">E1 <span>TYRES</span> LTD</div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <span style="background:#e4b23e22; padding:4px 14px; border-radius:60px; font-weight:600;">NEW</span>
-        <span style="background:#e4b23e22; padding:4px 14px; border-radius:60px; font-weight:600;">USED</span>
+    <p class="section-eyebrow">Why E1 Tyres</p>
+    <h2 class="section-title">East London's<br>Tyre Specialists</h2>
+    <p class="section-body">Family-run, no-nonsense, and open every day of the week. We give honest advice, fair prices, and get you back on the road fast.</p>
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-number">7</div>
+        <div class="why-title">Days a Week</div>
+        <p class="why-body">We're open Monday through Sunday. Emergency fitting, walk-ins, and same-day service — no appointment needed.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-number">2</div>
+        <div class="why-title">Phone Lines</div>
+        <p class="why-body">Two direct numbers mean you'll always get through. Call ahead to check stock, or just drive in and we'll sort you out.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-number">100s</div>
+        <div class="why-title">Sizes In Stock</div>
+        <p class="why-body">One of East London's largest tyre stocks. New and used. Cars, vans, SUVs, 4x4s, and commercial vehicles covered.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-number">£0</div>
+        <div class="why-title">Hidden Charges</div>
+        <p class="why-body">Fitting and balancing included in all prices. No surprises at the till. What we quote is what you pay.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── EMERGENCY BANNER ─── -->
+<div class="emergency-banner">
+  <p class="emergency-text">
+    🚨 Flat tyre or breakdown nearby? Drive straight in — <a href="tel:07715502965">07715 502965</a> · Open 7 Days
+  </p>
+</div>
+
+<!-- ─── STOREFRONT STRIP ─── -->
+<div class="storefront-strip" id="storefrontStrip">
+  <div class="storefront-bg" id="storefrontBg"></div>
+  <div class="storefront-overlay"></div>
+  <div class="storefront-content">
+    <h2>Find Us in<br><span>East London</span></h2>
+    <p style="color:rgba(255,255,255,0.65); margin-top:0.75rem; font-size:0.95rem">Walk-ins always welcome · No appointment needed</p>
+    <div class="storefront-hours">
+      <div class="hour-item">
+        <div class="hour-day">Mon – Fri</div>
+        <div class="hour-time">8:00am – 6:00pm</div>
+      </div>
+      <div class="hour-item">
+        <div class="hour-day">Saturday</div>
+        <div class="hour-time">8:00am – 5:00pm</div>
+      </div>
+      <div class="hour-item">
+        <div class="hour-day">Sunday</div>
+        <div class="hour-time">9:00am – 4:00pm</div>
       </div>
     </div>
-    <div class="keepout-block">
-      <i class="fas fa-exclamation-triangle"></i> KEEP OUT
-    </div>
-    <div style="display:flex; gap:12px; font-size:1.2rem;">
-      <span><i class="fas fa-phone" style="color:#e4b23e;"></i> 07715 502965</span>
-      <span><i class="fas fa-phone" style="color:#e4b23e;"></i> 07940 958912</span>
-    </div>
   </div>
 </div>
 
-<!-- gallery (image branding) -->
-<div class="container">
-  <h2 class="section-title" style="margin-top:20px;"><i class="fas fa-images" style="color:#e4b23e;"></i> Tyres · tyres · tyres</h2>
-  <div class="gallery-grid">
-    <div class="g-item"><i class="fas fa-circle"></i> <span>NEW</span></div>
-    <div class="g-item"><i class="fas fa-circle"></i> <span>USED</span></div>
-    <div class="g-item"><i class="fas fa-circle"></i> <span>FITTING</span></div>
-    <div class="g-item"><i class="fas fa-circle"></i> <span>BALANCING</span></div>
-    <div class="g-item"><i class="fas fa-circle"></i> <span>OPEN 7 DAYS</span></div>
-    <div class="g-item"><i class="fas fa-circle"></i> <span>E1 TYRES</span></div>
-  </div>
-</div>
-
-<!-- map & contact -->
-<div class="container" id="contact">
-  <div class="map-section">
-    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; margin-bottom:16px;">
-      <h3><i class="fas fa-map-marked-alt" style="color:#e4b23e;"></i> E1 Tyres Ltd · 3 Varden Street, London E1 2AW</h3>
-      <span><i class="fas fa-star" style="color:#e4b23e;"></i> 4.6 ★ (265 reviews)</span>
-    </div>
-    <div class="map-placeholder">
-      <i class="fas fa-map-pin"></i>
-      <div><strong>5 Varden St, London E1 2AW</strong> · <span style="background:#1f8b4c; color:white; padding:2px 14px; border-radius:40px;">Open · closes 6pm</span></div>
-      <div style="font-size:0.9rem; margin-top:6px;"><i class="fas fa-clock"></i> Updated by business 12 weeks ago</div>
-    </div>
-    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; margin-top:16px; gap:12px;">
-      <div><i class="fas fa-phone" style="color:#e4b23e;"></i> <a href="tel:+447715502965">07715 502965</a> · <a href="tel:+447940958912">07940 958912</a></div>
-      <div><i class="fas fa-globe"></i> <a href="#">e1-tyres-ltd.ueniweb.com</a></div>
-      <div><i class="fas fa-gov"></i> GOV.UK company info</div>
-    </div>
-  </div>
-</div>
-
-<!-- footer -->
-<footer class="footer">
+<!-- ─── CONTACT ─── -->
+<section class="contact-section" id="contact">
   <div class="container">
-    <div><strong>E1 TYRES LTD</strong> · New & used tyres · Open 7 days</div>
-    <div><i class="fas fa-circle" style="color:#e4b23e;"></i> 3 Varden Street · London E1 2AW</div>
-    <div class="small">© 2026 E1 Tyres Ltd · all rights reserved</div>
+    <div class="contact-layout">
+      <div>
+        <p class="section-eyebrow">Contact Us</p>
+        <h2 class="section-title">Get In<br>Touch</h2>
+        <p class="section-body">Call, walk in, or send a message. We'll get back to you fast.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div>
+            <div class="contact-detail-label">Phone Lines</div>
+            <div class="contact-detail-value">
+              <a href="tel:07715502965">07715 502965</a><br>
+              <a href="tel:07940958912">07940 958912</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-value">East London, E1<br>Walk-ins welcome anytime</div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div>
+            <div class="contact-detail-label">Opening Hours</div>
+            <div class="contact-detail-value">
+              Mon–Fri: 8am – 6pm<br>
+              Sat: 8am – 5pm<br>
+              Sun: 9am – 4pm
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🚘</div>
+          <div>
+            <div class="contact-detail-label">Vehicles Covered</div>
+            <div class="contact-detail-value">Cars · Vans · SUVs · 4x4s<br>Commercial vehicles</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Your Name</label>
+              <input type="text" placeholder="John Smith">
+            </div>
+            <div class="form-field">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="07700 000000">
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Vehicle Registration</label>
+            <input type="text" placeholder="AB12 CDE">
+          </div>
+          <div class="form-field">
+            <label>Tyre Size (if known)</label>
+            <input type="text" placeholder="e.g. 205/55 R16">
+          </div>
+          <div class="form-field">
+            <label>Service Required</label>
+            <select>
+              <option value="">Select a service…</option>
+              <option>New Tyre — Budget</option>
+              <option>New Tyre — Premium</option>
+              <option>Used Tyre</option>
+              <option>Puncture Repair</option>
+              <option>Wheel Balancing</option>
+              <option>Van Tyre</option>
+              <option>TPMS Service</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Additional Info</label>
+            <textarea placeholder="Any details about your vehicle or issue…"></textarea>
+          </div>
+          <button class="btn btn-gold" style="width:100%; justify-content:center; font-size:1rem; padding:1rem 2rem;" onclick="alert('Thanks! We\'ll call you back shortly.')">
+            Send Message →
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo">E1 <span>TYRES LTD</span></div>
+  <p class="footer-copy">© 2024 E1 Tyres Ltd · New & Used Tyres · East London</p>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </footer>
 
+<script>
+  // Inject base64 storefront image
+  const IMG_DATA = '__IMG_B64_PLACEHOLDER__';
+  const imgSrc = 'data:image/jpeg;base64,' + IMG_DATA;
+  document.getElementById('heroBg').style.backgroundImage = `url('${imgSrc}')`;
+  document.getElementById('storefrontBg').style.backgroundImage = `url('${imgSrc}')`;
+</script>
 </body>
 </html>
+HTMLEOF
