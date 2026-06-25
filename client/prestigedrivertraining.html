@@ -136,6 +136,22 @@
             margin-right: 10px;
             color: var(--brand-red);
         }
+        /* Social footer icons */
+        .social-icon {
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        .social-icon:hover {
+            background: var(--brand-red);
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body class="text-slate-900"> 
@@ -198,7 +214,7 @@
         </div>
     </div>
 
-    <!-- MINIMAL HERO with larger car -->
+    <!-- MINIMAL HERO with larger car - fixed natural flow -->
     <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-8 pb-12 overflow-hidden">
         <div class="w-full max-w-7xl mx-auto px-6">
             <div class="car-hero-container rounded-3xl">
@@ -553,7 +569,7 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER with social icons -->
     <footer class="bg-black text-white pt-20 pb-32"> 
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
@@ -579,7 +595,12 @@
                     </div>
                     <div>
                         <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Social</h5>
-                        <div class="flex space-x-4"><i data-lucide="instagram" class="w-5 h-5"></i><i data-lucide="facebook" class="w-5 h-5"></i><i data-lucide="message-square" class="w-5 h-5"></i></div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                            <a href="#" class="social-icon"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                            <a href="#" class="social-icon"><i data-lucide="message-square" class="w-5 h-5"></i></a>
+                            <a href="#" class="social-icon"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
