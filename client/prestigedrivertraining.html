@@ -28,6 +28,7 @@
             line-height: 1;
         }
 
+        /* FULL WIDTH - NO BORDERS, NO FRAME */
         .car-hero-container {
             position: relative;
             z-index: 10;
@@ -37,13 +38,18 @@
             align-items: flex-end; 
             overflow: hidden; 
             background: #ffffff;
+            margin: 0;
+            padding: 0;
+            border: none;
+            border-radius: 0;
         }
         
         #panningCar {
-            width: 680px;
+            width: 720px;
             height: auto; 
             position: absolute;
             bottom: 30px; 
+            left: 0;
             z-index: 20; 
             animation: driveForward 22s linear infinite; 
             will-change: transform;
@@ -51,8 +57,8 @@
         }
 
         @keyframes driveForward {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100vw); }
+            0% { transform: translateX(-150px); }
+            100% { transform: translateX(calc(100vw + 150px)); }
         }
 
         .road-indicator {
@@ -62,6 +68,7 @@
             position: absolute;
             bottom: 35px; 
             z-index: 5; 
+            left: 0;
         }
         .road-indicator::after {
             content: '';
@@ -136,7 +143,6 @@
             margin-right: 10px;
             color: var(--brand-red);
         }
-        /* Social footer icons */
         .social-icon {
             transition: all 0.3s ease;
             display: inline-flex;
@@ -214,16 +220,16 @@
         </div>
     </div>
 
-    <!-- MINIMAL HERO with larger car - fixed natural flow -->
-    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-8 pb-12 overflow-hidden">
-        <div class="w-full max-w-7xl mx-auto px-6">
-            <div class="car-hero-container rounded-3xl">
+    <!-- HERO - FULL WIDTH, NO BORDERS, NATURAL FLOW -->
+    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-4 pb-12 overflow-hidden">
+        <div class="w-full">
+            <div class="car-hero-container">
                 <div class="road-indicator"></div>
                 <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3990.png" alt="Prestige Driver Training Car">
             </div>
         </div>
 
-        <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-6">
+        <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-4">
             <div class="animate__animated animate__fadeInUp">
                 <span class="red-tag mb-4 inline-block">⭐ 100% recommend</span>
                 <h1 class="text-6xl md:text-8xl font-black text-black leading-none mb-4 uppercase tracking-tighter">
