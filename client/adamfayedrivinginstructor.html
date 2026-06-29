@@ -23,10 +23,6 @@
             align-items: center;
             gap: 10px;
         }
-        .logo-text {
-            font-family: 'Archivo Black', sans-serif;
-            line-height: 1;
-        }
 
         /* FULL WIDTH - NO BORDERS, NO FRAME */
         .car-hero-container {
@@ -61,9 +57,10 @@
             100% { transform: translateX(calc(100vw + 150px)); }
         }
 
+        /* DASHED TRACK PATH IN SECTIONS */
         .road-indicator {
-            height: 4px; 
-            background: #222;
+            height: 6px; 
+            background: repeating-linear-gradient(to right, #222 0, #222 30px, transparent 30px, transparent 50px);
             width: 100%;
             position: absolute;
             bottom: 35px; 
@@ -179,10 +176,6 @@
                     <circle cx="52" cy="74" r="5" fill="#d9272d" />
                     <circle cx="108" cy="74" r="5" fill="#d9272d" />
                 </svg>
-                <div class="logo-text">
-                    <span class="text-2xl font-black italic block">ADAM FAYE <span class="text-[#113ca4]">DRIVING</span></span>
-                    <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">A.F.D.I School • Andover</span>
-                </div>
             </div>
             <div class="hidden md:flex items-center space-x-10 font-black text-xs uppercase tracking-widest">
                 <a href="#services" class="hover:text-blue-600 transition">Lessons</a>
@@ -554,10 +547,12 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
                 <div class="logo-wrap mb-10 md:mb-0">
-                    <div class="logo-text !text-white">
-                        <span class="text-2xl font-black italic block">ADAM FAYE <span class="text-[#113ca4]">DRIVING</span></span>
-                        <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">A.F.D.I School • Andover</span>
-                    </div>
+                    <svg width="60" height="40" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="180" height="80" fill="#ffffff" rx="8" stroke="#0c101b" stroke-width="4"/>
+                        <text x="100" y="65" font-family="'Archivo Black', Arial, sans-serif" font-size="52" font-weight="900" fill="#0c101b" text-anchor="middle" letter-spacing="2">A.F.D.I</text>
+                        <circle cx="52" cy="74" r="5" fill="#d9272d" />
+                        <circle cx="108" cy="74" r="5" fill="#d9272d" />
+                    </svg>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
                     <div>
