@@ -183,29 +183,13 @@
             bottom: 30px;
             left: 0;
             z-index: 20;
-            animation: driveForward 30s linear infinite;
+            animation: driveForward 35s linear infinite;
             will-change: transform;
             filter: drop-shadow(0 20px 25px rgba(0,0,0,0.10));
         }
         @keyframes driveForward {
             0% { transform: translateX(-200px); }
             100% { transform: translateX(calc(100vw + 200px)); }
-        }
-        /* Duplicate car for seamless flow */
-        #panningCarClone {
-            width: 720px;
-            height: auto;
-            position: absolute;
-            bottom: 30px;
-            left: -800px;
-            z-index: 20;
-            animation: driveForwardClone 30s linear infinite;
-            will-change: transform;
-            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.10));
-        }
-        @keyframes driveForwardClone {
-            0% { transform: translateX(0px); }
-            100% { transform: translateX(calc(100vw + 800px)); }
         }
         .road-indicator {
             height: 2px;
@@ -331,7 +315,6 @@
             <div class="car-hero-container">
                 <div class="road-indicator"></div>
                 <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3990.png" alt="AFDI Car">
-                <img id="panningCarClone" src="https://raw.githubusercontent.com/doctoc30/fazhoq/main/images/IMG_3990.png" alt="AFDI Car">
             </div>
         </div>
         <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-4">
@@ -340,10 +323,10 @@
                 <h1 class="text-6xl md:text-8xl font-black leading-none mb-4 uppercase tracking-tighter" style="color:var(--brand-navy);">
                     DRIVE <span style="color:var(--brand-red);">AFDI.</span>
                 </h1>
-                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Premium Instruction • Andover & Winchester</p>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Adam Faye Driving Instructor • Andover & Winchester</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-5">
-                    <a href="tel:07795517994" class="px-10 py-5 text-white font-black uppercase tracking-widest text-xs transition duration-300" style="background-color:var(--brand-navy); hover:background-color:var(--brand-red);">Call 07795 517994</a>
-                    <a href="https://wa.me/447795517994" class="px-10 py-5 border-4 font-black uppercase tracking-widest text-xs transition duration-300" style="border-color:var(--brand-navy); color:var(--brand-navy); hover:background-color:var(--brand-navy); hover:color:white;">WhatsApp Instructor</a>
+                    <a href="tel:07795517994" class="px-10 py-5 text-white font-black uppercase tracking-widest text-xs transition duration-300" style="background-color:var(--brand-navy);">Call 07795 517994</a>
+                    <a href="https://wa.me/447795517994" class="px-10 py-5 border-4 font-black uppercase tracking-widest text-xs transition duration-300" style="border-color:var(--brand-navy); color:var(--brand-navy);">WhatsApp Instructor</a>
                 </div>
             </div>
         </div>
