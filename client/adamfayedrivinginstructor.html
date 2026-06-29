@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestige Driver Training | Farnborough & Surrey</title>
+    <title>Prestige Driver Training – Transparent header</title>
+    <!-- Tailwind + Lucide + Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -93,7 +94,14 @@
             background: var(--brand-black);
         }
         #mobile-menu.open { transform: translateX(0); }
-        .glass { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); }
+        /* ----- TRANSPARENT HEADER (glass removed, bg transparent) ----- */
+        .header-transparent {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+        }
+        .glass { background: transparent; backdrop-filter: none; } /* override */
         .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-red); }
         .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(227, 30, 36, 0.3); }
         .ticker-wrap { overflow: hidden; background: var(--brand-black); color: var(--brand-white); padding: 15px 0; border-bottom: 4px solid var(--brand-red); }
@@ -158,6 +166,15 @@
             background: var(--brand-red);
             transform: translateY(-3px);
         }
+        /* Ensure nav links are visible on transparent bg */
+        .nav-link {
+            color: #111;
+            font-weight: 900;
+        }
+        .nav-link:hover { color: var(--brand-red); }
+        .nav-cta { background: var(--brand-red); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(227,30,36,0.3); }
+        .nav-cta:hover { background: #b3161a; transform: scale(1.03); }
+        /* white text adjustment for dark hero? but hero is white bg so fine */
     </style>
 </head>
 <body class="text-slate-900"> 
@@ -170,24 +187,24 @@
         <a href="tel:07795517994" class="btn-brand px-4 py-2 text-[10px] uppercase inline-block text-center">Call Now</a>
     </div>
 
-    <nav class="sticky top-0 z-50 glass border-b border-slate-200">
+    <!-- ========== TRANSPARENT HEADER ========== -->
+    <nav class="sticky top-0 z-50 header-transparent">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="logo-wrap">
-                <!-- SVG Icon removed to match request -->
                 <div class="logo-text">
-                    <span class="text-2xl font-black italic block">PRESTIGE <span class="text-[#E31E24]">DRIVER</span></span>
-                    <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">Training • Farnborough</span>
+                    <span class="text-2xl font-black italic block text-black">PRESTIGE <span class="text-[#E31E24]">DRIVER</span></span>
+                    <span class="text-[8px] font-bold tracking-[0.3em] uppercase block text-black/80">Training • Farnborough</span>
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-10 font-black text-xs uppercase tracking-widest">
-                <a href="#services" class="hover:text-red-600 transition">Lessons</a>
-                <a href="#features" class="hover:text-red-600 transition">Features</a>
-                <a href="#pricing" class="hover:text-red-600 transition">Packages</a>
-                <a href="#areas" class="hover:text-red-600 transition">Locations</a>
-                <a href="tel:07795517994" class="hover:text-red-600 transition">07795 517994</a>
-                <a href="https://wa.me/447795517994" class="btn-brand px-6 py-3 rounded-sm shadow-lg">WhatsApp Us</a>
+                <a href="#services" class="nav-link">Lessons</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Packages</a>
+                <a href="#areas" class="nav-link">Locations</a>
+                <a href="tel:07795517994" class="nav-link">07795 517994</a>
+                <a href="https://wa.me/447795517994" class="nav-cta">WhatsApp Us</a>
             </div>
-            <button id="menu-btn" class="md:hidden"><i data-lucide="menu" class="w-8 h-8"></i></button>
+            <button id="menu-btn" class="md:hidden text-black"><i data-lucide="menu" class="w-8 h-8"></i></button>
         </div>
     </nav>
 
