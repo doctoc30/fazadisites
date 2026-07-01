@@ -82,13 +82,18 @@
         }
 
         .faz-logo {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
             color: var(--primary);
             cursor: pointer;
         }
-        .faz-logo span { color: #000; }
+        .faz-logo .brand {
+            color: #000;
+        }
+        .faz-logo .sites {
+            color: var(--primary);
+        }
 
         #menu-btn {
             font-size: 1.8rem;
@@ -270,13 +275,25 @@
         }
         #app-menu-layer.active { transform: translateY(0); }
         .menu-item { font-size: 3.5rem; font-weight: 900; color: var(--text); text-decoration: none; text-align: center; margin: 10px 0; }
+        .menu-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--primary);
+        }
+        .menu-logo .brand {
+            color: #000;
+        }
+        .menu-logo .sites {
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
 
     <div id="app-menu-layer">
         <div class="flex justify-between items-center mb-10">
-            <div class="faz-logo">FAZ ADI<span>.</span></div>
+            <div class="menu-logo">FAZ ADI <span class="sites">SITES</span></div>
             <div onclick="toggleMenu()" class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </div>
@@ -291,7 +308,7 @@
     </div>
 
     <nav class="faz-nav">
-        <div class="faz-logo" onclick="goToSlide(0)">FAZ ADI<span>.</span></div>
+        <div class="faz-logo" onclick="goToSlide(0)">FAZ ADI <span class="sites">SITES</span></div>
         <button id="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
     </nav>
 
@@ -316,7 +333,7 @@
                 <h2 class="category-header">Industry Specialist</h2>
                 <h2 class="huge-text" style="text-transform:uppercase">THE GO-TO<br><span class="black">GUY.</span></h2>
                 <p style="font-size: 1.15rem; font-weight: 600; margin-top: 20px; max-width: 600px; line-height: 1.4;">
-                    I’m passionate about helping <strong>driving schools and instructors</strong> thrive online. I don't just design websites—I create tools that keep your diary full.
+                    I'm passionate about helping <strong>driving schools and instructors</strong> thrive online. I don't just design websites—I create tools that keep your diary full.
                 </p>
             </div>
         </section>
