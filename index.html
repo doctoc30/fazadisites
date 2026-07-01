@@ -28,46 +28,103 @@
         html, body {
             height: 100%;
             width: 100%;
-            overflow: hidden;
             background-color: var(--primary-light);
             color: var(--text);
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
+        /* Scroll Snap for smooth scrolling */
         .slide-container {
-            position: relative;
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            touch-action: pan-y pinch-zoom;
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            -webkit-overflow-scrolling: touch;
         }
 
         section {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            min-height: 100vh;
+            height: 100vh;
+            scroll-snap-align: start;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 2rem;
             padding-bottom: 100px;
-            transform: translate3d(100%, 0, 0);
-            transition: transform 0.7s cubic-bezier(0.32, 0.72, 0, 1);
-            visibility: hidden;
             background-color: var(--primary-light);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
 
-        section.active {
-            transform: translate3d(0, 0, 0);
-            visibility: visible;
-            z-index: 10;
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.5s; }
+        section:nth-child(4) { animation-delay: 0.7s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        section.prev {
-            transform: translate3d(-100%, 0, 0);
-            visibility: visible;
-            z-index: 5;
+
+        /* Floating animation for elements */
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Pulse animation */
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Glow animation */
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255,107,0,0.2); }
+            to { text-shadow: 0 0 30px rgba(255,107,0,0.4); }
+        }
+
+        /* Shimmer animation for CTA */
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 40%,
+                rgba(255,255,255,0.3) 50%,
+                transparent 60%
+            );
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
 
         /* HEADER */
@@ -76,19 +133,28 @@
             top: 0;
             width: 100%;
             z-index: 2500;
-            padding: calc(var(--safe-top) + 15px) 20px;
+            padding: calc(var(--safe-top) + 20px) 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(255, 245, 238, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(255,107,0,0.1);
         }
 
         .faz-logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
             color: var(--primary);
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
+
+        .faz-logo:hover {
+            transform: scale(1.05);
+        }
+
         .faz-logo .brand {
             color: #000;
         }
@@ -97,11 +163,16 @@
         }
 
         #menu-btn {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--text);
             background: none;
             border: none;
             cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #menu-btn:hover {
+            transform: rotate(90deg);
         }
 
         /* TEXT STYLES */
@@ -115,155 +186,173 @@
         }
 
         .huge-text {
-            font-size: clamp(2.2rem, 8vmin, 3.2rem);
+            font-size: clamp(2.5rem, 10vmin, 3.8rem);
             font-weight: 900;
             line-height: 0.9;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
             color: var(--primary);
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
-        .huge-text.black { color: #000; }
+        .huge-text.black { color: #000; animation: none; }
 
         .waving-hand {
-            width: clamp(160px, 40vw, 280px);
+            width: clamp(190px, 50vw, 320px);
             height: auto;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             mix-blend-mode: multiply;
+            animation: float 3s ease-in-out infinite;
         }
 
         .category-header {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--primary);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        /* DOCK - MUCH THINNER NOW */
+        /* DOCK */
         .app-dock {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             background: var(--primary);
-            height: 60px;
+            height: 80px;
             display: flex;
             justify-content: space-around;
             align-items: center;
             z-index: 2500;
-            padding: 0 10px;
             padding-bottom: var(--safe-bottom);
-            box-shadow: 0 -4px 20px rgba(255,107,0,0.25);
+            box-shadow: 0 -10px 30px rgba(255,107,0,0.3);
         }
         
         .dock-btn {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             color: #FFFFFF;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            padding: 4px 0;
-        }
-        .dock-btn span {
-            font-size: 0.5rem;
-            font-weight: 800;
-            margin-top: 2px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            position: relative;
         }
 
-        /* SWIPE COUNTER - repositioned */
-        .swipe-counter {
-            position: fixed;
-            bottom: 68px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 2400;
-            padding: 5px 14px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(6px);
-            border-radius: 30px;
+        .dock-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            color: #fff;
         }
-        
-        .counter-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
+
+        .dock-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
         }
-        
-        .counter-dot.active {
-            background: var(--primary);
-            width: 20px;
-            border-radius: 10px;
+
+        .dock-btn:hover::after {
+            width: 100%;
+        }
+
+        .dock-btn span {
+            font-size: 0.65rem;
+            font-weight: 800;
+            margin-top: 4px;
+            text-transform: uppercase;
         }
 
         /* GLOBAL LEGAL FOOTER */
         .global-legal-links {
             position: fixed;
-            bottom: 62px;
+            bottom: 85px;
             width: 100%;
             display: flex;
             justify-content: space-between;
-            padding: 0 16px;
+            padding: 0 20px;
             z-index: 2300;
             pointer-events: none;
         }
 
         .legal-link {
-            font-size: 0.5rem;
+            font-size: 0.6rem;
             font-weight: 900;
             color: #000;
-            opacity: 0.25;
+            opacity: 0.3;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             pointer-events: auto;
+            transition: opacity 0.3s ease;
+        }
+
+        .legal-link:hover {
+            opacity: 0.8;
         }
 
         /* PROCESS LIST */
         .process-item {
             display: flex;
-            gap: 12px;
-            margin-bottom: 18px;
+            gap: 15px;
+            margin-bottom: 25px;
             align-items: flex-start;
             text-align: left;
             width: 100%;
-            max-width: 420px;
+            max-width: 450px;
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: slideInLeft 0.6s ease forwards;
         }
+
+        .process-item:nth-child(1) { animation-delay: 0.3s; }
+        .process-item:nth-child(2) { animation-delay: 0.5s; }
+        .process-item:nth-child(3) { animation-delay: 0.7s; }
+
+        @keyframes slideInLeft {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         .process-num {
             background: var(--primary);
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 0.85rem;
             color: #fff;
             flex-shrink: 0;
+            animation: pulse 2s ease-in-out infinite;
         }
-        .process-text { font-weight: 700; font-size: 1rem; line-height: 1.3; color: var(--text); }
+
+        .process-text { 
+            font-weight: 700; 
+            font-size: 1.1rem; 
+            line-height: 1.3; 
+            color: var(--text);
+        }
 
         /* FINGER POINTER */
         .finger-pointer {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             color: var(--primary);
-            margin-top: 10px;
+            margin-top: 15px;
             display: inline-block;
             animation: bounceStraightDown 1.2s infinite;
         }
 
         @keyframes bounceStraightDown {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(12px); }
+            50% { transform: translateY(15px); }
         }
 
         /* MENU LAYER */
@@ -274,44 +363,104 @@
             z-index: 9500;
             display: flex;
             flex-direction: column;
-            padding: calc(var(--safe-top) + 15px) 20px;
+            padding: calc(var(--safe-top) + 20px) 25px;
             transform: translateY(100%);
             transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
         }
+
         #app-menu-layer.active { transform: translateY(0); }
-        .menu-item { font-size: 2.8rem; font-weight: 900; color: var(--text); text-decoration: none; text-align: center; margin: 8px 0; }
+
+        .menu-item { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            color: var(--text); 
+            text-decoration: none; 
+            text-align: center; 
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .menu-item:hover::after {
+            width: 50%;
+        }
+
         .menu-logo {
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: 900;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
             color: var(--primary);
         }
+
         .menu-logo .brand {
             color: #000;
         }
         .menu-logo .sites {
             color: var(--primary);
         }
-        .close-btn {
-            width: 44px;
-            height: 44px;
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .faz-logo {
+                font-size: 1.4rem;
+            }
+            
+            .menu-item {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+                padding-bottom: 100px;
+            }
+            
+            .huge-text {
+                font-size: clamp(2rem, 8vmin, 2.8rem);
+            }
+            
+            .process-text {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
             background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
 
     <div id="app-menu-layer">
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex justify-between items-center mb-10">
             <div class="menu-logo">FAZ ADI <span class="sites">SITES</span></div>
-            <div onclick="toggleMenu()" class="close-btn">
+            <div onclick="toggleMenu()" class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl cursor-pointer hover:scale-110 transition-transform">
                 <i class="fa-solid fa-xmark"></i>
             </div>
         </div>
@@ -325,7 +474,7 @@
     </div>
 
     <nav class="faz-nav">
-        <div class="faz-logo" onclick="goToSlide(0)">FAZ ADI <span class="sites">SITES</span></div>
+        <div class="faz-logo" onclick="scrollToTop()">FAZ ADI <span class="sites">SITES</span></div>
         <button id="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
     </nav>
 
@@ -334,10 +483,8 @@
         <a href="https://doctoc30.github.io/fazadisites/t&c" class="legal-link">Terms & Con</a>
     </div>
 
-    <div class="swipe-counter" id="swipeCounter"></div>
-
     <div class="slide-container" id="master-wrapper">
-        <section class="active">
+        <section>
             <div class="text-wrap">
                 <img src="https://doctoc30.github.io/fazadisites/images/IMG_2973.png" alt="Faz Hoq" class="waving-hand">
                 <h1 class="huge-text">I build websites for:</h1>
@@ -349,7 +496,7 @@
             <div class="text-wrap">
                 <h2 class="category-header">Industry Specialist</h2>
                 <h2 class="huge-text" style="text-transform:uppercase">THE GO-TO<br><span class="black">GUY.</span></h2>
-                <p style="font-size: 1.05rem; font-weight: 600; margin-top: 16px; max-width: 550px; line-height: 1.4;">
+                <p style="font-size: 1.15rem; font-weight: 600; margin-top: 20px; max-width: 600px; line-height: 1.4; animation: float 3s ease-in-out infinite;">
                     I'm passionate about helping <strong>driving schools and instructors</strong> thrive online. I don't just design websites—I create tools that keep your diary full.
                 </p>
             </div>
@@ -359,7 +506,7 @@
             <div class="text-wrap">
                 <h2 class="category-header">Zero-Risk Offer</h2>
                 <h2 class="huge-text" style="text-transform:uppercase">TEST IT FOR<br><span class="black">1 MONTH.</span></h2>
-                <div style="margin-top: 24px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-top: 30px; width: 100%; display: flex; flex-direction: column; align-items: center;">
                     <div class="process-item">
                         <div class="process-num">1</div>
                         <p class="process-text">I build & customize your site. The risk is <span style="color: var(--primary);">100% on me.</span></p>
@@ -379,7 +526,7 @@
         <section>
             <div class="text-wrap">
                 <h2 class="huge-text" style="text-transform:uppercase;">READY TO<br><span class="black">DRIVE?</span></h2>
-                <p style="font-weight: 700; margin-top: 20px; font-size: 1.1rem;">Contact me via any method below</p>
+                <p style="font-weight: 700; margin-top: 25px; font-size: 1.2rem; animation: pulse 2s ease-in-out infinite;">Contact me via any method below</p>
                 <div class="finger-pointer">
                     <i class="fa-solid fa-hand-point-down"></i>
                 </div>
@@ -403,6 +550,7 @@
 
         function type() {
             const el = document.getElementById('typewriter');
+            if (!el) return;
             const current = nicheWords[wI];
             cI += isDel ? -1 : 1;
             el.innerHTML = current.substring(0, cI) || "&nbsp;";
@@ -412,48 +560,39 @@
             setTimeout(type, speed);
         }
 
+        function toggleMenu() { 
+            document.getElementById('app-menu-layer').classList.toggle('active'); 
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Intersection Observer for section animations
         const sections = document.querySelectorAll('section');
-        let currentIdx = 0, isMoving = false;
-
-        function updateUI() {
-            sections.forEach((sec, i) => {
-                sec.classList.remove('active', 'prev');
-                if (i === currentIdx) sec.classList.add('active');
-                else if (i < currentIdx) sec.classList.add('prev');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
-            document.querySelectorAll('.counter-dot').forEach((dot, i) => dot.classList.toggle('active', i === currentIdx));
-        }
+        }, { threshold: 0.1 });
 
-        function navigate(dir) {
-            if (isMoving) return;
-            const target = currentIdx + dir;
-            if (target >= 0 && target < sections.length) {
-                isMoving = true;
-                currentIdx = target;
-                updateUI();
-                setTimeout(() => { isMoving = false; }, 800);
-            }
-        }
-
-        function toggleMenu() { document.getElementById('app-menu-layer').classList.toggle('active'); }
-        function goToSlide(i) { currentIdx = i; updateUI(); }
-
-        let sX, sY;
-        window.addEventListener('touchstart', e => { sX = e.touches[0].clientX; sY = e.touches[0].clientY; });
-        window.addEventListener('touchend', e => {
-            let dX = sX - e.changedTouches[0].clientX, dY = sY - e.changedTouches[0].clientY;
-            if (Math.abs(dX) > 50 || Math.abs(dY) > 50) navigate(Math.abs(dX) > Math.abs(dY) ? (dX > 0 ? 1 : -1) : (dY > 0 ? 1 : -1));
+        sections.forEach(section => {
+            observer.observe(section);
         });
 
         window.onload = () => {
             type();
-            const counter = document.getElementById('swipeCounter');
-            sections.forEach((_, i) => {
-                const dot = document.createElement('div');
-                dot.className = 'counter-dot' + (i === 0 ? ' active' : '');
-                counter.appendChild(dot);
-            });
         };
+
+        // Handle menu close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('app-menu-layer').classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
