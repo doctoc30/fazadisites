@@ -51,11 +51,26 @@
             justify-content: center;
             align-items: center;
             padding: 2rem;
-            padding-bottom: 100px;
+            padding-bottom: 80px;
             background-color: var(--primary-light);
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
+            position: relative;
+        }
+
+        /* Extra centering for the content */
+        .text-wrap {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            margin: auto;
+            padding: 20px 0;
+            flex: 1;
         }
 
         section:nth-child(1) { animation-delay: 0.1s; }
@@ -100,50 +115,23 @@
             to { text-shadow: 0 0 30px rgba(255,107,0,0.4); }
         }
 
-        /* Shimmer animation for CTA */
-        .shimmer {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .shimmer::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 40%,
-                rgba(255,255,255,0.3) 50%,
-                transparent 60%
-            );
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        /* HEADER */
+        /* HEADER - Now transparent with no border */
         .faz-nav {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 2500;
-            padding: calc(var(--safe-top) + 20px) 25px;
+            padding: calc(var(--safe-top) + 15px) 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 245, 238, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid rgba(255,107,0,0.1);
+            background: transparent;
+            backdrop-filter: none;
+            border-bottom: none;
         }
 
         .faz-logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 900;
             letter-spacing: -1px;
             color: var(--primary);
@@ -163,7 +151,7 @@
         }
 
         #menu-btn {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--text);
             background: none;
             border: none;
@@ -176,17 +164,8 @@
         }
 
         /* TEXT STYLES */
-        .text-wrap {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
         .huge-text {
-            font-size: clamp(2.5rem, 10vmin, 3.8rem);
+            font-size: clamp(2.8rem, 10vmin, 4rem);
             font-weight: 900;
             line-height: 0.9;
             letter-spacing: -3px;
@@ -194,23 +173,26 @@
             animation: glow 2s ease-in-out infinite alternate;
         }
 
-        .huge-text.black { color: #000; animation: none; }
+        .huge-text.black { 
+            color: #000; 
+            animation: none;
+        }
 
         .waving-hand {
-            width: clamp(190px, 50vw, 320px);
+            width: clamp(200px, 45vw, 300px);
             height: auto;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             mix-blend-mode: multiply;
             animation: float 3s ease-in-out infinite;
         }
 
         .category-header {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             animation: pulse 2s ease-in-out infinite;
         }
 
@@ -221,7 +203,7 @@
             left: 0;
             right: 0;
             background: var(--primary);
-            height: 80px;
+            height: 70px;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -231,7 +213,7 @@
         }
         
         .dock-btn {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #FFFFFF;
             transition: all 0.3s ease;
             display: flex;
@@ -261,16 +243,17 @@
         }
 
         .dock-btn span {
-            font-size: 0.65rem;
+            font-size: 0.55rem;
             font-weight: 800;
-            margin-top: 4px;
+            margin-top: 3px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* GLOBAL LEGAL FOOTER */
         .global-legal-links {
             position: fixed;
-            bottom: 85px;
+            bottom: 75px;
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -280,10 +263,10 @@
         }
 
         .legal-link {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             font-weight: 900;
             color: #000;
-            opacity: 0.3;
+            opacity: 0.25;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -299,11 +282,11 @@
         .process-item {
             display: flex;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             align-items: flex-start;
             text-align: left;
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
             transform: translateX(-20px);
             opacity: 0;
             animation: slideInLeft 0.6s ease forwards;
@@ -322,13 +305,14 @@
 
         .process-num {
             background: var(--primary);
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
+            font-size: 0.9rem;
             color: #fff;
             flex-shrink: 0;
             animation: pulse 2s ease-in-out infinite;
@@ -336,23 +320,23 @@
 
         .process-text { 
             font-weight: 700; 
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             line-height: 1.3; 
             color: var(--text);
         }
 
         /* FINGER POINTER */
         .finger-pointer {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--primary);
-            margin-top: 15px;
+            margin-top: 10px;
             display: inline-block;
             animation: bounceStraightDown 1.2s infinite;
         }
 
         @keyframes bounceStraightDown {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(15px); }
+            50% { transform: translateY(12px); }
         }
 
         /* MENU LAYER */
@@ -363,7 +347,7 @@
             z-index: 9500;
             display: flex;
             flex-direction: column;
-            padding: calc(var(--safe-top) + 20px) 25px;
+            padding: calc(var(--safe-top) + 15px) 25px;
             transform: translateY(100%);
             transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
         }
@@ -371,12 +355,12 @@
         #app-menu-layer.active { transform: translateY(0); }
 
         .menu-item { 
-            font-size: 3.5rem; 
+            font-size: 3rem; 
             font-weight: 900; 
             color: var(--text); 
             text-decoration: none; 
             text-align: center; 
-            margin: 10px 0;
+            margin: 8px 0;
             transition: all 0.3s ease;
             position: relative;
         }
@@ -403,7 +387,7 @@
         }
 
         .menu-logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 900;
             letter-spacing: -1px;
             color: var(--primary);
@@ -416,33 +400,59 @@
             color: var(--primary);
         }
 
+        .close-menu-btn {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-menu-btn:hover {
+            transform: rotate(90deg) scale(1.1);
+        }
+
         /* Responsive adjustments */
         @media (max-width: 640px) {
             .faz-logo {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
             
             .menu-item {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             section {
                 padding: 1.5rem;
-                padding-bottom: 100px;
+                padding-bottom: 80px;
             }
             
             .huge-text {
-                font-size: clamp(2rem, 8vmin, 2.8rem);
+                font-size: clamp(2.2rem, 8vmin, 2.8rem);
             }
             
             .process-text {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
+            }
+
+            .waving-hand {
+                width: clamp(160px, 40vw, 240px);
+            }
+
+            .dock-btn {
+                font-size: 1.3rem;
             }
         }
 
         /* Scrollbar styling */
         ::-webkit-scrollbar {
-            width: 4px;
+            width: 3px;
         }
 
         ::-webkit-scrollbar-track {
@@ -458,9 +468,9 @@
 <body>
 
     <div id="app-menu-layer">
-        <div class="flex justify-between items-center mb-10">
+        <div class="flex justify-between items-center mb-8">
             <div class="menu-logo">FAZ ADI <span class="sites">SITES</span></div>
-            <div onclick="toggleMenu()" class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl cursor-pointer hover:scale-110 transition-transform">
+            <div onclick="toggleMenu()" class="close-menu-btn">
                 <i class="fa-solid fa-xmark"></i>
             </div>
         </div>
@@ -496,7 +506,7 @@
             <div class="text-wrap">
                 <h2 class="category-header">Industry Specialist</h2>
                 <h2 class="huge-text" style="text-transform:uppercase">THE GO-TO<br><span class="black">GUY.</span></h2>
-                <p style="font-size: 1.15rem; font-weight: 600; margin-top: 20px; max-width: 600px; line-height: 1.4; animation: float 3s ease-in-out infinite;">
+                <p style="font-size: 1.1rem; font-weight: 600; margin-top: 16px; max-width: 550px; line-height: 1.4; animation: float 3s ease-in-out infinite;">
                     I'm passionate about helping <strong>driving schools and instructors</strong> thrive online. I don't just design websites—I create tools that keep your diary full.
                 </p>
             </div>
@@ -506,7 +516,7 @@
             <div class="text-wrap">
                 <h2 class="category-header">Zero-Risk Offer</h2>
                 <h2 class="huge-text" style="text-transform:uppercase">TEST IT FOR<br><span class="black">1 MONTH.</span></h2>
-                <div style="margin-top: 30px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-top: 24px; width: 100%; display: flex; flex-direction: column; align-items: center;">
                     <div class="process-item">
                         <div class="process-num">1</div>
                         <p class="process-text">I build & customize your site. The risk is <span style="color: var(--primary);">100% on me.</span></p>
@@ -526,7 +536,7 @@
         <section>
             <div class="text-wrap">
                 <h2 class="huge-text" style="text-transform:uppercase;">READY TO<br><span class="black">DRIVE?</span></h2>
-                <p style="font-weight: 700; margin-top: 25px; font-size: 1.2rem; animation: pulse 2s ease-in-out infinite;">Contact me via any method below</p>
+                <p style="font-weight: 700; margin-top: 20px; font-size: 1.1rem; animation: pulse 2s ease-in-out infinite;">Contact me via any method below</p>
                 <div class="finger-pointer">
                     <i class="fa-solid fa-hand-point-down"></i>
                 </div>
@@ -566,6 +576,13 @@
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToSlide(index) {
+            const sections = document.querySelectorAll('section');
+            if (sections[index]) {
+                sections[index].scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         // Intersection Observer for section animations
