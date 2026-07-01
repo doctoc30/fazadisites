@@ -148,6 +148,9 @@
        .faz-logo.sites {
             color: var(--primary);
         }
+       .faz-logo.dot {
+            color: #000;
+        }
 
         #menu-btn {
             font-size: 2.2rem;
@@ -407,6 +410,9 @@
        .menu-logo.sites {
             color: var(--primary);
         }
+       .menu-logo.dot {
+            color: #000;
+        }
 
        .close-menu-btn {
             width: 48px;
@@ -494,7 +500,7 @@
 
     <div id="app-menu-layer">
         <div class="flex justify-between items-center mb-8">
-            <div class="menu-logo">FAZ ADI <span class="sites">SITES</span></div>
+            <div class="menu-logo">FAZ ADI <span class="sites">SITES</span><span class="dot">.</span></div>
             <div onclick="toggleMenu()" class="close-menu-btn">
                 <i class="fa-solid fa-xmark"></i>
             </div>
@@ -509,7 +515,7 @@
     </div>
 
     <nav class="faz-nav">
-        <div class="faz-logo" onclick="scrollToTop()">FAZ ADI <span class="sites">SITES</span></div>
+        <div class="faz-logo" onclick="scrollToTop()">FAZ ADI <span class="sites">SITES</span><span class="dot">.</span></div>
         <button id="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
     </nav>
 
