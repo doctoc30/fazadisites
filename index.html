@@ -51,7 +51,7 @@
             justify-content: center;
             align-items: center;
             padding: 2rem;
-            padding-bottom: 60px; /* Reduced from 80px */
+            padding-bottom: 70px;
             background-color: var(--primary-light);
             opacity: 0;
             transform: translateY(30px);
@@ -59,7 +59,7 @@
             position: relative;
         }
 
-        /* Extra centering for the content - PUSHED UP */
+        /* PERFECT CENTERING - PUSHED UP */
         .text-wrap {
             width: 100%;
             max-width: 1200px;
@@ -68,10 +68,8 @@
             align-items: center;
             text-align: center;
             justify-content: center;
-            margin: auto;
-            padding: 10px 0; /* Reduced from 20px */
-            flex: 1;
-            margin-top: -40px; /* Pushed up */
+            position: relative;
+            top: -30px; /* Pushes entire content up */
         }
 
         section:nth-child(1) { animation-delay: 0.1s; }
@@ -182,7 +180,7 @@
         .waving-hand {
             width: clamp(280px, 50vw, 400px);
             height: auto;
-            margin-bottom: 10px; /* Reduced from 15px */
+            margin-bottom: 10px;
             mix-blend-mode: multiply;
             animation: float 3s ease-in-out infinite;
         }
@@ -193,7 +191,7 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--primary);
-            margin-bottom: 12px; /* Reduced from 15px */
+            margin-bottom: 12px;
             animation: pulse 2s ease-in-out infinite;
         }
 
@@ -204,7 +202,7 @@
             left: 0;
             right: 0;
             background: var(--primary);
-            height: 65px; /* Reduced from 80px */
+            height: 65px;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -214,7 +212,7 @@
         }
         
         .dock-btn {
-            font-size: 1.6rem; /* Reduced from 2rem */
+            font-size: 1.6rem;
             color: #FFFFFF;
             transition: all 0.3s ease;
             display: flex;
@@ -244,17 +242,17 @@
         }
 
         .dock-btn span {
-            font-size: 0.55rem; /* Reduced from 0.65rem */
+            font-size: 0.55rem;
             font-weight: 800;
-            margin-top: 2px; /* Reduced from 4px */
+            margin-top: 2px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* GLOBAL LEGAL FOOTER - Positioned higher */
+        /* GLOBAL LEGAL FOOTER */
         .global-legal-links {
             position: fixed;
-            bottom: 70px; /* Reduced from 85px */
+            bottom: 70px;
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -264,7 +262,7 @@
         }
 
         .legal-link {
-            font-size: 0.6rem; /* Reduced from 0.7rem */
+            font-size: 0.6rem;
             font-weight: 900;
             color: #000;
             opacity: 0.25;
@@ -283,7 +281,7 @@
         .process-item {
             display: flex;
             gap: 18px;
-            margin-bottom: 20px; /* Reduced from 25px */
+            margin-bottom: 20px;
             align-items: flex-start;
             text-align: left;
             width: 100%;
@@ -306,7 +304,7 @@
 
         .process-num {
             background: var(--primary);
-            width: 38px; /* Reduced from 40px */
+            width: 38px;
             height: 38px;
             border-radius: 50%;
             display: flex;
@@ -321,16 +319,16 @@
 
         .process-text { 
             font-weight: 700; 
-            font-size: 1.1rem; /* Reduced from 1.2rem */
+            font-size: 1.1rem;
             line-height: 1.3; 
             color: var(--text);
         }
 
         /* FINGER POINTER */
         .finger-pointer {
-            font-size: 3.5rem; /* Reduced from 4rem */
+            font-size: 3.5rem;
             color: var(--primary);
-            margin-top: 10px; /* Reduced from 15px */
+            margin-top: 10px;
             display: inline-block;
             animation: bounceStraightDown 1.2s infinite;
         }
@@ -342,9 +340,9 @@
 
         /* Paragraph text */
         .description-text {
-            font-size: 1.2rem; /* Reduced from 1.3rem */
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-top: 16px; /* Reduced from 20px */
+            margin-top: 16px;
             max-width: 600px;
             line-height: 1.4;
         }
@@ -365,12 +363,12 @@
         #app-menu-layer.active { transform: translateY(0); }
 
         .menu-item { 
-            font-size: 3.5rem; /* Reduced from 4rem */
+            font-size: 3.5rem;
             font-weight: 900; 
             color: var(--text); 
             text-decoration: none; 
             text-align: center; 
-            margin: 8px 0; /* Reduced from 10px */
+            margin: 8px 0;
             transition: all 0.3s ease;
             position: relative;
         }
@@ -397,7 +395,7 @@
         }
 
         .menu-logo {
-            font-size: 2.2rem; /* Reduced from 2.5rem */
+            font-size: 2.2rem;
             font-weight: 900;
             letter-spacing: -1px;
             color: var(--primary);
@@ -411,7 +409,7 @@
         }
 
         .close-menu-btn {
-            width: 48px; /* Reduced from 52px */
+            width: 48px;
             height: 48px;
             background: var(--primary);
             color: white;
@@ -444,7 +442,7 @@
             
             section {
                 padding: 1.5rem;
-                padding-bottom: 55px;
+                padding-bottom: 65px;
             }
             
             .huge-text {
@@ -474,7 +472,7 @@
             }
 
             .text-wrap {
-                margin-top: -30px;
+                top: -20px;
             }
         }
 
