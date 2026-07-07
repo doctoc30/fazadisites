@@ -33,14 +33,14 @@
             height: 100%;
         }
 
-        /* FULLY TRANSPARENT FLOATING HEADER */
+        /* FULLY TRANSPARENT FLOATING HEADER - MATCHES INDEX */
         .faz-nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 2500;
-            padding: calc(var(--safe-top) + 20px) 25px;
+            padding: calc(var(--safe-top) + 15px) 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -51,22 +51,39 @@
         .faz-logo {
             font-size: 2.2rem;
             font-weight: 900;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
             color: var(--primary);
             text-decoration: none;
             line-height: 1;
             pointer-events: auto;
+            transition: transform 0.3s ease;
         }
-        .faz-logo span { color: #000; }
+
+        .faz-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .faz-logo.sites {
+            color: var(--primary);
+        }
+
+        .faz-logo.dot {
+            color: #000;
+        }
 
         #menu-btn {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--text);
             background: none;
             border: none;
             cursor: pointer;
             line-height: 1;
             pointer-events: auto;
+            transition: transform 0.3s ease;
+        }
+
+        #menu-btn:hover {
+            transform: rotate(90deg);
         }
 
         /* PREVENT SCROLL SQUEEZE ON DOCK */
@@ -96,7 +113,13 @@
             flex: 1;
             height: 100%;
             justify-content: center;
+            transition: all 0.3s ease;
         }
+
+        .dock-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+        }
+
         .dock-btn i { font-size: 1.8rem; }
         .dock-btn span {
             font-size: 0.65rem;
@@ -123,6 +146,12 @@
             letter-spacing: -3px;
             color: var(--primary);
             text-transform: uppercase;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255,107,0,0.2); }
+            to { text-shadow: 0 0 30px rgba(255,107,0,0.4); }
         }
 
         .concepts-container {
@@ -145,6 +174,21 @@
             border: 10px solid #1a1a1a; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.15);
             overflow: hidden;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .concept-card:nth-child(1) { animation-delay: 0.1s; }
+        .concept-card:nth-child(2) { animation-delay: 0.2s; }
+        .concept-card:nth-child(3) { animation-delay: 0.3s; }
+        .concept-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .concept-image-wrap {
@@ -160,6 +204,11 @@
             display: block;
             object-fit: cover;
             object-position: top center;
+            transition: transform 0.3s ease;
+        }
+
+        .concept-card:hover .concept-image-wrap img {
+            transform: scale(1.05);
         }
 
         .concept-footer {
@@ -179,6 +228,12 @@
             text-transform: uppercase;
             border: none;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(255,107,0,0.3);
         }
 
         .concept-code-label {
@@ -209,6 +264,22 @@
             justify-content: center;
             border: none;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-arrow:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .page-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .page-arrow:disabled:hover {
+            background: #000;
+            transform: scale(1);
         }
 
         /* MENU LAYER */
@@ -224,19 +295,91 @@
             transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
         }
         #app-menu-layer.active { transform: translateY(0); }
-        .menu-item { font-size: 3.5rem; font-weight: 900; color: var(--text); text-decoration: none; text-align: center; margin: 10px 0; }
+        
+        .menu-item { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            color: var(--text); 
+            text-decoration: none; 
+            text-align: center; 
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .menu-item:hover::after {
+            width: 50%;
+        }
+
+        /* Responsive adjustments - MATCHES INDEX */
+        @media (max-width: 640px) {
+            .faz-logo {
+                font-size: 1.6rem;
+            }
+
+            #menu-btn {
+                font-size: 1.6rem;
+            }
+
+            .menu-item {
+                font-size: 2.5rem;
+            }
+
+            .huge-text {
+                font-size: clamp(2.6rem, 9vmin, 3.2rem);
+            }
+
+            .dock-btn i {
+                font-size: 1.4rem;
+            }
+
+            .dock-btn span {
+                font-size: 0.55rem;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
 
     <nav class="faz-nav">
-        <a href="index.html" class="faz-logo">FAZ ADI SITES<span>.</span></a>
+        <a href="index.html" class="faz-logo">FAZ ADI <span class="sites">SITES</span><span class="dot">.</span></a>
         <button id="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
     </nav>
 
     <div id="app-menu-layer">
         <div class="flex justify-between items-center mb-10">
-            <div class="faz-logo">FAZ ADI SITES<span>.</span></div>
+            <div class="faz-logo">FAZ ADI <span class="sites">SITES</span><span class="dot">.</span></div>
             <div onclick="toggleMenu()" class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </div>
@@ -255,9 +398,9 @@
         </div>
         <div class="concepts-container" id="conceptsGrid"></div>
         <div class="pagination-nav">
-            <button class="page-arrow" onclick="changePage(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="page-arrow" id="prevBtn" onclick="changePage(-1)"><i class="fa-solid fa-chevron-left"></i></button>
             <span id="pageNumber" style="font-weight: 900; font-size: 1.2rem;">1</span>
-            <button class="page-arrow" onclick="changePage(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="page-arrow" id="nextBtn" onclick="changePage(1)"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </main>
 
@@ -286,9 +429,7 @@
             const num = i + 1;
             return {
                 code: `D${num}`,
-                // Dynamically sets the image URL for all 50 items (1.jpg to 50.jpg)
                 image: `https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/${num}.jpg`,
-                // Every concept button redirects to its specific page
                 url: `https://doctoc30.github.io/fazadisites/driving-school/concept-${num}.html`
             };
         });
@@ -296,7 +437,9 @@
         let currentPage = 1;
         const perPage = 4;
 
-        function toggleMenu() { document.getElementById('app-menu-layer').classList.toggle('active'); }
+        function toggleMenu() { 
+            document.getElementById('app-menu-layer').classList.toggle('active'); 
+        }
 
         function render() {
             const grid = document.getElementById('conceptsGrid');
@@ -316,16 +459,32 @@
             `).join('');
             
             document.getElementById('pageNumber').innerText = currentPage;
+            
+            // Update pagination buttons
+            const maxPage = Math.ceil(concepts.length / perPage);
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === maxPage;
+            
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         function changePage(dir) {
             const max = Math.ceil(concepts.length / perPage);
             const next = currentPage + dir;
-            if(next >= 1 && next <= max) { currentPage = next; render(); }
+            if(next >= 1 && next <= max) { 
+                currentPage = next; 
+                render(); 
+            }
         }
 
         window.onload = render;
+
+        // Handle menu close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('app-menu-layer').classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
