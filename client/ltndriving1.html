@@ -72,9 +72,44 @@
         .car-specs li { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; font-weight: 600; }
         .car-specs i { color: var(--primary); font-size: 1.5rem; }
 
-        /* NEW ADDON: ABOUT JOE SECTION */
-        .about-joe { padding: 100px 10%; background: var(--white); display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
-        .joe-image { border-radius: 20px; border: 10px solid var(--light); box-shadow: 0 20px 40px rgba(0,0,0,0.1); width: 100%; }
+        /* FIXED: ABOUT JOE SECTION - robust & responsive */
+        .about-joe {
+            padding: 80px 8%;
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .joe-image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .joe-image {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1/1;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 8px solid var(--light);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            background: var(--primary);
+            display: block;
+        }
+        .about-joe-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .about-joe-content p {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 16px;
+        }
+        .about-joe-content .btn {
+            margin-top: 8px;
+        }
 
         /* NEW ADDON: SERVICE GRID */
         .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; padding: 50px 10%; }
@@ -155,7 +190,19 @@
 
         /* RESPONSIVE */
         @media (max-width: 992px) {
-            .booking-grid, .areas, .footer-grid, .car-feature-section, .about-joe, .referral-banner { grid-template-columns: 1fr; text-align: center; }
+            .booking-grid, .areas, .footer-grid, .car-feature-section, .referral-banner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .about-joe {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            .joe-image {
+                max-width: 280px;
+                margin: 0 auto;
+            }
             .hero h1 { font-size: 2.8rem; }
             .gallery-grid { grid-template-columns: 1fr 1fr; }
             .hamburger { display: flex; }
@@ -173,6 +220,10 @@
             }
             .nav-links.active { right: 0; }
             .social-icons { justify-content: center !important; }
+        }
+        @media (max-width: 600px) {
+            .about-joe { padding: 50px 5%; }
+            .joe-image { max-width: 200px; }
         }
     </style>
 </head>
@@ -227,34 +278,31 @@
     </section>
 
 
+    <!-- FIXED: ABOUT SECTION WITH STABLE AI AVATAR -->
     <section class="about-joe" id="about">
+        <div class="joe-image-wrapper" data-aos="fade-right">
+            <img 
+                src="https://ui-avatars.com/api/?name=Ayesha+LTN&background=1B7A8C&color=fff&size=300&font-size=0.5&bold=true" 
+                alt="Ayesha - LTN Driving Instructor" 
+                class="joe-image"
+                loading="lazy"
+            >
+        </div>
+        <div class="about-joe-content" data-aos="fade-left">
+            <h4 style="color: var(--primary); margin-bottom: 6px;">MEET YOUR INSTRUCTOR</h4>
+            <h2>AYESHA – LTN DRIVING LUTON</h2>
+            <p>
+                A highly-rated local instructor with a perfect 5-star rating. Ayesha is known for being patient, friendly, and encouraging, making lessons ideal for nervous beginners.
+            </p>
+            <p>
+                I specialise in automatic driving lessons, motorway tuition, Pass Plus, and instructor training across Luton. Every lesson is tailored to help you build confidence, improve your driving skills, and prepare you to pass your test safely.
+            </p>
+            <a href="tel:+447553709968" class="btn btn-accent">
+                TALK TO AYESHA: 07553 709968
+            </a>
+        </div>
+    </section>
 
-    <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6205.png"
-         alt="LTN Driving Luton - Blue Kia">
-
-    <div data-aos="fade-left">
-        <h4 style="color: var(--primary); margin-bottom: 10px;">MEET YOUR INSTRUCTOR</h4>
-
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">
-            AYESHA – LTN DRIVING LUTON
-        </h2>
-
-        <p style="font-size: 1.1rem; margin-bottom: 20px;">
-            A highly-rated local instructor with a perfect 5-star rating. Ayesha is known for being patient, friendly, and encouraging, making lessons ideal for nervous beginners.
-        </p>
-
-        <p>
-            I specialise in automatic driving lessons, motorway tuition, Pass Plus, and instructor training across Luton. Every lesson is tailored to help you build confidence, improve your driving skills, and prepare you to pass your test safely.
-        </p>
-
-        <a href="tel:+447553709968" class="btn btn-accent" style="margin-top: 20px;">
-            TALK TO AYESHA: 07553 709968
-        </a>
-    </div>
-
-</section>
-
-    
 
     <section style="padding: 100px 0; background: var(--light);">
         <h2 style="text-align: center; margin-bottom: 10px;">Specialist Training</h2>
