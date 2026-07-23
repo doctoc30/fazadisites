@@ -1,185 +1,76 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steer to Pass · Aylesbury</title>
+    <title>Prestige Driver Training – Transparent header</title>
     <!-- Tailwind + Lucide + Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* BRAND COLOURS – extracted from images: black, red (#E31E24), gold (#D4AF37), white */
         :root {
-            --brand-black: #0B0B0B;        /* deep black from logo/backgrounds */
-            --brand-red: #E31E24;          /* exact red from logo and highlights */
-            --brand-gold: #D4AF37;          /* premium gold accent (used sparingly) */
-            --brand-white: #F9F9F9;
-            --brand-gray: #1A1A1A;
+            --brand-black: #000000; 
+            --brand-red: #E31E24; 
+            --brand-gold: #D4AF37;
+            --brand-white: #ffffff;
+            --brand-gray: #1a1a1a;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-            background-color: var(--brand-white);
-            overflow-x: hidden;
-        }
-        /* override tailwind default colours everywhere */
-        .bg-black { background-color: var(--brand-black) !important; }
-        .bg-slate-50 { background-color: #f3f3f3 !important; }
-        .bg-slate-100 { background-color: #eaeaea !important; }
-        .bg-white { background-color: var(--brand-white) !important; }
-        .text-black { color: var(--brand-black) !important; }
-        .text-slate-500 { color: #3a3a3a !important; }
-        .border-black { border-color: var(--brand-black) !important; }
-        .border-slate-200 { border-color: #cfcfcf !important; }
-        .border-slate-100 { border-color: #e0e0e0 !important; }
-
-        /* brand red & gold utilities */
-        .bg-brand-red { background-color: var(--brand-red) !important; }
-        .text-brand-red { color: var(--brand-red) !important; }
-        .border-brand-red { border-color: var(--brand-red) !important; }
-        .bg-brand-gold { background-color: var(--brand-gold) !important; }
-        .text-brand-gold { color: var(--brand-gold) !important; }
-
-        /* override default theme: buttons, highlights, borders */
-        .btn-brand {
-            background-color: var(--brand-red) !important;
-            color: white !important;
-            transition: 0.3s;
-            font-weight: 900;
-            border: none;
-        }
-        .btn-brand:hover {
-            background-color: #b3161a !important;
-            transform: scale(1.04);
-        }
-        .btn-outline-brand {
-            border: 3px solid var(--brand-red) !important;
-            color: var(--brand-red) !important;
-            background: transparent !important;
-            font-weight: 900;
-        }
-        .btn-outline-brand:hover {
-            background: var(--brand-red) !important;
-            color: white !important;
-        }
-        .red-tag {
-            background: var(--brand-red) !important;
-            color: white !important;
-            padding: 6px 16px;
-            font-weight: 900;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border-radius: 2px;
-        }
-        .gold-tag {
-            background: var(--brand-gold) !important;
-            color: var(--brand-black) !important;
-            padding: 4px 14px;
-            font-weight: 900;
-            font-size: 10px;
-            text-transform: uppercase;
-            border-radius: 2px;
-        }
-        .premium-card {
-            border-top: 6px solid var(--brand-red) !important;
-            transition: all 0.4s ease;
-        }
-        .premium-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px -12px rgba(227,30,36,0.25);
-        }
-        .cta-dock {
-            background: var(--brand-black) !important;
-            border-top: 4px solid var(--brand-red) !important;
-        }
-        .cta-dock a {
-            border-right: 1px solid rgba(255,255,255,0.08);
-        }
-        .cta-dock a:last-child {
-            border-right: none;
-        }
-        .service-icon {
-            background: #f0f0f0;
-            border-radius: 50%;
-            width: 64px;
-            height: 64px;
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
+        
+        .logo-wrap {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
+            gap: 10px;
         }
-        .service-icon i { color: var(--brand-red) !important; }
-        .feature-list li i { color: var(--brand-red) !important; margin-right: 10px; }
-        .faq-btn { border-bottom: 1px solid #ddd; }
-        .faq-item.active .faq-content { max-height: 400px; padding: 1rem 0; }
-        .social-icon {
-            background: rgba(255,255,255,0.08);
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            color: white;
+        .logo-text {
+            font-family: 'Archivo Black', sans-serif;
+            line-height: 1;
         }
-        .social-icon:hover { background: var(--brand-red); transform: translateY(-3px); }
-        .nav-link { color: var(--brand-black); font-weight: 900; }
-        .nav-link:hover { color: var(--brand-red); }
-        .nav-cta {
-            background: var(--brand-red);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 2px;
-            font-weight: 900;
-            box-shadow: 0 4px 12px rgba(227,30,36,0.3);
-        }
-        .nav-cta:hover { background: #b3161a; transform: scale(1.03); }
-        .header-transparent { background: transparent !important; backdrop-filter: none !important; }
-        .ticker-wrap { background: var(--brand-black); color: white; border-bottom: 4px solid var(--brand-red); }
-        .glass { background: transparent; backdrop-filter: none; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* car hero – full width, no borders */
+        /* FULL WIDTH - NO BORDERS, NO FRAME */
         .car-hero-container {
             position: relative;
             z-index: 10;
             width: 100%;
-            height: 420px;
+            height: 420px; 
             display: flex;
-            align-items: flex-end;
-            overflow: hidden;
-            background: var(--brand-white);
+            align-items: flex-end; 
+            overflow: hidden; 
+            background: #ffffff;
             margin: 0;
             padding: 0;
+            border: none;
+            border-radius: 0;
         }
+        
         #panningCar {
             width: 720px;
-            height: auto;
+            height: auto; 
             position: absolute;
-            bottom: 30px;
+            bottom: 30px; 
             left: 0;
-            z-index: 20;
-            animation: driveForward 22s linear infinite;
+            z-index: 20; 
+            animation: driveForward 22s linear infinite; 
             will-change: transform;
-            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.08));
+            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.10)); 
         }
+
         @keyframes driveForward {
             0% { transform: translateX(-150px); }
             100% { transform: translateX(calc(100vw + 150px)); }
         }
+
+        /* === ROAD INDICATOR - THINNER & DASHED (sections) === */
         .road-indicator {
-            height: 2px;
-            background: transparent;
+            height: 2px;              /* thinner */
+            background: transparent;   /* no solid bg */
             width: 100%;
             position: absolute;
-            bottom: 35px;
-            z-index: 5;
+            bottom: 35px; 
+            z-index: 5; 
             left: 0;
         }
         .road-indicator::after {
@@ -189,333 +80,565 @@
             transform: translateY(-50%);
             left: 0;
             width: 100%;
-            height: 2px;
+            height: 2px;              /* thin line */
             background-image: linear-gradient(to right, #888 20px, transparent 20px);
-            background-size: 40px 100%;
-            animation: roadMove 0.8s linear infinite;
+            background-size: 40px 100%;  /* dash length + gap */
+            animation: roadMove 0.8s linear infinite; 
         }
         @keyframes roadMove {
             0% { background-position: 0 0; }
             100% { background-position: -40px 0; }
         }
+
         #mobile-menu {
-            transition: transform 0.4s cubic-bezier(0.77,0,0.175,1);
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             transform: translateX(100%);
             background: var(--brand-black);
         }
         #mobile-menu.open { transform: translateX(0); }
-        .pricing-card { transition: all 0.3s ease; }
-        .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); }
-        .feature-list li { padding: 8px 0; border-bottom: 1px solid #ececec; font-size: 13px; font-weight: 600; color: #1e1e1e; }
-        .feature-list li:last-child { border-bottom: none; }
+        /* ----- TRANSPARENT HEADER (glass removed, bg transparent) ----- */
+        .header-transparent {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+        }
+        .glass { background: transparent; backdrop-filter: none; } /* override */
+        .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-red); }
+        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(227, 30, 36, 0.3); }
+        .ticker-wrap { overflow: hidden; background: var(--brand-black); color: var(--brand-white); padding: 15px 0; border-bottom: 4px solid var(--brand-red); }
+        .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        .btn-brand { background-color: var(--brand-red); color: white; transition: 0.3s; font-weight: 900; }
+        .btn-brand:hover { background-color: #b3161a; transform: scale(1.05); }
+        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-black); display: flex; z-index: 100; border-top: 4px solid var(--brand-red); }
+        .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 300px; padding: 1rem 0; }
+        .red-tag { background: var(--brand-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
+        
+        #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 280px; background: white; border-top: 5px solid var(--brand-red); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
+
+        .service-icon {
+            background: #f8f8f8;
+            border-radius: 50%;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2);
+        }
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f1f1;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-list li i {
+            margin-right: 10px;
+            color: var(--brand-red);
+        }
+        .social-icon {
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        .social-icon:hover {
+            background: var(--brand-red);
+            transform: translateY(-3px);
+        }
+        /* Ensure nav links are visible on transparent bg */
+        .nav-link {
+            color: #111;
+            font-weight: 900;
+        }
+        .nav-link:hover { color: var(--brand-red); }
+        .nav-cta { background: var(--brand-red); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(227,30,36,0.3); }
+        .nav-cta:hover { background: #b3161a; transform: scale(1.03); }
+        /* white text adjustment for dark hero? but hero is white bg so fine */
     </style>
 </head>
-<body class="text-slate-900">
+<body class="text-slate-900"> 
+
+    <div id="promoPopup" class="animate__animated animate__fadeInUp">
+        <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2"><i data-lucide="x" class="w-4 h-4"></i></button>
+        <span class="red-tag mb-2 inline-block">⭐ 100% recommend</span>
+        <h4 class="font-black text-xl leading-tight mb-2">Prestige Driver Training</h4>
+        <p class="text-xs font-bold text-slate-500 uppercase mb-4">Farnborough • 07795 517994</p>
+        <a href="tel:07795517994" class="btn-brand px-4 py-2 text-[10px] uppercase inline-block text-center">Call Now</a>
+    </div>
 
     <!-- ========== TRANSPARENT HEADER ========== -->
     <nav class="sticky top-0 z-50 header-transparent">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="logo-wrap flex items-center gap-3">
+            <div class="logo-wrap">
                 <div class="logo-text">
-                    <span class="text-2xl font-black italic block text-black">STEER <span class="text-[#E31E24]">TO</span></span>
-                    <span class="text-[8px] font-bold tracking-[0.3em] uppercase block text-black/80">PASS · AYLESBURY</span>
+                    <span class="text-2xl font-black italic block text-black">PRESTIGE <span class="text-[#E31E24]">DRIVER</span></span>
+                    <span class="text-[8px] font-bold tracking-[0.3em] uppercase block text-black/80">Training • Farnborough</span>
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-10 font-black text-xs uppercase tracking-widest">
-                <a href="#about" class="nav-link">About</a>
                 <a href="#services" class="nav-link">Lessons</a>
+                <a href="#features" class="nav-link">Features</a>
                 <a href="#pricing" class="nav-link">Packages</a>
-                <a href="#areas" class="nav-link">Areas</a>
-                <a href="tel:07848529905" class="nav-link">07848 529905</a>
-                <a href="https://wa.me/447848529905" class="nav-cta">WhatsApp</a>
+                <a href="#areas" class="nav-link">Locations</a>
+                <a href="tel:07795517994" class="nav-link">07795 517994</a>
+                <a href="https://wa.me/447795517994" class="nav-cta">WhatsApp Us</a>
             </div>
             <button id="menu-btn" class="md:hidden text-black"><i data-lucide="menu" class="w-8 h-8"></i></button>
         </div>
     </nav>
 
-    <!-- mobile menu -->
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[100] p-10 flex flex-col shadow-2xl">
         <button id="close-btn" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
         <div class="flex flex-col space-y-8 text-white font-black text-3xl uppercase tracking-tighter">
-            <a href="#about">About</a>
-            <a href="#services">Lessons</a>
+            <a href="#services">Driving Lessons</a>
+            <a href="#features">Features</a>
             <a href="#pricing">Packages</a>
-            <a href="#areas">Areas</a>
-            <a href="tel:07848529905">Call Us</a>
-            <a href="https://wa.me/447848529905" class="text-red-500">WhatsApp</a>
+            <a href="#areas">Areas Covered</a>
+            <a href="tel:07795517994">Call Us</a>
+            <a href="https://wa.me/447795517994" class="text-red-500">WhatsApp Now</a>
         </div>
     </div>
 
-    <!-- TICKER -->
-    <div class="ticker-wrap font-bold uppercase text-[11px] tracking-widest py-3">
-        <div class="ticker flex space-x-16 animate-[ticker_25s_linear_infinite] whitespace-nowrap">
-            <span>🏁 5.0 ★ (13 reviews) · Yell Marketplace</span>
-            <span>📍 Aylesbury · Bell Business Park test centre</span>
-            <span>⚙️ Manual · Dual controls · New car</span>
-            <span>⭐ Specialist: anxiety · ADHD · nerves</span>
-            <span>📱 WhatsApp: 07848 529905</span>
+    <div class="ticker-wrap font-bold uppercase text-xs tracking-widest">
+        <div class="ticker space-x-16">
+            <span>🏁 100% recommend (13 reviews)</span>
+            <span>📍 Farnborough • 6 Napoleon Avenue, GU14 8LY</span>
+            <span>⚙️ Manual & Automatic</span>
+            <span>⭐ DVSA Approved • In-person classes</span>
+            <span>📱 WhatsApp: 07795 517994</span>
         </div>
     </div>
-    <style> .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; } @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } } </style>
 
-    <!-- HERO - full width car -->
+    <!-- HERO - FULL WIDTH, NO BORDERS, NATURAL FLOW -->
     <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-4 pb-12 overflow-hidden">
         <div class="w-full">
             <div class="car-hero-container">
+                <!-- road indicator: thinner, dashed (sections) -->
                 <div class="road-indicator"></div>
-                <!-- car image from images (steer to pass) – using a generic car, but brand consistent -->
-                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_3990.png" alt="Steer to Pass car">
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_3990.png" alt="Prestige Driver Training Car">
             </div>
         </div>
+
         <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-4">
             <div class="animate__animated animate__fadeInUp">
-                <span class="red-tag mb-4 inline-block">⭐ 5.0 · 100% recommend</span>
+                <span class="red-tag mb-4 inline-block">⭐ 100% recommend</span>
                 <h1 class="text-6xl md:text-8xl font-black text-black leading-none mb-4 uppercase tracking-tighter">
-                    STEER <span class="text-[#E31E24]">TO PASS</span>
+                    DRIVE <span class="text-[#E31E24]">PRESTIGE.</span>
                 </h1>
-                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Patient, manual lessons · Aylesbury & surrounds</p>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Premium Instruction in Farnborough & Surrey</p>
+                
                 <div class="flex flex-col sm:flex-row justify-center gap-5">
-                    <a href="tel:07848529905" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#E31E24] transition duration-300">Call 07848 529905</a>
-                    <a href="https://wa.me/447848529905" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300">WhatsApp Monika</a>
+                    <a href="tel:07795517994" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#E31E24] transition duration-300">Call 07795 517994</a>
+                    <a href="https://wa.me/447795517994" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300">WhatsApp Instructor</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION (new, below hero) -->
-    <section id="about" class="py-16 bg-white border-y border-slate-100">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <section class="py-12 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="reveal">
-                <span class="red-tag inline-block mb-4">About Steer to Pass</span>
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">Driving <span class="text-[#E31E24]">Confidence</span></h2>
-                <p class="text-sm font-bold text-slate-600 leading-relaxed mb-4">Led by local instructor <span class="text-black font-black">Monika</span>, Steer to Pass is a highly rated driving school based in Aylesbury. We specialise in helping learners manage severe test anxiety, ADHD, or nerves — building both confidence and technical skills to pass the practical test.</p>
-                <ul class="space-y-2 text-xs font-bold uppercase text-slate-700">
-                    <li><i data-lucide="check-circle" class="inline w-4 h-4 text-[#E31E24] mr-2"></i>Manual lessons in a brand-new, clean dual‑control car</li>
-                    <li><i data-lucide="check-circle" class="inline w-4 h-4 text-[#E31E24] mr-2"></i>Regular weekly, block booking & intensive courses</li>
-                    <li><i data-lucide="check-circle" class="inline w-4 h-4 text-[#E31E24] mr-2"></i>Aylesbury, Leighton Buzzard & Bletchley test centres</li>
-                </ul>
-                <div class="mt-6 flex gap-4">
-                    <a href="tel:07848529905" class="btn-brand px-8 py-3 text-xs uppercase">Call now</a>
-                    <a href="https://wa.me/447848529905" class="btn-outline-brand px-8 py-3 text-xs uppercase">WhatsApp</a>
-                </div>
+                <p class="text-5xl font-black text-black mb-2 counter" data-target="500">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Students Passed</p>
             </div>
-            <div class="reveal bg-slate-50 p-8 rounded-2xl border border-slate-200">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-16 h-16 rounded-full bg-brand-red flex items-center justify-center text-white text-3xl font-black">M</div>
-                    <div>
-                        <p class="font-black text-lg">Monika</p>
-                        <p class="text-[10px] font-bold uppercase text-slate-400">ADI · 10+ years experience</p>
-                    </div>
-                </div>
-                <p class="text-sm font-bold italic text-slate-600">“I’m passionate about making every learner feel at ease. No judgement, just patient, tailored instruction — whether you’re nervous or neurodivergent.”</p>
-                <div class="mt-4 flex items-center gap-2 text-[10px] font-black uppercase text-slate-400">
-                    <i data-lucide="star" class="w-4 h-4 fill-current text-amber-500"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-current text-amber-500"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-current text-amber-500"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-current text-amber-500"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-current text-amber-500"></i>
-                    <span class="ml-2">5.0 · Yell Marketplace</span>
-                </div>
+            <div class="reveal">
+                <p class="text-5xl font-black text-black mb-2 counter" data-target="15">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Years Experience</p>
+            </div>
+            <div class="reveal">
+                <p class="text-5xl font-black text-[#E31E24] mb-2 counter" data-target="100">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">% Recommend</p>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES (manual only) -->
+    <!-- SERVICES -->
     <section id="services" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto text-center mb-16 px-6">
             <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#E31E24]">Options</span></h2>
-            <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mt-2">Manual lessons · patient & friendly</p>
         </div>
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black premium-card">
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black">
                 <i data-lucide="settings" class="w-12 h-12 mb-6 text-black"></i>
                 <h3 class="text-2xl font-black uppercase mb-4">Manual Lessons</h3>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master clutch control, gear changes, and roadcraft. Perfect for building confidence — taught at your pace in a modern dual‑control car.</p>
-                <a href="https://wa.me/447848529905" class="red-tag inline-block">Book manual</a>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master the art of driving with full control. Learn clutch control, gear changes, and advanced roadcraft. Perfect for those who want a complete driving experience.</p>
+                <a href="https://wa.me/447795517994" class="red-tag inline-block">Book Manual</a>
             </div>
-            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#E31E24] premium-card">
-                <i data-lucide="heart" class="w-12 h-12 mb-6 text-[#E31E24]"></i>
-                <h3 class="text-2xl font-black uppercase mb-4">Nervous / ADHD support</h3>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Specialist approach for anxious or neurodivergent learners. Calm, structured lessons that build test‑day confidence.</p>
-                <a href="https://wa.me/447848529905" class="red-tag inline-block">Get support</a>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#E31E24]">
+                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#E31E24]"></i>
+                <h3 class="text-2xl font-black uppercase mb-4">Automatic Lessons</h3>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Stress-free driving without the clutch. Ideal for urban areas like Farnborough, Camberley, and Aldershot. Get on the road faster with simplified controls.</p>
+                <a href="https://wa.me/447795517994" class="red-tag inline-block">Book Automatic</a>
             </div>
         </div>
     </section>
 
-    <!-- PRICING with business details -->
-    <section id="pricing" class="py-24 bg-white">
+    <!-- EXTRA FEATURES (More Services) -->
+    <section id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">More <span class="text-[#E31E24]">Services</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="clock" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Refresher Courses</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Boost confidence behind the wheel. Perfect for returning drivers.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="car" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Pass Plus</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Motorway, night, and all-weather driving. Safer, confident driving.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="book-open" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Theory Test Prep</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Interactive sessions covering hazard perception & highway code.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="users" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Mock Tests</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Full mock driving tests with detailed feedback. Build exam readiness.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="shield" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Motorway Lessons</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Specialised motorway tuition. Learn lane discipline, merging, and safe driving.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="moon" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Night Driving</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Build confidence driving in the dark. Essential skills for all conditions.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="map" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Sat Nav Training</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Learn to follow sat nav directions safely for independent driving.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="award" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Advanced Driving</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Take your skills further with advanced techniques and eco-driving.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENHANCED PRICING with detailed packages -->
+    <section id="pricing" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#E31E24]">Packages</span></h2>
-            <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-12">Flexible plans · block discounts · intensive courses</p>
+            <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-12">Choose the plan that fits your needs. All packages include expert tuition, progress reports, and test preparation.</p>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- single -->
+                <!-- Package 1 -->
                 <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E31E24]">
-                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Pay as you go</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£38</p>
+                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Starter</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£35</p>
                     <p class="text-xs font-bold uppercase text-slate-400 mb-6">per hour</p>
                     <ul class="feature-list text-left space-y-2">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 1‑hour manual lesson</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Dual‑control car</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Pick‑up / drop‑off</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Progress feedback</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 1-hour lesson</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Pick-up & drop-off</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Progress report</li>
                     </ul>
-                    <a href="https://wa.me/447848529905" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book now</a>
+                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
                 </div>
-                <!-- block 5 -->
+
+                <!-- Package 2 -->
                 <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E31E24]">
-                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Save £15</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£175</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5 lessons</p>
+                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Beginner</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£165</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5 lessons (save £10)</p>
                     <ul class="feature-list text-left space-y-2">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 5 x 1‑hour</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual tuition</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 5 x 1-hour lessons</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Flexible scheduling</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Progress tracking</li>
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory support</li>
                     </ul>
-                    <a href="https://wa.me/447848529905" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book block</a>
+                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
                 </div>
-                <!-- popular 10 -->
+
+                <!-- Package 3 (Featured) -->
                 <div class="reveal pricing-card bg-black text-white rounded-2xl border-2 border-[#E31E24] p-8 transform scale-105 shadow-2xl">
-                    <span class="text-xs font-black uppercase text-[#E31E24] bg-white/10 px-3 py-1 rounded-full">⭐ Best value</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£340</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">10 lessons (save £40)</p>
+                    <span class="text-xs font-black uppercase text-[#E31E24] bg-white/10 px-3 py-1 rounded-full">⭐ Popular</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£320</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">10 lessons (save £30)</p>
                     <ul class="feature-list text-left space-y-2 text-slate-200">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> 10 x 1‑hour</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Mock test included</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Theory prep</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> 10 x 1-hour lessons</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Manual or Automatic</li>
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Priority booking</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Mock test included</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Theory test prep</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Progress report</li>
                     </ul>
-                    <a href="https://wa.me/447848529905" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book now</a>
+                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
                 </div>
-                <!-- intensive -->
+
+                <!-- Package 4 -->
                 <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E31E24]">
-                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Intensive</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£470</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5‑day (15 hrs)</p>
+                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Fast Pass</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£620</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">20 lessons (save £80)</p>
+                    <ul class="feature-list text-left space-y-2">
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 20 x 1-hour lessons</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Unlimited rescheduling</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 2 mock tests</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory test pass guarantee</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Motorway lesson included</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Free test day car hire</li>
+                    </ul>
+                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
+                </div>
+            </div>
+
+            <!-- Additional Package: Intensive -->
+            <div class="max-w-md mx-auto mt-10">
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E31E24]">
+                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Intensive Course</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£450</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5-day intensive (15 hours)</p>
                     <ul class="feature-list text-left space-y-2">
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 15 hours over 5 days</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Full test prep</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Mock test</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Full test preparation</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Mock test included</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory test support</li>
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Test day car hire</li>
                     </ul>
-                    <a href="https://wa.me/447848529905" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Enquire</a>
+                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AREAS (test centres) -->
-    <section id="areas" class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
-            <div class="reveal">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Test <span class="text-[#E31E24]">Centres</span></h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E31E24] w-5 h-5"></i>
-                        <div><p class="font-black text-xs uppercase">Aylesbury</p><p class="text-[9px] text-slate-400 font-bold">Bell Business Park</p></div>
-                    </div>
-                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E31E24] w-5 h-5"></i>
-                        <div><p class="font-black text-xs uppercase">Leighton Buzzard</p><p class="text-[9px] text-slate-400 font-bold">Bedfordshire</p></div>
-                    </div>
-                    <div class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E31E24] w-5 h-5"></i>
-                        <div><p class="font-black text-xs uppercase">Bletchley</p><p class="text-[9px] text-slate-400 font-bold">Milton Keynes</p></div>
-                    </div>
+    <!-- VIDEO -->
+    <section class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn the <span class="text-[#E31E24]">Prestige Way</span></h2>
+            <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 bg-[#E31E24] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
                 </div>
-                <div class="h-[280px] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31540.5!2d-0.815!3d51.816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876a0a0a0a0a0a%3A0x0!2sAylesbury!5e0!3m2!1sen!2suk!4v1715000000000" width="100%" height="100%" style="border:0; filter: grayscale(0.8);" allowfullscreen=""></iframe>
-                </div>
-            </div>
-            <div class="reveal bg-white p-8 rounded-2xl border border-slate-200">
-                <h3 class="text-2xl font-black uppercase tracking-tighter mb-4">Contact <span class="text-[#E31E24]">Monika</span></h3>
-                <div class="space-y-4 text-sm font-bold">
-                    <p><i data-lucide="phone" class="inline w-5 h-5 text-[#E31E24] mr-2"></i> 07848 529905</p>
-                    <p><i data-lucide="message-circle" class="inline w-5 h-5 text-[#E31E24] mr-2"></i> WhatsApp: 07848 529905</p>
-                    <p><i data-lucide="clock" class="inline w-5 h-5 text-[#E31E24] mr-2"></i> Mon–Sat: 8am – 6pm</p>
-                    <div class="flex gap-4 mt-6">
-                        <a href="tel:07848529905" class="btn-brand px-6 py-3 text-xs uppercase">Call now</a>
-                        <a href="https://wa.me/447848529905" class="btn-outline-brand px-6 py-3 text-xs uppercase">WhatsApp</a>
-                    </div>
-                </div>
+                <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs">Watch: Introduction to Prestige Driver Training</div>
             </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-slate-50">
         <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">FAQs</h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#E31E24]">FAQs</span></h2>
             <div class="space-y-4">
                 <div class="faq-item reveal">
-                    <button class="faq-btn w-full text-left font-black py-4 flex justify-between items-center" onclick="toggleFaq(this)">Do you specialise in nervous learners? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500 px-1">Yes — Monika is highly praised for supporting anxiety, ADHD, and nerves. Patient, judgement‑free lessons.</div>
+                    <button class="faq-btn" onclick="toggleFaq(this)">What are your current lesson prices? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Prices start from £35 per hour. Block bookings and intensive courses available. Contact us on WhatsApp for a personalised quote.</div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-btn w-full text-left font-black py-4 flex justify-between items-center" onclick="toggleFaq(this)">Which test centres do you cover? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500 px-1">Aylesbury (Bell Business Park), Leighton Buzzard, and Bletchley.</div>
+                    <button class="faq-btn" onclick="toggleFaq(this)">How long does a standard lesson last? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Our standard lessons are 2 hours long, giving you ample time to build confidence and practice key manoeuvres.</div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-btn w-full text-left font-black py-4 flex justify-between items-center" onclick="toggleFaq(this)">What car do you teach in? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500 px-1">Brand‑new, clean manual car with dual controls — comfortable and safe.</div>
+                    <button class="faq-btn" onclick="toggleFaq(this)">Do you offer weekend or evening lessons? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Yes, we offer flexible scheduling including evenings and weekends to suit your busy lifestyle.</div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-btn w-full text-left font-black py-4 flex justify-between items-center" onclick="toggleFaq(this)">How do I book? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500 px-1">Call 07848 529905 or WhatsApp Monika — flexible scheduling available.</div>
+                    <button class="faq-btn" onclick="toggleFaq(this)">Which payment methods do you accept? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">We accept bank transfers, cash, and card payments. Block bookings must be paid in advance.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER with business info -->
-    <footer class="bg-black text-white pt-16 pb-32">
+    <!-- AREAS -->
+    <section id="areas" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#E31E24]">Areas</span></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Farnborough</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Main Test Centre</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Camberley</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Surrey Borders</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Aldershot</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Hampshire</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Fleet</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Hart District</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-[300px] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31873.12234372946!2d-0.7548946!3d51.2932031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48742b3a5d3f3c5b%3A0xd2b4f1b5c7d8e9f0!2sFarnborough!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9);" allowfullscreen=""></iframe>
+                </div>
+            </div>
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#E31E24]">Availability</span></h2>
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                    <table class="w-full text-left text-xs uppercase font-black">
+                        <thead class="bg-black text-white">
+                            <tr>
+                                <th class="p-4">Day</th>
+                                <th class="p-4">Daytime</th>
+                                <th class="p-4">Evening/Weekend</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-4 bg-slate-50">Mon-Fri</td>
+                                <td class="p-4 text-green-600">Available</td>
+                                <td class="p-4 text-amber-500">Limited</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 bg-slate-50">Saturday</td>
+                                <td class="p-4 text-amber-500">Booking Only</td>
+                                <td class="p-4 text-amber-500">Booking Only</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 bg-slate-50">Sunday</td>
+                                <td class="p-4 text-slate-300">Closed</td>
+                                <td class="p-4 text-slate-300">Closed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100">
+                        <p class="text-[9px] text-slate-500 font-bold">* We prioritise regular students for weekend/evening slots.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEEDBACK -->
+    <section class="py-24 bg-slate-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#E31E24]">Feedback</span></h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Passed first time with Prestige! David is calm, professional, and very thorough. Highly recommend to anyone in Farnborough."</p>
+                    <p class="font-black uppercase text-[10px]">— Emily R. (Farnborough)</p>
+                </div>
+                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"I was nervous about driving but David made me feel at ease from day one. The automatic lessons were a game changer. 5 stars!"</p>
+                    <p class="font-black uppercase text-[10px]">— James K. (Camberley)</p>
+                </div>
+                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"The intensive course was fantastic. I went from zero to test-ready in just 5 days. Worth every penny!"</p>
+                    <p class="font-black uppercase text-[10px]">— Sarah M. (Aldershot)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-xl mx-auto text-center">
+                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Theory Support & <span class="text-[#E31E24]">Tips</span></h3>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Sign up for driving tips, theory test help, and local test centre updates.</p>
+                <form class="flex flex-col sm:flex-row gap-2">
+                    <input type="email" placeholder="Your Email Address" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#E31E24] transition">
+                    <button class="btn-brand px-8 py-4 text-xs uppercase">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER with social icons -->
+    <footer class="bg-black text-white pt-20 pb-32"> 
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
                 <div class="logo-wrap mb-10 md:mb-0">
                     <div class="logo-text !text-white">
-                        <span class="text-2xl font-black italic block">STEER <span class="text-[#E31E24]">TO</span></span>
-                        <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">PASS · AYLESBURY</span>
+                        <span class="text-2xl font-black italic block">PRESTIGE <span class="text-[#E31E24]">DRIVER</span></span>
+                        <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">Training • Farnborough</span>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
                     <div>
                         <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Contact</h5>
-                        <p class="text-sm font-bold uppercase tracking-widest mb-2">07848 529905</p>
-                        <p class="text-[10px] text-slate-400 font-bold">steertopass@gmail.com</p>
+                        <p class="text-sm font-bold uppercase tracking-widest mb-2">07795 517994</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase">isteddavid@aol.com</p>
                     </div>
                     <div>
-                        <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Areas</h5>
+                        <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Locations</h5>
                         <ul class="text-[10px] font-bold uppercase space-y-2 text-slate-400">
-                            <li>Aylesbury</li>
-                            <li>Leighton Buzzard</li>
-                            <li>Bletchley</li>
+                            <li>Farnborough</li>
+                            <li>Camberley</li>
+                            <li>Aldershot</li>
                         </ul>
                     </div>
                     <div>
                         <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Social</h5>
-                        <div class="flex space-x-3">
+                        <div class="flex space-x-4">
                             <a href="#" class="social-icon"><i data-lucide="instagram" class="w-5 h-5"></i></a>
                             <a href="#" class="social-icon"><i data-lucide="facebook" class="w-5 h-5"></i></a>
                             <a href="#" class="social-icon"><i data-lucide="message-square" class="w-5 h-5"></i></a>
+                            <a href="#" class="social-icon"><i data-lucide="youtube" class="w-5 h-5"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <p class="text-[10px] text-slate-500 font-black uppercase tracking-[0.5em]">© 2026 STEER TO PASS · AYLESBURY</p>
+            <p class="text-[10px] text-slate-500 font-black uppercase tracking-[0.5em]">© 2026 PRESTIGE DRIVER TRAINING</p>
         </div>
     </footer>
 
-    <!-- mobile dock -->
-    <div class="cta-dock fixed bottom-0 left-0 right-0 flex z-100 md:hidden">
-        <a href="tel:07848529905" class="flex flex-col items-center justify-center py-3 text-white text-[10px] font-bold"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#E31E24]"></i>CALL</a>
-        <a href="https://wa.me/447848529905" class="flex flex-col items-center justify-center py-3 text-white text-[10px] font-bold"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#E31E24]"></i>WHATSAPP</a>
-        <a href="tel:07848529905" class="flex flex-col items-center justify-center py-3 text-white text-[10px] font-bold bg-brand-red !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK</a>
+    <div class="cta-dock md:hidden">
+        <a href="tel:07795517994"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#E31E24]"></i>CALL</a>
+        <a href="https://wa.me/447795517994"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#E31E24]"></i>WHATSAPP</a>
+        <a href="sms:+447795517994"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#E31E24]"></i>TEXT</a>
+        <a href="tel:07795517994" class="bg-[#E31E24] !text-white !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK</a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
-            // counters
+            setTimeout(() => { document.getElementById('promoPopup').style.display = 'block'; }, 3000);
+            
             const counters = document.querySelectorAll('.counter');
             const speed = 200;
             const startCounters = (entries) => {
@@ -533,30 +656,27 @@
             };
             const counterObserver = new IntersectionObserver(startCounters, {threshold: 0.5});
             counters.forEach(c => counterObserver.observe(c));
-
-            // mobile menu
-            const menuBtn = document.getElementById('menu-btn');
-            const closeBtn = document.getElementById('close-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-            closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
-
-            // reveal
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) { entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp'); }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-            // faq
-            window.toggleFaq = function(btn) {
-                const item = btn.parentElement;
-                item.classList.toggle('active');
-                const icon = btn.querySelector('i');
-                if (icon) icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-            };
         });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
     </script>
 </body>
 </html>
