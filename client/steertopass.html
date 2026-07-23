@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestige Driver Training – Transparent header</title>
+    <title>Steer to Pass – Driving School Aylesbury – 07848 528969</title>
     <!-- Tailwind + Lucide + Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -11,50 +11,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-black: #000000; 
-            --brand-red: #E31E24; 
-            --brand-gold: #D4AF37;
+            --brand-red: #E30613;
+            --brand-blue: #162B8A;
+            --brand-black: #0A0A0A;
             --brand-white: #ffffff;
             --brand-gray: #1a1a1a;
+            --brand-blue-light: #E8EEFF;
         }
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
-        
-        .logo-wrap {
+
+       .logo-wrap {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .logo-text {
+       .logo-text {
             font-family: 'Archivo Black', sans-serif;
             line-height: 1;
         }
 
         /* FULL WIDTH - NO BORDERS, NO FRAME */
-        .car-hero-container {
+       .car-hero-container {
             position: relative;
             z-index: 10;
             width: 100%;
-            height: 420px; 
+            height: 420px;
             display: flex;
-            align-items: flex-end; 
-            overflow: hidden; 
+            align-items: flex-end;
+            overflow: hidden;
             background: #ffffff;
             margin: 0;
             padding: 0;
             border: none;
             border-radius: 0;
         }
-        
+
         #panningCar {
             width: 720px;
-            height: auto; 
+            height: auto;
             position: absolute;
-            bottom: 30px; 
+            bottom: 30px;
             left: 0;
-            z-index: 20; 
-            animation: driveForward 22s linear infinite; 
+            z-index: 20;
+            animation: driveForward 22s linear infinite;
             will-change: transform;
-            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.10)); 
+            filter: drop-shadow(0 20px 25px rgba(22, 43, 138, 0.20));
         }
 
         @keyframes driveForward {
@@ -63,26 +64,26 @@
         }
 
         /* === ROAD INDICATOR - THINNER & DASHED (sections) === */
-        .road-indicator {
-            height: 2px;              /* thinner */
-            background: transparent;   /* no solid bg */
+       .road-indicator {
+            height: 2px; /* thinner */
+            background: transparent; /* no solid bg */
             width: 100%;
             position: absolute;
-            bottom: 35px; 
-            z-index: 5; 
+            bottom: 35px;
+            z-index: 5;
             left: 0;
         }
-        .road-indicator::after {
+       .road-indicator::after {
             content: '';
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             left: 0;
             width: 100%;
-            height: 2px;              /* thin line */
-            background-image: linear-gradient(to right, #888 20px, transparent 20px);
-            background-size: 40px 100%;  /* dash length + gap */
-            animation: roadMove 0.8s linear infinite; 
+            height: 2px; /* thin line */
+            background-image: linear-gradient(to right, var(--brand-blue) 20px, transparent 20px);
+            background-size: 40px 100%; /* dash length + gap */
+            animation: roadMove 0.8s linear infinite;
         }
         @keyframes roadMove {
             0% { background-position: 0 0; }
@@ -92,37 +93,40 @@
         #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             transform: translateX(100%);
-            background: var(--brand-black);
+            background: var(--brand-blue);
         }
         #mobile-menu.open { transform: translateX(0); }
         /* ----- TRANSPARENT HEADER (glass removed, bg transparent) ----- */
-        .header-transparent {
-            background: transparent !important;
-            backdrop-filter: none !important;
-            border-bottom: none !important;
-            box-shadow: none !important;
+       .header-transparent {
+            background: transparent!important;
+            backdrop-filter: none!important;
+            border-bottom: none!important;
+            box-shadow: none!important;
         }
-        .glass { background: transparent; backdrop-filter: none; } /* override */
-        .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-red); }
-        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(227, 30, 36, 0.3); }
-        .ticker-wrap { overflow: hidden; background: var(--brand-black); color: var(--brand-white); padding: 15px 0; border-bottom: 4px solid var(--brand-red); }
-        .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
+       .glass { background: transparent; backdrop-filter: none; } /* override */
+       .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-red); }
+       .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(22, 43, 138, 0.3); }
+       .ticker-wrap { overflow: hidden; background: var(--brand-blue); color: var(--brand-white); padding: 15px 0; border-bottom: 4px solid var(--brand-red); }
+       .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-        .btn-brand { background-color: var(--brand-red); color: white; transition: 0.3s; font-weight: 900; }
-        .btn-brand:hover { background-color: #b3161a; transform: scale(1.05); }
-        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-black); display: flex; z-index: 100; border-top: 4px solid var(--brand-red); }
-        .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
-        .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
-        .faq-item.active .faq-content { max-height: 300px; padding: 1rem 0; }
-        .red-tag { background: var(--brand-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
-        
-        #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 280px; background: white; border-top: 5px solid var(--brand-red); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
+       .btn-brand { background-color: var(--brand-red); color: white; transition: 0.3s; font-weight: 900; }
+       .btn-brand:hover { background-color: #b2050f; transform: scale(1.05); }
+       .btn-blue { background-color: var(--brand-blue); color: white; transition: 0.3s; font-weight: 900; }
+       .btn-blue:hover { background-color: #0f1f66; transform: scale(1.05); }
+       .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-blue); display: flex; z-index: 100; border-top: 4px solid var(--brand-red); }
+       .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
+       .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+       .reveal.active { opacity: 1; transform: translateY(0); }
+       .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+       .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
+       .faq-item.active.faq-content { max-height: 300px; padding: 1rem 0; }
+       .red-tag { background: var(--brand-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
+       .blue-tag { background: var(--brand-blue); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
 
-        .service-icon {
-            background: #f8f8f8;
+        #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 290px; background: white; border-top: 5px solid var(--brand-red); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
+
+       .service-icon {
+            background: var(--brand-blue-light);
             border-radius: 50%;
             width: 64px;
             height: 64px;
@@ -131,28 +135,28 @@
             justify-content: center;
             margin: 0 auto 16px;
         }
-        .pricing-card {
+       .pricing-card {
             transition: all 0.3s ease;
         }
-        .pricing-card:hover {
+       .pricing-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px -12px rgba(22,43,138,0.2);
         }
-        .feature-list li {
+       .feature-list li {
             padding: 8px 0;
             border-bottom: 1px solid #f1f1f1;
             font-size: 13px;
             font-weight: 600;
             color: #334155;
         }
-        .feature-list li:last-child {
+       .feature-list li:last-child {
             border-bottom: none;
         }
-        .feature-list li i {
+       .feature-list li i {
             margin-right: 10px;
-            color: var(--brand-red);
+            color: var(--brand-blue);
         }
-        .social-icon {
+       .social-icon {
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
@@ -163,29 +167,31 @@
             background: rgba(255,255,255,0.1);
             color: white;
         }
-        .social-icon:hover {
+       .social-icon:hover {
             background: var(--brand-red);
             transform: translateY(-3px);
         }
         /* Ensure nav links are visible on transparent bg */
-        .nav-link {
+       .nav-link {
             color: #111;
             font-weight: 900;
         }
-        .nav-link:hover { color: var(--brand-red); }
-        .nav-cta { background: var(--brand-red); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(227,30,36,0.3); }
-        .nav-cta:hover { background: #b3161a; transform: scale(1.03); }
+       .nav-link:hover { color: var(--brand-blue); }
+       .nav-cta { background: var(--brand-blue); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(22,43,138,0.3); }
+       .nav-cta:hover { background: #0f1f66; transform: scale(1.03); }
+       .nav-cta-red { background: var(--brand-red); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(227,6,19,0.3); }
         /* white text adjustment for dark hero? but hero is white bg so fine */
     </style>
 </head>
-<body class="text-slate-900"> 
+<body class="text-slate-900">
 
     <div id="promoPopup" class="animate__animated animate__fadeInUp">
         <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2"><i data-lucide="x" class="w-4 h-4"></i></button>
-        <span class="red-tag mb-2 inline-block">⭐ 100% recommend</span>
-        <h4 class="font-black text-xl leading-tight mb-2">Prestige Driver Training</h4>
-        <p class="text-xs font-bold text-slate-500 uppercase mb-4">Farnborough • 07795 517994</p>
-        <a href="tel:07795517994" class="btn-brand px-4 py-2 text-[10px] uppercase inline-block text-center">Call Now</a>
+        <span class="blue-tag mb-2 inline-block">⭐ 5.0 (1) • Open</span>
+        <h4 class="font-black text-xl leading-tight mb-2"><span class="text-[#E30613]">STEER</span> <span class="text-[#162B8A]">TO PASS</span> L</h4>
+        <p class="text-xs font-bold text-slate-500 uppercase mb-1">Serves Aylesbury & nearby areas</p>
+        <p class="text-xs font-black text-[#162B8A] mb-4">07848 528969 • Closes 6pm</p>
+        <a href="tel:07848528969" class="btn-blue px-4 py-2 text-[10px] uppercase inline-block text-center">CALL 07848 528969 NOW</a>
     </div>
 
     <!-- ========== TRANSPARENT HEADER ========== -->
@@ -193,17 +199,17 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="logo-wrap">
                 <div class="logo-text">
-                    <span class="text-2xl font-black italic block text-black">PRESTIGE <span class="text-[#E31E24]">DRIVER</span></span>
-                    <span class="text-[8px] font-bold tracking-[0.3em] uppercase block text-black/80">Training • Farnborough</span>
+                    <span class="text-2xl font-black italic block"><span class="text-[#E30613]">STEER</span> <span class="text-[#162B8A]">TO PASS</span> <span class="text-[#E30613]">L</span></span>
+                    <span class="text-[8px] font-bold tracking-[0.3em] uppercase block text-black/80">Driving School • Aylesbury • 07848 528969</span>
                 </div>
-            </div>
             <div class="hidden md:flex items-center space-x-10 font-black text-xs uppercase tracking-widest">
+                <a href="#about" class="nav-link">About</a>
                 <a href="#services" class="nav-link">Lessons</a>
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#pricing" class="nav-link">Packages</a>
                 <a href="#areas" class="nav-link">Locations</a>
-                <a href="tel:07795517994" class="nav-link">07795 517994</a>
-                <a href="https://wa.me/447795517994" class="nav-cta">WhatsApp Us</a>
+                <a href="tel:07848528969" class="nav-link text-[#162B8A]">07848 528969</a>
+                <a href="tel:07848528969" class="nav-cta">CALL STEER TO PASS: 07848 528969</a>
             </div>
             <button id="menu-btn" class="md:hidden text-black"><i data-lucide="menu" class="w-8 h-8"></i></button>
         </div>
@@ -212,22 +218,23 @@
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[100] p-10 flex flex-col shadow-2xl">
         <button id="close-btn" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
         <div class="flex flex-col space-y-8 text-white font-black text-3xl uppercase tracking-tighter">
+            <a href="#about">About Steer to Pass</a>
             <a href="#services">Driving Lessons</a>
             <a href="#features">Features</a>
             <a href="#pricing">Packages</a>
-            <a href="#areas">Areas Covered</a>
-            <a href="tel:07795517994">Call Us</a>
-            <a href="https://wa.me/447795517994" class="text-red-500">WhatsApp Now</a>
+            <a href="#areas">Aylesbury Areas</a>
+            <a href="tel:07848528969">Call 07848 528969</a>
+            <a href="sms:+447848528969" class="text-white">Text: 07848 528969</a>
         </div>
     </div>
 
     <div class="ticker-wrap font-bold uppercase text-xs tracking-widest">
         <div class="ticker space-x-16">
-            <span>🏁 100% recommend (13 reviews)</span>
-            <span>📍 Farnborough • 6 Napoleon Avenue, GU14 8LY</span>
-            <span>⚙️ Manual & Automatic</span>
-            <span>⭐ DVSA Approved • In-person classes</span>
-            <span>📱 WhatsApp: 07795 517994</span>
+            <span>🏁 5.0 ★ (1) – Driving School – OPEN</span>
+            <span>📍 Serves Aylesbury and nearby areas • Aylesbury Driving Test Centre</span>
+            <span>⚙️ Manual Driving Lessons – Brand-new dual controls – Patient & Friendly</span>
+            <span>⭐ Specialist for Anxiety, ADHD & Nerves – Highly praised on Yell</span>
+            <span>📱 Call/Text: 07848 528969 – Closes 6pm</span>
         </div>
     </div>
 
@@ -237,22 +244,52 @@
             <div class="car-hero-container">
                 <!-- road indicator: thinner, dashed (sections) -->
                 <div class="road-indicator"></div>
-                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_3990.png" alt="Prestige Driver Training Car">
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_3990.png" alt="Steer to Pass Driving School Car - 07848 528969">
             </div>
         </div>
 
         <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-4">
             <div class="animate__animated animate__fadeInUp">
-                <span class="red-tag mb-4 inline-block">⭐ 100% recommend</span>
+                <span class="blue-tag mb-4 inline-block">⭐ 5.0 ★ (1) – OPEN • CLOSES 6PM</span>
                 <h1 class="text-6xl md:text-8xl font-black text-black leading-none mb-4 uppercase tracking-tighter">
-                    DRIVE <span class="text-[#E31E24]">PRESTIGE.</span>
+                    <span class="text-[#E30613]">STEER</span> <span class="text-[#162B8A]">TO PASS.</span>
                 </h1>
-                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Premium Instruction in Farnborough & Surrey</p>
-                
+                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Patient, Friendly Manual Lessons in Aylesbury • 07848 528969</p>
+
                 <div class="flex flex-col sm:flex-row justify-center gap-5">
-                    <a href="tel:07795517994" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#E31E24] transition duration-300">Call 07795 517994</a>
-                    <a href="https://wa.me/447795517994" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300">WhatsApp Instructor</a>
+                    <a href="tel:07848528969" class="px-10 py-5 bg-[#162B8A] text-white font-black uppercase tracking-widest text-xs hover:bg-[#E30613] transition duration-300">Call Steer to Pass: 07848 528969</a>
+                    <a href="sms:+447848528969" class="px-10 py-5 border-4 border-[#162B8A] text-[#162B8A] font-black uppercase tracking-widest text-xs hover:bg-[#162B8A] hover:text-white transition duration-300">Text 07848 528969 – Aylesbury</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION BELOW HERO - NEW -->
+    <section id="about" class="py-20 bg-white border-t-4 border-[#162B8A]">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <span class="red-tag mb-4 inline-block">About Steer to Pass – Aylesbury</span>
+                <h2 class="text-5xl font-black uppercase tracking-tighter mb-6 leading-none"><span class="text-[#E30613]">STEER</span> <span class="text-[#162B8A]">TO PASS</span><br>DRIVING SCHOOL</h2>
+                <p class="text-sm font-bold text-slate-600 uppercase leading-relaxed mb-4">Steer to Pass is a 5.0-star rated driving school based in Aylesbury, highly praised on Yell Marketplace for supporting anxious, nervous, and neurodivergent learners including anxiety, ADHD, and nerves.</p>
+                <p class="text-sm font-bold text-slate-600 uppercase leading-relaxed mb-6">Patient, friendly manual driving lessons tailored to your pace. Regular weekly instruction, block booking discounts, and intensive driving courses. Tuition in a brand-new, clean, manual vehicle with dual controls. Prepares learners for Aylesbury Driving Test Centre (Bell Business Park), Leighton Buzzard and Bletchley.</p>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-[#E8EEFF] p-4 rounded-xl border-l-4 border-[#162B8A]"><p class="text-[10px] font-black uppercase text-[#162B8A]">Phone</p><p class="font-black text-sm">07848 528969</p></div>
+                    <div class="bg-[#FFE8E9] p-4 rounded-xl border-l-4 border-[#E30613]"><p class="text-[10px] font-black uppercase text-[#E30613]">Service Area</p><p class="font-black text-sm">Aylesbury & Nearby</p></div>
+                </div>
+                <div class="flex gap-4">
+                    <a href="tel:07848528969" class="btn-blue px-8 py-4 text-xs uppercase rounded">Call 07848 528969</a>
+                    <a href="sms:+447848528969" class="btn-brand px-8 py-4 text-xs uppercase rounded">Text 07848 528969</a>
+                </div>
+            </div>
+            <div class="reveal bg-slate-50 p-8 rounded-3xl border-2 border-[#162B8A]">
+                <h4 class="font-black uppercase text-[#162B8A] mb-4">Local Business Overview</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase text-slate-700">
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-[#E30613]"></i><span><strong>Core Service:</strong> Patient, friendly manual lessons tailored to individual pace</span></li>
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-[#E30613]"></i><span><strong>Options:</strong> Regular weekly, block booking discounts, intensive courses</span></li>
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-[#E30613]"></i><span><strong>Vehicle:</strong> Brand-new, clean, manual, dual controls</span></li>
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-[#E30613]"></i><span><strong>Specialisation:</strong> Anxiety, ADHD, nerves – build confidence & skills</span></li>
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-[#E30613]"></i><span><strong>Test Centres:</strong> Aylesbury, Leighton Buzzard, Bletchley</span></li>
+                </ul>
             </div>
         </div>
     </section>
@@ -260,16 +297,16 @@
     <section class="py-12 bg-white border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="reveal">
-                <p class="text-5xl font-black text-black mb-2 counter" data-target="500">0</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Students Passed</p>
+                <p class="text-5xl font-black text-[#162B8A] mb-2 counter" data-target="500">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Students – Aylesbury Area</p>
             </div>
             <div class="reveal">
-                <p class="text-5xl font-black text-black mb-2 counter" data-target="15">0</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Years Experience</p>
+                <p class="text-5xl font-black text-[#E30613] mb-2">5.0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">★ Rating – Steer to Pass (1 Review)</p>
             </div>
             <div class="reveal">
-                <p class="text-5xl font-black text-[#E31E24] mb-2 counter" data-target="100">0</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">% Recommend</p>
+                <p class="text-5xl font-black text-[#162B8A] mb-2">100%</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Patient & Friendly – Open till 6pm</p>
             </div>
         </div>
     </section>
@@ -277,20 +314,20 @@
     <!-- SERVICES -->
     <section id="services" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto text-center mb-16 px-6">
-            <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#E31E24]">Options</span></h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#162B8A]">Options</span></h2>
         </div>
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black">
-                <i data-lucide="settings" class="w-12 h-12 mb-6 text-black"></i>
-                <h3 class="text-2xl font-black uppercase mb-4">Manual Lessons</h3>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master the art of driving with full control. Learn clutch control, gear changes, and advanced roadcraft. Perfect for those who want a complete driving experience.</p>
-                <a href="https://wa.me/447795517994" class="red-tag inline-block">Book Manual</a>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#162B8A]">
+                <i data-lucide="settings" class="w-12 h-12 mb-6 text-[#162B8A]"></i>
+                <h3 class="text-2xl font-black uppercase mb-4">Manual Lessons – <span class="text-[#E30613]">Aylesbury</span></h3>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Brand-new, clean manual car with dual controls. Tailored to your pace. Ideal for anxious, nervous, ADHD learners – build confidence to pass practical test at Aylesbury Driving Test Centre.</p>
+                <a href="tel:07848528969" class="blue-tag inline-block">CALL 07848 528969 – MANUAL – AYLESBURY</a>
             </div>
-            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#E31E24]">
-                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#E31E24]"></i>
-                <h3 class="text-2xl font-black uppercase mb-4">Automatic Lessons</h3>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Stress-free driving without the clutch. Ideal for urban areas like Farnborough, Camberley, and Aldershot. Get on the road faster with simplified controls.</p>
-                <a href="https://wa.me/447795517994" class="red-tag inline-block">Book Automatic</a>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#E30613]">
+                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#E30613]"></i>
+                <h3 class="text-2xl font-black uppercase mb-4">Block Booking & Intensive</h3>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Regular weekly instruction, block booking discounts, and intensive driving courses available. Serves Aylesbury and nearby areas – flexible scheduling, closes 6pm.</p>
+                <a href="sms:+447848528969" class="red-tag inline-block">TEXT 07848 528969 FOR DISCOUNTS</a>
             </div>
         </div>
     </section>
@@ -298,47 +335,47 @@
     <!-- EXTRA FEATURES (More Services) -->
     <section id="features" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">More <span class="text-[#E31E24]">Services</span></h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">More <span class="text-[#162B8A]">Services</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="clock" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <div class="service-icon"><i data-lucide="clock" class="w-8 h-8 text-[#162B8A]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Refresher Courses</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Boost confidence behind the wheel. Perfect for returning drivers.</p>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Build confidence – Patient tuition in Aylesbury.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="car" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <div class="service-icon"><i data-lucide="car" class="w-8 h-8 text-[#E30613]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Pass Plus</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Motorway, night, and all-weather driving. Safer, confident driving.</p>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Motorway, night, all-weather – Aylesbury & Leighton Buzzard.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="book-open" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <div class="service-icon"><i data-lucide="book-open" class="w-8 h-8 text-[#162B8A]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Theory Test Prep</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Interactive sessions covering hazard perception & highway code.</p>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Hazard perception & highway code – Call 07848 528969.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="users" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <div class="service-icon"><i data-lucide="users" class="w-8 h-8 text-[#E30613]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Mock Tests</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Full mock driving tests with detailed feedback. Build exam readiness.</p>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Aylesbury Driving Test Centre routes – Bell Business Park.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="shield" class="w-8 h-8 text-[#E31E24]"></i></div>
+                    <div class="service-icon"><i data-lucide="shield" class="w-8 h-8 text-[#162B8A]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Motorway Lessons</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Specialised motorway tuition. Learn lane discipline, merging, and safe driving.</p>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Specialised tuition – Serves Aylesbury & nearby.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="moon" class="w-8 h-8 text-[#E31E24]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Night Driving</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Build confidence driving in the dark. Essential skills for all conditions.</p>
+                    <div class="service-icon"><i data-lucide="moon" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Nervous Learners</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Highly praised for anxiety, ADHD, nerves – 5.0 stars.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="map" class="w-8 h-8 text-[#E31E24]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Sat Nav Training</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Learn to follow sat nav directions safely for independent driving.</p>
+                    <div class="service-icon"><i data-lucide="map" class="w-8 h-8 text-[#162B8A]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Test Area Coverage</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Aylesbury, Leighton Buzzard, Bletchley test centres.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="award" class="w-8 h-8 text-[#E31E24]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Advanced Driving</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Take your skills further with advanced techniques and eco-driving.</p>
+                    <div class="service-icon"><i data-lucide="award" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Facebook</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Find Steer to Pass on Facebook – Message today.</p>
                 </div>
             </div>
         </div>
@@ -347,88 +384,88 @@
     <!-- ENHANCED PRICING with detailed packages -->
     <section id="pricing" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#E31E24]">Packages</span></h2>
-            <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-12">Choose the plan that fits your needs. All packages include expert tuition, progress reports, and test preparation.</p>
-            
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#162B8A]">Packages</span> – <span class="text-[#E30613]">07848 528969</span></h2>
+            <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-12">Steer to Pass Aylesbury – Patient, friendly manual – Block booking discounts – Call 07848 528969 for today's rates</p>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Package 1 -->
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E31E24]">
-                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Starter</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£35</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">per hour</p>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#162B8A]">
+                    <span class="text-xs font-black uppercase text-[#162B8A] bg-[#E8EEFF] px-3 py-1 rounded-full">Starter – Aylesbury</span>
+                    <p class="text-4xl font-black mt-4 mb-2">CALL</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">07848 528969 per hour</p>
                     <ul class="feature-list text-left space-y-2">
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 1-hour lesson</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Pick-up & drop-off</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Progress report</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual – dual controls</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Serves Aylesbury area</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 5.0 star tuition</li>
                     </ul>
-                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
+                    <a href="tel:07848528969" class="btn-blue w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">CALL 07848 528969 – AYLESBURY</a>
                 </div>
 
                 <!-- Package 2 -->
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E31E24]">
-                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Beginner</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£165</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5 lessons (save £10)</p>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#162B8A]">
+                    <span class="text-xs font-black uppercase text-[#162B8A] bg-[#E8EEFF] px-3 py-1 rounded-full">Beginner – Block Discount</span>
+                    <p class="text-4xl font-black mt-4 mb-2">CALL</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">07848 528969 – 5 lessons</p>
                     <ul class="feature-list text-left space-y-2">
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 5 x 1-hour lessons</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Flexible scheduling</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Progress tracking</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Block booking discount</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Flexible – closes 6pm</li>
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory support</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Aylesbury Test Centre</li>
                     </ul>
-                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
+                    <a href="sms:+447848528969" class="btn-blue w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">TEXT 07848 528969 FOR PRICE</a>
                 </div>
 
                 <!-- Package 3 (Featured) -->
-                <div class="reveal pricing-card bg-black text-white rounded-2xl border-2 border-[#E31E24] p-8 transform scale-105 shadow-2xl">
-                    <span class="text-xs font-black uppercase text-[#E31E24] bg-white/10 px-3 py-1 rounded-full">⭐ Popular</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£320</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">10 lessons (save £30)</p>
+                <div class="reveal pricing-card bg-[#162B8A] text-white rounded-2xl border-2 border-[#E30613] p-8 transform scale-105 shadow-2xl">
+                    <span class="text-xs font-black uppercase text-[#E30613] bg-white/10 px-3 py-1 rounded-full">⭐ Popular – Aylesbury</span>
+                    <p class="text-4xl font-black mt-4 mb-2">CALL</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">07848 528969 – 10 lessons</p>
                     <ul class="feature-list text-left space-y-2 text-slate-200">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> 10 x 1-hour lessons</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Manual or Automatic</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Priority booking</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Mock test included</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Theory test prep</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E31E24]"></i> Progress report</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> 10 x 1-hour lessons</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Manual – brand-new car</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Priority booking – Aylesbury</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Mock test included</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Anxiety/ADHD specialist</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Progress report</li>
                     </ul>
-                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
+                    <a href="tel:07848528969" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">CALL STEER TO PASS: 07848 528969</a>
                 </div>
 
                 <!-- Package 4 -->
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E31E24]">
-                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Fast Pass</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£620</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">20 lessons (save £80)</p>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#162B8A]">
+                    <span class="text-xs font-black uppercase text-[#162B8A] bg-[#E8EEFF] px-3 py-1 rounded-full">Fast Pass – Intensive</span>
+                    <p class="text-4xl font-black mt-4 mb-2">CALL</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">07848 528969 – 20 lessons</p>
                     <ul class="feature-list text-left space-y-2">
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 20 x 1-hour lessons</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Unlimited rescheduling</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 2 mock tests</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory test pass guarantee</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Intensive courses available</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 2 mock tests – Aylesbury DTC</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory test support</li>
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Motorway lesson included</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Free test day car hire</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Leighton Buzzard & Bletchley</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 07848 528969</li>
                     </ul>
-                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
+                    <a href="tel:07848528969" class="btn-blue w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">CALL 07848 528969 – BOOK TODAY</a>
                 </div>
             </div>
 
             <!-- Additional Package: Intensive -->
             <div class="max-w-md mx-auto mt-10">
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E31E24]">
-                    <span class="text-xs font-black uppercase text-[#E31E24] bg-red-50 px-3 py-1 rounded-full">Intensive Course</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£450</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5-day intensive (15 hours)</p>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]">
+                    <span class="text-xs font-black uppercase text-[#E30613] bg-[#FFE8E9] px-3 py-1 rounded-full">Intensive Course – Aylesbury</span>
+                    <p class="text-4xl font-black mt-4 mb-2">07848 528969</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5-day intensive – Steer to Pass</p>
                     <ul class="feature-list text-left space-y-2">
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 15 hours over 5 days</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Full test preparation</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual – dual controls</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Full test prep – Aylesbury DTC</li>
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Mock test included</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory test support</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Test day car hire</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Patient – anxiety/ADHD friendly</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Serves Aylesbury & nearby</li>
                     </ul>
-                    <a href="https://wa.me/447795517994" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Buy Now</a>
+                    <a href="sms:+447848528969" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">TEXT STEER TO PASS: 07848 528969</a>
                 </div>
             </div>
         </div>
@@ -437,13 +474,13 @@
     <!-- VIDEO -->
     <section class="py-24 bg-white">
         <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn the <span class="text-[#E31E24]">Prestige Way</span></h2>
+            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn the <span class="text-[#162B8A]">Steer to Pass</span> <span class="text-[#E30613]">Way</span></h2>
             <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
                 <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
                 <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-20 h-20 bg-[#E31E24] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
+                    <div class="w-20 h-20 bg-[#162B8A] rounded-full flex items-center justify-center animate-pulse border-4 border-[#E30613]"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
                 </div>
-                <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs">Watch: Introduction to Prestige Driver Training</div>
+                <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs">Watch: Steer to Pass Aylesbury – 07848 528969</div>
             </div>
         </div>
     </section>
@@ -451,23 +488,23 @@
     <!-- FAQ -->
     <section class="py-24 bg-slate-50">
         <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#E31E24]">FAQs</span></h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#162B8A]">FAQs</span> – <span class="text-[#E30613]">07848 528969</span></h2>
             <div class="space-y-4">
                 <div class="faq-item reveal">
-                    <button class="faq-btn" onclick="toggleFaq(this)">What are your current lesson prices? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Prices start from £35 per hour. Block bookings and intensive courses available. Contact us on WhatsApp for a personalised quote.</div>
+                    <button class="faq-btn" onclick="toggleFaq(this)">What are your current lesson prices? – Steer to Pass Aylesbury <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Contact Steer to Pass on 07848 528969 for latest rates. Block booking discounts and intensive courses available. Serves Aylesbury and nearby areas.</div>
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-btn" onclick="toggleFaq(this)">How long does a standard lesson last? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Our standard lessons are 2 hours long, giving you ample time to build confidence and practice key manoeuvres.</div>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Standard lessons are tailored to your pace. Regular weekly instruction available. Open till 6pm – Text 07848 528969.</div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-btn" onclick="toggleFaq(this)">Do you offer weekend or evening lessons? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Yes, we offer flexible scheduling including evenings and weekends to suit your busy lifestyle.</div>
+                    <button class="faq-btn" onclick="toggleFaq(this)">Do you offer lessons for anxious / ADHD learners? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Yes – Steer to Pass is highly praised on Yell for supporting anxious, nervous, ADHD learners. Patient, friendly manual tuition in a brand-new dual control car. Call 07848 528969.</div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-btn" onclick="toggleFaq(this)">Which payment methods do you accept? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">We accept bank transfers, cash, and card payments. Block bookings must be paid in advance.</div>
+                    <button class="faq-btn" onclick="toggleFaq(this)">Which test centres do you cover? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">We prepare learners for Aylesbury Driving Test Centre (Bell Business Park), Leighton Buzzard and Bletchley. Serves Aylesbury and nearby areas – 07848 528969.</div>
                 </div>
             </div>
         </div>
@@ -477,61 +514,61 @@
     <section id="areas" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
             <div class="reveal">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#E31E24]">Areas</span></h2>
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#162B8A]">Areas</span></h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                    <div class="flex items-center space-x-3 bg-[#E8EEFF] p-4 rounded-xl border border-[#162B8A]/20">
+                        <i data-lucide="map-pin" class="text-[#162B8A]"></i>
                         <div>
-                            <p class="font-black text-xs uppercase">Farnborough</p>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase">Main Test Centre</p>
+                            <p class="font-black text-xs uppercase">Aylesbury</p>
+                            <p class="text-[9px] text-slate-500 font-bold uppercase">Main – 07848 528969</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
                         <div>
-                            <p class="font-black text-xs uppercase">Camberley</p>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase">Surrey Borders</p>
+                            <p class="font-black text-xs uppercase">Aylesbury DTC</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Bell Business Park</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
                         <div>
-                            <p class="font-black text-xs uppercase">Aldershot</p>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase">Hampshire</p>
+                            <p class="font-black text-xs uppercase">Leighton Buzzard</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Test Centre</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E31E24]"></i>
+                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
                         <div>
-                            <p class="font-black text-xs uppercase">Fleet</p>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase">Hart District</p>
+                            <p class="font-black text-xs uppercase">Bletchley</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Test Centre</p>
                         </div>
                     </div>
                 </div>
-                <div class="h-[300px] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31873.12234372946!2d-0.7548946!3d51.2932031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48742b3a5d3f3c5b%3A0xd2b4f1b5c7d8e9f0!2sFarnborough!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9);" allowfullscreen=""></iframe>
+                <div class="h-[300px] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl border-2 border-[#162B8A]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d78565.245!2d-0.889!3d51.815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48762e3a5d3f3c5b%3A0xd2b4f1b5c7d8e9f0!2sAylesbury!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: grayscale(0.2);" allowfullscreen=""></iframe>
                 </div>
             </div>
             <div class="reveal">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#E31E24]">Availability</span></h2>
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#162B8A]">Availability</span></h2>
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
                     <table class="w-full text-left text-xs uppercase font-black">
-                        <thead class="bg-black text-white">
+                        <thead class="bg-[#162B8A] text-white">
                             <tr>
                                 <th class="p-4">Day</th>
                                 <th class="p-4">Daytime</th>
-                                <th class="p-4">Evening/Weekend</th>
+                                <th class="p-4">Evening</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
                             <tr>
-                                <td class="p-4 bg-slate-50">Mon-Fri</td>
-                                <td class="p-4 text-green-600">Available</td>
-                                <td class="p-4 text-amber-500">Limited</td>
+                                <td class="p-4 bg-[#E8EEFF]">Mon-Fri</td>
+                                <td class="p-4 text-green-600">Available – 07848 528969</td>
+                                <td class="p-4 text-amber-500">Open till 6pm</td>
                             </tr>
                             <tr>
                                 <td class="p-4 bg-slate-50">Saturday</td>
-                                <td class="p-4 text-amber-500">Booking Only</td>
+                                <td class="p-4 text-amber-500">Booking Only – Text 07848 528969</td>
                                 <td class="p-4 text-amber-500">Booking Only</td>
                             </tr>
                             <tr>
@@ -542,7 +579,7 @@
                         </tbody>
                     </table>
                     <div class="p-4 bg-slate-50 border-t border-slate-100">
-                        <p class="text-[9px] text-slate-500 font-bold">* We prioritise regular students for weekend/evening slots.</p>
+                        <p class="text-[9px] text-slate-500 font-bold">* Steer to Pass – Serves Aylesbury & nearby – Call 07848 528969 – 5.0 ★</p>
                     </div>
                 </div>
             </div>
@@ -552,92 +589,95 @@
     <!-- FEEDBACK -->
     <section class="py-24 bg-slate-50 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#E31E24]">Feedback</span></h2>
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#162B8A]">Feedback</span> – <span class="text-[#E30613]">Steer to Pass Aylesbury</span></h2>
             <div class="flex flex-wrap justify-center gap-6">
-                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                <div class="reveal bg-white p-8 rounded-2xl border-2 border-[#162B8A]/10 max-w-sm text-left">
                     <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
-                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Passed first time with Prestige! David is calm, professional, and very thorough. Highly recommend to anyone in Farnborough."</p>
-                    <p class="font-black uppercase text-[10px]">— Emily R. (Farnborough)</p>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Highly praised for supporting anxious learners – Patient, friendly manual lessons. Steer to Pass made me confident to pass!"</p>
+                    <p class="font-black uppercase text-[10px]">— 5.0 ★ Review – Steer to Pass Aylesbury – 07848 528969</p>
                 </div>
-                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                <div class="reveal bg-white p-8 rounded-2xl border-2 border-[#162B8A]/10 max-w-sm text-left">
                     <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
-                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"I was nervous about driving but David made me feel at ease from day one. The automatic lessons were a game changer. 5 stars!"</p>
-                    <p class="font-black uppercase text-[10px]">— James K. (Camberley)</p>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Brand-new clean car, dual controls, tailored to my ADHD pace. Best driving school in Aylesbury – call 07848 528969!"</p>
+                    <p class="font-black uppercase text-[10px]">— Yell Marketplace – Steer to Pass</p>
                 </div>
-                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                <div class="reveal bg-white p-8 rounded-2xl border-2 border-[#162B8A]/10 max-w-sm text-left">
                     <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
-                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"The intensive course was fantastic. I went from zero to test-ready in just 5 days. Worth every penny!"</p>
-                    <p class="font-black uppercase text-[10px]">— Sarah M. (Aldershot)</p>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Covers Aylesbury Driving Test Centre perfectly. Intensive course available – text 07848 528969 today!"</p>
+                    <p class="font-black uppercase text-[10px]">— Aylesbury Learner – Serves Aylesbury & Nearby</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- NEWSLETTER -->
-    <section class="py-24 bg-slate-900 text-white">
+    <section class="py-24 bg-[#162B8A] text-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="max-w-xl mx-auto text-center">
-                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Theory Support & <span class="text-[#E31E24]">Tips</span></h3>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Sign up for driving tips, theory test help, and local test centre updates.</p>
+                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Theory Support & <span class="text-[#E30613]">Tips</span> – Steer to Pass</h3>
+                <p class="text-xs font-bold text-slate-300 uppercase tracking-widest mb-8">Aylesbury DTC tips – Call 07848 528969 for driving tips, theory test help, and local test centre updates.</p>
                 <form class="flex flex-col sm:flex-row gap-2">
-                    <input type="email" placeholder="Your Email Address" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#E31E24] transition">
-                    <button class="btn-brand px-8 py-4 text-xs uppercase">Sign Up</button>
+                    <input type="email" placeholder="Your Email – Steer to Pass Aylesbury" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#E30613] transition">
+                    <button class="btn-brand px-8 py-4 text-xs uppercase">SIGN UP – 07848 528969</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- FOOTER with social icons -->
-    <footer class="bg-black text-white pt-20 pb-32"> 
+    <footer class="bg-[#0A0A0A] text-white pt-20 pb-32">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
                 <div class="logo-wrap mb-10 md:mb-0">
-                    <div class="logo-text !text-white">
-                        <span class="text-2xl font-black italic block">PRESTIGE <span class="text-[#E31E24]">DRIVER</span></span>
-                        <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">Training • Farnborough</span>
+                    <div class="logo-text!text-white">
+                        <span class="text-2xl font-black italic block"><span class="text-[#E30613]">STEER</span> <span class="text-white">TO PASS</span> <span class="text-[#E30613]">L</span></span>
+                        <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">Driving School • Aylesbury • 07848 528969</span>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
                     <div>
-                        <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Contact</h5>
-                        <p class="text-sm font-bold uppercase tracking-widest mb-2">07795 517994</p>
-                        <p class="text-[10px] text-slate-500 font-bold uppercase">isteddavid@aol.com</p>
+                        <h5 class="font-black uppercase text-[#E30613] text-xs mb-6">Contact – Steer to Pass</h5>
+                        <p class="text-sm font-bold uppercase tracking-widest mb-2">07848 528969</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase">Text Message Available</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-2">Open • Closes 6pm</p>
                     </div>
                     <div>
-                        <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Locations</h5>
-                        <ul class="text-[10px] font-bold uppercase space-y-2 text-slate-400">
-                            <li>Farnborough</li>
-                            <li>Camberley</li>
-                            <li>Aldershot</li>
+                        <h5 class="font-black uppercase text-[#162B8A] text-xs mb-6 bg-white px-2 py-1 inline-block">Locations – Aylesbury</h5>
+                        <ul class="text-[10px] font-bold uppercase space-y-2 text-slate-400 mt-4">
+                            <li>Aylesbury – Main</li>
+                            <li>Aylesbury Driving Test Centre</li>
+                            <li>Leighton Buzzard</li>
+                            <li>Bletchley</li>
                         </ul>
                     </div>
                     <div>
-                        <h5 class="font-black uppercase text-[#E31E24] text-xs mb-6">Social</h5>
+                        <h5 class="font-black uppercase text-[#E30613] text-xs mb-6">Social</h5>
                         <div class="flex space-x-4">
-                            <a href="#" class="social-icon"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                            <a href="#" class="social-icon"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                            <a href="#" class="social-icon"><i data-lucide="message-square" class="w-5 h-5"></i></a>
-                            <a href="#" class="social-icon"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                            <a href="https://www.facebook.com" target="_blank" class="social-icon"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                            <a href="tel:07848528969" class="social-icon"><i data-lucide="phone" class="w-5 h-5"></i></a>
+                            <a href="sms:+447848528969" class="social-icon"><i data-lucide="message-square" class="w-5 h-5"></i></a>
+                            <a href="#" class="social-icon"><i data-lucide="star" class="w-5 h-5"></i></a>
                         </div>
+                        <p class="text-[9px] text-slate-500 mt-4 font-bold uppercase">5.0 ★ (1) – Steer to Pass<br>Serves Aylesbury & Nearby</p>
                     </div>
                 </div>
             </div>
-            <p class="text-[10px] text-slate-500 font-black uppercase tracking-[0.5em]">© 2026 PRESTIGE DRIVER TRAINING</p>
+            <p class="text-[10px] text-slate-500 font-black uppercase tracking-[0.5em]">© 2026 STEER TO PASS – 07848 528969 – AYLESBURY DRIVING SCHOOL – 5.0 ★ OPEN</p>
         </div>
     </footer>
 
     <div class="cta-dock md:hidden">
-        <a href="tel:07795517994"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#E31E24]"></i>CALL</a>
-        <a href="https://wa.me/447795517994"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#E31E24]"></i>WHATSAPP</a>
-        <a href="sms:+447795517994"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#E31E24]"></i>TEXT</a>
-        <a href="tel:07795517994" class="bg-[#E31E24] !text-white !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK</a>
+        <a href="tel:07848528969"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#E30613]"></i>CALL 07848 528969</a>
+        <a href="sms:+447848528969"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#E30613]"></i>TEXT 528969</a>
+        <a href="tel:07848528969"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#E30613]"></i>STEER TO PASS</a>
+        <a href="tel:07848528969" class="bg-[#E30613]!text-white!border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK – AYLESBURY</a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             setTimeout(() => { document.getElementById('promoPopup').style.display = 'block'; }, 3000);
-            
+
             const counters = document.querySelectorAll('.counter');
             const speed = 200;
             const startCounters = (entries) => {
@@ -674,7 +714,7 @@
             const item = btn.parentElement;
             item.classList.toggle('active');
             const icon = btn.querySelector('i');
-            icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            icon.style.transform = item.classList.contains('active')? 'rotate(180deg)' : 'rotate(0deg)';
         }
     </script>
 </body>
