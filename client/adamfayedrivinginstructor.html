@@ -171,15 +171,15 @@
       padding: 1rem 0;
     }
 
-    /* ----- HERO CONTAINER: REDUCED HEIGHT TO CUT OFF "AI-Generated" TEXT ----- */
+    /* ----- HERO: car at BOTTOM, height trimmed to CUT OFF "AI-Generated" text ----- */
     .car-hero-container {
       position: relative;
       z-index: 10;
       width: 100%;
-      height: 220px;              /* reduced from 420px → cuts off AI text at top */
+      height: 200px;              /* trimmed so car roof/signage is at top edge → cuts off AI text */
       display: flex;
-      align-items: flex-start;    /* car sits at top, so top of car cuts off text */
-      overflow: hidden;
+      align-items: flex-end;      /* car sits at bottom */
+      overflow: hidden;           /* clips everything above the car */
       background: var(--brand-white);
       margin: 0;
       padding: 0;
@@ -188,7 +188,7 @@
       width: 720px;
       height: auto;
       position: absolute;
-      top: 0;                     /* car at very top → signage overlaps text */
+      bottom: 0;                  /* car at bottom → roof/signage at top of container */
       left: 0;
       z-index: 20;
       animation: driveForward 35s linear infinite;
@@ -327,8 +327,8 @@
     </div>
   </div>
 
-  <!-- HERO – REDUCED HEIGHT SO "AI-Generated" TEXT IS CUT OFF BY CAR SIGNAGE -->
-  <section class="relative min-h-[60vh] flex flex-col items-center justify-start bg-white pt-2 pb-6 overflow-hidden">
+  <!-- HERO – car at bottom, height cut so "AI-Generated" text is fully clipped -->
+  <section class="relative min-h-[55vh] flex flex-col items-center justify-start bg-white pt-2 pb-6 overflow-hidden">
     <div class="w-full">
       <div class="car-hero-container">
         <div class="road-indicator"></div>
