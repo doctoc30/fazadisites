@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -170,24 +171,25 @@
       padding: 1rem 0;
     }
 
-    /* ----- HERO: car at BOTTOM, height trimmed to CUT OFF "AI-Generated" text ----- */
+    /* ----- HERO: car more centred, not clipped ----- */
     .car-hero-container {
       position: relative;
       z-index: 10;
       width: 100%;
-      height: 200px;              /* trimmed so car roof/signage is at top edge → cuts off AI text */
+      height: 340px;             /* taller so car sits in middle */
       display: flex;
-      align-items: flex-end;      /* car sits at bottom */
-      overflow: hidden;           /* clips everything above the car */
+      align-items: center;       /* car vertically centred */
+      justify-content: center;
+      overflow: visible;         /* allow full car to show */
       background: var(--brand-white);
       margin: 0;
       padding: 0;
     }
     #panningCar {
-      width: 720px;
+      width: 780px;
       height: auto;
       position: absolute;
-      bottom: 0;                  /* car at bottom → roof/signage at top of container */
+      bottom: 10px;              /* slightly raised from bottom to centre better */
       left: 0;
       z-index: 20;
       animation: driveForward 35s linear infinite;
@@ -198,6 +200,67 @@
       0% { transform: translateX(-200px); }
       100% { transform: translateX(calc(100vw + 200px)); }
     }
+
+    /* ---------- WHEEL ROTATION OVERLAY ---------- */
+    .wheel-overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 780px;
+      height: 100%;
+      z-index: 25;
+      pointer-events: none;
+      animation: driveForward 35s linear infinite;
+      will-change: transform;
+    }
+    .wheel {
+      position: absolute;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #1a1a1a, #0a0a0a);
+      box-shadow: inset 0 0 0 5px #2a2a2a, 0 4px 10px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: spinWheel 0.9s linear infinite;
+      will-change: transform;
+      bottom: 28px;
+    }
+    .wheel::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #444;
+      box-shadow: inset 0 0 0 4px #222;
+    }
+    .wheel::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 12deg,
+        #3a3a3a 12deg,
+        #3a3a3a 14deg,
+        transparent 14deg,
+        transparent 30deg
+      );
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+    .wheel-front { left: 138px; }
+    .wheel-rear { left: 580px; }
+
+    @keyframes spinWheel {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     .road-indicator {
       height: 2px;
       background: transparent;
@@ -326,15 +389,21 @@
     </div>
   </div>
 
-  <!-- HERO – car at bottom, height cut so "AI-Generated" text is fully clipped -->
-  <section class="relative min-h-[55vh] flex flex-col items-center justify-start bg-white pt-2 pb-6 overflow-hidden">
+  <!-- HERO – car centred, not clipped -->
+  <section class="relative min-h-[60vh] flex flex-col items-center justify-start bg-white pt-2 pb-6 overflow-hidden">
     <div class="w-full">
       <div class="car-hero-container">
         <div class="road-indicator"></div>
+        <!-- main car image -->
         <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6691.png" alt="AFDI Car" />
+        <!-- wheel overlay (rotating) – synced with car animation -->
+        <div class="wheel-overlay" style="animation: driveForward 35s linear infinite;">
+          <div class="wheel wheel-front"></div>
+          <div class="wheel wheel-rear"></div>
+        </div>
       </div>
     </div>
-    <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-2">
+    <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-6">
       <div class="animate__animated animate__fadeInUp">
         <span class="red-tag mb-4 inline-block">⭐ 100% recommend</span>
         <h1 class="text-6xl md:text-8xl font-black leading-none mb-4 uppercase tracking-tighter" style="color:var(--brand-navy);">
