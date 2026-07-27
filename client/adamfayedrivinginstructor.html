@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -171,7 +170,7 @@
       padding: 1rem 0;
     }
 
-    /* ----- HERO: car at BOTTOM with rotating wheels ----- */
+    /* ----- HERO: car at BOTTOM, height trimmed to CUT OFF "AI-Generated" text ----- */
     .car-hero-container {
       position: relative;
       z-index: 10;
@@ -188,7 +187,7 @@
       width: 720px;
       height: auto;
       position: absolute;
-      bottom: 0;
+      bottom: 0;                  /* car at bottom → roof/signage at top of container */
       left: 0;
       z-index: 20;
       animation: driveForward 35s linear infinite;
@@ -199,68 +198,6 @@
       0% { transform: translateX(-200px); }
       100% { transform: translateX(calc(100vw + 200px)); }
     }
-
-    /* ---------- WHEEL ROTATION OVERLAY ---------- */
-    .wheel-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 720px;
-      height: 100%;
-      z-index: 25;
-      pointer-events: none;
-      animation: driveForward 35s linear infinite;
-      will-change: transform;
-    }
-    .wheel {
-      position: absolute;
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #1a1a1a, #0a0a0a);
-      box-shadow: inset 0 0 0 4px #2a2a2a, 0 4px 10px rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: spinWheel 0.9s linear infinite;
-      will-change: transform;
-      bottom: 32px;
-    }
-    .wheel::after {
-      content: '';
-      display: block;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #444;
-      box-shadow: inset 0 0 0 3px #222;
-    }
-    /* spoke lines using pseudo */
-    .wheel::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: repeating-conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 12deg,
-        #3a3a3a 12deg,
-        #3a3a3a 14deg,
-        transparent 14deg,
-        transparent 30deg
-      );
-      border-radius: 50%;
-      opacity: 0.7;
-    }
-    .wheel-front { left: 124px; }
-    .wheel-rear { left: 536px; }
-
-    @keyframes spinWheel {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
     .road-indicator {
       height: 2px;
       background: transparent;
@@ -389,18 +326,12 @@
     </div>
   </div>
 
-  <!-- HERO – car at bottom with rotating wheels -->
+  <!-- HERO – car at bottom, height cut so "AI-Generated" text is fully clipped -->
   <section class="relative min-h-[55vh] flex flex-col items-center justify-start bg-white pt-2 pb-6 overflow-hidden">
     <div class="w-full">
       <div class="car-hero-container">
         <div class="road-indicator"></div>
-        <!-- main car image -->
         <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6691.png" alt="AFDI Car" />
-        <!-- wheel overlay (rotating) – synced with car animation -->
-        <div class="wheel-overlay" style="animation: driveForward 35s linear infinite;">
-          <div class="wheel wheel-front"></div>
-          <div class="wheel wheel-rear"></div>
-        </div>
       </div>
     </div>
     <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-2">
