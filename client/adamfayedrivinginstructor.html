@@ -171,16 +171,16 @@
       padding: 1rem 0;
     }
 
-    /* ----- HERO: car more centred, not clipped ----- */
+    /* ----- HERO: car centred, with overlay to hide "AI-Generated" text ----- */
     .car-hero-container {
       position: relative;
       z-index: 10;
       width: 100%;
-      height: 340px;             /* taller so car sits in middle */
+      height: 340px;
       display: flex;
-      align-items: center;       /* car vertically centred */
+      align-items: center;
       justify-content: center;
-      overflow: visible;         /* allow full car to show */
+      overflow: hidden;
       background: var(--brand-white);
       margin: 0;
       padding: 0;
@@ -189,7 +189,7 @@
       width: 780px;
       height: auto;
       position: absolute;
-      bottom: 10px;              /* slightly raised from bottom to centre better */
+      bottom: 10px;
       left: 0;
       z-index: 20;
       animation: driveForward 35s linear infinite;
@@ -201,7 +201,24 @@
       100% { transform: translateX(calc(100vw + 200px)); }
     }
 
-    /* ---------- WHEEL ROTATION OVERLAY ---------- */
+    /* ---------- TRANSPARENT OVERLAY TO HIDE "AI-GENERATED" TEXT ---------- */
+    .ai-blocker {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 30;
+      pointer-events: none;
+      background: transparent;
+      /* mask out the exact area where "AI-Generated" appears (top-right of car image) */
+      -webkit-mask-image: radial-gradient(ellipse 180px 80px at 92% 12%, transparent 70%, black 100%);
+      mask-image: radial-gradient(ellipse 180px 80px at 92% 12%, transparent 70%, black 100%);
+      -webkit-mask-composite: source-out;
+      mask-composite: subtract;
+      background: var(--brand-white); /* same as container background to hide text */
+    }
+
     .wheel-overlay {
       position: absolute;
       bottom: 10px;
@@ -389,14 +406,16 @@
     </div>
   </div>
 
-  <!-- HERO – car centred, not clipped -->
+  <!-- HERO – car centred with AI blocker overlay -->
   <section class="relative min-h-[60vh] flex flex-col items-center justify-start bg-white pt-2 pb-6 overflow-hidden">
     <div class="w-full">
       <div class="car-hero-container">
         <div class="road-indicator"></div>
         <!-- main car image -->
         <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6691.png" alt="AFDI Car" />
-        <!-- wheel overlay (rotating) – synced with car animation -->
+        <!-- transparent blocker to hide "AI-Generated" text -->
+        <div class="ai-blocker"></div>
+        <!-- wheel overlay (rotating) -->
         <div class="wheel-overlay" style="animation: driveForward 35s linear infinite;">
           <div class="wheel wheel-front"></div>
           <div class="wheel wheel-rear"></div>
