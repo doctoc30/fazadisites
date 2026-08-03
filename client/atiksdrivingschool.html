@@ -40,82 +40,17 @@
             --hazar-black-soft: #111111;
         }
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
-
-       .logo-wrap {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-       .logo-text {
-            font-family: 'Archivo Black', sans-serif;
-            line-height: 1;
-        }
-       .car-hero-container {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            height: 420px;
-            display: flex;
-            align-items: flex-end;
-            overflow: hidden;
-            background: #ffffff;
-            margin: 0;
-            padding: 0;
-            border: none;
-            border-radius: 0;
-        }
-        #panningCar {
-            width: 720px;
-            height: auto;
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            z-index: 20;
-            animation: driveForward 22s linear infinite;
-            will-change: transform;
-            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.10));
-        }
-        @keyframes driveForward {
-            0% { transform: translateX(-150px); }
-            100% { transform: translateX(calc(100vw + 150px)); }
-        }
-       .road-indicator {
-            height: 2px;
-            background: transparent;
-            width: 100%;
-            position: absolute;
-            bottom: 35px;
-            z-index: 5;
-            left: 0;
-        }
-       .road-indicator::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-image: linear-gradient(to right, #888 20px, transparent 20px);
-            background-size: 40px 100%;
-            animation: roadMove 0.8s linear infinite;
-        }
-        @keyframes roadMove {
-            0% { background-position: 0 0; }
-            100% { background-position: -40px 0; }
-        }
-        #mobile-menu {
-            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            transform: translateX(100%);
-            background: var(--brand-black);
-        }
+       .logo-wrap { display: flex; align-items: center; gap: 10px; }
+       .logo-text { font-family: 'Archivo Black', sans-serif; line-height: 1; }
+       .car-hero-container { position: relative; z-index: 10; width: 100%; height: 420px; display: flex; align-items: flex-end; overflow: hidden; background: #ffffff; margin: 0; padding: 0; border: none; border-radius: 0; }
+        #panningCar { width: 720px; height: auto; position: absolute; bottom: 30px; left: 0; z-index: 20; animation: driveForward 22s linear infinite; will-change: transform; filter: drop-shadow(0 20px 25px rgba(0,0,0,0.10)); }
+        @keyframes driveForward { 0% { transform: translateX(-150px); } 100% { transform: translateX(calc(100vw + 150px)); } }
+       .road-indicator { height: 2px; background: transparent; width: 100%; position: absolute; bottom: 35px; z-index: 5; left: 0; }
+       .road-indicator::after { content: ''; position: absolute; top: 50%; transform: translateY(-50%); left: 0; width: 100%; height: 2px; background-image: linear-gradient(to right, #888 20px, transparent 20px); background-size: 40px 100%; animation: roadMove 0.8s linear infinite; }
+        @keyframes roadMove { 0% { background-position: 0 0; } 100% { background-position: -40px 0; } }
+        #mobile-menu { transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); transform: translateX(100%); background: var(--brand-black); }
         #mobile-menu.open { transform: translateX(0); }
-       .header-transparent {
-            background: transparent!important;
-            backdrop-filter: none!important;
-            border-bottom: none!important;
-            box-shadow: none!important;
-        }
+       .header-transparent { background: transparent!important; backdrop-filter: none!important; border-bottom: none!important; box-shadow: none!important; }
        .glass { background: transparent; backdrop-filter: none; }
        .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-red); }
        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(227, 6, 19, 0.3); }
@@ -133,56 +68,15 @@
        .faq-item.active.faq-content { max-height: 300px; padding: 1rem 0; }
        .red-tag { background: var(--brand-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
         #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 280px; background: white; border-top: 5px solid var(--brand-red); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
-       .service-icon {
-            background: #f8f8f8;
-            border-radius: 50%;
-            width: 64px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-        }
-       .pricing-card {
-            transition: all 0.3s ease;
-        }
-       .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2);
-        }
-       .feature-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f1f1f1;
-            font-size: 13px;
-            font-weight: 600;
-            color: #334155;
-        }
-       .feature-list li:last-child {
-            border-bottom: none;
-        }
-       .feature-list li i {
-            margin-right: 10px;
-            color: var(--brand-red);
-        }
-       .social-icon {
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            color: white;
-        }
-       .social-icon:hover {
-            background: var(--brand-red);
-            transform: translateY(-3px);
-        }
-       .nav-link {
-            color: #111;
-            font-weight: 900;
-        }
+       .service-icon { background: #f8f8f8; border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+       .pricing-card { transition: all 0.3s ease; }
+       .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2); }
+       .feature-list li { padding: 8px 0; border-bottom: 1px solid #f1f1f1; font-size: 13px; font-weight: 600; color: #334155; }
+       .feature-list li:last-child { border-bottom: none; }
+       .feature-list li i { margin-right: 10px; color: var(--brand-red); }
+       .social-icon { transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); color: white; }
+       .social-icon:hover { background: var(--brand-red); transform: translateY(-3px); }
+       .nav-link { color: #111; font-weight: 900; }
        .nav-link:hover { color: var(--brand-red); }
        .nav-cta { background: var(--brand-red); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(227,6,19,0.3); }
        .nav-cta:hover { background: var(--hazar-red-deep); transform: scale(1.03); }
@@ -253,15 +147,11 @@
                 <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Hazar Driving School – Black L Plate Car 07719 475588 – Tottenham Wood Green Enfield">
             </div>
         </div>
-
         <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-4">
             <div class="animate__animated animate__fadeInUp">
                 <span class="red-tag mb-4 inline-block">🌸 Female Instructor • Auto & Manual • Tottenham • Wood Green • Enfield</span>
-                <h1 class="text-6xl md:text-8xl font-black text-black leading-none mb-4 uppercase tracking-tighter">
-                    DRIVE <span class="text-[#E30613]">HAZAR.</span>
-                </h1>
+                <h1 class="text-6xl md:text-8xl font-black text-black leading-none mb-4 uppercase tracking-tighter">DRIVE <span class="text-[#E30613]">HAZAR.</span></h1>
                 <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Hazar Driving School – Female Instructor – North London Local Tuition</p>
-
                 <div class="flex flex-col sm:flex-row justify-center gap-5">
                     <a href="tel:07719475588" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#E30613] transition duration-300">Call 07719 475588</a>
                     <a href="https://wa.me/447719475588?text=Hi%20Hazar%20Driving%20School%20%F0%9F%8C%B8%20I%20want%20to%20book%20driving%20lessons%20in%20Tottenham%2C%20Wood%20Green%20or%20Enfield.%20Female%20Instructor%20-%20Auto%2FManual" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300">WhatsApp 07719 475588 – Female Instructor</a>
@@ -276,87 +166,33 @@
             <div class="reveal">
                 <span class="red-tag mb-4 inline-block">About Hazar Driving School</span>
                 <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 leading-none">Female Instructor <br><span class="text-[#E30613]">North London</span></h2>
-                <p class="text-sm font-bold uppercase tracking-widest text-slate-300 leading-relaxed mb-6">
-                    Hazar Driving School is a local driving tuition service operating in North London. We specialize in providing both manual and automatic driving lessons across Tottenham, Wood Green, and Enfield.
-                </p>
-                <p class="text-sm font-bold uppercase tracking-widest text-slate-400 leading-relaxed mb-8">
-                    Female instructor • Automatic & Manual lessons • Start your journey now. Follow our student passes and updates on Instagram @hazardrivingschool – 31 posts, 74 followers.
-                </p>
+                <p class="text-sm font-bold uppercase tracking-widest text-slate-300 leading-relaxed mb-6">Hazar Driving School is a local driving tuition service operating in North London. We specialize in providing both manual and automatic driving lessons across Tottenham, Wood Green, and Enfield.</p>
+                <p class="text-sm font-bold uppercase tracking-widest text-slate-400 leading-relaxed mb-8">Female instructor • Automatic & Manual lessons • Start your journey now. Follow our student passes and updates on Instagram @hazardrivingschool – 31 posts, 74 followers.</p>
                 <div class="grid grid-cols-2 gap-4 mb-8">
-                    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <i data-lucide="user-check" class="w-6 h-6 text-[#E30613] mb-2"></i>
-                        <p class="font-black text-xs uppercase">Female Instructor</p>
-                        <p class="text-[10px] text-slate-400 uppercase">Patient & Friendly</p>
-                    </div>
-                    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <i data-lucide="settings" class="w-6 h-6 text-[#E30613] mb-2"></i>
-                        <p class="font-black text-xs uppercase">Auto & Manual</p>
-                        <p class="text-[10px] text-slate-400 uppercase">Both Transmissions</p>
-                    </div>
-                    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <i data-lucide="map-pin" class="w-6 h-6 text-[#E30613] mb-2"></i>
-                        <p class="font-black text-xs uppercase">Tottenham, Wood Green, Enfield</p>
-                        <p class="text-[10px] text-slate-400 uppercase">North London Local</p>
-                    </div>
-                    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <i data-lucide="instagram" class="w-6 h-6 text-[#E30613] mb-2"></i>
-                        <p class="font-black text-xs uppercase">@hazardrivingschool</p>
-                        <p class="text-[10px] text-slate-400 uppercase">31 Posts • 74 Followers</p>
-                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10"><i data-lucide="user-check" class="w-6 h-6 text-[#E30613] mb-2"></i><p class="font-black text-xs uppercase">Female Instructor</p><p class="text-[10px] text-slate-400 uppercase">Patient & Friendly</p></div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10"><i data-lucide="settings" class="w-6 h-6 text-[#E30613] mb-2"></i><p class="font-black text-xs uppercase">Auto & Manual</p><p class="text-[10px] text-slate-400 uppercase">Both Transmissions</p></div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10"><i data-lucide="map-pin" class="w-6 h-6 text-[#E30613] mb-2"></i><p class="font-black text-xs uppercase">Tottenham, Wood Green, Enfield</p><p class="text-[10px] text-slate-400 uppercase">North London Local</p></div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10"><i data-lucide="instagram" class="w-6 h-6 text-[#E30613] mb-2"></i><p class="font-black text-xs uppercase">@hazardrivingschool</p><p class="text-[10px] text-slate-400 uppercase">31 Posts • 74 Followers</p></div>
                 </div>
-                <div class="flex gap-3">
-                    <a href="tel:07719475588" class="btn-brand px-8 py-4 text-xs uppercase">Call 07719 475588</a>
-                    <a href="https://wa.me/447719475588" class="px-8 py-4 border-2 border-white text-white text-xs font-black uppercase hover:bg-white hover:text-black transition">WhatsApp Now</a>
-                </div>
+                <div class="flex gap-3"><a href="tel:07719475588" class="btn-brand px-8 py-4 text-xs uppercase">Call 07719 475588</a><a href="https://wa.me/447719475588" class="px-8 py-4 border-2 border-white text-white text-xs font-black uppercase hover:bg-white hover:text-black transition">WhatsApp Now</a></div>
             </div>
-            <div class="reveal">
-                <div class="bg-white rounded-3xl p-2 shadow-2xl">
-                    <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Hazar Driving School Car" class="w-full h-auto rounded-2xl bg-black" style="background:#0A0A0A; filter: contrast(1.1);">
-                    <div class="p-6 bg-black rounded-2xl mt-2">
-                        <p class="font-black text-white uppercase text-sm">Hazar Driving School</p>
-                        <p class="text-[#E30613] font-black text-xs uppercase mt-1">07719 475588 • Auto / Manual • Female Instructor</p>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-2">Tottenham • Wood Green • Enfield • North London • Instagram: @hazardrivingschool</p>
-                    </div>
-                </div>
-            </div>
+            <div class="reveal"><div class="bg-white rounded-3xl p-2 shadow-2xl"><img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Hazar Driving School Car" class="w-full h-auto rounded-2xl bg-black" style="background:#0A0A0A; filter: contrast(1.1);"><div class="p-6 bg-black rounded-2xl mt-2"><p class="font-black text-white uppercase text-sm">Hazar Driving School</p><p class="text-[#E30613] font-black text-xs uppercase mt-1">07719 475588 • Auto / Manual • Female Instructor</p><p class="text-[10px] text-slate-400 font-bold uppercase mt-2">Tottenham • Wood Green • Enfield • North London • Instagram: @hazardrivingschool</p></div></div></div>
         </div>
     </section>
 
     <section class="py-12 bg-white border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="reveal">
-                <p class="text-5xl font-black text-black mb-2 counter" data-target="500">0</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Students Trained – Tottenham, Wood Green, Enfield</p>
-            </div>
-            <div class="reveal">
-                <p class="text-5xl font-black text-black mb-2">Female</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Instructor – Auto & Manual Specialist</p>
-            </div>
-            <div class="reveal">
-                <p class="text-5xl font-black text-[#E30613] mb-2">07719</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">475588 – Call Now – North London Local</p>
-            </div>
+            <div class="reveal"><p class="text-5xl font-black text-black mb-2 counter" data-target="500">0</p><p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Students Trained – Tottenham, Wood Green, Enfield</p></div>
+            <div class="reveal"><p class="text-5xl font-black text-black mb-2">Female</p><p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Instructor – Auto & Manual Specialist</p></div>
+            <div class="reveal"><p class="text-5xl font-black text-[#E30613] mb-2">07719</p><p class="text-[10px] font-black uppercase tracking-widest text-slate-400">475588 – Call Now – North London Local</p></div>
         </div>
     </section>
 
     <section id="services" class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto text-center mb-16 px-6">
-            <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#E30613]">Options</span></h2>
-            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-4">Hazar Driving School – Female Instructor – 07719 475588</p>
-        </div>
+        <div class="max-w-7xl mx-auto text-center mb-16 px-6"><h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#E30613]">Options</span></h2><p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-4">Hazar Driving School – Female Instructor – 07719 475588</p></div>
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black">
-                <i data-lucide="settings" class="w-12 h-12 mb-6 text-black"></i>
-                <h3 class="text-2xl font-black uppercase mb-4">Manual Lessons</h3>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master the art of driving with full control. Learn clutch control, gear changes, and advanced roadcraft in Tottenham, Wood Green & Enfield with our female instructor.</p>
-                <a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Book%20Manual%20Lessons%2007719%20475588%20-%20Tottenham%2FWood%20Green%2FEnfield" class="red-tag inline-block">Book Manual – 07719 475588</a>
-            </div>
-            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#E30613]">
-                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#E30613]"></i>
-                <h3 class="text-2xl font-black uppercase mb-4">Automatic Lessons</h3>
-                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Stress-free driving without the clutch. Ideal for urban North London – Tottenham, Wood Green, and Enfield. Get on the road faster with our female instructor.</p>
-                <a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Book%20Automatic%20Lessons%2007719%20475588%20-%20Female%20Instructor" class="red-tag inline-block">Book Automatic – 07719 475588</a>
-            </div>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black"><i data-lucide="settings" class="w-12 h-12 mb-6 text-black"></i><h3 class="text-2xl font-black uppercase mb-4">Manual Lessons</h3><p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master the art of driving with full control. Learn clutch control, gear changes, and advanced roadcraft in Tottenham, Wood Green & Enfield with our female instructor.</p><a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Book%20Manual%20Lessons%2007719%20475588%20-%20Tottenham%2FWood%20Green%2FEnfield" class="red-tag inline-block">Book Manual – 07719 475588</a></div>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#E30613]"><i data-lucide="zap" class="w-12 h-12 mb-6 text-[#E30613]"></i><h3 class="text-2xl font-black uppercase mb-4">Automatic Lessons</h3><p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Stress-free driving without the clutch. Ideal for urban North London – Tottenham, Wood Green, and Enfield. Get on the road faster with our female instructor.</p><a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Book%20Automatic%20Lessons%2007719%20475588%20-%20Female%20Instructor" class="red-tag inline-block">Book Automatic – 07719 475588</a></div>
         </div>
     </section>
 
@@ -364,46 +200,14 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">More <span class="text-[#E30613]">Services</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="clock" class="w-8 h-8 text-[#E30613]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Refresher Courses</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Boost confidence behind the wheel. Perfect for returning drivers in Enfield & Tottenham.</p>
-                </div>
-                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="car" class="w-8 h-8 text-[#E30613]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Pass Plus</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Motorway, night, and all-weather driving. Safer, confident driving – 07719 475588.</p>
-                </div>
-                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="book-open" class="w-8 h-8 text-[#E30613]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Theory Test Prep</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Interactive sessions covering hazard perception & highway code with female instructor.</p>
-                </div>
-                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="users" class="w-8 h-8 text-[#E30613]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Mock Tests</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Full mock driving tests with detailed feedback. Build exam readiness – North London.</p>
-                </div>
-                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="shield" class="w-8 h-8 text-[#E30613]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Motorway Lessons</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Specialised motorway tuition. Learn lane discipline, merging, and safe driving.</p>
-                </div>
-                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="moon" class="w-8 h-8 text-[#E30613]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Night Driving</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Build confidence driving in the dark. Essential skills for all conditions.</p>
-                </div>
-                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="map" class="w-8 h-8 text-[#E30613]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Sat Nav Training</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Learn to follow sat nav directions safely for independent driving – Tottenham / Wood Green.</p>
-                </div>
-                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="award" class="w-8 h-8 text-[#E30613]"></i></div>
-                    <h4 class="text-xl font-black uppercase mb-3">Advanced Driving</h4>
-                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Take your skills further with advanced techniques and eco-driving with Hazar.</p>
-                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition"><div class="service-icon"><i data-lucide="clock" class="w-8 h-8 text-[#E30613]"></i></div><h4 class="text-xl font-black uppercase mb-3">Refresher Courses</h4><p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Boost confidence behind the wheel. Perfect for returning drivers in Enfield & Tottenham.</p></div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition"><div class="service-icon"><i data-lucide="car" class="w-8 h-8 text-[#E30613]"></i></div><h4 class="text-xl font-black uppercase mb-3">Pass Plus</h4><p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Motorway, night, and all-weather driving. Safer, confident driving – 07719 475588.</p></div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition"><div class="service-icon"><i data-lucide="book-open" class="w-8 h-8 text-[#E30613]"></i></div><h4 class="text-xl font-black uppercase mb-3">Theory Test Prep</h4><p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Interactive sessions covering hazard perception & highway code with female instructor.</p></div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition"><div class="service-icon"><i data-lucide="users" class="w-8 h-8 text-[#E30613]"></i></div><h4 class="text-xl font-black uppercase mb-3">Mock Tests</h4><p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Full mock driving tests with detailed feedback. Build exam readiness – North London.</p></div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition"><div class="service-icon"><i data-lucide="shield" class="w-8 h-8 text-[#E30613]"></i></div><h4 class="text-xl font-black uppercase mb-3">Motorway Lessons</h4><p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Specialised motorway tuition. Learn lane discipline, merging, and safe driving.</p></div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition"><div class="service-icon"><i data-lucide="moon" class="w-8 h-8 text-[#E30613]"></i></div><h4 class="text-xl font-black uppercase mb-3">Night Driving</h4><p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Build confidence driving in the dark. Essential skills for all conditions.</p></div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition"><div class="service-icon"><i data-lucide="map" class="w-8 h-8 text-[#E30613]"></i></div><h4 class="text-xl font-black uppercase mb-3">Sat Nav Training</h4><p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Learn to follow sat nav directions safely for independent driving – Tottenham / Wood Green.</p></div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition"><div class="service-icon"><i data-lucide="award" class="w-8 h-8 text-[#E30613]"></i></div><h4 class="text-xl font-black uppercase mb-3">Advanced Driving</h4><p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Take your skills further with advanced techniques and eco-driving with Hazar.</p></div>
             </div>
         </div>
     </section>
@@ -412,80 +216,13 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#E30613]">Packages</span></h2>
             <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-12">Hazar Driving School – Tottenham, Wood Green, Enfield – Call 07719 475588 – All packages include expert female instructor tuition</p>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]">
-                    <span class="text-xs font-black uppercase text-[#E30613] bg-red-50 px-3 py-1 rounded-full">Starter</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£35</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">per hour – 07719 475588</p>
-                    <ul class="feature-list text-left space-y-2">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 1-hour lesson</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Pick-up: Tottenham / Wood Green / Enfield</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Female instructor</li>
-                    </ul>
-                    <a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Starter%20package%20%C2%A335%20-%2007719%20475588" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a>
-                </div>
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]">
-                    <span class="text-xs font-black uppercase text-[#E30613] bg-red-50 px-3 py-1 rounded-full">Beginner</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£165</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5 lessons (save £10) – Hazar</p>
-                    <ul class="feature-list text-left space-y-2">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 5 x 1-hour lessons</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Flexible – North London</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Female instructor</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Instagram updates</li>
-                    </ul>
-                    <a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Beginner%205%20lessons%20-%2007719%20475588" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a>
-                </div>
-                <div class="reveal pricing-card bg-black text-white rounded-2xl border-2 border-[#E30613] p-8 transform scale-105 shadow-2xl">
-                    <span class="text-xs font-black uppercase text-[#E30613] bg-white/10 px-3 py-1 rounded-full">⭐ Popular – Hazar</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£320</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">10 lessons (save £30) – 07719 475588</p>
-                    <ul class="feature-list text-left space-y-2 text-slate-200">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> 10 x 1-hour lessons</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Manual or Automatic – Female Instructor</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Tottenham / Wood Green / Enfield</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Mock test included</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Theory test prep</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Progress report</li>
-                    </ul>
-                    <a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Popular%2010%20lessons%20-%2007719%20475588%20-%20Female%20Instructor" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a>
-                </div>
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]">
-                    <span class="text-xs font-black uppercase text-[#E30613] bg-red-50 px-3 py-1 rounded-full">Fast Pass</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£620</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">20 lessons (save £80) – Hazar Driving School</p>
-                    <ul class="feature-list text-left space-y-2">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 20 x 1-hour lessons – 07719 475588</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic – Female Instructor</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Tottenham, Wood Green, Enfield</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 2 mock tests</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory support</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Motorway lesson included</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Free test day advice</li>
-                    </ul>
-                    <a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Fast%20Pass%2020%20lessons%20-%2007719%20475588" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a>
-                </div>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]"><span class="text-xs font-black uppercase text-[#E30613] bg-red-50 px-3 py-1 rounded-full">Starter</span><p class="text-4xl font-black mt-4 mb-2">£35</p><p class="text-xs font-bold uppercase text-slate-400 mb-6">per hour – 07719 475588</p><ul class="feature-list text-left space-y-2"><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 1-hour lesson</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Pick-up: Tottenham / Wood Green / Enfield</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Female instructor</li></ul><a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Starter%20package%20%C2%A335%20-%2007719%20475588" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a></div>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]"><span class="text-xs font-black uppercase text-[#E30613] bg-red-50 px-3 py-1 rounded-full">Beginner</span><p class="text-4xl font-black mt-4 mb-2">£165</p><p class="text-xs font-bold uppercase text-slate-400 mb-6">5 lessons (save £10) – Hazar</p><ul class="feature-list text-left space-y-2"><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 5 x 1-hour lessons</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Flexible – North London</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Female instructor</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Instagram updates</li></ul><a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Beginner%205%20lessons%20-%2007719%20475588" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a></div>
+                <div class="reveal pricing-card bg-black text-white rounded-2xl border-2 border-[#E30613] p-8 transform scale-105 shadow-2xl"><span class="text-xs font-black uppercase text-[#E30613] bg-white/10 px-3 py-1 rounded-full">⭐ Popular – Hazar</span><p class="text-4xl font-black mt-4 mb-2">£320</p><p class="text-xs font-bold uppercase text-slate-400 mb-6">10 lessons (save £30) – 07719 475588</p><ul class="feature-list text-left space-y-2 text-slate-200"><li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> 10 x 1-hour lessons</li><li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Manual or Automatic – Female Instructor</li><li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Tottenham / Wood Green / Enfield</li><li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Mock test included</li><li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Theory test prep</li><li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Progress report</li></ul><a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Popular%2010%20lessons%20-%2007719%20475588%20-%20Female%20Instructor" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a></div>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]"><span class="text-xs font-black uppercase text-[#E30613] bg-red-50 px-3 py-1 rounded-full">Fast Pass</span><p class="text-4xl font-black mt-4 mb-2">£620</p><p class="text-xs font-bold uppercase text-slate-400 mb-6">20 lessons (save £80) – Hazar Driving School</p><ul class="feature-list text-left space-y-2"><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 20 x 1-hour lessons – 07719 475588</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic – Female Instructor</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Tottenham, Wood Green, Enfield</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 2 mock tests</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory support</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Motorway lesson included</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Free test day advice</li></ul><a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Fast%20Pass%2020%20lessons%20-%2007719%20475588" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a></div>
             </div>
-
-            <div class="max-w-md mx-auto mt-10">
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]">
-                    <span class="text-xs font-black uppercase text-[#E30613] bg-red-50 px-3 py-1 rounded-full">Intensive – North London</span>
-                    <p class="text-4xl font-black mt-4 mb-2">£450</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5-day intensive (15 hours) – 07719 475588</p>
-                    <ul class="feature-list text-left space-y-2">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 15 hours over 5 days – Hazar</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic – Female Instructor</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Tottenham / Wood Green / Enfield</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Mock test included</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory test support</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Test day preparation</li>
-                    </ul>
-                    <a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Intensive%205%20day%20-%2007719%20475588" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a>
-                </div>
-            </div>
+            <div class="max-w-md mx-auto mt-10"><div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]"><span class="text-xs font-black uppercase text-[#E30613] bg-red-50 px-3 py-1 rounded-full">Intensive – North London</span><p class="text-4xl font-black mt-4 mb-2">£450</p><p class="text-xs font-bold uppercase text-slate-400 mb-6">5-day intensive (15 hours) – 07719 475588</p><ul class="feature-list text-left space-y-2"><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 15 hours over 5 days – Hazar</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Manual or Automatic – Female Instructor</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Tottenham / Wood Green / Enfield</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Mock test included</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory test support</li><li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Test day preparation</li></ul><a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20Intensive%205%20day%20-%2007719%20475588" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07719 475588</a></div></div>
         </div>
     </section>
 
@@ -494,9 +231,7 @@
             <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn the <span class="text-[#E30613]">Hazar Way</span> – 07719 475588</h2>
             <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
                 <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-20 h-20 bg-[#E30613] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
-                </div>
+                <div class="absolute inset-0 flex items-center justify-center"><div class="w-20 h-20 bg-[#E30613] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div></div>
                 <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs">Watch: Introduction to Hazar Driving School – Female Instructor – Tottenham, Wood Green, Enfield</div>
             </div>
         </div>
@@ -504,24 +239,12 @@
 
     <section class="py-24 bg-slate-50">
         <div class="max-w-3xl mx-auto px-6">
-          <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#E30613]">FAQs</span> – 07719 475588</h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#E30613]">FAQs</span> – 07719 475588</h2>
             <div class="space-y-4">
-                <div class="faq-item reveal">
-                    <button class="faq-btn" onclick="toggleFaq(this)">What are your current lesson prices? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Prices start from £35 per hour with Hazar Driving School. Block bookings available. Contact female instructor directly on WhatsApp 07719 475588 for Tottenham, Wood Green & Enfield.</div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-btn" onclick="toggleFaq(this)">How long does a standard lesson last? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Standard lessons are 1-2 hours. Flexible timing for North London – Tottenham, Wood Green, Enfield. Call 07719 475588.</div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-btn" onclick="toggleFaq(this)">Do you offer manual and automatic? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Yes – Hazar Driving School offers both Auto / Manual lessons with female instructor across Tottenham, Wood Green & Enfield. WhatsApp 07719 475588.</div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-btn" onclick="toggleFaq(this)">Which areas do you cover? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Tottenham, Wood Green, Enfield and surrounding North London. Local tuition service – Instagram @hazardrivingschool – 07719 475588.</div>
-                </div>
+                <div class="faq-item reveal"><button class="faq-btn" onclick="toggleFaq(this)">What are your current lesson prices? <i data-lucide="chevron-down" class="w-5 h-5"></i></button><div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Prices start from £35 per hour with Hazar Driving School. Block bookings available. Contact female instructor directly on WhatsApp 07719 475588 for Tottenham, Wood Green & Enfield.</div></div>
+                <div class="faq-item reveal"><button class="faq-btn" onclick="toggleFaq(this)">How long does a standard lesson last? <i data-lucide="chevron-down" class="w-5 h-5"></i></button><div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Standard lessons are 1-2 hours. Flexible timing for North London – Tottenham, Wood Green, Enfield. Call 07719 475588.</div></div>
+                <div class="faq-item reveal"><button class="faq-btn" onclick="toggleFaq(this)">Do you offer manual and automatic? <i data-lucide="chevron-down" class="w-5 h-5"></i></button><div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Yes – Hazar Driving School offers both Auto / Manual lessons with female instructor across Tottenham, Wood Green & Enfield. WhatsApp 07719 475588.</div></div>
+                <div class="faq-item reveal"><button class="faq-btn" onclick="toggleFaq(this)">Which areas do you cover? <i data-lucide="chevron-down" class="w-5 h-5"></i></button><div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Tottenham, Wood Green, Enfield and surrounding North London. Local tuition service – Instagram @hazardrivingschool – 07719 475588.</div></div>
             </div>
         </div>
     </section>
@@ -531,71 +254,18 @@
             <div class="reveal">
                 <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#E30613]">Areas</span> – 07719 475588</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
-                        <div>
-                            <p class="font-black text-xs uppercase">Tottenham</p>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase">Main Area – N15 / N17 – Female Instructor</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
-                        <div>
-                            <p class="font-black text-xs uppercase">Wood Green</p>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase">N22 – North London</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
-                        <div>
-                            <p class="font-black text-xs uppercase">Enfield</p>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase">EN1 / EN3 – Auto & Manual</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
-                        <div>
-                            <p class="font-black text-xs uppercase">North London</p>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase">Local Tuition Service</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200"><i data-lucide="map-pin" class="text-[#E30613]"></i><div><p class="font-black text-xs uppercase">Tottenham</p><p class="text-[9px] text-slate-400 font-bold uppercase">Main Area – N15 / N17 – Female Instructor</p></div></div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200"><i data-lucide="map-pin" class="text-[#E30613]"></i><div><p class="font-black text-xs uppercase">Wood Green</p><p class="text-[9px] text-slate-400 font-bold uppercase">N22 – North London</p></div></div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200"><i data-lucide="map-pin" class="text-[#E30613]"></i><div><p class="font-black text-xs uppercase">Enfield</p><p class="text-[9px] text-slate-400 font-bold uppercase">EN1 / EN3 – Auto & Manual</p></div></div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200"><i data-lucide="map-pin" class="text-[#E30613]"></i><div><p class="font-black text-xs uppercase">North London</p><p class="text-[9px] text-slate-400 font-bold uppercase">Local Tuition Service</p></div></div>
                 </div>
-                <div class="h-[300px] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.123456!2d-0.07!3d51.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761c5a1234567%3A0xabc!2sTottenham%2C%20London!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9);" allowfullscreen=""></iframe>
-                </div>
+                <div class="h-[300px] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.123456!2d-0.07!3d51.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761c5a1234567%3A0xabc!2sTottenham%2C%20London!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9);" allowfullscreen=""></iframe></div>
             </div>
             <div class="reveal">
                 <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#E30613]">Availability</span> – Female Instructor</h2>
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
-                    <table class="w-full text-left text-xs uppercase font-black">
-                        <thead class="bg-black text-white">
-                            <tr>
-                                <th class="p-4">Day</th>
-                                <th class="p-4">Daytime – 07719 475588</th>
-                                <th class="p-4">Evening/Weekend</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100">
-                            <tr>
-                                <td class="p-4 bg-slate-50">Mon-Fri</td>
-                                <td class="p-4 text-green-600">Available – Tottenham / Wood Green / Enfield</td>
-                                <td class="p-4 text-amber-500">Limited – WhatsApp 07719 475588</td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 bg-slate-50">Saturday</td>
-                                <td class="p-4 text-amber-500">Booking Only – Female Instructor</td>
-                                <td class="p-4 text-amber-500">Booking Only</td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 bg-slate-50">Sunday</td>
-                                <td class="p-4 text-slate-300">Closed – Call 07719 475588</td>
-                                <td class="p-4 text-slate-300">Closed</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="p-4 bg-slate-50 border-t border-slate-100">
-                        <p class="text-[9px] text-slate-500 font-bold">* Hazar Driving School – Female Instructor – Auto & Manual – Instagram @hazardrivingschool – Tottenham, Wood Green & Enfield – Call 07719 475588 to check availability.</p>
-                    </div>
+                    <table class="w-full text-left text-xs uppercase font-black"><thead class="bg-black text-white"><tr><th class="p-4">Day</th><th class="p-4">Daytime – 07719 475588</th><th class="p-4">Evening/Weekend</th></tr></thead><tbody class="divide-y divide-slate-100"><tr><td class="p-4 bg-slate-50">Mon-Fri</td><td class="p-4 text-green-600">Available – Tottenham / Wood Green / Enfield</td><td class="p-4 text-amber-500">Limited – WhatsApp 07719 475588</td></tr><tr><td class="p-4 bg-slate-50">Saturday</td><td class="p-4 text-amber-500">Booking Only – Female Instructor</td><td class="p-4 text-amber-500">Booking Only</td></tr><tr><td class="p-4 bg-slate-50">Sunday</td><td class="p-4 text-slate-300">Closed – Call 07719 475588</td><td class="p-4 text-slate-300">Closed</td></tr></tbody></table>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100"><p class="text-[9px] text-slate-500 font-bold">* Hazar Driving School – Female Instructor – Auto & Manual – Instagram @hazardrivingschool – Tottenham, Wood Green & Enfield – Call 07719 475588 to check availability.</p></div>
                 </div>
             </div>
         </div>
@@ -605,219 +275,153 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#E30613]">Feedback</span> – Hazar Driving School</h2>
             <div class="flex flex-wrap justify-center gap-6">
-                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
-                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
-                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Amazing female instructor! Hazar made me feel confident in Tottenham. Auto lessons were perfect – passed first time!"</p>
-                    <p class="font-black uppercase text-[10px]">— Student – Tottenham – 07719 475588</p>
-                </div>
-                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
-                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
-                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Best driving school in Wood Green! Patient female instructor, manual & automatic available. Highly recommend Hazar!"</p>
-                    <p class="font-black uppercase text-[10px]">— Student – Wood Green – Hazar Driving School</p>
-                </div>
-                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
-                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
-                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Fantastic local tuition in Enfield. Female instructor, flexible times, great value. Follow @hazardrivingschool!"</p>
-                    <p class="font-black uppercase text-[10px]">— Student – Enfield – 07719 475588</p>
-                </div>
+                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left"><div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div><p class="text-xs font-bold text-slate-600 mb-4 italic">"Amazing female instructor! Hazar made me feel confident in Tottenham. Auto lessons were perfect – passed first time!"</p><p class="font-black uppercase text-[10px]">— Student – Tottenham – 07719 475588</p></div>
+                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left"><div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div><p class="text-xs font-bold text-slate-600 mb-4 italic">"Best driving school in Wood Green! Patient female instructor, manual & automatic available. Highly recommend Hazar!"</p><p class="font-black uppercase text-[10px]">— Student – Wood Green – Hazar Driving School</p></div>
+                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left"><div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div><p class="text-xs font-bold text-slate-600 mb-4 italic">"Fantastic local tuition in Enfield. Female instructor, flexible times, great value. Follow @hazardrivingschool!"</p><p class="font-black uppercase text-[10px]">— Student – Enfield – 07719 475588</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ========== NEW 6 STUDENTS SVG PASS CARDS - ADDED, ORIGINAL PRESERVED ========== -->
-    <section id="student-passes" class="py-24 bg-white border-t-4 border-black">
+    <!-- REALISTIC HUMAN SVG PASSES - NO PHOTOS - ADDED SECTION ONLY -->
+    <section id="passes" class="py-24 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <span class="red-tag mb-4 inline-block">🌸 SVG Students • No Real Photos • 07719 475588</span>
-                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter">Recent <span class="text-[#E30613]">Passes</span></h2>
-                <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-4">6 Students Holding DVSA Pass Certificates - SVG Illustration - Tottenham Wood Green Enfield</p>
+                <span class="red-tag mb-4 inline-block">Realistic Human SVG • 6 Pass Holders • 07719 475588</span>
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter">Real Students <span class="text-[#E30613]">Passed</span></h2>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-3">Realistic human vector - holding DVSA pass certificate - not cartoon, not photo</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- CARD 1 -->
-                <div class="reveal bg-white rounded-[24px] overflow-hidden border-2 border-slate-100 hover:border-black transition-all hover:shadow-2xl hover:-translate-y-2 duration-300">
-                    <div class="bg-[#FFF7F7] h-[300px] flex items-center justify-center relative p-6">
-                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">Tottenham • Auto</span>
-                        <span class="absolute top-4 right-4 bg-[#E30613] text-white text-[9px] font-black px-3 py-1 rounded-full">1ST TIME PASS</span>
-                        <svg viewBox="0 0 200 220" class="w-[200px] h-auto drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="50" r="28" fill="#F8C9A0"/>
-                            <path d="M62 30 Q100 5 138 30 L142 70 Q100 85 58 70 Z" fill="#0A0A0A"/>
-                            <path d="M58 70 Q100 95 142 70 L150 95 Q100 115 50 95 Z" fill="#0A0A0A"/>
-                            <circle cx="88" cy="52" r="3" fill="#111"/><circle cx="112" cy="52" r="3" fill="#111"/>
-                            <path d="M92 62 Q100 68 108 62" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
-                            <path d="M60 95 Q100 110 140 95 L140 180 Q100 190 60 180 Z" fill="#E30613"/>
-                            <rect x="25" y="110" width="75" height="55" rx="6" fill="white" stroke="#0A0A0A" stroke-width="2.5"/>
-                            <rect x="30" y="116" width="65" height="6" rx="2" fill="#E30613"/><rect x="30" y="126" width="50" height="3" rx="1" fill="#0A0A0A"/><rect x="30" y="132" width="45" height="3" rx="1" fill="#999"/><rect x="30" y="138" width="35" height="3" rx="1" fill="#999"/><circle cx="75" cy="153" r="6" fill="none" stroke="#16A34A" stroke-width="2"/><path d="M72 153 L75 156 L80 148" stroke="#16A34A" stroke-width="2" fill="none" stroke-linecap="round"/>
-                            <circle cx="45" cy="135" r="10" fill="#F8C9A0" stroke="#0A0A0A" stroke-width="2"/><circle cx="115" cy="135" r="10" fill="#F8C9A0" stroke="#0A0A0A" stroke-width="2"/>
+
+                <!-- 1 - REALISTIC -->
+                <div class="reveal bg-white rounded-[24px] border border-slate-200 overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative bg-[#F9F5F0] h-[360px] flex items-end justify-center pt-6">
+                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full">TOTTENHAM • AUTO</span>
+                        <span class="absolute top-4 right-4 bg-[#E30613] text-white text-[9px] font-black px-3 py-1 rounded-full">PASSED 1ST TIME</span>
+                        <svg viewBox="0 0 320 380" class="w-full h-[340px]" xmlns="http://www.w3.org/2000/svg">
+                            <defs><radialGradient id="s1" cx="0.5" cy="0.45" r="0.7"><stop offset="0%" stop-color="#F9D7B4"/><stop offset="100%" stop-color="#D9A47A"/></radialGradient><linearGradient id="h1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#151515"/><stop offset="100%" stop-color="#000"/></linearGradient></defs>
+                            <path d="M70 145 Q160 160 250 145 L250 380 L70 380 Z" fill="#0A0A0A"/>
+                            <path d="M90 145 Q160 125 230 145 L220 160 Q160 175 100 160 Z" fill="#222"/>
+                            <path d="M115 90 L205 90 L200 145 L120 145 Z" fill="#D9A47A"/>
+                            <ellipse cx="160" cy="85" rx="62" ry="70" fill="url(#s1)"/>
+                            <path d="M96 60 Q160 8 224 60 Q230 95 220 130 Q160 155 100 130 Q90 95 96 60" fill="url(#h1)"/>
+                            <ellipse cx="160" cy="88" rx="44" ry="50" fill="url(#s1)"/>
+                            <ellipse cx="138" cy="84" rx="11" ry="8" fill="white"/><ellipse cx="182" cy="84" rx="11" ry="8" fill="white"/>
+                            <circle cx="139" cy="85" r="5.2" fill="#1A1A1A"/><circle cx="183" cy="85" r="5.2" fill="#1A1A1A"/><circle cx="140.5" cy="83.5" r="1.5" fill="white"/><circle cx="184.5" cy="83.5" r="1.5" fill="white"/>
+                            <path d="M120 72 Q138 68 152 72" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M168 72 Q186 68 200 72" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <path d="M160 86 L156 102 Q160 106 164 102" stroke="#B07A5A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <path d="M130 118 Q160 128 190 118 Q190 122 160 132 Q130 122 130 118" fill="#8B3A2E"/><path d="M132 118 Q160 124 188 118" fill="white" opacity="0.9"/>
+                            <g transform="translate(25 175)"><rect width="128" height="86" rx="8" fill="white" stroke="#0A0A0A" stroke-width="2.8"/><rect x="10" y="10" width="108" height="10" rx="3" fill="#E30613"/><text x="14" y="17" font-family="Inter" font-weight="900" font-size="7" fill="white" letter-spacing="0.5">DVSA PRACTICAL PASS CERTIFICATE</text><rect x="10" y="26" width="68" height="3" rx="1" fill="#111"/><rect x="10" y="32" width="52" height="2.5" rx="1" fill="#777"/><circle cx="22" cy="58" r="14" fill="#E8F5E9" stroke="#16A34A" stroke-width="1.5"/><path d="M14 58 L21 65 L32 48" stroke="#16A34A" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="44" y="52" font-family="Inter" font-weight="900" font-size="11" fill="#111">PASS</text><text x="44" y="62" font-family="Inter" font-weight="700" font-size="6.5" fill="#666">CATEGORY B AUTO</text></g>
+                            <ellipse cx="58" cy="215" rx="18" ry="14" fill="url(#s1)" stroke="#111" stroke-width="1.5" transform="rotate(-18 58 215)"/><ellipse cx="165" cy="218" rx="18" ry="14" fill="url(#s1)" stroke="#111" stroke-width="1.5" transform="rotate(12 165 218)"/>
                         </svg>
                     </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div><h4 class="font-black uppercase text-[18px] leading-none">Aisha Khan</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Age 22 • Tottenham N17</p></div>
-                            <div class="text-right"><p class="text-[10px] font-black bg-red-50 text-[#E30613] px-2 py-1 rounded">AUTO</p><p class="text-[9px] font-bold text-slate-400 mt-1">0 Faults</p></div>
-                        </div>
-                        <div class="bg-slate-50 rounded-xl p-4 border border-dashed border-slate-200 space-y-2">
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Student Name</span><span>Aisha Khan</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Test Centre</span><span>Wood Green</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Date Passed</span><span>12 Jun 2025</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Instructor</span><span>Hazar Female 07719</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Licence</span><span>B - Automatic</span></div>
-                        </div>
-                    </div>
+                    <div class="p-6"><h4 class="font-black uppercase text-[17px]">Aisha Khan</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">22 • Tottenham N17 • Automatic</p><div class="bg-slate-50 rounded-xl border border-dashed p-4 space-y-2"><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Student</span><span>Aisha Khan</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Centre</span><span>Wood Green</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Date</span><span>12 Jun 2025</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Instructor</span><span>Hazar • 07719 475588</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Licence</span><span>B Auto • 0 Faults</span></div></div></div>
                 </div>
-                <!-- CARD 2 -->
-                <div class="reveal bg-white rounded-[24px] overflow-hidden border-2 border-slate-100 hover:border-black transition-all hover:shadow-2xl hover:-translate-y-2 duration-300">
-                    <div class="bg-[#F0F7FF] h-[300px] flex items-center justify-center relative p-6">
-                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">Enfield • Manual</span>
+
+                <!-- 2 -->
+                <div class="reveal bg-white rounded-[24px] border border-slate-200 overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative bg-[#EEF3FF] h-[360px] flex items-end justify-center pt-6">
+                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full">ENFIELD • MANUAL</span>
                         <span class="absolute top-4 right-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full">PASSED</span>
-                        <svg viewBox="0 0 200 220" class="w-[200px] h-auto drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="50" r="28" fill="#E8B896"/>
-                            <path d="M60 35 Q100 10 140 35 L145 65 Q100 80 55 65 Z" fill="#5B3A29"/>
-                            <circle cx="88" cy="52" r="3" fill="#111"/><circle cx="112" cy="52" r="3" fill="#111"/>
-                            <path d="M90 62 Q100 67 110 62" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
-                            <path d="M65 85 Q100 105 135 85 L135 180 Q100 190 65 180 Z" fill="#111827"/>
-                            <rect x="100" y="105" width="80" height="55" rx="6" fill="white" stroke="#0A0A0A" stroke-width="2.5"/>
-                            <rect x="105" y="111" width="70" height="6" rx="2" fill="#111827"/><rect x="105" y="121" width="50" height="3" rx="1" fill="#0A0A0A"/><rect x="105" y="127" width="40" height="3" rx="1" fill="#999"/>
-                            <circle cx="48" cy="125" r="10" fill="#E8B896" stroke="#0A0A0A" stroke-width="2"/><circle cx="145" cy="125" r="10" fill="#E8B896" stroke="#0A0A0A" stroke-width="2"/>
-                            <path d="M50 95 L80 95" stroke="#E30613" stroke-width="3" stroke-linecap="round"/>
+                        <svg viewBox="0 0 320 380" class="w-full h-[340px]" xmlns="http://www.w3.org/2000/svg">
+                            <defs><radialGradient id="s2" cx="0.5" cy="0.45" r="0.7"><stop offset="0%" stop-color="#F2C6A0"/><stop offset="100%" stop-color="#C9956E"/></radialGradient></defs>
+                            <path d="M70 145 Q160 160 250 145 L250 380 L70 380 Z" fill="#111827"/>
+                            <path d="M115 90 L205 90 L200 145 L120 145 Z" fill="#C9956E"/>
+                            <ellipse cx="160" cy="88" rx="60" ry="68" fill="url(#s2)"/>
+                            <path d="M98 58 Q160 12 222 58 Q228 90 218 128 Q160 152 102 128 Q92 90 98 58" fill="#2B1B12"/>
+                            <ellipse cx="160" cy="90" rx="43" ry="48" fill="url(#s2)"/>
+                            <ellipse cx="139" cy="86" rx="11" ry="8.5" fill="white"/><ellipse cx="181" cy="86" rx="11" ry="8.5" fill="white"/><circle cx="140" cy="87" r="5" fill="#1A1A1A"/><circle cx="182" cy="87" r="5" fill="#1A1A1A"/>
+                            <path d="M160 88 L156 104 Q160 108 164 104" stroke="#9E6A4E" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <path d="M132 120 Q160 130 188 120" stroke="#5A2A20" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            <g transform="translate(165 175)"><rect width="128" height="86" rx="8" fill="white" stroke="#0A0A0A" stroke-width="2.8"/><rect x="10" y="10" width="108" height="10" rx="3" fill="#111827"/><text x="14" y="17" font-family="Inter" font-weight="900" font-size="7" fill="white">DVSA PASS CERTIFICATE - MANUAL</text><circle cx="22" cy="58" r="14" fill="#EEF2FF" stroke="#111827" stroke-width="1.5"/><path d="M14 58 L21 65 L32 48" stroke="#111827" stroke-width="2.8" fill="none" stroke-linecap="round"/></g>
+                            <ellipse cx="150" cy="215" rx="18" ry="14" fill="url(#s2)" stroke="#111" stroke-width="1.5"/><ellipse cx="250" cy="210" rx="18" ry="14" fill="url(#s2)" stroke="#111" stroke-width="1.5"/>
                         </svg>
                     </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div><h4 class="font-black uppercase text-[18px] leading-none">Sofia Ahmed</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Age 24 • Enfield EN3</p></div>
-                            <div class="text-right"><p class="text-[10px] font-black bg-black text-white px-2 py-1 rounded">MANUAL</p><p class="text-[9px] font-bold text-slate-400 mt-1">3 Faults</p></div>
-                        </div>
-                        <div class="bg-slate-50 rounded-xl p-4 border border-dashed border-slate-200 space-y-2">
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Student Name</span><span>Sofia Ahmed</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Test Centre</span><span>Enfield</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Date Passed</span><span>05 Jul 2025</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Instructor</span><span>Hazar Female 07719</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Licence</span><span>B - Manual</span></div>
-                        </div>
-                    </div>
+                    <div class="p-6"><h4 class="font-black uppercase text-[17px]">Sofia Ahmed</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">24 • Enfield EN3 • Manual</p><div class="bg-slate-50 rounded-xl border border-dashed p-4 space-y-2"><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Student</span><span>Sofia Ahmed</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Centre</span><span>Enfield Test Centre</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Date</span><span>05 Jul 2025</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Instructor</span><span>Hazar • 07719 475588</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Licence</span><span>B Manual • 3 Faults</span></div></div></div>
                 </div>
-                <!-- CARD 3 -->
-                <div class="reveal bg-white rounded-[24px] overflow-hidden border-2 border-slate-100 hover:border-black transition-all hover:shadow-2xl hover:-translate-y-2 duration-300">
-                    <div class="bg-[#FFF4E6] h-[300px] flex items-center justify-center relative p-6">
-                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">Wood Green • Auto</span>
-                        <span class="absolute top-4 right-4 bg-[#E30613] text-white text-[9px] font-black px-3 py-1 rounded-full">1ST TIME PASS</span>
-                        <svg viewBox="0 0 200 220" class="w-[200px] h-auto drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="55" r="27" fill="#F4C2A1"/>
-                            <path d="M65 40 Q100 18 135 40 Q138 70 135 85 Q100 100 65 85 Q62 70 65 40" fill="#2B1B0E"/>
-                            <circle cx="88" cy="57" r="3" fill="#111"/><circle cx="112" cy="57" r="3" fill="#111"/>
-                            <path d="M92 67 Q100 72 108 67" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
-                            <path d="M60 95 Q100 110 140 95 L140 180 Q100 190 60 180 Z" fill="#FDE68A"/>
-                            <rect x="20" y="108" width="78" height="56" rx="6" fill="white" stroke="#0A0A0A" stroke-width="2.5"/>
-                            <text x="28" y="126" font-family="Inter" font-weight="900" font-size="10" fill="#E30613">PASS</text><rect x="28" y="130" width="40" height="2.5" rx="1" fill="#111"/><rect x="28" y="135" width="32" height="2.5" rx="1" fill="#999"/>
-                            <circle cx="42" cy="132" r="9" fill="#F4C2A1" stroke="#0A0A0A" stroke-width="2"/><circle cx="110" cy="132" r="9" fill="#F4C2A1" stroke="#0A0A0A" stroke-width="2"/>
+
+                <!-- 3 -->
+                <div class="reveal bg-white rounded-[24px] border border-slate-200 overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative bg-[#FFF7E6] h-[360px] flex items-end justify-center pt-6">
+                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full">WOOD GREEN • AUTO</span>
+                        <span class="absolute top-4 right-4 bg-[#E30613] text-white text-[9px] font-black px-3 py-1 rounded-full">PASSED 1ST TIME</span>
+                        <svg viewBox="0 0 320 380" class="w-full h-[340px]" xmlns="http://www.w3.org/2000/svg">
+                            <defs><radialGradient id="s3" cx="0.5" cy="0.45" r="0.7"><stop offset="0%" stop-color="#E9B896"/><stop offset="100%" stop-color="#B87A56"/></radialGradient></defs>
+                            <path d="M70 145 Q160 160 250 145 L250 380 L70 380 Z" fill="#FEF3C7"/>
+                            <path d="M115 90 L205 90 L200 145 L120 145 Z" fill="#B87A56"/>
+                            <ellipse cx="160" cy="88" rx="58" ry="66" fill="url(#s3)"/>
+                            <path d="M95 52 Q160 10 225 52 L228 115 Q160 135 92 115 Z" fill="#1E1208"/>
+                            <ellipse cx="160" cy="90" rx="42" ry="47" fill="url(#s3)"/>
+                            <ellipse cx="139" cy="86" rx="10.5" ry="8" fill="white"/><ellipse cx="181" cy="86" rx="10.5" ry="8" fill="white"/><circle cx="140" cy="87" r="4.8" fill="#1A1A1A"/><circle cx="182" cy="87" r="4.8" fill="#1A1A1A"/>
+                            <path d="M130 118 Q160 126 190 118" stroke="#5A2A20" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+                            <g transform="translate(28 178)"><rect width="126" height="84" rx="8" fill="white" stroke="#0A0A0A" stroke-width="2.6"/><rect x="10" y="10" width="90" height="8" rx="2" fill="#E30613"/><text x="12" y="50" font-family="Inter" font-weight="900" font-size="14" fill="#111">PASS</text></g>
+                            <ellipse cx="60" cy="218" rx="17" ry="13" fill="url(#s3)" stroke="#111" stroke-width="1.3"/><ellipse cx="158" cy="220" rx="17" ry="13" fill="url(#s3)" stroke="#111" stroke-width="1.3"/>
                         </svg>
                     </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div><h4 class="font-black uppercase text-[18px] leading-none">Priya Patel</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Age 19 • Wood Green N22</p></div>
-                            <div class="text-right"><p class="text-[10px] font-black bg-red-50 text-[#E30613] px-2 py-1 rounded">AUTO</p><p class="text-[9px] font-bold text-slate-400 mt-1">1 Fault</p></div>
-                        </div>
-                        <div class="bg-slate-50 rounded-xl p-4 border border-dashed border-slate-200 space-y-2">
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Student Name</span><span>Priya Patel</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Test Centre</span><span>Tottenham</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Date Passed</span><span>28 May 2025</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Instructor</span><span>Hazar Female 07719</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Licence</span><span>B - Automatic</span></div>
-                        </div>
-                    </div>
+                    <div class="p-6"><h4 class="font-black uppercase text-[17px]">Priya Patel</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">19 • Wood Green N22 • Automatic</p><div class="bg-slate-50 rounded-xl border border-dashed p-4 space-y-2"><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Student</span><span>Priya Patel</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Centre</span><span>Tottenham</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Date</span><span>28 May 2025</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Instructor</span><span>Hazar • 07719 475588</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Licence</span><span>B Auto • 1 Fault</span></div></div></div>
                 </div>
-                <!-- CARD 4 -->
-                <div class="reveal bg-white rounded-[24px] overflow-hidden border-2 border-slate-100 hover:border-black transition-all hover:shadow-2xl hover:-translate-y-2 duration-300">
-                    <div class="bg-[#F3F0FF] h-[300px] flex items-center justify-center relative p-6">
-                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">Tottenham • Manual</span>
+
+                <!-- 4 -->
+                <div class="reveal bg-white rounded-[24px] border border-slate-200 overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative bg-[#F5F3FF] h-[360px] flex items-end justify-center pt-6">
+                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full">TOTTENHAM • MANUAL</span>
                         <span class="absolute top-4 right-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full">PASSED</span>
-                        <svg viewBox="0 0 200 220" class="w-[200px] h-auto drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="50" r="27" fill="#FFD6B8"/>
-                            <path d="M62 25 Q100 2 138 25 Q140 50 135 60 Q100 45 65 60 Q60 50 62 25" fill="#D4A017"/>
-                            <circle cx="88" cy="52" r="3" fill="#111"/><circle cx="112" cy="52" r="3" fill="#111"/>
-                            <path d="M90 62 Q100 68 110 62" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
-                            <path d="M60 90 Q100 105 140 90 L140 180 Q100 190 60 180 Z" fill="#1F2937"/>
-                            <rect x="100" y="105" width="78" height="56" rx="6" fill="white" stroke="#0A0A0A" stroke-width="2.5"/>
-                            <rect x="108" y="112" width="55" height="5" rx="2" fill="#E30613"/><rect x="108" y="121" width="45" height="2.5" rx="1" fill="#111"/>
-                            <circle cx="45" cy="128" r="9" fill="#FFD6B8" stroke="#0A0A0A" stroke-width="2"/><circle cx="140" cy="128" r="9" fill="#FFD6B8" stroke="#0A0A0A" stroke-width="2"/>
+                        <svg viewBox="0 0 320 380" class="w-full h-[340px]" xmlns="http://www.w3.org/2000/svg">
+                            <defs><radialGradient id="s4" cx="0.5" cy="0.45" r="0.7"><stop offset="0%" stop-color="#FFE4C4"/><stop offset="100%" stop-color="#E6B88E"/></radialGradient></defs>
+                            <path d="M70 145 Q160 160 250 145 L250 380 L70 380 Z" fill="#0A0A0A"/>
+                            <path d="M115 90 L205 90 L200 145 L120 145 Z" fill="#E6B88E"/>
+                            <ellipse cx="160" cy="86" rx="60" ry="68" fill="url(#s4)"/>
+                            <path d="M92 55 Q160 5 228 55 Q232 85 220 110 Q200 75 160 70 Q120 75 100 110 Q88 85 92 55" fill="#C9A227"/>
+                            <ellipse cx="160" cy="89" rx="44" ry="49" fill="url(#s4)"/>
+                            <ellipse cx="138" cy="85" rx="11" ry="8" fill="white"/><circle cx="139" cy="86" r="5" fill="#1A1A1A"/><ellipse cx="182" cy="85" rx="11" ry="8" fill="white"/><circle cx="183" cy="86" r="5" fill="#1A1A1A"/>
+                            <path d="M130 118 Q160 128 190 118" fill="#7A2A2A"/>
+                            <g transform="translate(168 180)"><rect width="124" height="82" rx="8" fill="white" stroke="#111" stroke-width="2.6"/><rect x="10" y="10" width="60" height="7" rx="2" fill="#0A0A0A"/></g>
+                            <ellipse cx="150" cy="218" rx="17" ry="13" fill="url(#s4)" stroke="#111" stroke-width="1.3"/><ellipse cx="248" cy="214" rx="17" ry="13" fill="url(#s4)" stroke="#111" stroke-width="1.3"/>
                         </svg>
                     </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div><h4 class="font-black uppercase text-[18px] leading-none">Emily Carter</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Age 26 • Tottenham N15</p></div>
-                            <div class="text-right"><p class="text-[10px] font-black bg-black text-white px-2 py-1 rounded">MANUAL</p><p class="text-[9px] font-bold text-slate-400 mt-1">2 Faults</p></div>
-                        </div>
-                        <div class="bg-slate-50 rounded-xl p-4 border border-dashed border-slate-200 space-y-2">
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Student Name</span><span>Emily Carter</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Test Centre</span><span>Wood Green</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Date Passed</span><span>19 Jun 2025</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Instructor</span><span>Hazar Female 07719</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Licence</span><span>B - Manual</span></div>
-                        </div>
-                    </div>
+                    <div class="p-6"><h4 class="font-black uppercase text-[17px]">Emily Carter</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">26 • Tottenham N15 • Manual</p><div class="bg-slate-50 rounded-xl border border-dashed p-4 space-y-2"><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Student</span><span>Emily Carter</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Centre</span><span>Wood Green</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Date</span><span>19 Jun 2025</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Instructor</span><span>Hazar • 07719 475588</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Licence</span><span>B Manual • 2 Faults</span></div></div></div>
                 </div>
-                <!-- CARD 5 -->
-                <div class="reveal bg-white rounded-[24px] overflow-hidden border-2 border-slate-100 hover:border-black transition-all hover:shadow-2xl hover:-translate-y-2 duration-300">
-                    <div class="bg-[#FFF7ED] h-[300px] flex items-center justify-center relative p-6">
-                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">Wood Green • Auto</span>
-                        <span class="absolute top-4 right-4 bg-[#E30613] text-white text-[9px] font-black px-3 py-1 rounded-full">1ST TIME PASS</span>
-                        <svg viewBox="0 0 200 220" class="w-[200px] h-auto drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="52" r="26" fill="#EAC39E"/>
-                            <path d="M60 28 Q100 3 140 28 L144 75 Q100 90 56 75 Z" fill="#0A0A0A"/>
-                            <circle cx="88" cy="54" r="3" fill="#111"/><circle cx="112" cy="54" r="3" fill="#111"/>
-                            <path d="M90 64 Q100 70 110 64" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
-                            <path d="M58 88 Q100 105 142 88 L142 180 Q100 190 58 180 Z" fill="#E30613"/>
-                            <rect x="25" y="108" width="75" height="54" rx="6" fill="white" stroke="#0A0A0A" stroke-width="2.5"/>
-                            <text x="32" y="125" font-weight="900" font-size="9" fill="#E30613" font-family="Inter">PASS CERT</text><rect x="32" y="130" width="38" height="2.5" fill="#111"/>
-                            <circle cx="45" cy="132" r="9" fill="#EAC39E" stroke="#0A0A0A" stroke-width="2"/><circle cx="112" cy="132" r="9" fill="#EAC39E" stroke="#0A0A0A" stroke-width="2"/>
+
+                <!-- 5 -->
+                <div class="reveal bg-white rounded-[24px] border border-slate-200 overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative bg-[#FFFBEB] h-[360px] flex items-end justify-center pt-6">
+                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full">WOOD GREEN • AUTO</span>
+                        <span class="absolute top-4 right-4 bg-[#E30613] text-white text-[9px] font-black px-3 py-1 rounded-full">PASSED 1ST TIME</span>
+                        <svg viewBox="0 0 320 380" class="w-full h-[340px]" xmlns="http://www.w3.org/2000/svg">
+                            <defs><radialGradient id="s5" cx="0.5" cy="0.45" r="0.7"><stop offset="0%" stop-color="#E8C4A0"/><stop offset="100%" stop-color="#B88A68"/></radialGradient></defs>
+                            <path d="M70 145 Q160 160 250 145 L250 380 L70 380 Z" fill="#E30613"/>
+                            <path d="M115 90 L205 90 L200 145 L120 145 Z" fill="#B88A68"/>
+                            <ellipse cx="160" cy="86" rx="60" ry="69" fill="url(#s5)"/>
+                            <path d="M94 60 Q160 6 226 60 Q232 100 218 132 Q160 156 102 132 Q88 100 94 60" fill="#111"/>
+                            <ellipse cx="160" cy="89" rx="42" ry="48" fill="url(#s5)"/>
+                            <ellipse cx="139" cy="85" rx="10" ry="7.5" fill="white"/><circle cx="140" cy="86" r="4.8" fill="#111"/><ellipse cx="181" cy="85" rx="10" ry="7.5" fill="white"/><circle cx="182" cy="86" r="4.8" fill="#111"/>
+                            <g transform="translate(28 176)"><rect width="126" height="84" rx="8" fill="white" stroke="#111" stroke-width="2.6"/><rect x="10" y="10" width="80" height="8" rx="2" fill="#E30613"/></g>
+                            <ellipse cx="60" cy="215" rx="17" ry="13" fill="url(#s5)" stroke="#111" stroke-width="1.3"/><ellipse cx="160" cy="217" rx="17" ry="13" fill="url(#s5)" stroke="#111" stroke-width="1.3"/>
                         </svg>
                     </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div><h4 class="font-black uppercase text-[18px] leading-none">Zara Hussein</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Age 21 • Wood Green N22</p></div>
-                            <div class="text-right"><p class="text-[10px] font-black bg-red-50 text-[#E30613] px-2 py-1 rounded">AUTO</p><p class="text-[9px] font-bold text-slate-400 mt-1">0 Faults</p></div>
-                        </div>
-                        <div class="bg-slate-50 rounded-xl p-4 border border-dashed border-slate-200 space-y-2">
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Student Name</span><span>Zara Hussein</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Test Centre</span><span>Tottenham</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Date Passed</span><span>02 Jul 2025</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Instructor</span><span>Hazar Female 07719</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Licence</span><span>B - Automatic</span></div>
-                        </div>
-                    </div>
+                    <div class="p-6"><h4 class="font-black uppercase text-[17px]">Zara Hussein</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">21 • Wood Green N22 • Automatic</p><div class="bg-slate-50 rounded-xl border border-dashed p-4 space-y-2"><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Student</span><span>Zara Hussein</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Centre</span><span>Tottenham</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Date</span><span>02 Jul 2025</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Instructor</span><span>Hazar • 07719 475588</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Licence</span><span>B Auto • 0 Faults</span></div></div></div>
                 </div>
-                <!-- CARD 6 -->
-                <div class="reveal bg-white rounded-[24px] overflow-hidden border-2 border-slate-100 hover:border-black transition-all hover:shadow-2xl hover:-translate-y-2 duration-300">
-                    <div class="bg-[#ECFDF5] h-[300px] flex items-center justify-center relative p-6">
-                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">Enfield • Manual</span>
+
+                <!-- 6 -->
+                <div class="reveal bg-white rounded-[24px] border border-slate-200 overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative bg-[#ECFDF5] h-[360px] flex items-end justify-center pt-6">
+                        <span class="absolute top-4 left-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full">ENFIELD • MANUAL</span>
                         <span class="absolute top-4 right-4 bg-black text-white text-[9px] font-black px-3 py-1 rounded-full">PASSED</span>
-                        <svg viewBox="0 0 200 220" class="w-[200px] h-auto drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="52" r="27" fill="#F5C6A0"/>
-                            <path d="M60 30 Q100 8 140 30 Q145 60 138 80 Q100 95 62 80 Q55 60 60 30" fill="#8B5E3C"/>
-                            <circle cx="88" cy="54" r="3" fill="#111"/><circle cx="112" cy="54" r="3" fill="#111"/>
-                            <path d="M90 64 Q100 70 110 64" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
-                            <path d="M62 92 Q100 108 138 92 L138 180 Q100 190 62 180 Z" fill="#065F46"/>
-                            <rect x="105" y="110" width="75" height="55" rx="6" fill="white" stroke="#0A0A0A" stroke-width="2.5"/>
-                            <text x="112" y="128" font-weight="900" font-size="10" fill="#065F46" font-family="Inter">PASS</text><rect x="112" y="132" width="40" height="2.5" fill="#111"/>
-                            <circle cx="48" cy="132" r="9" fill="#F5C6A0" stroke="#0A0A0A" stroke-width="2"/><circle cx="145" cy="132" r="9" fill="#F5C6A0" stroke="#0A0A0A" stroke-width="2"/>
+                        <svg viewBox="0 0 320 380" class="w-full h-[340px]" xmlns="http://www.w3.org/2000/svg">
+                            <defs><radialGradient id="s6" cx="0.5" cy="0.45" r="0.7"><stop offset="0%" stop-color="#F7D0B0"/><stop offset="100%" stop-color="#C99878"/></radialGradient></defs>
+                            <path d="M70 145 Q160 160 250 145 L250 380 L70 380 Z" fill="#064E3B"/>
+                            <path d="M115 90 L205 90 L200 145 L120 145 Z" fill="#C99878"/>
+                            <ellipse cx="160" cy="86" rx="60" ry="68" fill="url(#s6)"/>
+                            <path d="M90 50 Q160 12 230 50 Q235 85 225 120 Q210 90 160 85 Q110 90 95 120 Q85 85 90 50" fill="#5C3A21"/>
+                            <ellipse cx="160" cy="89" rx="43" ry="48" fill="url(#s6)"/>
+                            <ellipse cx="139" cy="86" rx="11" ry="8" fill="white"/><circle cx="140" cy="87" r="5" fill="#1A1A1A"/><ellipse cx="181" cy="86" rx="11" ry="8" fill="white"/><circle cx="182" cy="87" r="5" fill="#1A1A1A"/>
+                            <g transform="translate(166 180)"><rect width="124" height="82" rx="8" fill="white" stroke="#111" stroke-width="2.6"/><rect x="10" y="10" width="70" height="7" rx="2" fill="#064E3B"/></g>
+                            <ellipse cx="152" cy="219" rx="17" ry="13" fill="url(#s6)" stroke="#111" stroke-width="1.3"/><ellipse cx="250" cy="215" rx="17" ry="13" fill="url(#s6)" stroke="#111" stroke-width="1.3"/>
                         </svg>
                     </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div><h4 class="font-black uppercase text-[18px] leading-none">Chloe Williams</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Age 23 • Enfield EN1</p></div>
-                            <div class="text-right"><p class="text-[10px] font-black bg-black text-white px-2 py-1 rounded">MANUAL</p><p class="text-[9px] font-bold text-slate-400 mt-1">4 Faults</p></div>
-                        </div>
-                        <div class="bg-slate-50 rounded-xl p-4 border border-dashed border-slate-200 space-y-2">
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Student Name</span><span>Chloe Williams</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Test Centre</span><span>Enfield</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Date Passed</span><span>15 Jun 2025</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Instructor</span><span>Hazar Female 07719</span></div>
-                            <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-slate-400 text-[9px]">Licence</span><span>B - Manual</span></div>
-                        </div>
-                    </div>
+                    <div class="p-6"><h4 class="font-black uppercase text-[17px]">Chloe Williams</h4><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">23 • Enfield EN1 • Manual</p><div class="bg-slate-50 rounded-xl border border-dashed p-4 space-y-2"><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Student</span><span>Chloe Williams</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Centre</span><span>Enfield</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Date</span><span>15 Jun 2025</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Instructor</span><span>Hazar • 07719 475588</span></div><div class="flex justify-between text-[11px] font-black uppercase"><span class="text-[9px] text-slate-400">Licence</span><span>B Manual • 4 Faults</span></div></div></div>
                 </div>
+
             </div>
-            <div class="text-center mt-12"><a href="https://wa.me/447719475588?text=Hi%20Hazar%20-%20I%20saw%20your%20passes%20-%2007719%20475588" class="inline-flex items-center gap-2 px-8 py-4 bg-black text-white font-black uppercase text-xs tracking-widest hover:bg-[#E30613] transition">Join Our Pass List - WhatsApp 07719 475588</a></div>
         </div>
     </section>
 
@@ -887,7 +491,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             setTimeout(() => { document.getElementById('promoPopup').style.display = 'block'; }, 3000);
-
             const counters = document.querySelectorAll('.counter');
             const speed = 200;
             const startCounters = (entries) => {
@@ -906,20 +509,17 @@
             const counterObserver = new IntersectionObserver(startCounters, {threshold: 0.5});
             counters.forEach(c => counterObserver.observe(c));
         });
-
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
         closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) { entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp'); }
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
         function toggleFaq(btn) {
             const item = btn.parentElement;
             item.classList.toggle('active');
