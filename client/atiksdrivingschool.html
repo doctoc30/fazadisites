@@ -32,6 +32,7 @@
             font-family: 'Archivo Black', sans-serif;
             line-height: 1;
         }
+        /* hero car container */
         .car-hero-container {
             position: relative;
             z-index: 10;
@@ -258,7 +259,7 @@
             transform: translateY(-3px);
         }
 
-        /* student pass grid – clean, no emojis */
+        /* student pass grid – SVG human figures */
         .pass-grid-card {
             background: #fff;
             border-radius: 1.5rem;
@@ -276,19 +277,18 @@
         .pass-avatar {
             width: 72px;
             height: 72px;
-            border-radius: 999px;
-            background: linear-gradient(145deg, #f1f5f9, #e2e8f0);
             margin: 0 auto 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            font-weight: 900;
-            color: #0f172a;
-            border: 3px solid white;
+        }
+        .pass-avatar svg {
+            width: 72px;
+            height: 72px;
+            border-radius: 999px;
+            background: #f1f5f9;
+            padding: 6px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
         }
         .pass-badge {
             background: var(--brand-red);
@@ -335,13 +335,43 @@
             border-radius: 8px;
             padding: 20px;
         }
+
+        /* mobile portrait: bring car down much more */
         @media (max-width: 640px) {
             .car-hero-container {
-                height: 260px;
+                height: 280px;
+                margin-top: 0px;
             }
             #panningCar {
                 width: 480px;
-                bottom: 15px;
+                bottom: -10px;
+                transform: translateY(18px);
+                animation-duration: 18s;
+            }
+            .road-indicator {
+                bottom: 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            .car-hero-container {
+                height: 220px;
+            }
+            #panningCar {
+                width: 380px;
+                bottom: -14px;
+                transform: translateY(22px);
+                animation-duration: 15s;
+            }
+            .road-indicator {
+                bottom: 2px;
+            }
+        }
+        /* extra nudge for very small screens */
+        @media (max-width: 400px) {
+            #panningCar {
+                width: 340px;
+                bottom: -18px;
+                transform: translateY(26px);
             }
         }
     </style>
@@ -406,14 +436,14 @@
     </div>
 
     <!-- HERO -->
-    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-4 pb-12 overflow-hidden">
+    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-2 pb-12 overflow-hidden">
         <div class="w-full">
             <div class="car-hero-container">
                 <div class="road-indicator"></div>
                 <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Hazar Driving School car">
             </div>
         </div>
-        <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-4">
+        <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-2">
             <div class="animate__animated animate__fadeInUp">
                 <span class="red-tag mb-4 inline-block">Female Instructor • Auto & Manual • Tottenham • Wood Green • Enfield</span>
                 <h1 class="text-6xl md:text-8xl font-black text-black leading-none mb-4 uppercase tracking-tighter">
@@ -528,61 +558,121 @@
         </div>
     </section>
 
-    <!-- ========== STUDENT PASS GRID – 6 REALISTIC PROFILES (NO EMOJIS) ========== -->
+    <!-- ========== STUDENT PASS GRID – 6 REALISTIC PROFILES WITH SVG HUMAN FIGURES ========== -->
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">Student <span class="text-[#E30613]">Pass</span> Grid</h2>
             <p class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-16">Real Hazar Driving School students — Tottenham, Wood Green, Enfield</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 1 -->
+                <!-- 1 - Aisha M. -->
                 <div class="pass-grid-card reveal">
-                    <div class="pass-avatar">AM</div>
+                    <div class="pass-avatar">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="28" r="18" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+                            <circle cx="32" cy="24" r="3" fill="#1e293b"/>
+                            <circle cx="48" cy="24" r="3" fill="#1e293b"/>
+                            <path d="M34 34 L46 34" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="30" y="50" width="20" height="26" rx="6" fill="#94a3b8"/>
+                            <rect x="26" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                            <rect x="46" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                        </svg>
+                    </div>
                     <h4 class="text-lg font-black uppercase">Aisha M.</h4>
                     <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Tottenham • Manual</p>
                     <div class="pass-date"><i data-lucide="badge-check" class="w-4 h-4"></i> Passed 12/04/2025</div>
                     <span class="pass-badge">First time</span>
                     <p class="pass-quote">Hazar made it easy</p>
                 </div>
-                <!-- 2 -->
+                <!-- 2 - Jordan K. -->
                 <div class="pass-grid-card reveal">
-                    <div class="pass-avatar">JK</div>
+                    <div class="pass-avatar">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="28" r="18" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                            <circle cx="32" cy="24" r="3" fill="#0f172a"/>
+                            <circle cx="48" cy="24" r="3" fill="#0f172a"/>
+                            <path d="M34 34 L46 34" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="30" y="50" width="20" height="26" rx="6" fill="#94a3b8"/>
+                            <rect x="26" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                            <rect x="46" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                        </svg>
+                    </div>
                     <h4 class="text-lg font-black uppercase">Jordan K.</h4>
                     <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Wood Green • Automatic</p>
                     <div class="pass-date"><i data-lucide="badge-check" class="w-4 h-4"></i> Passed 28/03/2025</div>
                     <span class="pass-badge">0 minors</span>
                     <p class="pass-quote">Automatic = stress-free</p>
                 </div>
-                <!-- 3 -->
+                <!-- 3 - Chloe R. -->
                 <div class="pass-grid-card reveal">
-                    <div class="pass-avatar">CR</div>
+                    <div class="pass-avatar">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="28" r="18" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+                            <circle cx="32" cy="24" r="3" fill="#1e293b"/>
+                            <circle cx="48" cy="24" r="3" fill="#1e293b"/>
+                            <path d="M34 34 L46 34" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="30" y="50" width="20" height="26" rx="6" fill="#94a3b8"/>
+                            <rect x="26" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                            <rect x="46" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                        </svg>
+                    </div>
                     <h4 class="text-lg font-black uppercase">Chloe R.</h4>
                     <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Enfield • Manual</p>
                     <div class="pass-date"><i data-lucide="badge-check" class="w-4 h-4"></i> Passed 15/02/2025</div>
                     <span class="pass-badge">Confident</span>
                     <p class="pass-quote">Thanks Hazar</p>
                 </div>
-                <!-- 4 -->
+                <!-- 4 - Daniel O. -->
                 <div class="pass-grid-card reveal">
-                    <div class="pass-avatar">DO</div>
+                    <div class="pass-avatar">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="28" r="18" fill="#d1d5db" stroke="#94a3b8" stroke-width="2"/>
+                            <circle cx="32" cy="24" r="3" fill="#0f172a"/>
+                            <circle cx="48" cy="24" r="3" fill="#0f172a"/>
+                            <path d="M34 34 L46 34" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="30" y="50" width="20" height="26" rx="6" fill="#94a3b8"/>
+                            <rect x="26" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                            <rect x="46" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                        </svg>
+                    </div>
                     <h4 class="text-lg font-black uppercase">Daniel O.</h4>
                     <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Tottenham • Manual</p>
                     <div class="pass-date"><i data-lucide="badge-check" class="w-4 h-4"></i> Passed 02/01/2025</div>
                     <span class="pass-badge">Fast learner</span>
                     <p class="pass-quote">Best instructor in North London</p>
                 </div>
-                <!-- 5 -->
+                <!-- 5 - Fatima S. -->
                 <div class="pass-grid-card reveal">
-                    <div class="pass-avatar">FS</div>
+                    <div class="pass-avatar">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="28" r="18" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                            <circle cx="32" cy="24" r="3" fill="#1e293b"/>
+                            <circle cx="48" cy="24" r="3" fill="#1e293b"/>
+                            <path d="M34 34 L46 34" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="30" y="50" width="20" height="26" rx="6" fill="#94a3b8"/>
+                            <rect x="26" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                            <rect x="46" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                        </svg>
+                    </div>
                     <h4 class="text-lg font-black uppercase">Fatima S.</h4>
                     <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Wood Green • Automatic</p>
                     <div class="pass-date"><i data-lucide="badge-check" class="w-4 h-4"></i> Passed 19/11/2024</div>
                     <span class="pass-badge">Female instructor</span>
                     <p class="pass-quote">So patient & professional</p>
                 </div>
-                <!-- 6 -->
+                <!-- 6 - Liam W. -->
                 <div class="pass-grid-card reveal">
-                    <div class="pass-avatar">LW</div>
+                    <div class="pass-avatar">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="28" r="18" fill="#d1d5db" stroke="#94a3b8" stroke-width="2"/>
+                            <circle cx="32" cy="24" r="3" fill="#0f172a"/>
+                            <circle cx="48" cy="24" r="3" fill="#0f172a"/>
+                            <path d="M34 34 L46 34" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="30" y="50" width="20" height="26" rx="6" fill="#94a3b8"/>
+                            <rect x="26" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                            <rect x="46" y="60" width="8" height="14" rx="3" fill="#64748b"/>
+                        </svg>
+                    </div>
                     <h4 class="text-lg font-black uppercase">Liam W.</h4>
                     <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Enfield • Manual</p>
                     <div class="pass-date"><i data-lucide="badge-check" class="w-4 h-4"></i> Passed 08/10/2024</div>
