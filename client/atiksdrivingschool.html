@@ -33,13 +33,10 @@
     <style>
         :root {
             --atik-red: #E30613;
-            --atik-black: #0A0A0A;
+            --atik-blue: #1A3C6E;
             --atik-white: #FFFFFF;
-            --atik-gold: #E30613;
-            --atik-soft-black: #111111;
-            --atik-dark-bg: #0A0A0A;
-            --atik-border: #E30613;
-            --atik-accent: #E30613;
+            --atik-light-bg: #F5F8FC;
+            --atik-dark: #0D1B2A;
         }
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
         
@@ -57,7 +54,7 @@
             position: relative;
             z-index: 10;
             width: 100%;
-            height: 420px; 
+            height: 380px; 
             display: flex;
             align-items: flex-end; 
             overflow: hidden; 
@@ -72,7 +69,7 @@
             width: 720px;
             height: auto; 
             position: absolute;
-            bottom: 30px; 
+            bottom: 80px; 
             left: 0;
             z-index: 20; 
             animation: driveForward 22s linear infinite; 
@@ -102,7 +99,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background-image: linear-gradient(to right, #888 20px, transparent 20px);
+            background-image: linear-gradient(to right, #1A3C6E 20px, transparent 20px);
             background-size: 40px 100%;
             animation: roadMove 0.8s linear infinite; 
         }
@@ -114,7 +111,7 @@
         #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             transform: translateX(100%);
-            background: var(--atik-black);
+            background: var(--atik-dark);
         }
         #mobile-menu.open { transform: translateX(0); }
         .header-transparent {
@@ -126,19 +123,23 @@
         .glass { background: transparent; backdrop-filter: none; }
         .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--atik-red); }
         .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(227, 6, 19, 0.3); }
-        .ticker-wrap { overflow: hidden; background: var(--atik-black); color: var(--atik-white); padding: 15px 0; border-bottom: 4px solid var(--atik-red); }
+        .ticker-wrap { overflow: hidden; background: var(--atik-blue); color: var(--atik-white); padding: 15px 0; border-bottom: 4px solid var(--atik-red); }
         .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         .btn-brand { background-color: var(--atik-red); color: white; transition: 0.3s; font-weight: 900; }
         .btn-brand:hover { background-color: #B8000A; transform: scale(1.05); }
-        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--atik-black); display: flex; z-index: 100; border-top: 4px solid var(--atik-red); }
-        .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
+        .btn-blue { background-color: var(--atik-blue); color: white; transition: 0.3s; font-weight: 900; }
+        .btn-blue:hover { background-color: #0D2A4F; transform: scale(1.05); }
+        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--atik-blue); display: flex; z-index: 100; border-top: 4px solid var(--atik-red); }
+        .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.15); }
+        .cta-dock a:last-child { border-right: none; }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
         .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
         .faq-item.active .faq-content { max-height: 300px; padding: 1rem 0; }
         .red-tag { background: var(--atik-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
+        .blue-tag { background: var(--atik-blue); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
         
         #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 280px; background: white; border-top: 5px solid var(--atik-red); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
 
@@ -201,10 +202,15 @@
         .bg-brand { background-color: var(--atik-red); }
         .text-brand { color: var(--atik-red); }
         .border-brand { border-color: var(--atik-red); }
+        .bg-blue { background-color: var(--atik-blue); }
+        .text-blue { color: var(--atik-blue); }
+        .border-blue { border-color: var(--atik-blue); }
         .hover\:bg-brand:hover { background-color: var(--atik-red); }
         .hover\:text-brand:hover { color: var(--atik-red); }
         .cta-phone { background: var(--atik-red); color: white; font-weight: 900; }
         .cta-phone:hover { background: #B8000A; }
+        .bg-blue-dark { background-color: var(--atik-dark); }
+        .border-blue-dark { border-color: var(--atik-dark); }
     </style>
 </head>
 <body class="text-slate-900"> 
@@ -266,7 +272,7 @@
         <div class="w-full">
             <div class="car-hero-container">
                 <div class="road-indicator"></div>
-                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6599.png" alt="Atik's Driving School – Manual Lessons Harlow Epping Loughton Sawbridgeworth Bishops Stortford">
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Atik's Driving School – Manual Lessons Harlow Epping Loughton Sawbridgeworth Bishops Stortford">
             </div>
         </div>
 
@@ -279,15 +285,15 @@
                 <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Atik's Driving School – Manual Tuition – Local Coverage</p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-5">
-                    <a href="tel:07956834705" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#E30613] transition duration-300">Call 07956 834705</a>
-                    <a href="https://wa.me/447956834705?text=Hi%20Atik's%20Driving%20School%20-%20I%20want%20to%20book%20manual%20driving%20lessons%20in%20Harlow%2C%20Epping%2C%20Loughton%2C%20Sawbridgeworth%20or%20Bishops%20Stortford" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300">WhatsApp 07956 834705</a>
+                    <a href="tel:07956834705" class="px-10 py-5 bg-[#1A3C6E] text-white font-black uppercase tracking-widest text-xs hover:bg-[#E30613] transition duration-300">Call 07956 834705</a>
+                    <a href="https://wa.me/447956834705?text=Hi%20Atik's%20Driving%20School%20-%20I%20want%20to%20book%20manual%20driving%20lessons%20in%20Harlow%2C%20Epping%2C%20Loughton%2C%20Sawbridgeworth%20or%20Bishops%20Stortford" class="px-10 py-5 border-4 border-[#1A3C6E] text-[#1A3C6E] font-black uppercase tracking-widest text-xs hover:bg-[#1A3C6E] hover:text-white transition duration-300">WhatsApp 07956 834705</a>
                 </div>
                 <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-4">atiksdrivingschool@gmail.com • Manual Lessons • Harlow, Epping, Loughton, Sawbridgeworth, Bishops Stortford</p>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-[#0A0A0A] text-white border-t-4 border-[#E30613]">
+    <section id="about" class="py-20 bg-[#1A3C6E] text-white border-t-4 border-[#E30613]">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="reveal">
                 <span class="red-tag mb-4 inline-block">About Atik's Driving School</span>
@@ -322,16 +328,16 @@
                 </div>
                 <div class="flex gap-3">
                     <a href="tel:07956834705" class="btn-brand px-8 py-4 text-xs uppercase">Call 07956 834705</a>
-                    <a href="https://wa.me/447956834705" class="px-8 py-4 border-2 border-white text-white text-xs font-black uppercase hover:bg-white hover:text-black transition">WhatsApp Now</a>
+                    <a href="https://wa.me/447956834705" class="px-8 py-4 border-2 border-white text-white text-xs font-black uppercase hover:bg-white hover:text-[#1A3C6E] transition">WhatsApp Now</a>
                 </div>
             </div>
             <div class="reveal">
                 <div class="bg-white rounded-3xl p-2 shadow-2xl">
                     <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Atik's Driving School Car" class="w-full h-auto rounded-2xl bg-black" style="background:#0A0A0A; filter: contrast(1.1);">
-                    <div class="p-6 bg-black rounded-2xl mt-2">
+                    <div class="p-6 bg-[#1A3C6E] rounded-2xl mt-2">
                         <p class="font-black text-white uppercase text-sm">Atik's Driving School</p>
                         <p class="text-[#E30613] font-black text-xs uppercase mt-1">07956 834705 • Manual Lessons</p>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-2">Harlow • Epping • Loughton • Sawbridgeworth • Bishops Stortford</p>
+                        <p class="text-[10px] text-slate-300 font-bold uppercase mt-2">Harlow • Epping • Loughton • Sawbridgeworth • Bishops Stortford</p>
                     </div>
                 </div>
             </div>
@@ -341,11 +347,11 @@
     <section class="py-12 bg-white border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="reveal">
-                <p class="text-5xl font-black text-black mb-2 counter" data-target="500">0</p>
+                <p class="text-5xl font-black text-[#1A3C6E] mb-2 counter" data-target="500">0</p>
                 <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Students Trained – Harlow, Epping, Loughton, Sawbridgeworth, Bishops Stortford</p>
             </div>
             <div class="reveal">
-                <p class="text-5xl font-black text-black mb-2">Manual</p>
+                <p class="text-5xl font-black text-[#1A3C6E] mb-2">Manual</p>
                 <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Transmission – Full Control Driving</p>
             </div>
             <div class="reveal">
@@ -361,8 +367,8 @@
             <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-4">Atik's Driving School – Manual Lessons – 07956 834705</p>
         </div>
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black">
-                <i data-lucide="settings" class="w-12 h-12 mb-6 text-black"></i>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#1A3C6E]">
+                <i data-lucide="settings" class="w-12 h-12 mb-6 text-[#1A3C6E]"></i>
                 <h3 class="text-2xl font-black uppercase mb-4">Manual Lessons</h3>
                 <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master clutch control, gear changes, and advanced roadcraft. Atik's Driving School provides expert manual tuition across Harlow, Epping, Loughton, Sawbridgeworth, and Bishops Stortford.</p>
                 <a href="https://wa.me/447956834705?text=Hi%20Atik's%20-%20Book%20Manual%20Lessons%2007956%20834705%20-%20Harlow%2FEpping%2FLoughton%2FSawbridgeworth%2FBishops%20Stortford" class="red-tag inline-block">Book Manual – 07956 834705</a>
@@ -457,10 +463,10 @@
                     <a href="https://wa.me/447956834705?text=Hi%20Atik's%20-%2010%20Hour%20Block%20%C2%A3400%20-%2007956%20834705" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07956 834705</a>
                 </div>
 
-                <div class="reveal pricing-card bg-black text-white rounded-2xl border-2 border-[#E30613] p-8 transform scale-105 shadow-2xl">
+                <div class="reveal pricing-card bg-[#1A3C6E] text-white rounded-2xl border-2 border-[#E30613] p-8 transform scale-105 shadow-2xl">
                     <span class="text-xs font-black uppercase text-[#E30613] bg-white/10 px-3 py-1 rounded-full">Best Value</span>
                     <p class="text-4xl font-black mt-4 mb-2">£810</p>
-                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">20 Hour Block – Save £40</p>
+                    <p class="text-xs font-bold uppercase text-slate-300 mb-6">20 Hour Block – Save £40</p>
                     <ul class="feature-list text-left space-y-2 text-slate-200">
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> 20 x 1-hour lessons</li>
                         <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Manual transmission</li>
@@ -491,7 +497,7 @@
     <section class="py-24 bg-white">
         <div class="max-w-5xl mx-auto px-6">
             <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn the <span class="text-[#E30613]">Atik's Way</span> – 07956 834705</h2>
-            <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
+            <div class="aspect-video bg-[#1A3C6E] rounded-3xl relative overflow-hidden group cursor-pointer">
                 <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
                 <div class="absolute inset-0 flex items-center justify-center">
                     <div class="w-20 h-20 bg-[#E30613] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
@@ -578,7 +584,7 @@
                 <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#E30613]">Availability</span></h2>
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
                     <table class="w-full text-left text-xs uppercase font-black">
-                        <thead class="bg-black text-white">
+                        <thead class="bg-[#1A3C6E] text-white">
                             <tr>
                                 <th class="p-4">Day</th>
                                 <th class="p-4">Daytime – 07956 834705</th>
@@ -634,20 +640,20 @@
         </div>
     </section>
 
-    <section class="py-24 bg-slate-900 text-white">
+    <section class="py-24 bg-[#1A3C6E] text-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="max-w-xl mx-auto text-center">
                 <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Start Your Journey <span class="text-[#E30613]">Now</span> – Atik's</h3>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Atik's Driving School – Manual Lessons – Harlow, Epping, Loughton, Sawbridgeworth, Bishops Stortford – 07956 834705 – atiksdrivingschool@gmail.com</p>
+                <p class="text-xs font-bold text-slate-300 uppercase tracking-widest mb-8">Atik's Driving School – Manual Lessons – Harlow, Epping, Loughton, Sawbridgeworth, Bishops Stortford – 07956 834705 – atiksdrivingschool@gmail.com</p>
                 <form class="flex flex-col sm:flex-row gap-2">
-                    <input type="email" placeholder="Your Email – We will call 07956 834705" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#E30613] transition">
+                    <input type="email" placeholder="Your Email – We will call 07956 834705" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#E30613] transition text-white placeholder-white/50">
                     <button class="btn-brand px-8 py-4 text-xs uppercase">Contact 07956 834705</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black text-white pt-20 pb-32"> 
+    <footer class="bg-[#0D1B2A] text-white pt-20 pb-32"> 
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
                 <div class="logo-wrap mb-10 md:mb-0">
@@ -660,8 +666,8 @@
                     <div>
                         <h5 class="font-black uppercase text-[#E30613] text-xs mb-6">Contact – Atik's</h5>
                         <p class="text-sm font-bold uppercase tracking-widest mb-2">07956 834705</p>
-                        <p class="text-[10px] text-slate-500 font-bold uppercase">Manual Lessons</p>
-                        <p class="text-[10px] text-slate-500 font-bold uppercase mt-2">atiksdrivingschool@gmail.com</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase">Manual Lessons</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-2">atiksdrivingschool@gmail.com</p>
                     </div>
                     <div>
                         <h5 class="font-black uppercase text-[#E30613] text-xs mb-6">Locations</h5>
@@ -680,7 +686,7 @@
                             <a href="tel:07956834705" class="social-icon"><i data-lucide="phone" class="w-5 h-5"></i></a>
                             <a href="https://wa.me/447956834705" class="social-icon"><i data-lucide="message-square" class="w-5 h-5"></i></a>
                         </div>
-                        <p class="text-[9px] text-slate-500 font-bold uppercase mt-4">Manual Lessons – Block Booking Deals Available</p>
+                        <p class="text-[9px] text-slate-400 font-bold uppercase mt-4">Manual Lessons – Block Booking Deals Available</p>
                     </div>
                 </div>
             </div>
