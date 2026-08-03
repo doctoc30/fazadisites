@@ -23,7 +23,7 @@
 }
 </style>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Atik's Driving School – Manual Lessons in Harlow, Epping, Loughton, Sawbridgeworth, Bishops Stortford | 07956834705</title>
     <!-- Tailwind + Lucide + Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,8 +37,16 @@
             --atik-white: #FFFFFF;
             --atik-light-bg: #F5F8FC;
             --atik-dark: #0D1B2A;
+            --car-blue: #1A3C6E;
         }
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #ffffff; overflow-x: hidden; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { 
+            width: 100%; 
+            overflow-x: hidden; 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth; 
+            background-color: #ffffff; 
+        }
         
         .logo-wrap {
             display: flex;
@@ -70,16 +78,16 @@
             height: auto; 
             position: absolute;
             bottom: 80px; 
-            left: 0;
+            left: -200px;
             z-index: 20; 
-            animation: driveForward 22s linear infinite; 
+            animation: driveForward 18s linear infinite; 
             will-change: transform;
             filter: drop-shadow(0 20px 25px rgba(0,0,0,0.10)); 
         }
 
         @keyframes driveForward {
-            0% { transform: translateX(-150px); }
-            100% { transform: translateX(calc(100vw + 150px)); }
+            0% { transform: translateX(0px); }
+            100% { transform: translateX(calc(100vw + 300px)); }
         }
 
         .road-indicator {
@@ -101,7 +109,7 @@
             height: 2px;
             background-image: linear-gradient(to right, #1A3C6E 20px, transparent 20px);
             background-size: 40px 100%;
-            animation: roadMove 0.8s linear infinite; 
+            animation: roadMove 0.6s linear infinite; 
         }
         @keyframes roadMove {
             0% { background-position: 0 0; }
@@ -120,9 +128,6 @@
             border-bottom: none !important;
             box-shadow: none !important;
         }
-        .glass { background: transparent; backdrop-filter: none; }
-        .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--atik-red); }
-        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(227, 6, 19, 0.3); }
         .ticker-wrap { overflow: hidden; background: var(--atik-blue); color: var(--atik-white); padding: 15px 0; border-bottom: 4px solid var(--atik-red); }
         .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
@@ -196,24 +201,32 @@
         .nav-link:hover { color: var(--atik-red); }
         .nav-cta { background: var(--atik-red); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(227,6,19,0.3); }
         .nav-cta:hover { background: #B8000A; transform: scale(1.03); }
-        .text-[#E31E24] { color: var(--atik-red) !important; }
-        .bg-[#E31E24] { background-color: var(--atik-red) !important; }
-        .border-[#E31E24] { border-color: var(--atik-red) !important; }
-        .bg-brand { background-color: var(--atik-red); }
         .text-brand { color: var(--atik-red); }
+        .bg-brand { background-color: var(--atik-red); }
         .border-brand { border-color: var(--atik-red); }
         .bg-blue { background-color: var(--atik-blue); }
         .text-blue { color: var(--atik-blue); }
         .border-blue { border-color: var(--atik-blue); }
-        .hover\:bg-brand:hover { background-color: var(--atik-red); }
-        .hover\:text-brand:hover { color: var(--atik-red); }
-        .cta-phone { background: var(--atik-red); color: white; font-weight: 900; }
-        .cta-phone:hover { background: #B8000A; }
         .bg-blue-dark { background-color: var(--atik-dark); }
         .border-blue-dark { border-color: var(--atik-dark); }
+        
+        /* exact car blue for all brand elements */
+        .bg-car-blue { background-color: #1A3C6E; }
+        .text-car-blue { color: #1A3C6E; }
+        .border-car-blue { border-color: #1A3C6E; }
+        .hover\:bg-car-blue:hover { background-color: #1A3C6E; }
+        .hover\:text-car-blue:hover { color: #1A3C6E; }
+        
+        .btn-car-blue { background-color: #1A3C6E; color: white; font-weight: 900; transition: 0.3s; }
+        .btn-car-blue:hover { background-color: #0D2A4F; transform: scale(1.05); }
+
+        /* fix horizontal scroll on mobile */
+        .overflow-x-hidden { overflow-x: hidden; }
+        .max-w-full { max-width: 100%; }
+        .w-screen { width: 100vw; }
     </style>
 </head>
-<body class="text-slate-900"> 
+<body class="text-slate-900 overflow-x-hidden w-full"> 
 
     <div id="promoPopup" class="animate__animated animate__fadeInUp">
         <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2"><i data-lucide="x" class="w-4 h-4"></i></button>
@@ -268,11 +281,11 @@
         </div>
     </div>
 
-    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-4 pb-12 overflow-hidden">
-        <div class="w-full">
+    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-4 pb-12 overflow-x-hidden w-full">
+        <div class="w-full overflow-hidden">
             <div class="car-hero-container">
                 <div class="road-indicator"></div>
-                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6599.png" alt="Atik's Driving School – Manual Lessons Harlow Epping Loughton Sawbridgeworth Bishops Stortford">
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Atik's Driving School – Manual Lessons Harlow Epping Loughton Sawbridgeworth Bishops Stortford">
             </div>
         </div>
 
@@ -333,7 +346,7 @@
             </div>
             <div class="reveal">
                 <div class="bg-white rounded-3xl p-2 shadow-2xl">
-                    <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6599.png" alt="Atik's Driving School Car" class="w-full h-auto rounded-2xl bg-black" style="background:#0A0A0A; filter: contrast(1.1);">
+                    <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Atik's Driving School Car" class="w-full h-auto rounded-2xl bg-black" style="background:#0A0A0A; filter: contrast(1.1);">
                     <div class="p-6 bg-[#1A3C6E] rounded-2xl mt-2">
                         <p class="font-black text-white uppercase text-sm">Atik's Driving School</p>
                         <p class="text-[#E30613] font-black text-xs uppercase mt-1">07956 834705 • Manual Lessons</p>
