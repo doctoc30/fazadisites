@@ -249,6 +249,18 @@
         .text-\[\#F9B81B\] { color: var(--ireland-red) !important; }
         .border-\[\#F9B81B\] { border-color: var(--ireland-red) !important; }
         .bg-\[url\('data:image/svg+xml;base64,...'\)\] { background: var(--ireland-red); }
+        /* MOBILE PORTRAIT: raise car slightly */
+        @media (max-width: 640px) and (orientation: portrait) {
+            #panningCar {
+                bottom: 70px !important; /* raised from 30px to 70px */
+            }
+            .car-hero-container {
+                height: 360px; /* slightly shorter to focus on car */
+            }
+            .road-indicator {
+                bottom: 75px !important;
+            }
+        }
     </style>
 </head>
 <body class="text-slate-900"> 
@@ -311,7 +323,7 @@
         <div class="w-full">
             <div class="car-hero-container">
                 <div class="road-indicator"></div>
-                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/ireland_golf_east_transparent.png" alt="Ireland Driving School – MK8 VW Golf – Leicester – 07939 860814">
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Ireland Driving School – MK8 VW Golf – Leicester – 07939 860814">
             </div>
         </div>
 
@@ -373,7 +385,7 @@
             </div>
             <div class="reveal">
                 <div class="bg-white rounded-3xl p-2 shadow-2xl">
-                    <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/ireland_golf_east_transparent.png" alt="Ireland Driving School Car" class="w-full h-auto rounded-2xl bg-black" style="background:#D00000; filter: contrast(1.1);">
+                    <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Ireland Driving School Car" class="w-full h-auto rounded-2xl bg-black" style="background:#D00000; filter: contrast(1.1);">
                     <div class="p-6 bg-[#D00000] rounded-2xl mt-2">
                         <p class="font-black text-white uppercase text-sm">Ireland Driving School</p>
                         <p class="text-white font-black text-xs uppercase mt-1">07939 860814 • Manual • Leigh</p>
