@@ -26,7 +26,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bay Area Driving Instructor – A Plus Driving School | 415-818-7071</title>
-    <!-- Tailwind + Lucide + Google Fonts -->
     <script src="https://cdn.tailwindcss.com">
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -34,7 +33,7 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ====== EXACT BRAND COLOURS FROM BAY AREA DRIVING INSTRUCTOR IMAGES ====== */
+        /* ====== EXACT BRAND COLOURS ====== */
         :root {
             --brand-green: #2E5C4A;
             --brand-green-light: #4A7C66;
@@ -45,6 +44,12 @@
             --brand-soft-bg: #F4F6F5;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
@@ -52,6 +57,7 @@
             overflow-x: hidden;
             margin: 0;
             padding: 0;
+            width: 100%;
         }
 
         .logo-wrap {
@@ -144,19 +150,6 @@
             backdrop-filter: none !important;
             border-bottom: none !important;
             box-shadow: none !important;
-        }
-        .glass {
-            background: transparent;
-            backdrop-filter: none;
-        }
-
-        .premium-card {
-            transition: all 0.4s ease;
-            border-top: 6px solid var(--brand-green);
-        }
-        .premium-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px -12px rgba(46, 92, 74, 0.3);
         }
 
         .ticker-wrap {
@@ -387,7 +380,7 @@
         }
     </style>
 </head>
-<body class="text-slate-900">
+<body>
 
     <!-- ========== TRANSPARENT HEADER ========== -->
     <nav class="sticky top-0 z-50 header-transparent">
@@ -609,14 +602,13 @@
         </div>
     </section>
 
-    <!-- PRICING with business packages -->
+    <!-- PRICING -->
     <section id="pricing" class="py-24 bg-[#F4F6F5]">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#2E5C4A]">Packages</span></h2>
             <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-12">Bay Area Driving Instructor – A Plus Driving School (E3000) – Call 415-818-7071</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Single Lesson -->
                 <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#2E5C4A]">
                     <span class="text-xs font-black uppercase text-[#2E5C4A] bg-green-50 px-3 py-1 rounded-full">Single Lesson</span>
                     <p class="text-4xl font-black mt-4 mb-2">$185</p>
@@ -630,7 +622,6 @@
                     <a href="https://wa.me/14158187071?text=Hi%20-%20Single%20Lesson%20%24185" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book – 415-818-7071</a>
                 </div>
 
-                <!-- City Essentials -->
                 <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#2E5C4A]">
                     <span class="text-xs font-black uppercase text-[#2E5C4A] bg-green-50 px-3 py-1 rounded-full">City Essentials</span>
                     <p class="text-4xl font-black mt-4 mb-2">$560</p>
@@ -644,7 +635,6 @@
                     <a href="https://wa.me/14158187071?text=Hi%20-%20City%20Essentials%20%24560" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book – 415-818-7071</a>
                 </div>
 
-                <!-- Confidence Builder (Featured) -->
                 <div class="reveal pricing-card bg-[#2E5C4A] text-white rounded-2xl border-2 border-[#4A7C66] p-8 transform scale-105 shadow-2xl">
                     <span class="text-xs font-black uppercase text-[#2E5C4A] bg-white/20 px-3 py-1 rounded-full">Confidence Builder</span>
                     <p class="text-4xl font-black mt-4 mb-2">$925</p>
@@ -659,7 +649,6 @@
                     <a href="https://wa.me/14158187071?text=Hi%20-%20Confidence%20Builder%20%24925" class="bg-white text-[#2E5C4A] w-full block py-3 text-[10px] uppercase mt-6 rounded-lg font-black hover:bg-[#4A7C66] hover:text-white transition">Book – 415-818-7071</a>
                 </div>
 
-                <!-- DMV Exam Package -->
                 <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#2E5C4A]">
                     <span class="text-xs font-black uppercase text-[#2E5C4A] bg-green-50 px-3 py-1 rounded-full">DMV Exam (Adult)</span>
                     <p class="text-4xl font-black mt-4 mb-2">$285</p>
@@ -674,7 +663,6 @@
                 </div>
             </div>
 
-            <!-- Additional Packages -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-10">
                 <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#2E5C4A]">
                     <span class="text-xs font-black uppercase text-[#2E5C4A] bg-green-50 px-3 py-1 rounded-full">DMV Exam (Under 18)</span>
@@ -702,7 +690,7 @@
         </div>
     </section>
 
-    <!-- REFER SECTION (anchor) - exact offer from image -->
+    <!-- REFER SECTION - exact offer -->
     <section id="refer-section" class="py-20 bg-white border-y border-slate-200">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <span class="green-tag mb-4 inline-block">A Plus Driving School E3000</span>
