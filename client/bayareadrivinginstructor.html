@@ -22,6 +22,17 @@
         :where(code, pre, kbd, samp) {
             font-family: "Optimistic Mono", ui-monospace, monospace;
         }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,20 +55,14 @@
             --brand-soft-bg: #F4F6F5;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
             background-color: var(--brand-white);
-            overflow-x: hidden;
             margin: 0;
             padding: 0;
             width: 100%;
+            overflow-x: hidden;
         }
 
         .logo-wrap {
@@ -158,6 +163,7 @@
             color: var(--brand-white);
             padding: 15px 0;
             border-bottom: 4px solid var(--brand-grey);
+            width: 100%;
         }
         .ticker {
             display: flex;
@@ -383,7 +389,7 @@
 <body>
 
     <!-- ========== TRANSPARENT HEADER ========== -->
-    <nav class="sticky top-0 z-50 header-transparent">
+    <nav class="sticky top-0 z-50 header-transparent w-full">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="logo-wrap">
                 <div class="logo-text">
@@ -436,7 +442,7 @@
     </div>
 
     <!-- HERO - FULL WIDTH -->
-    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-4 pb-12 overflow-hidden">
+    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-4 pb-12 overflow-hidden w-full">
         <div class="w-full">
             <div class="car-hero-container">
                 <div class="road-indicator"></div>
@@ -462,7 +468,7 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="py-20 bg-[#1A1A1A] text-white border-t-4 border-[#2E5C4A]">
+    <section id="about" class="py-20 bg-[#1A1A1A] text-white border-t-4 border-[#2E5C4A] w-full">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="reveal">
                 <span class="green-tag mb-4 inline-block">About Bay Area Driving Instructor</span>
@@ -514,7 +520,7 @@
     </section>
 
     <!-- STATS -->
-    <section class="py-12 bg-white border-y border-slate-100">
+    <section class="py-12 bg-white border-y border-slate-100 w-full">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="reveal">
                 <p class="text-5xl font-black text-[#2E5C4A] mb-2 counter" data-target="500">0</p>
@@ -532,7 +538,7 @@
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="py-24 bg-[#F4F6F5]">
+    <section id="services" class="py-24 bg-[#F4F6F5] w-full">
         <div class="max-w-7xl mx-auto text-center mb-16 px-6">
             <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#2E5C4A]">Options</span></h2>
             <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-4">Bay Area Driving Instructor – 415-818-7071</p>
@@ -554,7 +560,7 @@
     </section>
 
     <!-- FEATURES -->
-    <section id="features" class="py-24 bg-white">
+    <section id="features" class="py-24 bg-white w-full">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">More <span class="text-[#2E5C4A]">Services</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -603,7 +609,7 @@
     </section>
 
     <!-- PRICING -->
-    <section id="pricing" class="py-24 bg-[#F4F6F5]">
+    <section id="pricing" class="py-24 bg-[#F4F6F5] w-full">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#2E5C4A]">Packages</span></h2>
             <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-12">Bay Area Driving Instructor – A Plus Driving School (E3000) – Call 415-818-7071</p>
@@ -690,8 +696,8 @@
         </div>
     </section>
 
-    <!-- REFER SECTION - exact offer -->
-    <section id="refer-section" class="py-20 bg-white border-y border-slate-200">
+    <!-- REFER SECTION -->
+    <section id="refer-section" class="py-20 bg-white border-y border-slate-200 w-full">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <span class="green-tag mb-4 inline-block">A Plus Driving School E3000</span>
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-6">Refer <span class="text-[#2E5C4A]">a Friend</span></h2>
@@ -705,7 +711,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="py-24 bg-[#F4F6F5]">
+    <section class="py-24 bg-[#F4F6F5] w-full">
         <div class="max-w-3xl mx-auto px-6">
             <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#2E5C4A]">FAQs</span> – 415-818-7071</h2>
             <div class="space-y-4">
@@ -730,7 +736,7 @@
     </section>
 
     <!-- AREAS -->
-    <section id="areas" class="py-24 bg-white">
+    <section id="areas" class="py-24 bg-white w-full">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
             <div class="reveal">
                 <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#2E5C4A]">Areas</span> – 415-818-7071</h2>
@@ -806,7 +812,7 @@
     </section>
 
     <!-- STUDENT REVIEWS -->
-    <section class="py-24 bg-[#F4F6F5] border-b border-slate-100">
+    <section class="py-24 bg-[#F4F6F5] border-b border-slate-100 w-full">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#2E5C4A]">Reviews</span> ★★★★★</h2>
             <div class="flex flex-wrap justify-center gap-6">
@@ -830,7 +836,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-[#1A1A1A] text-white pt-20 pb-32">
+    <footer class="bg-[#1A1A1A] text-white pt-20 pb-32 w-full">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
                 <div class="logo-wrap mb-10 md:mb-0">
