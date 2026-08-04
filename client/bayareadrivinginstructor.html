@@ -37,16 +37,12 @@
         /* ====== EXACT BRAND COLOURS FROM BAY AREA DRIVING INSTRUCTOR IMAGES ====== */
         :root {
             --brand-green: #2E5C4A;
-            /* deep green from HR-V / Bay Area logo feel */
             --brand-green-light: #4A7C66;
-            /* lighter green accent */
             --brand-grey: #4A4A4A;
-            /* grey from car / instructor imagery */
             --brand-grey-light: #D1D1D1;
             --brand-white: #FFFFFF;
             --brand-black: #1A1A1A;
             --brand-soft-bg: #F4F6F5;
-            /* soft grey-green background */
         }
 
         body {
@@ -68,7 +64,6 @@
             line-height: 1;
         }
 
-        /* FULL WIDTH - NO BORDERS, NO FRAME */
         .car-hero-container {
             position: relative;
             z-index: 10;
@@ -328,7 +323,6 @@
             transform: scale(1.03);
         }
 
-        /* override legacy reds to green */
         .text-\[#E31E24\] {
             color: var(--brand-green) !important;
         }
@@ -339,10 +333,10 @@
             border-color: var(--brand-green) !important;
         }
 
-        /* ===== VERTICAL SHAKY REFER BUTTON ===== */
+        /* ===== VERTICAL SHAKY REFER BUTTON - LEFT SIDE ===== */
         .refer-shaky {
             position: fixed;
-            right: 20px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 999;
@@ -385,10 +379,10 @@
 
         @media (max-width: 768px) {
             .refer-shaky {
-                right: 8px;
-                width: 44px;
-                font-size: 11px;
-                padding: 14px 6px;
+                left: 8px;
+                width: 40px;
+                font-size: 10px;
+                padding: 12px 5px;
             }
         }
     </style>
@@ -430,7 +424,7 @@
         </div>
     </div>
 
-    <!-- ===== VERTICAL SHAKY REFER BUTTON ===== -->
+    <!-- ===== VERTICAL SHAKY REFER BUTTON - LEFT SIDE ===== -->
     <div class="refer-shaky">
         <a href="#refer-section" onclick="document.getElementById('refer-section').scrollIntoView({behavior:'smooth'}); return false;">
             REFER<br>a Friend<br>$10
@@ -708,12 +702,12 @@
         </div>
     </section>
 
-    <!-- REFER SECTION (anchor) -->
+    <!-- REFER SECTION (anchor) - exact offer from image -->
     <section id="refer-section" class="py-20 bg-white border-y border-slate-200">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <span class="green-tag mb-4 inline-block">Refer a Friend – Get $10</span>
+            <span class="green-tag mb-4 inline-block">A Plus Driving School E3000</span>
             <h2 class="text-4xl font-black uppercase tracking-tighter mb-6">Refer <span class="text-[#2E5C4A]">a Friend</span></h2>
-            <p class="text-sm font-bold uppercase text-slate-500 max-w-2xl mx-auto mb-8">For one-time referral if they book a one-time lesson. Share the gift of safe driving!</p>
+            <p class="text-sm font-bold uppercase text-slate-500 max-w-2xl mx-auto mb-8">Get $10 for one time referral if they book one time lesson.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="https://wa.me/14158187071?text=Hi%20-%20I%20want%20to%20refer%20a%20friend%20for%20%2410%20off" class="btn-brand px-10 py-5 text-xs uppercase">Refer via WhatsApp 415-818-7071</a>
                 <a href="mailto:bayareadrivinginstructor@gmail.com?subject=Refer%20a%20Friend&body=I%20want%20to%20refer%20a%20friend%20for%20%2410%20off" class="px-10 py-5 border-4 border-[#2E5C4A] text-[#2E5C4A] font-black uppercase text-xs hover:bg-[#2E5C4A] hover:text-white transition">Email Referral</a>
@@ -741,7 +735,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-btn" onclick="toggleFaq(this)">How do I get the referral bonus? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
-                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Refer a friend who books a one-time lesson and you both get $10 off! Contact us at 415-818-7071.</div>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Refer a friend who books a one-time lesson and you get $10 off! Contact us at 415-818-7071.</div>
                 </div>
             </div>
         </div>
