@@ -31,17 +31,17 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* IRELAND DRIVING SCHOOL – BRAND COLOURS EXACTLY FROM IMAGES */
+        /* IRELAND DRIVING SCHOOL – PRIMARY RED & BLACK (logo colours) */
         :root {
-            --ireland-green: #0D7C3F;      /* deep green from logo / car */
-            --ireland-gold: #F9B81B;       /* gold from logo stripes */
-            --ireland-black: #1A1A1A;      /* dark from header text */
+            --ireland-red: #D00000;        /* bold red from logo */
+            --ireland-black: #0B0B0B;      /* deep black */
             --ireland-white: #FFFFFF;
-            --ireland-soft-bg: #F4F7F2;    /* fresh light greenish white */
-            --ireland-cta: #0D7C3F;
-            --ireland-cta-hover: #0A5F2E;
-            --ireland-accent: #F9B81B;
-            --ireland-border: #DCE8D8;
+            --ireland-soft-bg: #F8F6F5;    /* warm white */
+            --ireland-cta: #D00000;
+            --ireland-cta-hover: #A80000;
+            --ireland-accent: #D00000;
+            --ireland-border: #E0D6D2;
+            --ireland-gold: #D00000;        /* fallback to red */
         }
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: var(--ireland-white); overflow-x: hidden; margin: 0; padding: 0; }
         
@@ -88,7 +88,7 @@
             100% { transform: translateX(calc(100vw + 150px)); }
         }
 
-        /* ROAD INDICATOR – IRELAND THEME */
+        /* ROAD INDICATOR – RED THEME */
         .road-indicator {
             height: 2px;              
             background: transparent;   
@@ -106,7 +106,7 @@
             left: 0;
             width: 100%;
             height: 2px;              
-            background-image: linear-gradient(to right, #0D7C3F 20px, transparent 20px);
+            background-image: linear-gradient(to right, #D00000 20px, transparent 20px);
             background-size: 40px 100%;  
             animation: roadMove 0.8s linear infinite; 
         }
@@ -129,25 +129,25 @@
             box-shadow: none !important;
         }
         .glass { background: transparent; backdrop-filter: none; } 
-        .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--ireland-green); }
-        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(13,124,63,0.3); }
-        .ticker-wrap { overflow: hidden; background: var(--ireland-black); color: var(--ireland-white); padding: 15px 0; border-bottom: 4px solid var(--ireland-gold); }
+        .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--ireland-red); }
+        .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(208,0,0,0.3); }
+        .ticker-wrap { overflow: hidden; background: var(--ireland-black); color: var(--ireland-white); padding: 15px 0; border-bottom: 4px solid var(--ireland-red); }
         .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         .btn-brand { background-color: var(--ireland-cta); color: white; transition: 0.3s; font-weight: 900; border: none; }
         .btn-brand:hover { background-color: var(--ireland-cta-hover); transform: scale(1.05); }
-        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ireland-black); display: flex; z-index: 100; border-top: 4px solid var(--ireland-gold); }
+        .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ireland-black); display: flex; z-index: 100; border-top: 4px solid var(--ireland-red); }
         .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
         .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
         .faq-item.active .faq-content { max-height: 300px; padding: 1rem 0; }
-        .green-tag { background: var(--ireland-green); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
-        .gold-tag { background: var(--ireland-gold); color: var(--ireland-black); padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
-        #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 280px; background: white; border-top: 5px solid var(--ireland-gold); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
+        .red-tag { background: var(--ireland-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
+        .gold-tag { background: var(--ireland-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
+        #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 280px; background: white; border-top: 5px solid var(--ireland-red); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
         .service-icon {
-            background: var(--ireland-soft-bg);
+            background: #F0EAE8;
             border-radius: 50%;
             width: 64px;
             height: 64px;
@@ -175,7 +175,7 @@
         }
         .feature-list li i {
             margin-right: 10px;
-            color: var(--ireland-green);
+            color: var(--ireland-red);
         }
         .social-icon {
             transition: all 0.3s ease;
@@ -189,66 +189,73 @@
             color: white;
         }
         .social-icon:hover {
-            background: var(--ireland-gold);
-            color: var(--ireland-black);
+            background: var(--ireland-red);
+            color: white;
             transform: translateY(-3px);
         }
         .nav-link {
             color: #111;
             font-weight: 900;
         }
-        .nav-link:hover { color: var(--ireland-green); }
-        .nav-cta { background: var(--ireland-cta); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(13,124,63,0.3); }
+        .nav-link:hover { color: var(--ireland-red); }
+        .nav-cta { background: var(--ireland-cta); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(208,0,0,0.3); }
         .nav-cta:hover { background: var(--ireland-cta-hover); transform: scale(1.03); }
-        /* OVERRIDE ALL LEGACY COLOURS TO IRELAND BRAND */
-        .text-[#E31E24] { color: var(--ireland-green) !important; }
-        .bg-[#E31E24] { background-color: var(--ireland-green) !important; }
-        .border-[#E31E24] { border-color: var(--ireland-green) !important; }
+        /* OVERRIDE ALL LEGACY COLOURS TO IRELAND RED & BLACK */
+        .text-[#E31E24] { color: var(--ireland-red) !important; }
+        .bg-[#E31E24] { background-color: var(--ireland-red) !important; }
+        .border-[#E31E24] { border-color: var(--ireland-red) !important; }
         .bg-slate-50 { background-color: var(--ireland-soft-bg) !important; }
         .bg-slate-900 { background-color: var(--ireland-black) !important; }
         .border-slate-200 { border-color: var(--ireland-border) !important; }
-        .text-slate-500 { color: #2E4A3A !important; }
-        .text-slate-400 { color: #4A6B54 !important; }
-        .text-slate-300 { color: #6A8B74 !important; }
-        .text-slate-600 { color: #1E3A2A !important; }
+        .text-slate-500 { color: #2A1E1A !important; }
+        .text-slate-400 { color: #4A3A36 !important; }
+        .text-slate-300 { color: #6A5A56 !important; }
+        .text-slate-600 { color: #1A0E0A !important; }
         .bg-white { background-color: var(--ireland-white) !important; }
         .bg-black { background-color: var(--ireland-black) !important; }
         .text-black { color: var(--ireland-black) !important; }
         .text-white { color: var(--ireland-white) !important; }
         .border-black { border-color: var(--ireland-black) !important; }
         .border-white { border-color: var(--ireland-white) !important; }
-        .bg-red-50 { background-color: #E6F0E6 !important; }
+        .bg-red-50 { background-color: #FCE8E6 !important; }
         .hover\:bg-black:hover { background-color: var(--ireland-black) !important; }
         .hover\:text-white:hover { color: var(--ireland-white) !important; }
-        .hover\:border-\[\#E30613\]:hover { border-color: var(--ireland-green) !important; }
-        .text-\[\#E30613\] { color: var(--ireland-gold) !important; }
-        .bg-\[\#E30613\] { background-color: var(--ireland-gold) !important; }
-        .border-\[\#E30613\] { border-color: var(--ireland-gold) !important; }
-        .hover\:bg-\[\#E30613\]:hover { background-color: var(--ireland-gold) !important; color: var(--ireland-black) !important; }
-        .text-amber-500 { color: var(--ireland-gold) !important; }
-        .fill-current { fill: var(--ireland-gold) !important; }
+        .hover\:border-\[\#E30613\]:hover { border-color: var(--ireland-red) !important; }
+        .text-\[\#E30613\] { color: var(--ireland-red) !important; }
+        .bg-\[\#E30613\] { background-color: var(--ireland-red) !important; }
+        .border-\[\#E30613\] { border-color: var(--ireland-red) !important; }
+        .hover\:bg-\[\#E30613\]:hover { background-color: var(--ireland-red) !important; color: white !important; }
+        .text-amber-500 { color: var(--ireland-red) !important; }
+        .fill-current { fill: var(--ireland-red) !important; }
         .btn-brand { background-color: var(--ireland-cta) !important; }
         .btn-brand:hover { background-color: var(--ireland-cta-hover) !important; }
-        .bg-slate-100 { background-color: #E8F0E5 !important; }
-        .border-slate-100 { border-color: #DCE8D8 !important; }
+        .bg-slate-100 { background-color: #EDE7E4 !important; }
+        .border-slate-100 { border-color: #E0D6D2 !important; }
         .bg-white\/5 { background-color: rgba(255,255,255,0.05) !important; }
         .border-white\/10 { border-color: rgba(255,255,255,0.1) !important; }
         .bg-white\/10 { background-color: rgba(255,255,255,0.1) !important; }
         .border-white\/20 { border-color: rgba(255,255,255,0.2) !important; }
-        .text-slate-200 { color: #BCCCB8 !important; }
-        .bg-slate-200 { background-color: #DCE8D8 !important; }
-        .hover\:text-\[\#E30613\]:hover { color: var(--ireland-gold) !important; }
-        .red-tag { background: var(--ireland-green); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
-        .text-\[\#E30613\] { color: var(--ireland-gold) !important; }
-        .bg-\[\#E30613\] { background-color: var(--ireland-gold) !important; }
-        .border-\[\#E30613\] { border-color: var(--ireland-gold) !important; }
+        .text-slate-200 { color: #B0A29C !important; }
+        .bg-slate-200 { background-color: #DCD0CC !important; }
+        .hover\:text-\[\#E30613\]:hover { color: var(--ireland-red) !important; }
+        .red-tag { background: var(--ireland-red); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
+        .text-\[\#E30613\] { color: var(--ireland-red) !important; }
+        .bg-\[\#E30613\] { background-color: var(--ireland-red) !important; }
+        .border-\[\#E30613\] { border-color: var(--ireland-red) !important; }
+        .bg-\[\#0D7C3F\] { background-color: var(--ireland-red) !important; }
+        .text-\[\#0D7C3F\] { color: var(--ireland-red) !important; }
+        .border-\[\#0D7C3F\] { border-color: var(--ireland-red) !important; }
+        .bg-\[\#F9B81B\] { background-color: var(--ireland-red) !important; }
+        .text-\[\#F9B81B\] { color: var(--ireland-red) !important; }
+        .border-\[\#F9B81B\] { border-color: var(--ireland-red) !important; }
+        .bg-\[url\('data:image/svg+xml;base64,...'\)\] { background: var(--ireland-red); }
     </style>
 </head>
 <body class="text-slate-900"> 
 
     <div id="promoPopup" class="animate__animated animate__fadeInUp">
         <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2"><i data-lucide="x" class="w-4 h-4"></i></button>
-        <span class="green-tag mb-2 inline-block">🇮🇪 Ireland Driving School</span>
+        <span class="red-tag mb-2 inline-block">🇮🇪 Ireland Driving School</span>
         <h4 class="font-black text-xl leading-tight mb-2">Leigh – Approved Instructor</h4>
         <p class="text-xs font-bold text-slate-500 uppercase mb-4">Leicester • 07939 860814 • Manual</p>
         <a href="tel:07939860814" class="btn-brand px-4 py-2 text-[10px] uppercase inline-block text-center">Call 07939 860814 Now</a>
@@ -259,7 +266,7 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="logo-wrap">
                 <div class="logo-text">
-                    <span class="text-2xl font-black italic block text-black">IRELAND <span class="text-[#0D7C3F]">DRIVING</span></span>
+                    <span class="text-2xl font-black italic block text-black">IRELAND <span class="text-[#D00000]">DRIVING</span></span>
                     <span class="text-[8px] font-bold tracking-[0.3em] uppercase block text-black/80">School • Leigh • Approved Instructor • 07939 860814</span>
                 </div>
             </div>
@@ -285,7 +292,7 @@
             <a href="#pricing">Packages</a>
             <a href="#areas">Leicester</a>
             <a href="tel:07939860814">Call 07939 860814</a>
-            <a href="https://wa.me/447939860814" class="text-[#F9B81B]">WhatsApp 07939 860814</a>
+            <a href="https://wa.me/447939860814" class="text-[#D00000]">WhatsApp 07939 860814</a>
         </div>
     </div>
 
@@ -310,14 +317,14 @@
 
         <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-4">
             <div class="animate__animated animate__fadeInUp">
-                <span class="green-tag mb-4 inline-block">🇮🇪 Approved Instructor • Manual • Leicester</span>
+                <span class="red-tag mb-4 inline-block">🇮🇪 Approved Instructor • Manual • Leicester</span>
                 <h1 class="text-6xl md:text-8xl font-black text-black leading-none mb-4 uppercase tracking-tighter">
-                    DRIVE <span class="text-[#0D7C3F]">IRELAND.</span>
+                    DRIVE <span class="text-[#D00000]">IRELAND.</span>
                 </h1>
                 <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Ireland Driving School – Leigh – 16+ years • Leicester</p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-5">
-                    <a href="tel:07939860814" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#0D7C3F] transition duration-300">Call 07939 860814</a>
+                    <a href="tel:07939860814" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#D00000] transition duration-300">Call 07939 860814</a>
                     <a href="https://wa.me/447939860814?text=Hi%20Ireland%20Driving%20School%20%F0%9F%87%AE%F0%9F%87%AA%20I%20want%20to%20book%20driving%20lessons%20in%20Leicester" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300">WhatsApp 07939 860814</a>
                 </div>
                 <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-4">Instagram: @irelanddrivingschool • Manual • Leicester • 164 posts • 622 followers</p>
@@ -326,11 +333,11 @@
     </section>
 
     <!-- ABOUT SECTION – INSERTED BELOW HERO AS REQUIRED -->
-    <section id="about" class="py-20 bg-[#0D7C3F] text-white border-t-4 border-[#F9B81B]">
+    <section id="about" class="py-20 bg-[#D00000] text-white border-t-4 border-[#D00000]">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="reveal">
-                <span class="gold-tag mb-4 inline-block">About Leigh – Ireland Driving School</span>
-                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 leading-none">Approved Instructor <br><span class="text-[#F9B81B]">Leicester</span></h2>
+                <span class="gold-tag mb-4 inline-block" style="background:#0B0B0B; color:white;">About Leigh – Ireland Driving School</span>
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 leading-none">Approved Instructor <br><span class="text-white">Leicester</span></h2>
                 <p class="text-sm font-bold uppercase tracking-widest text-white/80 leading-relaxed mb-6">
                     Ireland Driving School, run by Leigh, is a highly rated driving tuition service in Leicester. With over 16 years of experience, Leigh offers patient, friendly, and professional instruction in a modern MK8 VW Golf manual car.
                 </p>
@@ -339,37 +346,37 @@
                 </p>
                 <div class="grid grid-cols-2 gap-4 mb-8">
                     <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <i data-lucide="user-check" class="w-6 h-6 text-[#F9B81B] mb-2"></i>
+                        <i data-lucide="user-check" class="w-6 h-6 text-white mb-2"></i>
                         <p class="font-black text-xs uppercase">Approved Instructor</p>
                         <p class="text-[10px] text-white/60 uppercase">16+ years</p>
                     </div>
                     <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <i data-lucide="settings" class="w-6 h-6 text-[#F9B81B] mb-2"></i>
+                        <i data-lucide="settings" class="w-6 h-6 text-white mb-2"></i>
                         <p class="font-black text-xs uppercase">Manual</p>
                         <p class="text-[10px] text-white/60 uppercase">MK8 VW Golf</p>
                     </div>
                     <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <i data-lucide="map-pin" class="w-6 h-6 text-[#F9B81B] mb-2"></i>
+                        <i data-lucide="map-pin" class="w-6 h-6 text-white mb-2"></i>
                         <p class="font-black text-xs uppercase">Leicester</p>
                         <p class="text-[10px] text-white/60 uppercase">Local tuition</p>
                     </div>
                     <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <i data-lucide="star" class="w-6 h-6 text-[#F9B81B] mb-2"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-white mb-2"></i>
                         <p class="font-black text-xs uppercase">100+ 5* reviews</p>
                         <p class="text-[10px] text-white/60 uppercase">Facebook</p>
                     </div>
                 </div>
                 <div class="flex gap-3">
-                    <a href="tel:07939860814" class="btn-brand px-8 py-4 text-xs uppercase">Call 07939 860814</a>
+                    <a href="tel:07939860814" class="btn-brand px-8 py-4 text-xs uppercase" style="background:#0B0B0B !important;">Call 07939 860814</a>
                     <a href="https://wa.me/447939860814" class="px-8 py-4 border-2 border-white text-white text-xs font-black uppercase hover:bg-white hover:text-black transition">WhatsApp Now</a>
                 </div>
             </div>
             <div class="reveal">
                 <div class="bg-white rounded-3xl p-2 shadow-2xl">
-                    <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Ireland Driving School Car" class="w-full h-auto rounded-2xl bg-black" style="background:#0D7C3F; filter: contrast(1.1);">
-                    <div class="p-6 bg-[#0D7C3F] rounded-2xl mt-2">
+                    <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Ireland Driving School Car" class="w-full h-auto rounded-2xl bg-black" style="background:#D00000; filter: contrast(1.1);">
+                    <div class="p-6 bg-[#D00000] rounded-2xl mt-2">
                         <p class="font-black text-white uppercase text-sm">Ireland Driving School</p>
-                        <p class="text-[#F9B81B] font-black text-xs uppercase mt-1">07939 860814 • Manual • Leigh</p>
+                        <p class="text-white font-black text-xs uppercase mt-1">07939 860814 • Manual • Leigh</p>
                         <p class="text-[10px] text-white/70 font-bold uppercase mt-2">Leicester • @irelanddrivingschool • 164 posts • 622 followers</p>
                     </div>
                 </div>
@@ -388,16 +395,16 @@
                 <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Years experience – Leigh</p>
             </div>
             <div class="reveal">
-                <p class="text-5xl font-black text-[#0D7C3F] mb-2">100+</p>
+                <p class="text-5xl font-black text-[#D00000] mb-2">100+</p>
                 <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">5* reviews – Facebook</p>
             </div>
         </div>
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="py-24 bg-[#F4F7F2]">
+    <section id="services" class="py-24 bg-[#F8F6F5]">
         <div class="max-w-7xl mx-auto text-center mb-16 px-6">
-            <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#0D7C3F]">Options</span></h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#D00000]">Options</span></h2>
             <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-4">Ireland Driving School – Leigh – 07939 860814</p>
         </div>
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
@@ -405,13 +412,13 @@
                 <i data-lucide="settings" class="w-12 h-12 mb-6 text-black"></i>
                 <h3 class="text-2xl font-black uppercase mb-4">Manual Lessons</h3>
                 <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master clutch control and gear changes in a modern MK8 VW Golf. Tailored for beginners and advanced drivers in Leicester.</p>
-                <a href="https://wa.me/447939860814?text=Hi%20Ireland%20-%20Book%20Manual%20Lessons%2007939%20860814" class="green-tag inline-block">Book Manual – 07939 860814</a>
+                <a href="https://wa.me/447939860814?text=Hi%20Ireland%20-%20Book%20Manual%20Lessons%2007939%20860814" class="red-tag inline-block">Book Manual – 07939 860814</a>
             </div>
-            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#F9B81B]">
-                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#F9B81B]"></i>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#D00000]">
+                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#D00000]"></i>
                 <h3 class="text-2xl font-black uppercase mb-4">Automatic Lessons</h3>
                 <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Stress-free automatic driving with Leigh. Perfect for city driving in Leicester. Flexible schedules.</p>
-                <a href="https://wa.me/447939860814?text=Hi%20Ireland%20-%20Book%20Automatic%20Lessons" class="green-tag inline-block">Book Automatic – 07939 860814</a>
+                <a href="https://wa.me/447939860814?text=Hi%20Ireland%20-%20Book%20Automatic%20Lessons" class="red-tag inline-block">Book Automatic – 07939 860814</a>
             </div>
         </div>
     </section>
@@ -419,45 +426,45 @@
     <!-- EXTRA FEATURES -->
     <section id="features" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">More <span class="text-[#0D7C3F]">Services</span></h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">More <span class="text-[#D00000]">Services</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="clock" class="w-8 h-8 text-[#0D7C3F]"></i></div>
+                    <div class="service-icon"><i data-lucide="clock" class="w-8 h-8 text-[#D00000]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Refresher Courses</h4>
                     <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Boost confidence behind the wheel. Perfect for returning drivers.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="car" class="w-8 h-8 text-[#0D7C3F]"></i></div>
+                    <div class="service-icon"><i data-lucide="car" class="w-8 h-8 text-[#D00000]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Pass Plus</h4>
                     <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Motorway, night, and all-weather driving. Safer, confident driving.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="book-open" class="w-8 h-8 text-[#0D7C3F]"></i></div>
+                    <div class="service-icon"><i data-lucide="book-open" class="w-8 h-8 text-[#D00000]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Theory Test Prep</h4>
                     <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Interactive sessions covering hazard perception & highway code.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="users" class="w-8 h-8 text-[#0D7C3F]"></i></div>
+                    <div class="service-icon"><i data-lucide="users" class="w-8 h-8 text-[#D00000]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Mock Tests</h4>
                     <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Full mock driving tests with detailed feedback. Build exam readiness.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="shield" class="w-8 h-8 text-[#0D7C3F]"></i></div>
+                    <div class="service-icon"><i data-lucide="shield" class="w-8 h-8 text-[#D00000]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Motorway Lessons</h4>
                     <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Specialised motorway tuition. Lane discipline, merging, safe driving.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="moon" class="w-8 h-8 text-[#0D7C3F]"></i></div>
+                    <div class="service-icon"><i data-lucide="moon" class="w-8 h-8 text-[#D00000]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Night Driving</h4>
                     <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Build confidence driving in the dark. Essential skills.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="map" class="w-8 h-8 text-[#0D7C3F]"></i></div>
+                    <div class="service-icon"><i data-lucide="map" class="w-8 h-8 text-[#D00000]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Sat Nav Training</h4>
                     <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Learn to follow sat nav directions safely for independent driving.</p>
                 </div>
                 <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
-                    <div class="service-icon"><i data-lucide="award" class="w-8 h-8 text-[#0D7C3F]"></i></div>
+                    <div class="service-icon"><i data-lucide="award" class="w-8 h-8 text-[#D00000]"></i></div>
                     <h4 class="text-xl font-black uppercase mb-3">Advanced Driving</h4>
                     <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Take your skills further with advanced techniques and eco-driving.</p>
                 </div>
@@ -466,15 +473,15 @@
     </section>
 
     <!-- ENHANCED PRICING with detailed packages -->
-    <section id="pricing" class="py-24 bg-[#F4F7F2]">
+    <section id="pricing" class="py-24 bg-[#F8F6F5]">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#0D7C3F]">Packages</span></h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#D00000]">Packages</span></h2>
             <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-12">Ireland Driving School – Leicester – Call 07939 860814 – All packages with Leigh (approved instructor)</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Package 1 -->
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#0D7C3F]">
-                    <span class="text-xs font-black uppercase text-[#0D7C3F] bg-red-50 px-3 py-1 rounded-full">Starter</span>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#D00000]">
+                    <span class="text-xs font-black uppercase text-[#D00000] bg-red-50 px-3 py-1 rounded-full">Starter</span>
                     <p class="text-4xl font-black mt-4 mb-2">£35</p>
                     <p class="text-xs font-bold uppercase text-slate-400 mb-6">per hour – 07939 860814</p>
                     <ul class="feature-list text-left space-y-2">
@@ -487,8 +494,8 @@
                 </div>
 
                 <!-- Package 2 -->
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#0D7C3F]">
-                    <span class="text-xs font-black uppercase text-[#0D7C3F] bg-red-50 px-3 py-1 rounded-full">Beginner</span>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#D00000]">
+                    <span class="text-xs font-black uppercase text-[#D00000] bg-red-50 px-3 py-1 rounded-full">Beginner</span>
                     <p class="text-4xl font-black mt-4 mb-2">£165</p>
                     <p class="text-xs font-bold uppercase text-slate-400 mb-6">5 lessons (save £10)</p>
                     <ul class="feature-list text-left space-y-2">
@@ -502,24 +509,24 @@
                 </div>
 
                 <!-- Package 3 (Featured) -->
-                <div class="reveal pricing-card bg-black text-white rounded-2xl border-2 border-[#F9B81B] p-8 transform scale-105 shadow-2xl">
-                    <span class="text-xs font-black uppercase text-[#F9B81B] bg-white/10 px-3 py-1 rounded-full">⭐ Popular – Ireland</span>
+                <div class="reveal pricing-card bg-black text-white rounded-2xl border-2 border-[#D00000] p-8 transform scale-105 shadow-2xl">
+                    <span class="text-xs font-black uppercase text-[#D00000] bg-white/10 px-3 py-1 rounded-full">⭐ Popular – Ireland</span>
                     <p class="text-4xl font-black mt-4 mb-2">£320</p>
                     <p class="text-xs font-bold uppercase text-slate-400 mb-6">10 lessons (save £30) – 07939 860814</p>
                     <ul class="feature-list text-left space-y-2 text-slate-200">
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#F9B81B]"></i> 10 x 1-hour lessons</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#F9B81B]"></i> Manual – MK8 VW Golf</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#F9B81B]"></i> Leicester</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#F9B81B]"></i> Mock test included</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#F9B81B]"></i> Theory test prep</li>
-                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#F9B81B]"></i> Progress report</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#D00000]"></i> 10 x 1-hour lessons</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#D00000]"></i> Manual – MK8 VW Golf</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#D00000]"></i> Leicester</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#D00000]"></i> Mock test included</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#D00000]"></i> Theory test prep</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#D00000]"></i> Progress report</li>
                     </ul>
                     <a href="https://wa.me/447939860814?text=Hi%20Ireland%20-%20Popular%2010%20lessons" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – 07939 860814</a>
                 </div>
 
                 <!-- Package 4 -->
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#0D7C3F]">
-                    <span class="text-xs font-black uppercase text-[#0D7C3F] bg-red-50 px-3 py-1 rounded-full">Fast Pass</span>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#D00000]">
+                    <span class="text-xs font-black uppercase text-[#D00000] bg-red-50 px-3 py-1 rounded-full">Fast Pass</span>
                     <p class="text-4xl font-black mt-4 mb-2">£620</p>
                     <p class="text-xs font-bold uppercase text-slate-400 mb-6">20 lessons (save £80)</p>
                     <ul class="feature-list text-left space-y-2">
@@ -537,8 +544,8 @@
 
             <!-- Additional Package: Intensive -->
             <div class="max-w-md mx-auto mt-10">
-                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#0D7C3F]">
-                    <span class="text-xs font-black uppercase text-[#0D7C3F] bg-red-50 px-3 py-1 rounded-full">Intensive – Leicester</span>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#D00000]">
+                    <span class="text-xs font-black uppercase text-[#D00000] bg-red-50 px-3 py-1 rounded-full">Intensive – Leicester</span>
                     <p class="text-4xl font-black mt-4 mb-2">£450</p>
                     <p class="text-xs font-bold uppercase text-slate-400 mb-6">5-day intensive (15 hours) – 07939 860814</p>
                     <ul class="feature-list text-left space-y-2">
@@ -558,11 +565,11 @@
     <!-- VIDEO -->
     <section class="py-24 bg-white">
         <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn the <span class="text-[#0D7C3F]">Ireland Way</span> – 07939 860814</h2>
+            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn the <span class="text-[#D00000]">Ireland Way</span> – 07939 860814</h2>
             <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
                 <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
                 <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-20 h-20 bg-[#F9B81B] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-black"></i></div>
+                    <div class="w-20 h-20 bg-[#D00000] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
                 </div>
                 <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs">Watch: Ireland Driving School – Leigh – Leicester</div>
             </div>
@@ -570,9 +577,9 @@
     </section>
 
     <!-- FAQ -->
-    <section class="py-24 bg-[#F4F7F2]">
+    <section class="py-24 bg-[#F8F6F5]">
         <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#0D7C3F]">FAQs</span> – 07939 860814</h2>
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#D00000]">FAQs</span> – 07939 860814</h2>
             <div class="space-y-4">
                 <div class="faq-item reveal">
                     <button class="faq-btn" onclick="toggleFaq(this)">What are your current lesson prices? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
@@ -598,31 +605,31 @@
     <section id="areas" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
             <div class="reveal">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#0D7C3F]">Areas</span> – 07939 860814</h2>
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#D00000]">Areas</span> – 07939 860814</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                     <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#0D7C3F]"></i>
+                        <i data-lucide="map-pin" class="text-[#D00000]"></i>
                         <div>
                             <p class="font-black text-xs uppercase">Leicester</p>
                             <p class="text-[9px] text-slate-400 font-bold uppercase">Main Area</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#0D7C3F]"></i>
+                        <i data-lucide="map-pin" class="text-[#D00000]"></i>
                         <div>
                             <p class="font-black text-xs uppercase">Oadby</p>
                             <p class="text-[9px] text-slate-400 font-bold uppercase">Near Leicester</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#0D7C3F]"></i>
+                        <i data-lucide="map-pin" class="text-[#D00000]"></i>
                         <div>
                             <p class="font-black text-xs uppercase">Wigston</p>
                             <p class="text-[9px] text-slate-400 font-bold uppercase">Local tuition</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <i data-lucide="map-pin" class="text-[#0D7C3F]"></i>
+                        <i data-lucide="map-pin" class="text-[#D00000]"></i>
                         <div>
                             <p class="font-black text-xs uppercase">Birstall</p>
                             <p class="text-[9px] text-slate-400 font-bold uppercase">Surrounding areas</p>
@@ -634,7 +641,7 @@
                 </div>
             </div>
             <div class="reveal">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#0D7C3F]">Availability</span> – Leigh</h2>
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#D00000]">Availability</span> – Leigh</h2>
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
                     <table class="w-full text-left text-xs uppercase font-black">
                         <thead class="bg-black text-white">
@@ -671,9 +678,9 @@
     </section>
 
     <!-- FEEDBACK -->
-    <section class="py-24 bg-[#F4F7F2] border-b border-slate-100">
+    <section class="py-24 bg-[#F8F6F5] border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#0D7C3F]">Feedback</span> – Ireland Driving School</h2>
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#D00000]">Feedback</span> – Ireland Driving School</h2>
             <div class="flex flex-wrap justify-center gap-6">
                 <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
                     <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
@@ -695,13 +702,13 @@
     </section>
 
     <!-- NEWSLETTER -->
-    <section class="py-24 bg-[#1A1A1A] text-white">
+    <section class="py-24 bg-[#0B0B0B] text-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="max-w-xl mx-auto text-center">
-                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Start Your Journey <span class="text-[#F9B81B]">Now</span> – Ireland</h3>
+                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Start Your Journey <span class="text-[#D00000]">Now</span> – Ireland</h3>
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Ireland Driving School – Leigh – Manual – Leicester – @irelanddrivingschool – 07939 860814</p>
                 <form class="flex flex-col sm:flex-row gap-2">
-                    <input type="email" placeholder="Your Email – We will call 07939 860814" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#F9B81B] transition">
+                    <input type="email" placeholder="Your Email – We will call 07939 860814" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#D00000] transition">
                     <button class="btn-brand px-8 py-4 text-xs uppercase">Contact 07939 860814</button>
                 </form>
             </div>
@@ -714,19 +721,19 @@
             <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
                 <div class="logo-wrap mb-10 md:mb-0">
                     <div class="logo-text !text-white">
-                        <span class="text-2xl font-black italic block">IRELAND <span class="text-[#F9B81B]">DRIVING</span></span>
+                        <span class="text-2xl font-black italic block">IRELAND <span class="text-[#D00000]">DRIVING</span></span>
                         <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">School • Leigh • Leicester • 07939 860814</span>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
                     <div>
-                        <h5 class="font-black uppercase text-[#F9B81B] text-xs mb-6">Contact – Ireland</h5>
+                        <h5 class="font-black uppercase text-[#D00000] text-xs mb-6">Contact – Ireland</h5>
                         <p class="text-sm font-bold uppercase tracking-widest mb-2">07939 860814</p>
                         <p class="text-[10px] text-slate-500 font-bold uppercase">Approved Instructor • Manual</p>
                         <p class="text-[10px] text-slate-500 font-bold uppercase mt-2">Instagram: @irelanddrivingschool<br>164 posts • 622 followers • 1,027 following</p>
                     </div>
                     <div>
-                        <h5 class="font-black uppercase text-[#F9B81B] text-xs mb-6">Locations – Leicester</h5>
+                        <h5 class="font-black uppercase text-[#D00000] text-xs mb-6">Locations – Leicester</h5>
                         <ul class="text-[10px] font-bold uppercase space-y-2 text-slate-400">
                             <li>Leicester</li>
                             <li>Oadby</li>
@@ -735,7 +742,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h5 class="font-black uppercase text-[#F9B81B] text-xs mb-6">Social – 07939 860814</h5>
+                        <h5 class="font-black uppercase text-[#D00000] text-xs mb-6">Social – 07939 860814</h5>
                         <div class="flex space-x-4">
                             <a href="https://www.instagram.com/irelanddrivingschool" class="social-icon"><i data-lucide="instagram" class="w-5 h-5"></i></a>
                             <a href="tel:07939860814" class="social-icon"><i data-lucide="phone" class="w-5 h-5"></i></a>
@@ -751,10 +758,10 @@
     </footer>
 
     <div class="cta-dock md:hidden">
-        <a href="tel:07939860814"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#F9B81B]"></i>CALL 07939 860814</a>
-        <a href="https://wa.me/447939860814"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#F9B81B]"></i>WHATSAPP</a>
-        <a href="sms:+447939860814"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#F9B81B]"></i>TEXT LEIGH</a>
-        <a href="tel:07939860814" class="bg-[#0D7C3F] !text-white !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK 07939</a>
+        <a href="tel:07939860814"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#D00000]"></i>CALL 07939 860814</a>
+        <a href="https://wa.me/447939860814"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#D00000]"></i>WHATSAPP</a>
+        <a href="sms:+447939860814"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#D00000]"></i>TEXT LEIGH</a>
+        <a href="tel:07939860814" class="bg-[#D00000] !text-white !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK 07939</a>
     </div>
 
     <script>
