@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passties Driving School – Ryan McDonald ADI | Cornwall | 07942 077419</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-black: #0A1E27;
+            --brand-green: #3AC87A;
+            --brand-green-deep: #1FAF64;
+            --brand-pasty: #E2A44E;
+            --brand-pasty-light: #F4C376;
+            --brand-cream: #FFF7E9;
+            --brand-white: #ffffff;
+            --brand-gray: #121F26;
+            --hazar-red-deep: #1FAF64;
+            --hazar-black-soft: #0A1E27;
+        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #FFFEFB; overflow-x: hidden; margin: 0; padding: 0; }
+       .logo-wrap { display: flex; align-items: center; gap: 10px; }
+       .logo-text { font-family: 'Archivo Black', sans-serif; line-height: 1; }
+       .car-hero-container { position: relative; z-index: 10; width: 100%; height: 420px; display: flex; align-items: flex-end; overflow: hidden; background: #ffffff; margin: 0; padding: 0; border: none; border-radius: 0; }
+        #panningCar { width: 720px; height: auto; position: absolute; bottom: 30px; left: 0; z-index: 20; animation: driveForward 22s linear infinite; will-change: transform; filter: drop-shadow(0 20px 25px rgba(0,0,0,0.10)); }
+        @keyframes driveForward { 0% { transform: translateX(-150px); } 100% { transform: translateX(calc(100vw + 150px)); } }
+       .road-indicator { height: 2px; background: transparent; width: 100%; position: absolute; bottom: 35px; z-index: 5; left: 0; }
+       .road-indicator::after { content: ''; position: absolute; top: 50%; transform: translateY(-50%); left: 0; width: 100%; height: 2px; background-image: linear-gradient(to right, #3AC87A 20px, transparent 20px); background-size: 40px 100%; animation: roadMove 0.8s linear infinite; }
+        @keyframes roadMove { 0% { background-position: 0 0; } 100% { background-position: -40px 0; } }
+        #mobile-menu { transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); transform: translateX(100%); background: var(--brand-black); }
+        #mobile-menu.open { transform: translateX(0); }
+       .header-transparent { background: transparent!important; backdrop-filter: none!important; border-bottom: none!important; box-shadow: none!important; }
+       .glass { background: transparent; backdrop-filter: none; }
+       .premium-card { transition: all 0.4s ease; border-top: 6px solid var(--brand-green); }
+       .premium-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -12px rgba(58, 200, 122, 0.35); }
+       .ticker-wrap { overflow: hidden; background: var(--brand-black); color: var(--brand-white); padding: 15px 0; border-bottom: 4px solid var(--brand-green); }
+       .ticker { display: flex; animation: ticker 25s linear infinite; white-space: nowrap; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+       .btn-brand { background-color: var(--brand-green); color: white; transition: 0.3s; font-weight: 900; }
+       .btn-brand:hover { background-color: var(--brand-green-deep); transform: scale(1.05); }
+       .cta-dock { position: fixed; bottom: 0; left: 0; right: 0; background: var(--brand-black); display: flex; z-index: 100; border-top: 4px solid var(--brand-green); }
+       .cta-dock a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 0; color: white; font-size: 10px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.1); }
+       .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+       .reveal.active { opacity: 1; transform: translateY(0); }
+       .faq-btn { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 900; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+       .faq-content { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; }
+       .faq-item.active.faq-content { max-height: 300px; padding: 1rem 0; }
+       .red-tag { background: var(--brand-green); color: white; padding: 4px 12px; font-weight: 900; font-size: 10px; text-transform: uppercase; border-radius: 2px; }
+        #promoPopup { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 1000; width: 280px; background: white; border-top: 5px solid var(--brand-green); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 8px; padding: 20px; }
+       .service-icon { background: #F0FAF4; border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+       .pricing-card { transition: all 0.3s ease; }
+       .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2); }
+       .feature-list li { padding: 8px 0; border-bottom: 1px solid #f1f1f1; font-size: 13px; font-weight: 600; color: #334155; }
+       .feature-list li:last-child { border-bottom: none; }
+       .feature-list li i { margin-right: 10px; color: var(--brand-green); }
+       .social-icon { transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); color: white; }
+       .social-icon:hover { background: var(--brand-green); transform: translateY(-3px); }
+       .nav-link { color: #0A1E27; font-weight: 900; }
+       .nav-link:hover { color: var(--brand-green); }
+       .nav-cta { background: var(--brand-green); color: white; padding: 0.75rem 1.5rem; border-radius: 0.125rem; box-shadow: 0 4px 12px rgba(58,200,122,0.35); }
+       .nav-cta:hover { background: var(--brand-green-deep); transform: scale(1.03); }
+       .text-[#E31E24] { color: var(--brand-green)!important; }
+       .bg-[#E31E24] { background-color: var(--brand-green)!important; }
+       .border-[#E31E24] { border-color: var(--brand-green)!important; }
+       .text-[#E30613] { color: var(--brand-green)!important; }
+       .bg-[#E30613] { background-color: var(--brand-green)!important; }
+       .border-[#E30613] { border-color: var(--brand-green)!important; }
+    </style>
+</head>
+<body class="text-slate-900">
+    <div id="promoPopup" class="animate__animated animate__fadeInUp">
+        <button onclick="this.parentElement.style.display='none'" class="absolute top-2 right-2"><i data-lucide="x" class="w-4 h-4"></i></button>
+        <span class="red-tag mb-2 inline-block">🥟 Ryan McDonald ADI</span>
+        <h4 class="font-black text-xl leading-tight mb-2">Passties Driving School</h4>
+        <p class="text-xs font-bold text-slate-500 uppercase mb-4">Cornwall • 07942 077419 • Independent</p>
+        <a href="tel:07942077419" class="btn-brand px-4 py-2 text-[10px] uppercase inline-block text-center">Call Ryan: 07942 077419 Now</a>
+    </div>
+    <nav class="sticky top-0 z-50 header-transparent">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="logo-wrap">
+                <div class="logo-text">
+                    <span class="text-2xl font-black italic block text-black">PASSTIES <span class="text-[#E30613]">DRIVING</span></span>
+                    <span class="text-[8px] font-bold tracking-[0.3em] uppercase block text-black/80">Ryan McDonald ADI • Cornwall • 07942 077419</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-10 font-black text-xs uppercase tracking-widest">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Lessons</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Packages</a>
+                <a href="#areas" class="nav-link">Locations</a>
+                <a href="tel:07942077419" class="nav-link">07942 077419</a>
+                <a href="https://wa.me/447942077419?text=Hi%20Ryan%20at%20Passties%20Driving%20School%20-%20I%20want%20to%20book%20driving%20lessons%20in%20Cornwall" class="nav-cta">WhatsApp Ryan 07942 077419</a>
+            </div>
+            <button id="menu-btn" class="md:hidden text-black"><i data-lucide="menu" class="w-8 h-8"></i></button>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[100] p-10 flex flex-col shadow-2xl">
+        <button id="close-btn" class="self-end text-white mb-12"><i data-lucide="x" class="w-10 h-10"></i></button>
+        <div class="flex flex-col space-y-8 text-white font-black text-3xl uppercase tracking-tighter">
+            <a href="#about">About Passties</a>
+            <a href="#services">Driving Lessons</a>
+            <a href="#features">Features</a>
+            <a href="#pricing">Packages</a>
+            <a href="#areas">Cornwall • Independent • ADI</a>
+            <a href="tel:07942077419">Call Ryan 07942 077419</a>
+            <a href="https://wa.me/447942077419" class="text-[#3AC87A]">WhatsApp 07942 077419</a>
+        </div>
+    </div>
+    <div class="ticker-wrap font-bold uppercase text-xs tracking-widest">
+        <div class="ticker space-x-16">
+            <span>🥟 Passties Driving School – Independent – Ryan McDonald ADI</span>
+            <span>📍 Cornwall • Local Independent Instructor</span>
+            <span>⚙️ Pasty-Themed Branding – Cornish Delicacy Inspired</span>
+            <span>⭐ 100% Recommend (15 Reviews) – 151 Followers</span>
+            <span>📱 Call / WhatsApp: 07942 077419</span>
+            <span>📸 Facebook: Passties Driving School – 64 posts</span>
+        </div>
+    </div>
+    <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-4 pb-12 overflow-hidden">
+        <div class="w-full">
+            <div class="car-hero-container">
+                <div class="road-indicator"></div>
+                <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Passties Driving School – Black L Plate Car – Contact Ryan 07942 077419 – Cornwall">
+            </div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 text-center z-20 mt-4">
+            <div class="animate__animated animate__fadeInUp">
+                <span class="red-tag mb-4 inline-block">🥟 Ryan McDonald ADI • Cornwall • 07942 077419</span>
+                <h1 class="text-6xl md:text-8xl font-black text-black leading-none mb-4 uppercase tracking-tighter">
+                    DRIVE <span class="text-[#E30613]">PASSTIES.</span>
+                </h1>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] mb-8 text-sm md:text-base">Passties Driving School – Independent – Serving Learners Across Cornwall</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-5">
+                    <a href="tel:07942077419" class="px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-xs hover:bg-[#3AC87A] transition duration-300">Call Ryan 07942 077419</a>
+                    <a href="https://wa.me/447942077419?text=Hi%20Ryan%20at%20Passties%20Driving%20School%20%F0%9F%A5%9F%20I%20want%20to%20book%20driving%20lessons%20in%20Cornwall.%20Independent%20Instructor%20-%20Cornish%20Pasty%20Branding" class="px-10 py-5 border-4 border-black text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition duration-300">WhatsApp Ryan 07942 077419 – Cornwall</a>
+                </div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-4">Facebook: Passties Driving School • 151 followers • Independent • Cornwall • 07942 077419</p>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="py-20 bg-[#0A1E27] text-white border-t-4 border-[#3AC87A]">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <span class="red-tag mb-4 inline-block">About Passties Driving School</span>
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 leading-none">Independent <br><span class="text-[#E30613]">Cornwall</span></h2>
+                <p class="text-sm font-bold uppercase tracking-widest text-slate-300 leading-relaxed mb-6">
+                    Passties Driving School is an independent driving school operated by a fully qualified ADI instructor named Ryan McDonald, serving learners across Cornwall.
+                </p>
+                <p class="text-sm font-bold uppercase tracking-widest text-slate-400 leading-relaxed mb-8">
+                    Fully qualified ADI • Independent instructor service – not a national franchise • Well-known for its distinctive, pasty-themed branding, playing on the famous local Cornish delicacy. 100% recommend (15 reviews).
+                </p>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                        <i data-lucide="user-check" class="w-6 h-6 text-[#E30613] mb-2"></i>
+                        <p class="font-black text-xs uppercase">Ryan McDonald ADI</p>
+                        <p class="text-[10px] text-slate-400 uppercase">Fully Qualified ADI</p>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-[#E30613] mb-2"></i>
+                        <p class="font-black text-xs uppercase">Cornwall</p>
+                        <p class="text-[10px] text-slate-400 uppercase">Local Independent</p>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                        <i data-lucide="smile" class="w-6 h-6 text-[#E30613] mb-2"></i>
+                        <p class="font-black text-xs uppercase">Pasty-Themed Brand</p>
+                        <p class="text-[10px] text-slate-400 uppercase">Cornish Delicacy</p>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                        <i data-lucide="star" class="w-6 h-6 text-[#E30613] mb-2"></i>
+                        <p class="font-black text-xs uppercase">100% Recommend</p>
+                        <p class="text-[10px] text-slate-400 uppercase">15 Reviews • 151 Followers</p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <a href="tel:07942077419" class="btn-brand px-8 py-4 text-xs uppercase">Call Ryan 07942 077419</a>
+                    <a href="https://wa.me/447942077419" class="px-8 py-4 border-2 border-white text-white text-xs font-black uppercase hover:bg-white hover:text-black transition">WhatsApp Now</a>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="bg-white rounded-3xl p-2 shadow-2xl">
+                    <img src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/IMG_6596.png" alt="Passties Driving School Car – Black Fiesta" class="w-full h-auto rounded-2xl bg-black" style="background:#0A1E27; filter: contrast(1.1);">
+                    <div class="p-6 bg-black rounded-2xl mt-2">
+                        <p class="font-black text-white uppercase text-sm">Passties Driving School</p>
+                        <p class="text-[#E30613] font-black text-xs uppercase mt-1">07942 077419 • Ryan McDonald ADI • Cornwall</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-2">Independent • Fully Qualified ADI • Facebook: Passties Driving School • 64 Posts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-12 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="reveal">
+                <p class="text-5xl font-black text-black mb-2 counter" data-target="15">0</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Reviews – 100% Recommend – Cornwall</p>
+            </div>
+            <div class="reveal">
+                <p class="text-5xl font-black text-black mb-2">Ryan</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">McDonald ADI – Fully Qualified</p>
+            </div>
+            <div class="reveal">
+                <p class="text-5xl font-black text-[#E30613] mb-2">07942</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">077419 – Call Now – Passties Driving School</p>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto text-center mb-16 px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter">Tuition <span class="text-[#E30613]">Options</span></h2>
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-4">Passties Driving School – Ryan McDonald ADI – 07942 077419</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-black">
+                <i data-lucide="settings" class="w-12 h-12 mb-6 text-black"></i>
+                <h3 class="text-2xl font-black uppercase mb-4">Manual Lessons</h3>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Master the art of driving with full control across Cornwall. Learn clutch control, gear changes, and advanced roadcraft with Ryan McDonald ADI, fully qualified.</p>
+                <a href="https://wa.me/447942077419?text=Hi%20Ryan%20-%20Book%20Manual%20Lessons%2007942%20077419%20-%20Cornwall" class="red-tag inline-block">Book Manual – Ryan 07942 077419</a>
+            </div>
+            <div class="reveal bg-white p-10 rounded-2xl border-b-4 border-[#E30613]">
+                <i data-lucide="zap" class="w-12 h-12 mb-6 text-[#E30613]"></i>
+                <h3 class="text-2xl font-black uppercase mb-4">Automatic Lessons</h3>
+                <p class="text-sm font-bold text-slate-500 uppercase leading-relaxed mb-6">Stress-free driving without the clutch. Ideal for Cornwall lanes and towns. Get on the road faster with our independent instructor Ryan.</p>
+                <a href="https://wa.me/447942077419?text=Hi%20Ryan%20-%20Book%20Automatic%20Lessons%2007942%20077419%20-%20Cornwall%20Independent" class="red-tag inline-block">Book Automatic – Ryan 07942 077419</a>
+            </div>
+        </div>
+    </section>
+    <section id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">More <span class="text-[#E30613]">Services</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="clock" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Refresher Courses</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Boost confidence behind the wheel. Perfect for returning drivers in Cornwall.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="car" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Pass Plus</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Motorway, night, and all-weather driving. Safer, confident driving – 07942 077419.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="book-open" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Theory Test Prep</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Interactive sessions covering hazard perception & highway code with Ryan McDonald ADI.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="users" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Mock Tests</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Full mock driving tests with detailed feedback. Build exam readiness – Cornwall.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="shield" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Motorway Lessons</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Specialised motorway tuition. Learn lane discipline, merging, and safe driving.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="moon" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Night Driving</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Build confidence driving in the dark. Essential skills for all conditions.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="map" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Sat Nav Training</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Learn to follow sat nav directions safely for independent driving – Cornwall.</p>
+                </div>
+                <div class="reveal p-8 border border-slate-200 rounded-3xl hover:shadow-xl transition">
+                    <div class="service-icon"><i data-lucide="award" class="w-8 h-8 text-[#E30613]"></i></div>
+                    <h4 class="text-xl font-black uppercase mb-3">Advanced Driving</h4>
+                    <p class="text-sm text-slate-500 font-bold uppercase leading-relaxed">Take your skills further with advanced techniques and eco-driving with Passties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="pricing" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Lesson <span class="text-[#E30613]">Packages</span></h2>
+            <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mb-12">Passties Driving School – Cornwall – Call Ryan 07942 077419 – All packages include expert ADI tuition – Contact directly for pricing</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]">
+                    <span class="text-xs font-black uppercase text-[#E30613] bg-green-50 px-3 py-1 rounded-full">Starter</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£ POA</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">per hour – Ryan 07942 077419</p>
+                    <ul class="feature-list text-left space-y-2">
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 1-hour lesson – Contact Ryan</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Independent ADI</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Pick-up: Cornwall</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Ryan McDonald ADI</li>
+                    </ul>
+                    <a href="https://wa.me/447942077419?text=Hi%20Ryan%20-%20Starter%20package%20-%20Passties%20-%2007942%20077419" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – Ryan 07942 077419</a>
+                </div>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]">
+                    <span class="text-xs font-black uppercase text-[#E30613] bg-green-50 px-3 py-1 rounded-full">Beginner</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£ POA</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5 lessons – Passties – Save</p>
+                    <ul class="feature-list text-left space-y-2">
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 5 x 1-hour lessons – Contact Ryan</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Independent Service</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Flexible – Cornwall</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Ryan McDonald ADI</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Facebook updates – 64 posts</li>
+                    </ul>
+                    <a href="https://wa.me/447942077419?text=Hi%20Ryan%20-%20Beginner%205%20lessons%20-%20Passties%2007942%20077419" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – Ryan 07942 077419</a>
+                </div>
+                <div class="reveal pricing-card bg-black text-white rounded-2xl border-2 border-[#E30613] p-8 transform scale-105 shadow-2xl">
+                    <span class="text-xs font-black uppercase text-[#E30613] bg-white/10 px-3 py-1 rounded-full">⭐ Popular – Passties</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£ POA</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">10 lessons – 07942 077419 – Best Value</p>
+                    <ul class="feature-list text-left space-y-2 text-slate-200">
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> 10 x 1-hour lessons – Cornwall</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Independent ADI – Ryan McDonald</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Serving Learners Across Cornwall</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Mock test included</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Theory test prep</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline text-[#E30613]"></i> Progress report – 100% Recommend</li>
+                    </ul>
+                    <a href="https://wa.me/447942077419?text=Hi%20Ryan%20-%20Popular%2010%20lessons%20-%2007942%20077419%20-%20Passties%20ADI%20Cornwall" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – Ryan 07942 077419</a>
+                </div>
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]">
+                    <span class="text-xs font-black uppercase text-[#E30613] bg-green-50 px-3 py-1 rounded-full">Fast Pass</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£ POA</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">20 lessons – Passties Driving School</p>
+                    <ul class="feature-list text-left space-y-2">
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 20 x 1-hour lessons – 07942 077419</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Independent – Ryan McDonald ADI</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Cornwall – Local Instructor</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 2 mock tests</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory support</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Motorway lesson included</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Free test day advice – 15 reviews</li>
+                    </ul>
+                    <a href="https://wa.me/447942077419?text=Hi%20Ryan%20-%20Fast%20Pass%2020%20lessons%20-%2007942%20077419%20-%20Passties" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – Ryan 07942 077419</a>
+                </div>
+            </div>
+            <div class="max-w-md mx-auto mt-10">
+                <div class="reveal pricing-card bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-[#E30613]">
+                    <span class="text-xs font-black uppercase text-[#E30613] bg-green-50 px-3 py-1 rounded-full">Intensive – Cornwall</span>
+                    <p class="text-4xl font-black mt-4 mb-2">£ POA</p>
+                    <p class="text-xs font-bold uppercase text-slate-400 mb-6">5-day intensive (15 hours) – 07942 077419</p>
+                    <ul class="feature-list text-left space-y-2">
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> 15 hours over 5 days – Passties</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Independent – Ryan McDonald ADI</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Cornwall – Pastie Branding</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Mock test included</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Theory test support</li>
+                        <li><i data-lucide="check-circle" class="w-4 h-4 inline"></i> Test day preparation – 100% Recommend</li>
+                    </ul>
+                    <a href="https://wa.me/447942077419?text=Hi%20Ryan%20-%20Intensive%205%20day%20-%2007942%20077419%20-%20Passties%20Cornwall" class="btn-brand w-full block py-3 text-[10px] uppercase mt-6 rounded-lg">Book Now – Ryan 07942 077419</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Learn the <span class="text-[#E30613]">Passties Way</span> – 07942 077419</h2>
+            <div class="aspect-video bg-black rounded-3xl relative overflow-hidden group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 bg-[#E30613] rounded-full flex items-center justify-center animate-pulse"><i data-lucide="play" class="w-8 h-8 fill-white text-white"></i></div>
+                </div>
+                <div class="absolute bottom-6 left-6 text-white font-black uppercase text-xs">Watch: Introduction to Passties Driving School – Ryan McDonald ADI – Cornwall – Independent</div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase tracking-tighter text-center mb-16">Help & <span class="text-[#E30613]">FAQs</span> – 07942 077419</h2>
+            <div class="space-y-4">
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">What are your current lesson prices? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Because Passties operates as a localized, independent instructor service rather than a major national franchise, the primary way to check availability, pricing, or to book lessons is to reach out directly to Ryan on 07942 077419 – Phone / WhatsApp.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">How long does a standard lesson last? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Standard lessons are 1-2 hours. Flexible timing for Cornwall. Contact Ryan directly on 07942 077419 – Passties Driving School independent.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Are you independent or a franchise? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Independent driving school operated by Ryan McDonald ADI, serving learners across Cornwall. Well-known for its distinctive, pasty-themed branding, playing on the famous local Cornish delicacy.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-btn" onclick="toggleFaq(this)">Which areas do you cover? <i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+                    <div class="faq-content text-xs font-bold uppercase tracking-widest text-slate-500">Cornwall – Independent instructor service – Facebook: Passties Driving School – 100% Recommend (15 reviews) – 07942 077419 – Contact Ryan on Facebook Messenger.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="areas" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Service <span class="text-[#E30613]">Areas</span> – 07942 077419</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Cornwall</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Main Area – Independent – ADI</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Across Cornwall</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Local Learners</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Pasty-Themed</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Cornish Delicacy Inspired</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <i data-lucide="map-pin" class="text-[#E30613]"></i>
+                        <div>
+                            <p class="font-black text-xs uppercase">Independent Service</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Ryan McDonald ADI – 151 Followers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-[300px] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d203546.123!2d-5.5!3d50.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486ab6d3d3d3d3d3%3A0xabc!2sCornwall!5e0!3m2!1sen!2suk!4v1715000000000!5m2!1sen!2suk" width="100%" height="100%" style="border:0; filter: hue-rotate(80deg) saturate(0.8);" allowfullscreen=""></iframe>
+                </div>
+            </div>
+            <div class="reveal">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-8">Lesson <span class="text-[#E30613]">Availability</span> – Ryan McDonald ADI</h2>
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                    <table class="w-full text-left text-xs uppercase font-black">
+                        <thead class="bg-black text-white">
+                            <tr>
+                                <th class="p-4">Day</th>
+                                <th class="p-4">Daytime – 07942 077419</th>
+                                <th class="p-4">Evening/Weekend</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-4 bg-slate-50">Mon-Fri</td>
+                                <td class="p-4 text-green-600">Available – Cornwall – Ryan McDonald</td>
+                                <td class="p-4 text-amber-500">Limited – WhatsApp 07942 077419</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 bg-slate-50">Saturday</td>
+                                <td class="p-4 text-amber-500">Booking Only – Independent Instructor</td>
+                                <td class="p-4 text-amber-500">Booking Only – 100% Recommend</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 bg-slate-50">Sunday</td>
+                                <td class="p-4 text-slate-300">Closed – Call 07942 077419</td>
+                                <td class="p-4 text-slate-300">Closed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100">
+                        <p class="text-[9px] text-slate-500 font-bold">* Passties Driving School – Ryan McDonald ADI – Independent – Cornwall – Pasty-themed branding – Contact directly: 07942 077419 to check availability, pricing, or to book lessons.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-slate-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-12">Student <span class="text-[#E30613]">Feedback</span> – Passties Driving School</h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Amazing instructor! Ryan made me feel confident in Cornwall. Independent service was perfect – passed first time! 100% recommend"</p>
+                    <p class="font-black uppercase text-[10px]">— Josh – Cornwall – 07942 077419 – Congratulations!</p>
+                </div>
+                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Best driving school in Cornwall! Patient ADI, distinctive pasty branding I love. Highly recommend Passties – Ryan is brilliant!"</p>
+                    <p class="font-black uppercase text-[10px]">— Student – Cornwall – Passties Driving School</p>
+                </div>
+                <div class="reveal bg-white p-8 rounded-2xl border border-slate-200 max-w-sm text-left">
+                    <div class="flex text-amber-500 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div>
+                    <p class="text-xs font-bold text-slate-600 mb-4 italic">"Fantastic independent tuition in Cornwall. Fully qualified ADI, flexible times, great value. Follow Passties Driving School on Facebook!"</p>
+                    <p class="font-black uppercase text-[10px]">— Student – Cornwall – 07942 077419 – 15 Reviews</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-xl mx-auto text-center">
+                <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Start Your Journey <span class="text-[#E30613]">Now</span> – Passties</h3>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Passties Driving School – Ryan McDonald ADI – Independent – Cornwall – Facebook: Passties Driving School – 07942 077419 – Pastie Themed</p>
+                <form class="flex flex-col sm:flex-row gap-2">
+                    <input type="email" placeholder="Your Email – Ryan will call 07942 077419" class="flex-1 p-4 bg-white/10 border border-white/20 text-xs uppercase font-black outline-none focus:border-[#E30613] transition">
+                    <button class="btn-brand px-8 py-4 text-xs uppercase">Contact Ryan 07942 077419</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-black text-white pt-20 pb-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-white/10 pb-16">
+                <div class="logo-wrap mb-10 md:mb-0">
+                    <div class="logo-text!text-white">
+                        <span class="text-2xl font-black italic block">PASSTIES <span class="text-[#E30613]">DRIVING</span></span>
+                        <span class="text-[8px] font-bold tracking-[0.3em] uppercase block">Ryan McDonald ADI • Cornwall • 07942 077419</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+                    <div>
+                        <h5 class="font-black uppercase text-[#E30613] text-xs mb-6">Contact – Passties</h5>
+                        <p class="text-sm font-bold uppercase tracking-widest mb-2">07942 077419</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase">Ryan McDonald ADI • Independent</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase mt-2">Facebook: Passties Driving School<br>151 followers • 1 following • 64 posts</p>
+                    </div>
+                    <div>
+                        <h5 class="font-black uppercase text-[#E30613] text-xs mb-6">Locations – Cornwall</h5>
+                        <ul class="text-[10px] font-bold uppercase space-y-2 text-slate-400">
+                            <li>Cornwall – Main Area</li>
+                            <li>Serving Learners Across Cornwall</li>
+                            <li>Independent Instructor Service</li>
+                            <li>Pasty-Themed Branding – Cornish</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-black uppercase text-[#E30613] text-xs mb-6">Social – 07942 077419</h5>
+                        <div class="flex space-x-4">
+                            <a href="https://www.facebook.com/passtiesdrivingschool" class="social-icon"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                            <a href="tel:07942077419" class="social-icon"><i data-lucide="phone" class="w-5 h-5"></i></a>
+                            <a href="https://wa.me/447942077419" class="social-icon"><i data-lucide="message-square" class="w-5 h-5"></i></a>
+                            <a href="https://www.facebook.com/passtiesdrivingschool" class="social-icon"><i data-lucide="map-pin" class="w-5 h-5"></i></a>
+                        </div>
+                        <p class="text-[9px] text-slate-500 font-bold uppercase mt-4">Independent • Fully Qualified ADI • 100% Recommend (15 reviews)</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-[10px] text-slate-500 font-black uppercase tracking-[0.5em]">© 2026 PASSTIES DRIVING SCHOOL • Ryan McDonald ADI • Independent • Cornwall • 07942 077419 • Facebook: Passties Driving School • Pasty-Themed Branding</p>
+        </div>
+    </footer>
+    <div class="cta-dock md:hidden">
+        <a href="tel:07942077419"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#E30613]"></i>CALL 07942 077419</a>
+        <a href="https://wa.me/447942077419"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#E30613]"></i>WHATSAPP RYAN</a>
+        <a href="sms:+447942077419"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#E30613]"></i>TEXT RYAN</a>
+        <a href="tel:07942077419" class="bg-[#E30613]!text-white!border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK RYAN</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            setTimeout(() => { document.getElementById('promoPopup').style.display = 'block'; }, 3000);
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+            const startCounters = (entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const target = +entry.target.getAttribute('data-target');
+                        const count = +entry.target.innerText;
+                        const inc = target / speed;
+                        if(count < target) {
+                            entry.target.innerText = Math.ceil(count + inc);
+                            setTimeout(() => startCounters([entry]), 1);
+                        } else { entry.target.innerText = target; }
+                    }
+                });
+            };
+            const counterObserver = new IntersectionObserver(startCounters, {threshold: 0.5});
+            counters.forEach(c => counterObserver.observe(c));
+        });
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active', 'animate__animated', 'animate__fadeInUp'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            icon.style.transform = item.classList.contains('active')? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    </script>
+</body>
+</html>
