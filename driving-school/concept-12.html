@@ -297,6 +297,672 @@
         .spacer {
             height: 20px;
         }
+
+        /* ===== ADD-ON STYLES (pure additions, no deletions) ===== */
+        /* 1. Top Section Large Booking with Calendar Integration */
+        .booking-section {
+            padding: 0 20px 20px;
+        }
+        .booking-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+        }
+        .booking-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .booking-card h3 i {
+            color: var(--accent);
+        }
+        .postcode-search {
+            display: flex;
+            background: #F1F5F9;
+            border-radius: 40px;
+            padding: 6px;
+            margin: 15px 0 10px;
+        }
+        .postcode-search input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px 16px;
+            font-size: 15px;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+        .postcode-search button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 12px 22px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .calendar-preview {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            margin: 16px 0 12px;
+        }
+        .calendar-day {
+            text-align: center;
+            font-size: 12px;
+            padding: 8px 0;
+            border-radius: 10px;
+            background: #F8FAFC;
+            color: var(--text-muted);
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .calendar-day.active {
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+        }
+        .calendar-day.header {
+            background: transparent;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+        .btn-outline:active {
+            background: #EFF6FF;
+        }
+
+        /* 2. Buy Now Lesson Packages */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            padding: 0 20px 10px;
+            margin-bottom: 20px;
+        }
+        .package-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 18px 14px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+            border: 1px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .package-card .badge {
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            background: var(--accent);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .package-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .package-card .price {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 6px 0 4px;
+        }
+        .package-card .desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex: 1;
+        }
+        .btn-package {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 10px 0;
+            font-weight: 600;
+            font-size: 13px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* 3. Automatic vs Manual Lessons Section */
+        .transmission-section {
+            display: flex;
+            gap: 15px;
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+        .transmission-card {
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+        }
+        .transmission-card i {
+            font-size: 32px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .transmission-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .transmission-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* 4. Areas Covered Section */
+        .areas-section {
+            padding: 0 20px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .area-pill {
+            background: var(--card-bg);
+            padding: 12px 18px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            border: 1px solid #E2E8F0;
+        }
+        .area-pill i {
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        /* 5. Instructor Trust Section */
+        .trust-section {
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .trust-item {
+            background: var(--card-bg);
+            padding: 18px 12px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .trust-item i {
+            font-size: 24px;
+            color: var(--accent);
+        }
+
+        /* 6. FAQ Toggle / Accordion */
+        .faq-section {
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 14px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid #E2E8F0;
+        }
+        .faq-question {
+            padding: 16px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .faq-question i {
+            transition: transform 0.3s;
+            color: var(--accent);
+        }
+        .faq-item.open .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            padding: 0 18px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding: 0 18px 18px;
+        }
+
+        /* 7. Scroll Animations (applied via JS) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 8. Popup Limited-Time Offer */
+        .popup-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+        .popup-overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .popup-box {
+            background: white;
+            border-radius: 28px;
+            padding: 28px 24px;
+            max-width: 340px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .popup-overlay.show .popup-box {
+            transform: scale(1);
+        }
+        .popup-box h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        .popup-box p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        .popup-box .btn-primary {
+            font-size: 15px;
+            padding: 14px;
+        }
+        .popup-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94A3B8;
+            cursor: pointer;
+        }
+
+        /* 9. Subscribe / Newsletter Form */
+        .newsletter-section {
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+        .newsletter-card {
+            background: linear-gradient(135deg, var(--primary) 0%, #1E293B 100%);
+            border-radius: 24px;
+            padding: 24px 20px;
+            color: white;
+            text-align: center;
+        }
+        .newsletter-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .newsletter-card p {
+            font-size: 13px;
+            color: #94A3B8;
+            margin-bottom: 16px;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .newsletter-form input {
+            flex: 1;
+            min-width: 160px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: none;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+        .newsletter-form button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* 10. Interactive Location Map */
+        .map-section {
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+        .map-placeholder {
+            background: #DBEAFE;
+            border-radius: 20px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+            border: 2px dashed #93C5FD;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .map-placeholder i {
+            font-size: 36px;
+            color: var(--accent);
+        }
+        .map-pins {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            justify-content: center;
+        }
+        .map-pin {
+            background: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .map-pin i {
+            color: var(--accent);
+            font-size: 10px;
+        }
+
+        /* 11. Lesson Packages Link to Payment (already in package cards, extra note) */
+        .payment-note {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 0 20px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .payment-note i {
+            color: var(--accent);
+        }
+
+        /* 12. Highlighted Promotions / Limited Offers Section */
+        .promo-banner {
+            margin: 0 20px 25px;
+            background: linear-gradient(105deg, #F59E0B, #EF4444);
+            border-radius: 20px;
+            padding: 18px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 18px rgba(239,68,68,0.3);
+        }
+        .promo-banner h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .promo-banner p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        .promo-banner .promo-btn {
+            background: white;
+            color: #EF4444;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* 13. Referral Program Promotion */
+        .referral-section {
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+        .referral-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+            border: 1px solid #E2E8F0;
+        }
+        .referral-icon {
+            width: 56px;
+            height: 56px;
+            background: #EFF6FF;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+        .referral-text h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .referral-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* 14. Nervous Driver Specialist Section */
+        .nervous-section {
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+        .nervous-card {
+            background: #F0FDF4;
+            border-radius: 20px;
+            padding: 22px 20px;
+            border-left: 6px solid #22C55E;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .nervous-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nervous-card p {
+            font-size: 13px;
+            color: #166534;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* 15. Theory Test Help Section */
+        .theory-section {
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+        .theory-card {
+            background: #FEFCE8;
+            border-radius: 20px;
+            padding: 20px;
+            border-left: 6px solid #EAB308;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .theory-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #854D0E;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .theory-card p {
+            font-size: 13px;
+            color: #854D0E;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* 16. Highlighted Hero Call-to-Action Banner */
+        .hero-banner-cta {
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+            margin: 0 20px 25px;
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(59,130,246,0.3);
+        }
+        .hero-banner-cta h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .hero-banner-cta p {
+            font-size: 12px;
+            opacity: 0.85;
+        }
+        .hero-banner-cta .cta-btn {
+            background: white;
+            color: #3B82F6;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* 17. Our Fleet Section (already exists but add extra dual controls info) */
+        .fleet-dual {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* 18. Parent/Guardian Email Field */
+        .parent-email-field {
+            margin-top: 12px;
+        }
+        .parent-email-field label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .parent-email-field input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1.5px solid #E2E8F0;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            background: #F8FAFC;
+        }
+        .parent-email-field input:focus {
+            border-color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -310,7 +976,7 @@
         <div class="menu-icon"><i class="fa-solid fa-bars"></i></div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (original) -->
     <section class="hero">
         <h1>Get on the road <span>today.</span></h1>
         <p>DVSA approved, patient & local to NW London. Flexible hours, dual-control cars, and fast-track test booking.</p>
@@ -319,18 +985,150 @@
         </button>
     </section>
 
-    <!-- SLIDER SECTION -->
+    <!-- ===== ADD-ON: 16. Highlighted Hero Call-to-Action Banner ===== -->
+    <div class="hero-banner-cta animate-on-scroll">
+        <div>
+            <h4>First Lesson £25 🚗</h4>
+            <p>Limited time — book your first lesson today!</p>
+        </div>
+        <button class="cta-btn" onclick="alert('Book first lesson for £25!')">Claim</button>
+    </div>
+
+    <!-- ===== ADD-ON: 1. Top Section Large Booking with Calendar Integration ===== -->
+    <div class="booking-section animate-on-scroll">
+        <div class="booking-card">
+            <h3><i class="fa-solid fa-calendar-check"></i> Book Your First Lesson</h3>
+            <div class="postcode-search">
+                <input type="text" placeholder="Enter your postcode (e.g. NW1)" id="postcodeInput">
+                <button onclick="alert('Searching instructors near ' + document.getElementById('postcodeInput').value)">Search</button>
+            </div>
+            <div class="calendar-preview">
+                <div class="calendar-day header">M</div><div class="calendar-day header">T</div><div class="calendar-day header">W</div><div class="calendar-day header">T</div><div class="calendar-day header">F</div><div class="calendar-day header">S</div><div class="calendar-day header">S</div>
+                <div class="calendar-day">12</div><div class="calendar-day">13</div><div class="calendar-day active">14</div><div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div>
+            </div>
+            <button class="btn-primary" style="margin-top:5px;" onclick="alert('Calendly-style booking opened.')">
+                <i class="fa-regular fa-calendar"></i> Book First Lesson
+            </button>
+            <div class="parent-email-field">
+                <label><i class="fa-regular fa-envelope"></i> Parent/Guardian Email (optional)</label>
+                <input type="email" placeholder="parent@example.com" id="parentEmail">
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ADD-ON: 2. Buy Now Lesson Packages ===== -->
+    <div class="section-header">
+        <h2>Lesson Packages</h2>
+        <a href="#">Buy Now</a>
+    </div>
+    <div class="packages-grid animate-on-scroll">
+        <div class="package-card">
+            <h4>Starter</h4>
+            <div class="price">£35</div>
+            <div class="desc">1 lesson • perfect first drive</div>
+            <button class="btn-package" onclick="alert('Starter package added to cart')">Buy Now</button>
+        </div>
+        <div class="package-card">
+            <span class="badge">Popular</span>
+            <h4>Beginner</h4>
+            <div class="price">£160</div>
+            <div class="desc">5 lessons • save £15</div>
+            <button class="btn-package" onclick="alert('Beginner package added to cart')">Buy Now</button>
+        </div>
+        <div class="package-card">
+            <h4>Intensive</h4>
+            <div class="price">£300</div>
+            <div class="desc">10 lessons • fast progress</div>
+            <button class="btn-package" onclick="alert('Intensive package added to cart')">Buy Now</button>
+        </div>
+        <div class="package-card">
+            <span class="badge">Best Value</span>
+            <h4>Fast Pass</h4>
+            <div class="price">£550</div>
+            <div class="desc">20 lessons • test ready</div>
+            <button class="btn-package" onclick="alert('Fast Pass package added to cart')">Buy Now</button>
+        </div>
+        <div class="package-card">
+            <h4>Test Prep</h4>
+            <div class="price">£120</div>
+            <div class="desc">Mock test + car hire</div>
+            <button class="btn-package" onclick="alert('Test Prep package added to cart')">Buy Now</button>
+        </div>
+    </div>
+    <!-- ===== ADD-ON: 11. Lesson Packages Link to Payment ===== -->
+    <div class="payment-note"><i class="fa-solid fa-lock"></i> Secure online payment • Apple Pay & Google Pay accepted</div>
+
+    <!-- ===== ADD-ON: 3. Automatic vs Manual Lessons Section ===== -->
+    <div class="section-header">
+        <h2>Automatic vs Manual</h2>
+    </div>
+    <div class="transmission-section animate-on-scroll">
+        <div class="transmission-card">
+            <i class="fa-solid fa-gear"></i>
+            <h4>Manual</h4>
+            <p>Full control, clutch & gears. Ideal for a full licence.</p>
+        </div>
+        <div class="transmission-card">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <h4>Automatic</h4>
+            <p>Easy to learn, no clutch. Perfect for nervous drivers.</p>
+        </div>
+    </div>
+
+    <!-- ===== ADD-ON: 4. Areas Covered Section ===== -->
+    <div class="section-header">
+        <h2>Areas Covered</h2>
+    </div>
+    <div class="areas-section animate-on-scroll">
+        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> Croydon</div>
+        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> Bromley</div>
+        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> Lewisham</div>
+        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> Greenwich</div>
+        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> South London</div>
+    </div>
+
+    <!-- ===== ADD-ON: 5. Instructor Trust Section ===== -->
+    <div class="section-header">
+        <h2>Why Trust Us</h2>
+    </div>
+    <div class="trust-section animate-on-scroll">
+        <div class="trust-grid">
+            <div class="trust-item"><i class="fa-solid fa-certificate"></i> DVSA Approved</div>
+            <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> Fully Insured</div>
+            <div class="trust-item"><i class="fa-solid fa-heart"></i> Nervous Driver Specialist</div>
+            <div class="trust-item"><i class="fa-solid fa-chart-line"></i> 94% Pass Rate</div>
+        </div>
+    </div>
+
+    <!-- ===== ADD-ON: 14. Nervous Driver Specialist Section ===== -->
+    <div class="nervous-section animate-on-scroll">
+        <div class="nervous-card">
+            <h4><i class="fa-solid fa-hand-holding-heart"></i> Nervous Driver Specialist</h4>
+            <p>Calm, patient, confidence-building lessons. We specialise in helping anxious learners feel safe and in control behind the wheel.</p>
+        </div>
+    </div>
+
+    <!-- ===== ADD-ON: 15. Theory Test Help Section ===== -->
+    <div class="theory-section animate-on-scroll">
+        <div class="theory-card">
+            <h4><i class="fa-solid fa-book-open"></i> Theory Test Help</h4>
+            <p>Free resources, practice questions, and 1-to-1 theory support for beginners. Pass your theory first time with our guidance.</p>
+        </div>
+    </div>
+
+    <!-- ===== ORIGINAL SLIDER (OUR FLEET) with ADD-ON 17. Fleet dual controls info ===== -->
     <div class="section-header">
         <h2>Our Fleet</h2>
         <a href="#">View All</a>
     </div>
-    <div class="slider-container">
+    <div class="slider-container animate-on-scroll">
         <!-- Slide 1 -->
         <div class="slide-card">
             <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80" alt="VW Golf">
             <div class="slide-info">
                 <h3>VW Golf 8</h3>
                 <p>Manual & Automatic • 2024 Model</p>
+                <div class="fleet-dual"><i class="fa-solid fa-shield"></i> Dual controls fitted</div>
             </div>
         </div>
         <!-- Slide 2 -->
@@ -339,6 +1137,7 @@
             <div class="slide-info">
                 <h3>Audi A3</h3>
                 <p>Automatic • Perfect for beginners</p>
+                <div class="fleet-dual"><i class="fa-solid fa-shield"></i> Dual controls fitted</div>
             </div>
         </div>
         <!-- Slide 3 -->
@@ -347,15 +1146,16 @@
             <div class="slide-info">
                 <h3>Mini Cooper</h3>
                 <p>Manual • Easy to park & maneuver</p>
+                <div class="fleet-dual"><i class="fa-solid fa-shield"></i> Dual controls fitted</div>
             </div>
         </div>
     </div>
 
-    <!-- GRID SECTION -->
+    <!-- ORIGINAL GRID SECTION -->
     <div class="section-header">
         <h2>What We Offer</h2>
     </div>
-    <div class="grid-container">
+    <div class="grid-container animate-on-scroll">
         <div class="grid-item">
             <div class="grid-icon"><i class="fa-solid fa-book-open"></i></div>
             <span>Theory Support</span>
@@ -374,13 +1174,100 @@
         </div>
     </div>
 
-    <!-- FLOATING ACTION BUTTONS -->
+    <!-- ===== ADD-ON: 12. Highlighted Promotions / Limited Offers Section ===== -->
+    <div class="promo-banner animate-on-scroll">
+        <div>
+            <h4>🔥 Summer Discount</h4>
+            <p>10% off all packages — ends soon!</p>
+        </div>
+        <button class="promo-btn" onclick="alert('Summer discount applied at checkout!')">Grab Deal</button>
+    </div>
+
+    <!-- ===== ADD-ON: 13. Referral Program Promotion ===== -->
+    <div class="referral-section animate-on-scroll">
+        <div class="referral-card">
+            <div class="referral-icon"><i class="fa-solid fa-user-plus"></i></div>
+            <div class="referral-text">
+                <h4>Refer a Friend</h4>
+                <p>Give £20, get £20 when your friend books their first lesson. Share the road!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ADD-ON: 10. Interactive Location Map ===== -->
+    <div class="section-header">
+        <h2>Our Coverage Map</h2>
+    </div>
+    <div class="map-section animate-on-scroll">
+        <div class="map-placeholder" onclick="alert('Interactive map: Croydon, Bromley, Lewisham, Greenwich & test centres')">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Click to explore coverage & test centres</span>
+        </div>
+        <div class="map-pins">
+            <div class="map-pin"><i class="fa-solid fa-circle"></i> Croydon</div>
+            <div class="map-pin"><i class="fa-solid fa-circle"></i> Bromley</div>
+            <div class="map-pin"><i class="fa-solid fa-circle"></i> Lewisham</div>
+            <div class="map-pin"><i class="fa-solid fa-circle"></i> Greenwich</div>
+            <div class="map-pin"><i class="fa-solid fa-circle"></i> Test Centre</div>
+        </div>
+    </div>
+
+    <!-- ===== ADD-ON: 6. FAQ Toggle / Accordion ===== -->
+    <div class="section-header">
+        <h2>FAQ</h2>
+    </div>
+    <div class="faq-section animate-on-scroll">
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                How much are lessons? <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Lessons start from £35/hour. Block bookings and packages offer great discounts — see our packages above.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                How long is each lesson? <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Standard lessons are 1 hour, but we also offer 2-hour and 3-hour sessions for intensive learning.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Do you offer test preparation? <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Yes! Our Test Prep Package includes a mock test, car hire for your practical test, and a warm-up lesson.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Can I book weekend lessons? <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Absolutely — we offer weekend and evening lessons at no extra charge, subject to availability.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                What payment methods do you accept? <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">We accept card, Apple Pay, Google Pay, and bank transfer. All online payments are secure.</div>
+        </div>
+    </div>
+
+    <!-- ===== ADD-ON: 9. Subscribe / Newsletter Form ===== -->
+    <div class="newsletter-section animate-on-scroll">
+        <div class="newsletter-card">
+            <h3>Get driving tips & theory support</h3>
+            <p>Join our newsletter for free resources and exclusive offers.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Your email address" id="newsletterEmail">
+                <button onclick="alert('Subscribed with ' + document.getElementById('newsletterEmail').value)">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING ACTION BUTTONS (original) -->
     <div class="fab-container">
         <button class="fab whatsapp" onclick="alert('Opening WhatsApp...')"><i class="fa-brands fa-whatsapp"></i></button>
         <button class="fab" onclick="alert('Calling instructor...')"><i class="fa-solid fa-phone"></i></button>
     </div>
 
-    <!-- BOTTOM NAVIGATION BAR -->
+    <!-- BOTTOM NAVIGATION BAR (original) -->
     <nav class="bottom-nav">
         <div class="nav-item active">
             <i class="fa-solid fa-house"></i>
@@ -402,5 +1289,44 @@
 
     <div class="spacer"></div>
 
+    <!-- ===== ADD-ON: 8. Popup Limited-Time Offer ===== -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box">
+            <button class="popup-close" onclick="document.getElementById('popupOverlay').classList.remove('show')">&times;</button>
+            <h3>🎉 First Lesson £25</h3>
+            <p>Limited-time offer for new learners. Book your first lesson today and save!</p>
+            <button class="btn-primary" onclick="alert('First lesson £25 offer applied!'); document.getElementById('popupOverlay').classList.remove('show')">
+                Claim Offer
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== ADD-ON: 7. Scroll Animations (JS) + Popup trigger ===== -->
+    <script>
+        (function() {
+            // Scroll animations
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
+
+            // Popup limited-time offer: show after 3 seconds
+            setTimeout(() => {
+                document.getElementById('popupOverlay').classList.add('show');
+            }, 3000);
+
+            // Close popup on overlay click (outside box)
+            document.getElementById('popupOverlay').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('show');
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
