@@ -1,1332 +1,1299 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DriveSmart App</title>
-    <!-- Google Fonts for modern look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #0F172A; /* Dark Slate */
-            --accent: #3B82F6; /* Electric Blue */
-            --accent-glow: rgba(59, 130, 246, 0.4);
-            --bg-color: #F1F5F9;
-            --card-bg: #FFFFFF;
-            --text-main: #0F172A;
-            --text-muted: #64748B;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#E10600">
+<title>Apex Drive · Pass first time. Drive for life.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root{
+    --red:#E10600;
+    --red-dark:#B00500;
+    --ink:#0B0B0C;
+    --ink-2:#1A1A1C;
+    --paper:#FFFFFF;
+    --paper-2:#F4F4F5;
+    --line:#E7E7E9;
+    --muted:#6B6B70;
+    --amber:#FFC400;
+    --green:#0EA35A;
+    --radius:20px;
+    --radius-lg:28px;
+  }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    background:#0B0B0C;
+    color:var(--ink);
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:24px 12px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            padding-bottom: 80px; /* Space for bottom nav */
-        }
+  /* ============ APP SHELL ============ */
+  .shell{
+    width:100%;
+    max-width:430px;
+    background:var(--paper);
+    border-radius:44px;
+    overflow:hidden;
+    box-shadow:
+      0 40px 80px -20px rgba(0,0,0,.5),
+      0 0 0 10px #1A1A1C,
+      0 0 0 12px #2A2A2E;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    min-height:900px;
+  }
 
-        /* --- App Header --- */
-        .app-header {
-            position: sticky;
-            top: 0;
-            background: var(--primary);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+  /* Status bar */
+  .status{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 26px 8px;
+    font-size:13px;font-weight:600;letter-spacing:.2px;
+    color:#fff;
+    background:var(--ink);
+    position:relative;z-index:5;
+    flex-shrink:0;
+  }
+  .status .icons{display:flex;gap:5px;font-size:12px;}
 
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-        }
+  /* Header */
+  header{
+    background:var(--ink);
+    color:#fff;
+    padding:6px 20px 16px;
+    display:flex;justify-content:space-between;align-items:center;
+    position:relative;z-index:5;
+    flex-shrink:0;
+  }
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-mark{
+    width:38px;height:38px;border-radius:11px;
+    background:var(--red);
+    display:grid;place-items:center;
+    font-family:'Archivo Black';font-size:20px;color:#fff;
+    letter-spacing:-1px;
+    box-shadow:0 6px 16px rgba(225,6,0,.45);
+  }
+  .logo-text{
+    font-family:'Archivo Black';
+    font-size:19px;letter-spacing:-.5px;line-height:1;
+  }
+  .logo-text span{color:var(--red);}
+  .logo-sub{
+    font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+    color:rgba(255,255,255,.5);font-weight:600;
+    margin-top:3px;
+  }
+  .header-btn{
+    width:40px;height:40px;border-radius:50%;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+    display:grid;place-items:center;
+    color:#fff;font-size:15px;
+    position:relative;
+    cursor:pointer;
+    transition:background .2s;
+  }
+  .header-btn:hover{background:rgba(255,255,255,.15);}
+  .header-btn .dot{
+    position:absolute;top:9px;right:9px;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--red);border:2px solid var(--ink);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-        .logo-main {
-            font-size: 14px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--accent);
-        }
+  /* ============ SCROLLABLE CONTENT ============ */
+  .scroll-content{
+    flex:1;
+    overflow-y:auto;
+    overflow-x:hidden;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+    padding-bottom:20px;
+  }
+  .scroll-content::-webkit-scrollbar{display:none;}
 
-        .logo-sub {
-            font-size: 10px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            opacity: 0.8;
-        }
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    background:var(--ink);
+    color:#fff;
+    padding:22px 22px 0;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(80% 60% at 80% 0%, rgba(225,6,0,.35) 0%, transparent 60%),
+      radial-gradient(60% 50% at 0% 100%, rgba(225,6,0,.18) 0%, transparent 60%);
+    z-index:-1;
+  }
+  .hero::after{
+    content:'';position:absolute;inset:0;
+    background-image:repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,.025) 0 2px,
+      transparent 2px 14px
+    );
+    z-index:-1;
+    mask-image:linear-gradient(180deg,#000 0%,#000 60%,transparent 100%);
+  }
 
-        .menu-icon {
-            font-size: 20px;
-            cursor: pointer;
-        }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:7px;
+    background:rgba(225,6,0,.15);
+    border:1px solid rgba(225,6,0,.4);
+    color:#fff;
+    padding:6px 12px 6px 8px;
+    border-radius:100px;
+    font-size:11px;font-weight:700;
+    letter-spacing:.4px;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .eyebrow .pill{
+    background:var(--red);color:#fff;
+    font-size:9px;font-weight:800;
+    padding:3px 7px;border-radius:100px;letter-spacing:.5px;
+  }
 
-        /* --- Hero Section --- */
-        .hero {
-            padding: 30px 20px;
-            background: linear-gradient(135deg, var(--primary) 0%, #1E293B 100%);
-            color: white;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            margin-bottom: 20px;
-        }
+  h1{
+    font-family:'Archivo Black';
+    font-size:44px;
+    line-height:.95;
+    letter-spacing:-1.5px;
+    margin-bottom:14px;
+  }
+  h1 .strike{
+    position:relative;
+    display:inline-block;
+    color:var(--red);
+  }
+  h1 .strike::after{
+    content:'';position:absolute;left:-2px;right:-2px;top:52%;
+    height:5px;background:var(--amber);border-radius:2px;
+    transform:rotate(-1.5deg);
+    opacity:.95;
+  }
+  h1 .accent{color:var(--amber);}
 
-        .hero h1 {
-            font-size: 32px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 10px;
-        }
+  .hero-sub{
+    font-size:14.5px;line-height:1.5;
+    color:rgba(255,255,255,.72);
+    max-width:300px;
+    margin-bottom:20px;
+    font-weight:400;
+  }
+  .hero-sub b{color:#fff;font-weight:700;}
 
-        .hero h1 span {
-            color: var(--accent);
-        }
+  .chips{
+    display:flex;flex-wrap:wrap;gap:7px;
+    margin-bottom:20px;
+  }
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+    padding:7px 11px;
+    border-radius:100px;
+    font-size:11.5px;font-weight:600;
+    color:rgba(255,255,255,.9);
+  }
+  .chip i{color:var(--green);font-size:11px;}
 
-        .hero p {
-            font-size: 14px;
-            color: #94A3B8;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
+  /* Hero image — car */
+  .hero-image{
+    position:relative;
+    margin:0 -22px;
+    height:210px;
+    overflow:hidden;
+    border-radius:26px 26px 0 0;
+    background:#111;
+  }
+  .hero-image img{
+    width:100%;height:100%;object-fit:cover;
+    object-position:center 60%;
+    display:block;
+    filter:saturate(1.05) contrast(1.05) brightness(.92);
+  }
+  .hero-image::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, transparent 40%, rgba(11,11,12,.85) 100%);
+    pointer-events:none;
+  }
+  .price-tag{
+    position:absolute;
+    top:16px;right:16px;
+    background:var(--amber);color:var(--ink);
+    padding:9px 13px;border-radius:14px;
+    font-weight:800;font-size:14px;letter-spacing:-.3px;
+    box-shadow:0 10px 24px rgba(0,0,0,.35);
+    z-index:3;
+  }
+  .price-tag small{display:block;font-size:9.5px;font-weight:700;letter-spacing:.6px;opacity:.7;text-transform:uppercase;}
+  .price-tag .big{font-family:'Archivo Black';font-size:19px;}
 
-        .btn-primary {
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            padding: 16px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 16px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            box-shadow: 0 8px 20px var(--accent-glow);
-            transition: transform 0.2s;
-        }
+  /* Stat strip */
+  .stats{
+    position:relative;
+    margin:-38px 12px 0;
+    background:rgba(20,20,22,.9);
+    backdrop-filter:blur(20px) saturate(1.4);
+    -webkit-backdrop-filter:blur(20px) saturate(1.4);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    padding:14px 6px;
+    z-index:4;
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+  }
+  .stat{text-align:center;position:relative;}
+  .stat+.stat::before{
+    content:'';position:absolute;left:0;top:12%;bottom:12%;
+    width:1px;background:rgba(255,255,255,.12);
+  }
+  .stat .n{
+    font-family:'Archivo Black';
+    font-size:19px;color:#fff;letter-spacing:-.5px;
+    line-height:1;
+  }
+  .stat .n span{color:var(--red);}
+  .stat .l{
+    font-size:9.5px;letter-spacing:.8px;text-transform:uppercase;
+    color:rgba(255,255,255,.5);font-weight:700;
+    margin-top:5px;
+  }
 
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
+  /* ============ CTA ============ */
+  .cta-zone{
+    background:var(--ink);
+    padding:18px 22px 22px;
+    position:relative;
+    z-index:3;
+  }
+  .btn-primary{
+    width:100%;
+    background:var(--red);
+    color:#fff;
+    border:none;
+    padding:18px 20px;
+    border-radius:18px;
+    font-family:'Inter';font-weight:800;
+    font-size:16px;letter-spacing:-.2px;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    cursor:pointer;
+    box-shadow:
+      0 12px 28px rgba(225,6,0,.4),
+      inset 0 -3px 0 rgba(0,0,0,.18);
+    transition:transform .15s ease, box-shadow .15s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 32px rgba(225,6,0,.5), inset 0 -3px 0 rgba(0,0,0,.18);
+  }
+  .btn-primary:active{transform:scale(.98);}
+  .btn-primary .arrow{
+    background:rgba(255,255,255,.18);
+    width:26px;height:26px;border-radius:50%;
+    display:grid;place-items:center;font-size:12px;
+    transition:transform .2s;
+  }
+  .btn-primary:hover .arrow{transform:translateX(3px);}
+  .btn-note{
+    text-align:center;
+    font-size:11.5px;
+    color:rgba(255,255,255,.4);
+    margin-top:10px;
+    font-weight:500;
+    display:flex;align-items:center;justify-content:center;gap:6px;
+  }
+  .btn-note i{color:var(--green);font-size:11px;}
 
-        /* --- Section Headers --- */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            margin-bottom: 15px;
-        }
+  /* ============ SECTIONS ============ */
+  section{padding:26px 22px;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:16px;
+  }
+  .section-head h2{
+    font-family:'Archivo Black';
+    font-size:22px;letter-spacing:-.7px;color:var(--ink);
+    line-height:1;
+  }
+  .section-head h2 .dot{color:var(--red);}
+  .section-head a{
+    font-size:12.5px;font-weight:700;color:var(--red);
+    text-decoration:none;display:flex;align-items:center;gap:4px;
+    cursor:pointer;
+    transition:opacity .2s;
+  }
+  .section-head a:hover{opacity:.7;}
 
-        .section-header h2 {
-            font-size: 18px;
-            font-weight: 700;
-        }
+  /* Packages */
+  .packages{background:var(--paper-2);padding:26px 22px 28px;}
+  .pkg-list{display:flex;flex-direction:column;gap:12px;}
+  .pkg{
+    background:#fff;
+    border:1.5px solid var(--line);
+    border-radius:20px;
+    padding:16px 16px 16px 18px;
+    display:flex;align-items:center;gap:14px;
+    position:relative;
+    transition:border-color .2s, box-shadow .2s, transform .2s;
+    cursor:pointer;
+  }
+  .pkg:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(0,0,0,.06);
+  }
+  .pkg.featured{
+    border-color:var(--red);
+    box-shadow:0 12px 30px -8px rgba(225,6,0,.22);
+    background:linear-gradient(180deg,#fff 0%,#FFF5F4 100%);
+  }
+  .pkg.featured:hover{
+    box-shadow:0 16px 36px -8px rgba(225,6,0,.3);
+  }
+  .pkg-radio{
+    width:22px;height:22px;border-radius:50%;
+    border:2px solid #D4D4D8;
+    flex-shrink:0;
+    position:relative;
+    transition:border-color .2s, background .2s;
+  }
+  .pkg.featured .pkg-radio{
+    border-color:var(--red);
+    background:var(--red);
+  }
+  .pkg.featured .pkg-radio::after{
+    content:'';position:absolute;inset:4px;border-radius:50%;background:#fff;
+  }
+  .pkg-body{flex:1;}
+  .pkg-name{
+    font-weight:800;font-size:15.5px;letter-spacing:-.3px;color:var(--ink);
+    display:flex;align-items:center;gap:8px;
+  }
+  .pkg-tag{
+    background:var(--red);color:#fff;
+    font-size:9px;font-weight:800;letter-spacing:.6px;
+    padding:3px 7px;border-radius:6px;text-transform:uppercase;
+  }
+  .pkg-desc{
+    font-size:12.5px;color:var(--muted);margin-top:3px;font-weight:500;
+  }
+  .pkg-price{
+    text-align:right;
+    flex-shrink:0;
+  }
+  .pkg-price .amt{
+    font-family:'Archivo Black';font-size:20px;color:var(--ink);letter-spacing:-.5px;
+    line-height:1;
+  }
+  .pkg-price .per{
+    font-size:10.5px;color:var(--muted);font-weight:600;margin-top:2px;
+  }
+  .pkg-price .was{
+    font-size:11px;color:#B0B0B5;text-decoration:line-through;font-weight:600;
+  }
 
-        .section-header a {
-            font-size: 12px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
+  /* Instructors */
+  .inst-list{display:flex;flex-direction:column;gap:10px;}
+  .inst{
+    display:flex;align-items:center;gap:12px;
+    padding:12px;
+    border-radius:18px;
+    background:var(--paper-2);
+    border:1px solid transparent;
+    transition:border-color .2s, background .2s;
+    cursor:pointer;
+  }
+  .inst:hover{
+    background:#fff;
+    border-color:var(--line);
+  }
+  .inst-avatar{
+    width:48px;height:48px;border-radius:14px;
+    display:grid;place-items:center;
+    font-family:'Archivo Black';font-size:16px;color:#fff;
+    flex-shrink:0;
+    position:relative;
+  }
+  .inst-avatar::after{
+    content:'';position:absolute;bottom:-2px;right:-2px;
+    width:14px;height:14px;border-radius:50%;
+    background:var(--green);border:3px solid var(--paper-2);
+  }
+  .inst:hover .inst-avatar::after{border-color:#fff;}
+  .inst-info{flex:1;min-width:0;}
+  .inst-info h4{
+    font-size:14.5px;font-weight:800;letter-spacing:-.2px;color:var(--ink);
+  }
+  .inst-info p{
+    font-size:11.5px;color:var(--muted);font-weight:600;margin-top:2px;
+  }
+  .inst-rating{
+    display:flex;align-items:center;gap:4px;
+    font-size:12px;font-weight:800;color:var(--ink);
+    flex-shrink:0;
+  }
+  .inst-rating i{color:var(--amber);font-size:12px;}
 
-        /* --- Horizontal Slider (Carousel) --- */
-        .slider-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 0 20px;
-            gap: 15px;
-            margin-bottom: 30px;
-            scrollbar-width: none; /* Firefox */
-        }
+  /* ============ SLIDER COMPONENT ============ */
+  .slider-wrap{
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+    margin:0 -22px;
+    padding:0 22px;
+  }
+  .slider-track{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+    padding-bottom:8px;
+    padding-top:4px;
+  }
+  .slider-track::-webkit-scrollbar{display:none;}
+  .slide{
+    flex:0 0 280px;
+    scroll-snap-align:start;
+    border-radius:22px;
+    overflow:hidden;
+    background:#fff;
+    border:1px solid var(--line);
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
+    transition:transform .2s;
+  }
+  .slide:hover{transform:translateY(-4px);}
+  .slide-img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    display:block;
+    background:#111;
+  }
+  .slide-body{padding:14px 16px 16px;}
+  .slide-body h4{
+    font-size:14px;font-weight:800;letter-spacing:-.2px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .slide-body h4 i{color:var(--green);font-size:12px;}
+  .slide-body p{
+    font-size:12px;color:var(--muted);margin-top:4px;font-weight:500;
+    line-height:1.4;
+  }
+  .slide-tag{
+    display:inline-block;
+    background:var(--red);color:#fff;
+    font-size:9px;font-weight:800;letter-spacing:.5px;
+    padding:3px 8px;border-radius:6px;text-transform:uppercase;
+    margin-top:8px;
+  }
+  .slider-dots{
+    display:flex;justify-content:center;gap:6px;
+    margin-top:12px;
+  }
+  .slider-dots span{
+    width:6px;height:6px;border-radius:50%;
+    background:#D4D4D8;transition:background .3s, width .3s;
+    cursor:pointer;
+  }
+  .slider-dots span.active{
+    background:var(--red);
+    width:20px;
+    border-radius:3px;
+  }
 
-        .slider-container::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
-        }
+  /* ============ FAQ ============ */
+  .faq-list{display:flex;flex-direction:column;gap:8px;}
+  .faq-item{
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    background:#fff;
+    transition:border-color .2s;
+  }
+  .faq-item:hover{border-color:#D4D4D8;}
+  .faq-q{
+    padding:16px 18px;
+    display:flex;justify-content:space-between;align-items:center;
+    cursor:pointer;
+    font-weight:700;font-size:14px;letter-spacing:-.2px;
+    color:var(--ink);
+    background:none;border:none;width:100%;text-align:left;
+    font-family:'Inter';
+  }
+  .faq-q i{
+    color:var(--red);font-size:12px;
+    transition:transform .3s;
+  }
+  .faq-item.open .faq-q i{transform:rotate(180deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease, padding .35s ease;
+    padding:0 18px;
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    font-weight:500;
+  }
+  .faq-item.open .faq-a{
+    max-height:300px;
+    padding:0 18px 18px;
+  }
 
-        .slide-card {
-            flex: 0 0 85%;
-            scroll-snap-align: center;
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            position: relative;
-        }
+  /* Testimonial */
+  .quote{
+    background:var(--ink);
+    color:#fff;
+    border-radius:24px;
+    padding:24px 22px;
+    position:relative;
+    overflow:hidden;
+  }
+  .quote::before{
+    content:'"';
+    position:absolute;top:-30px;right:10px;
+    font-family:'Archivo Black';
+    font-size:160px;color:var(--red);opacity:.35;
+    line-height:1;
+  }
+  .quote-stars{display:flex;gap:3px;margin-bottom:12px;}
+  .quote-stars i{color:var(--amber);font-size:13px;}
+  .quote p{
+    font-size:15px;line-height:1.55;font-weight:500;
+    position:relative;z-index:1;
+    letter-spacing:-.1px;
+  }
+  .quote p b{color:var(--amber);font-weight:700;}
+  .quote-author{
+    display:flex;align-items:center;gap:10px;
+    margin-top:18px;padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.1);
+  }
+  .quote-author .av{
+    width:36px;height:36px;border-radius:50%;
+    background:var(--red);
+    display:grid;place-items:center;
+    font-weight:800;font-size:13px;
+  }
+  .quote-author .meta{font-size:12px;font-weight:600;}
+  .quote-author .meta span{display:block;font-size:10.5px;color:rgba(255,255,255,.5);font-weight:500;margin-top:1px;}
 
-        .slide-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
+  /* Footer */
+  footer{
+    background:var(--ink);
+    color:rgba(255,255,255,.5);
+    padding:28px 22px 100px;
+    text-align:center;
+    font-size:11.5px;
+    line-height:1.7;
+    flex-shrink:0;
+  }
+  footer .brand{
+    font-family:'Archivo Black';font-size:16px;color:#fff;letter-spacing:-.3px;
+    margin-bottom:8px;
+  }
+  footer .brand span{color:var(--red);}
+  footer a{color:rgba(255,255,255,.7);text-decoration:none;font-weight:600;transition:color .2s;}
+  footer a:hover{color:#fff;}
 
-        .slide-info {
-            padding: 15px;
-        }
+  /* Bottom nav */
+  .nav{
+    position:sticky;bottom:0;
+    background:rgba(20,20,22,.9);
+    backdrop-filter:blur(24px) saturate(1.5);
+    -webkit-backdrop-filter:blur(24px) saturate(1.5);
+    border-top:1px solid rgba(255,255,255,.08);
+    display:grid;grid-template-columns:repeat(4,1fr);
+    padding:10px 8px 26px;
+    z-index:10;
+    flex-shrink:0;
+  }
+  .nav-item{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    color:rgba(255,255,255,.45);
+    font-size:10px;font-weight:700;letter-spacing:.2px;
+    cursor:pointer;
+    padding:6px 0;
+    border-radius:14px;
+    transition:color .2s, background .2s;
+    background:none;border:none;
+    font-family:'Inter';
+  }
+  .nav-item:hover{color:rgba(255,255,255,.7);background:rgba(255,255,255,.04);}
+  .nav-item.active{color:#fff;}
+  .nav-item.active i{
+    color:var(--red);
+    filter:drop-shadow(0 0 12px rgba(225,6,0,.6));
+  }
+  .nav-item i{font-size:18px;}
 
-        .slide-info h3 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
+  /* Modal */
+  .modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    z-index:100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    animation:fadeIn .2s ease;
+  }
+  .modal-overlay.show{display:flex;}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal{
+    background:#fff;
+    border-radius:28px;
+    padding:28px 24px 24px;
+    width:100%;
+    max-width:380px;
+    position:relative;
+    animation:slideUp .3s cubic-bezier(.16,1,.3,1);
+    max-height:85vh;
+    overflow-y:auto;
+  }
+  @keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .modal-close{
+    position:absolute;top:16px;right:16px;
+    width:32px;height:32px;border-radius:50%;
+    background:var(--paper-2);
+    border:none;cursor:pointer;
+    display:grid;place-items:center;
+    font-size:14px;color:var(--muted);
+    transition:background .2s;
+  }
+  .modal-close:hover{background:#E7E7E9;}
+  .modal h3{
+    font-family:'Archivo Black';
+    font-size:22px;letter-spacing:-.5px;
+    margin-bottom:6px;
+  }
+  .modal p.sub{
+    font-size:13.5px;color:var(--muted);font-weight:500;
+    margin-bottom:20px;
+  }
+  .form-group{margin-bottom:16px;}
+  .form-group label{
+    display:block;font-size:12px;font-weight:700;
+    letter-spacing:.3px;text-transform:uppercase;
+    color:var(--muted);margin-bottom:6px;
+  }
+  .form-group input,
+  .form-group select{
+    width:100%;
+    padding:14px 16px;
+    border-radius:14px;
+    border:1.5px solid var(--line);
+    background:var(--paper-2);
+    font-size:15px;font-weight:600;
+    font-family:'Inter';
+    color:var(--ink);
+    outline:none;
+    transition:border-color .2s, background .2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus{
+    border-color:var(--red);
+    background:#fff;
+  }
+  .form-group input::placeholder{color:#B0B0B5;font-weight:500;}
+  .modal .btn-primary{font-size:15px;padding:16px;}
 
-        .slide-info p {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
+  /* Toast */
+  .toast{
+    position:fixed;
+    bottom:100px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--ink);
+    color:#fff;
+    padding:14px 22px;
+    border-radius:14px;
+    font-size:13.5px;font-weight:700;
+    box-shadow:0 12px 32px rgba(0,0,0,.4);
+    opacity:0;
+    transition:opacity .3s, transform .3s;
+    pointer-events:none;
+    z-index:200;
+    display:flex;align-items:center;gap:8px;
+    white-space:nowrap;
+  }
+  .toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+  .toast i{color:var(--green);}
 
-        /* --- Feature Grid --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            padding: 0 20px;
-            margin-bottom: 30px;
-        }
+  /* utility */
+  .desktop-note{
+    position:fixed;
+    bottom:14px;left:50%;transform:translateX(-50%);
+    color:rgba(255,255,255,.35);
+    font-size:11px;font-weight:600;letter-spacing:.3px;
+    text-align:center;
+    white-space:nowrap;
+    pointer-events:none;
+  }
 
-        .grid-item {
-            background: var(--card-bg);
-            padding: 20px 15px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .grid-icon {
-            width: 45px;
-            height: 45px;
-            background: #EFF6FF;
-            color: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-        }
-
-        .grid-item span {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        /* --- Floating Action Buttons (FABs) --- */
-        .fab-container {
-            position: fixed;
-            bottom: 90px; /* Above bottom nav */
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 99;
-        }
-
-        .fab {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            border: none;
-            cursor: pointer;
-        }
-
-        .fab.whatsapp { background: #25D366; }
-
-        /* --- Bottom Navigation Bar (App Feel) --- */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--card-bg);
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0 20px 0;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            z-index: 100;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: var(--text-muted);
-            font-size: 10px;
-            cursor: pointer;
-            width: 25%;
-        }
-
-        .nav-item i {
-            font-size: 20px;
-        }
-
-        .nav-item.active {
-            color: var(--accent);
-        }
-
-        .nav-item.active i {
-            font-size: 22px;
-        }
-
-        /* Spacer for content scroll */
-        .spacer {
-            height: 20px;
-        }
-
-        /* ===== ADD-ON STYLES (pure additions, no deletions) ===== */
-        /* 1. Top Section Large Booking with Calendar Integration */
-        .booking-section {
-            padding: 0 20px 20px;
-        }
-        .booking-card {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
-            margin-bottom: 25px;
-        }
-        .booking-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .booking-card h3 i {
-            color: var(--accent);
-        }
-        .postcode-search {
-            display: flex;
-            background: #F1F5F9;
-            border-radius: 40px;
-            padding: 6px;
-            margin: 15px 0 10px;
-        }
-        .postcode-search input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            padding: 12px 16px;
-            font-size: 15px;
-            outline: none;
-            font-family: 'Inter', sans-serif;
-        }
-        .postcode-search button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 40px;
-            padding: 12px 22px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .calendar-preview {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-            margin: 16px 0 12px;
-        }
-        .calendar-day {
-            text-align: center;
-            font-size: 12px;
-            padding: 8px 0;
-            border-radius: 10px;
-            background: #F8FAFC;
-            color: var(--text-muted);
-            font-weight: 500;
-            cursor: pointer;
-        }
-        .calendar-day.active {
-            background: var(--accent);
-            color: white;
-            font-weight: 700;
-        }
-        .calendar-day.header {
-            background: transparent;
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 11px;
-            text-transform: uppercase;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 14px;
-            width: 100%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
-        }
-        .btn-outline:active {
-            background: #EFF6FF;
-        }
-
-        /* 2. Buy Now Lesson Packages */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            padding: 0 20px 10px;
-            margin-bottom: 20px;
-        }
-        .package-card {
-            background: var(--card-bg);
-            border-radius: 18px;
-            padding: 18px 14px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
-            border: 1px solid #E2E8F0;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transition: transform 0.2s;
-        }
-        .package-card .badge {
-            position: absolute;
-            top: -8px;
-            right: 12px;
-            background: var(--accent);
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-        .package-card h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .package-card .price {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--accent);
-            margin: 6px 0 4px;
-        }
-        .package-card .desc {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.4;
-            flex: 1;
-        }
-        .btn-package {
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 40px;
-            padding: 10px 0;
-            font-weight: 600;
-            font-size: 13px;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        /* 3. Automatic vs Manual Lessons Section */
-        .transmission-section {
-            display: flex;
-            gap: 15px;
-            padding: 0 20px;
-            margin-bottom: 25px;
-        }
-        .transmission-card {
-            flex: 1;
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 20px 15px;
-            text-align: center;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
-        }
-        .transmission-card i {
-            font-size: 32px;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-        .transmission-card h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .transmission-card p {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* 4. Areas Covered Section */
-        .areas-section {
-            padding: 0 20px;
-            margin-bottom: 25px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .area-pill {
-            background: var(--card-bg);
-            padding: 12px 18px;
-            border-radius: 40px;
-            font-size: 13px;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            border: 1px solid #E2E8F0;
-        }
-        .area-pill i {
-            color: var(--accent);
-            font-size: 12px;
-        }
-
-        /* 5. Instructor Trust Section */
-        .trust-section {
-            padding: 0 20px;
-            margin-bottom: 25px;
-        }
-        .trust-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        .trust-item {
-            background: var(--card-bg);
-            padding: 18px 12px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            font-size: 12px;
-            font-weight: 600;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-        .trust-item i {
-            font-size: 24px;
-            color: var(--accent);
-        }
-
-        /* 6. FAQ Toggle / Accordion */
-        .faq-section {
-            padding: 0 20px;
-            margin-bottom: 25px;
-        }
-        .faq-item {
-            background: var(--card-bg);
-            border-radius: 14px;
-            margin-bottom: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            border: 1px solid #E2E8F0;
-        }
-        .faq-question {
-            padding: 16px 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .faq-question i {
-            transition: transform 0.3s;
-            color: var(--accent);
-        }
-        .faq-item.open .faq-question i {
-            transform: rotate(180deg);
-        }
-        .faq-answer {
-            max-height: 0;
-            padding: 0 18px;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s;
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .faq-item.open .faq-answer {
-            max-height: 200px;
-            padding: 0 18px 18px;
-        }
-
-        /* 7. Scroll Animations (applied via JS) */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 8. Popup Limited-Time Offer */
-        .popup-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s;
-        }
-        .popup-overlay.show {
-            opacity: 1;
-            pointer-events: all;
-        }
-        .popup-box {
-            background: white;
-            border-radius: 28px;
-            padding: 28px 24px;
-            max-width: 340px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-            transform: scale(0.9);
-            transition: transform 0.3s;
-        }
-        .popup-overlay.show .popup-box {
-            transform: scale(1);
-        }
-        .popup-box h3 {
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-        .popup-box p {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 18px;
-            line-height: 1.5;
-        }
-        .popup-box .btn-primary {
-            font-size: 15px;
-            padding: 14px;
-        }
-        .popup-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: none;
-            border: none;
-            font-size: 22px;
-            color: #94A3B8;
-            cursor: pointer;
-        }
-
-        /* 9. Subscribe / Newsletter Form */
-        .newsletter-section {
-            padding: 0 20px;
-            margin-bottom: 25px;
-        }
-        .newsletter-card {
-            background: linear-gradient(135deg, var(--primary) 0%, #1E293B 100%);
-            border-radius: 24px;
-            padding: 24px 20px;
-            color: white;
-            text-align: center;
-        }
-        .newsletter-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .newsletter-card p {
-            font-size: 13px;
-            color: #94A3B8;
-            margin-bottom: 16px;
-        }
-        .newsletter-form {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .newsletter-form input {
-            flex: 1;
-            min-width: 160px;
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: none;
-            font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-        }
-        .newsletter-form button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 14px 22px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        /* 10. Interactive Location Map */
-        .map-section {
-            padding: 0 20px;
-            margin-bottom: 25px;
-        }
-        .map-placeholder {
-            background: #DBEAFE;
-            border-radius: 20px;
-            height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 14px;
-            border: 2px dashed #93C5FD;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        .map-placeholder i {
-            font-size: 36px;
-            color: var(--accent);
-        }
-        .map-pins {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 12px;
-            justify-content: center;
-        }
-        .map-pin {
-            background: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .map-pin i {
-            color: var(--accent);
-            font-size: 10px;
-        }
-
-        /* 11. Lesson Packages Link to Payment (already in package cards, extra note) */
-        .payment-note {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: center;
-            padding: 0 20px 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-        .payment-note i {
-            color: var(--accent);
-        }
-
-        /* 12. Highlighted Promotions / Limited Offers Section */
-        .promo-banner {
-            margin: 0 20px 25px;
-            background: linear-gradient(105deg, #F59E0B, #EF4444);
-            border-radius: 20px;
-            padding: 18px 20px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 8px 18px rgba(239,68,68,0.3);
-        }
-        .promo-banner h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .promo-banner p {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-        .promo-banner .promo-btn {
-            background: white;
-            color: #EF4444;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        /* 13. Referral Program Promotion */
-        .referral-section {
-            padding: 0 20px;
-            margin-bottom: 25px;
-        }
-        .referral-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
-            border: 1px solid #E2E8F0;
-        }
-        .referral-icon {
-            width: 56px;
-            height: 56px;
-            background: #EFF6FF;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 26px;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-        .referral-text h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .referral-text p {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* 14. Nervous Driver Specialist Section */
-        .nervous-section {
-            padding: 0 20px;
-            margin-bottom: 25px;
-        }
-        .nervous-card {
-            background: #F0FDF4;
-            border-radius: 20px;
-            padding: 22px 20px;
-            border-left: 6px solid #22C55E;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-        .nervous-card h4 {
-            font-size: 17px;
-            font-weight: 700;
-            color: #166534;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .nervous-card p {
-            font-size: 13px;
-            color: #166534;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        /* 15. Theory Test Help Section */
-        .theory-section {
-            padding: 0 20px;
-            margin-bottom: 25px;
-        }
-        .theory-card {
-            background: #FEFCE8;
-            border-radius: 20px;
-            padding: 20px;
-            border-left: 6px solid #EAB308;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-        .theory-card h4 {
-            font-size: 17px;
-            font-weight: 700;
-            color: #854D0E;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .theory-card p {
-            font-size: 13px;
-            color: #854D0E;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        /* 16. Highlighted Hero Call-to-Action Banner */
-        .hero-banner-cta {
-            background: linear-gradient(90deg, #3B82F6, #8B5CF6);
-            margin: 0 20px 25px;
-            border-radius: 20px;
-            padding: 20px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 10px 20px rgba(59,130,246,0.3);
-        }
-        .hero-banner-cta h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-        .hero-banner-cta p {
-            font-size: 12px;
-            opacity: 0.85;
-        }
-        .hero-banner-cta .cta-btn {
-            background: white;
-            color: #3B82F6;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        /* 17. Our Fleet Section (already exists but add extra dual controls info) */
-        .fleet-dual {
-            font-size: 11px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-top: 4px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* 18. Parent/Guardian Email Field */
-        .parent-email-field {
-            margin-top: 12px;
-        }
-        .parent-email-field label {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            display: block;
-            margin-bottom: 4px;
-        }
-        .parent-email-field input {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1.5px solid #E2E8F0;
-            font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            background: #F8FAFC;
-        }
-        .parent-email-field input:focus {
-            border-color: var(--accent);
-        }
-    </style>
+  @media (max-width:460px){
+    body{padding:0;}
+    .shell{
+      border-radius:0;
+      box-shadow:none;
+      max-width:100%;
+      min-height:100vh;
+    }
+    .desktop-note{display:none;}
+  }
+</style>
 </head>
 <body>
 
-    <!-- APP HEADER -->
-    <header class="app-header">
-        <div class="logo-container">
-            <div class="logo-main">DRIVESMART</div>
-            <div class="logo-sub">NW LONDON</div>
-        </div>
-        <div class="menu-icon"><i class="fa-solid fa-bars"></i></div>
-    </header>
+<div class="shell">
 
-    <!-- HERO SECTION (original) -->
-    <section class="hero">
-        <h1>Get on the road <span>today.</span></h1>
-        <p>DVSA approved, patient & local to NW London. Flexible hours, dual-control cars, and fast-track test booking.</p>
-        <button class="btn-primary" onclick="alert('Booking system opening...')">
-            BOOK NOW <i class="fa-solid fa-arrow-right"></i>
-        </button>
+  <!-- STATUS BAR -->
+  <div class="status">
+    <span>9:41</span>
+    <span class="icons">
+      <i class="fas fa-signal"></i>
+      <i class="fas fa-wifi"></i>
+      <i class="fas fa-battery-full"></i>
+    </span>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <div class="logo-mark">A</div>
+      <div>
+        <div class="logo-text">APEX<span>DRIVE</span></div>
+        <div class="logo-sub">School of Motoring</div>
+      </div>
+    </div>
+    <div class="header-btn" onclick="showToast('Calling Apex Drive...')">
+      <i class="fas fa-phone"></i>
+      <span class="dot"></span>
+    </div>
+  </header>
+
+  <!-- SCROLLABLE CONTENT -->
+  <div class="scroll-content">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="eyebrow">
+        <span class="pill">UK</span>
+        DVSA Approved · Manual &amp; Auto
+      </div>
+
+      <h1>
+        PASS<br>
+        <span class="strike">FIRST</span> TIME.<br>
+        <span class="accent">EVERY TIME.</span>
+      </h1>
+
+      <p class="hero-sub">
+        <b>1,200+ learners</b> passed with Apex last year. Pick your instructor, book in 30 seconds, drive with confidence.
+      </p>
+
+      <div class="chips">
+        <span class="chip"><i class="fas fa-check-circle"></i> 97% pass rate</span>
+        <span class="chip"><i class="fas fa-check-circle"></i> Free theory app</span>
+        <span class="chip"><i class="fas fa-check-circle"></i> No booking fees</span>
+      </div>
+
+      <!-- HERO IMAGE -->
+      <div class="hero-image">
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+PHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiMxYTFhMWMiLz48cmVjdCB4PSIwIiB5PSIzNTAiIHdpZHRoPSI5MDAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMjUyNTI4Ii8+PHBhdGggZD0iTTAgNDAwIFEyMjUgMzUwIDQ1MCA0MDAgVDkwMCA0MDAiIHN0cm9rZT0iI2UxMDYwMCIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjYiLz48Y2lyY2xlIGN4PSI3MjAiIGN5PSI0MjAiIHI9IjQwIiBmaWxsPSIjMzMzIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjcyMCIgY3k9IjQyMCIgcj0iMTgiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSIxODAiIGN5PSI0MjAiIHI9IjQwIiBmaWxsPSIjMzMzIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjQyMCIgcj0iMTgiIGZpbGw9IiM1NTUiLz48cGF0aCBkPSJNMTUwIDM4MCBMNzUwIDM4MCBMNzAwIDM0MCBMMjAwIDM0MCBaIiBmaWxsPSIjMjIyIi8+PHJlY3QgeD0iMjUwIiB5PSIyODAiIHdpZHRoPSI0MDAiIGhlaWdodD0iNjAiIHJ4PSIxMCIgZmlsbD0iIzFhMWExYyIvPjxjaXJjbGUgY3g9IjQ1MCIgY3k9IjI0MCIgcj0iNjAiIGZpbGw9IiNlMTA2MDAiIG9wYWNpdHk9IjAuMTUiLz48cGF0aCBkPSJNMzAwIDI4MCBRNDUwIDI0MCA2MDAgMjgwIiBzdHJva2U9IiNlMTA2MDAiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iMC4zIi8+PC9zdmc+"
+          alt="Learner driver on an open road at golden hour"
+          loading="eager">
+        <div class="price-tag">
+          <small>From</small>
+          <span class="big">£29</span><span style="font-size:12px;font-weight:800;">/hr</span>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats">
+        <div class="stat">
+          <div class="n">1,2<span>00+</span></div>
+          <div class="l">Passed 2024</div>
+        </div>
+        <div class="stat">
+          <div class="n">97<span>%</span></div>
+          <div class="l">Pass rate</div>
+        </div>
+        <div class="stat">
+          <div class="n">4.9<span>★</span></div>
+          <div class="l">Trustpilot</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA ZONE -->
+    <div class="cta-zone">
+      <button class="btn-primary" onclick="openModal()">
+        Book your first lesson
+        <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+      </button>
+      <div class="btn-note">
+        <i class="fas fa-shield-alt"></i>
+        Free cancellation up to 24h before
+      </div>
+    </div>
+
+    <!-- PACKAGES -->
+    <section class="packages">
+      <div class="section-head">
+        <h2>Pick your block<span class="dot">.</span></h2>
+        <a onclick="showToast('Compare all packages')">Compare <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+      </div>
+
+      <div class="pkg-list">
+        <div class="pkg" onclick="selectPkg(this)">
+          <div class="pkg-radio"></div>
+          <div class="pkg-body">
+            <div class="pkg-name">Taster · 1 hour</div>
+            <div class="pkg-desc">Meet your instructor, feel the car</div>
+          </div>
+          <div class="pkg-price">
+            <div class="amt">£29</div>
+            <div class="per">per hour</div>
+          </div>
+        </div>
+
+        <div class="pkg featured" onclick="selectPkg(this)">
+          <div class="pkg-radio"></div>
+          <div class="pkg-body">
+            <div class="pkg-name">
+              Smart 10 <span class="pkg-tag">Most picked</span>
+            </div>
+            <div class="pkg-desc">10 hours · save £40 · free mock test</div>
+          </div>
+          <div class="pkg-price">
+            <div class="was">£290</div>
+            <div class="amt">£250</div>
+            <div class="per">£25/hr</div>
+          </div>
+        </div>
+
+        <div class="pkg" onclick="selectPkg(this)">
+          <div class="pkg-radio"></div>
+          <div class="pkg-body">
+            <div class="pkg-name">Test Ready · 20 hours</div>
+            <div class="pkg-desc">Includes test-day car hire</div>
+          </div>
+          <div class="pkg-price">
+            <div class="amt">£499</div>
+            <div class="per">£24.95/hr</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- ===== ADD-ON: 16. Highlighted Hero Call-to-Action Banner ===== -->
-    <div class="hero-banner-cta animate-on-scroll">
-        <div>
-            <h4>First Lesson £25 🚗</h4>
-            <p>Limited time — book your first lesson today!</p>
-        </div>
-        <button class="cta-btn" onclick="alert('Book first lesson for £25!')">Claim</button>
-    </div>
+    <!-- INSTRUCTORS -->
+    <section>
+      <div class="section-head">
+        <h2>Your instructor<span class="dot">.</span></h2>
+        <a onclick="showToast('Showing all 24 instructors')">All 24 <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+      </div>
 
-    <!-- ===== ADD-ON: 1. Top Section Large Booking with Calendar Integration ===== -->
-    <div class="booking-section animate-on-scroll">
-        <div class="booking-card">
-            <h3><i class="fa-solid fa-calendar-check"></i> Book Your First Lesson</h3>
-            <div class="postcode-search">
-                <input type="text" placeholder="Enter your postcode (e.g. NW1)" id="postcodeInput">
-                <button onclick="alert('Searching instructors near ' + document.getElementById('postcodeInput').value)">Search</button>
+      <div class="inst-list">
+        <div class="inst" onclick="showToast('Viewing James Doyle\'s profile')">
+          <div class="inst-avatar" style="background:#E10600;">JD</div>
+          <div class="inst-info">
+            <h4>James Doyle</h4>
+            <p>Manual · 12 yrs · South Manchester</p>
+          </div>
+          <div class="inst-rating"><i class="fas fa-star"></i> 4.98</div>
+        </div>
+
+        <div class="inst" onclick="showToast('Viewing Sarah Mitchell\'s profile')">
+          <div class="inst-avatar" style="background:#0B0B0C;">SM</div>
+          <div class="inst-info">
+            <h4>Sarah Mitchell</h4>
+            <p>Automatic · 8 yrs · City Centre</p>
+          </div>
+          <div class="inst-rating"><i class="fas fa-star"></i> 4.96</div>
+        </div>
+
+        <div class="inst" onclick="showToast('Viewing Raj Kapoor\'s profile')">
+          <div class="inst-avatar" style="background:#B00500;">RK</div>
+          <div class="inst-info">
+            <h4>Raj Kapoor</h4>
+            <p>Manual · 6 yrs · Salford &amp; Trafford</p>
+          </div>
+          <div class="inst-rating"><i class="fas fa-star"></i> 4.94</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STUDENT SLIDER ============ -->
+    <section style="padding-top:0;">
+      <div class="section-head">
+        <h2>Recent passes<span class="dot">.</span></h2>
+        <a onclick="showToast('View all success stories')">See all <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+      </div>
+      <div class="slider-wrap">
+        <div class="slider-track" id="studentSlider">
+          <div class="slide">
+            <img class="slide-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMzIwIiB2aWV3Qm94PSIwIDAgNTYwIDMyMCI+PHJlY3Qgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzMjAiIGZpbGw9IiNmNGY0ZjUiLz48cmVjdCB4PSIwIiB5PSIyNjAiIHdpZHRoPSI1NjAiIGhlaWdodD0iNjAiIGZpbGw9IiNlOGU4ZTgiLz48Y2lyY2xlIGN4PSIyODAiIGN5PSIxNDAiIHI9IjYwIiBmaWxsPSIjZTEwNjAwIiBvcGFjaXR5PSIwLjEiLz48cGF0aCBkPSJNMjAwIDE0MCBRMjgwIDgwIDM2MCAxNDAiIHN0cm9rZT0iI2UxMDYwMCIgc3Ryb2tlLXdpZHRoPSI2IiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSIyMDAiIHk9IjE4MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI0MCIgcng9IjgiIGZpbGw9IiNlMTA2MDAiIG9wYWNpdHk9IjAuMTUiLz48dGV4dCB4PSIyODAiIHk9IjIxMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2UxMDYwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UEFTU0VEPC90ZXh0Pjwvc3ZnPg==" alt="Student with certificate">
+            <div class="slide-body">
+              <h4><i class="fas fa-check-circle"></i> Ella M.</h4>
+              <p>Zero faults on first attempt · Manchester</p>
+              <span class="slide-tag">Passed 14 Mar</span>
             </div>
-            <div class="calendar-preview">
-                <div class="calendar-day header">M</div><div class="calendar-day header">T</div><div class="calendar-day header">W</div><div class="calendar-day header">T</div><div class="calendar-day header">F</div><div class="calendar-day header">S</div><div class="calendar-day header">S</div>
-                <div class="calendar-day">12</div><div class="calendar-day">13</div><div class="calendar-day active">14</div><div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div>
+          </div>
+          <div class="slide">
+            <img class="slide-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMzIwIiB2aWV3Qm94PSIwIDAgNTYwIDMyMCI+PHJlY3Qgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzMjAiIGZpbGw9IiNmZmY1ZjQiLz48cmVjdCB4PSIwIiB5PSIyNjAiIHdpZHRoPSI1NjAiIGhlaWdodD0iNjAiIGZpbGw9IiNmZmU4ZTgiLz48Y2lyY2xlIGN4PSIyODAiIGN5PSIxNDAiIHI9IjYwIiBmaWxsPSIjZTEwNjAwIiBvcGFjaXR5PSIwLjA4Ii8+PHBhdGggZD0iTTE4MCAxNjAgUTI4MCAxMDAgMzgwIDE2MCIgc3Ryb2tlPSIjZTEwNjAwIiBzdHJva2Utd2lkdGg9IjYiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuMjUiLz48cmVjdCB4PSIyMDAiIHk9IjE4MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI0MCIgcng9IjgiIGZpbGw9IiNlMTA2MDAiIG9wYWNpdHk9IjAuMTIiLz48dGV4dCB4PSIyODAiIHk9IjIxMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2UxMDYwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UEFTU0VEPC90ZXh0Pjwvc3ZnPg==" alt="Student with certificate">
+            <div class="slide-body">
+              <h4><i class="fas fa-check-circle"></i> Tom R.</h4>
+              <p>First time pass after Smart 10 block</p>
+              <span class="slide-tag">Passed 12 Mar</span>
             </div>
-            <button class="btn-primary" style="margin-top:5px;" onclick="alert('Calendly-style booking opened.')">
-                <i class="fa-regular fa-calendar"></i> Book First Lesson
-            </button>
-            <div class="parent-email-field">
-                <label><i class="fa-regular fa-envelope"></i> Parent/Guardian Email (optional)</label>
-                <input type="email" placeholder="parent@example.com" id="parentEmail">
+          </div>
+          <div class="slide">
+            <img class="slide-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMzIwIiB2aWV3Qm94PSIwIDAgNTYwIDMyMCI+PHJlY3Qgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzMjAiIGZpbGw9IiNmNGY0ZjUiLz48cmVjdCB4PSIwIiB5PSIyNjAiIHdpZHRoPSI1NjAiIGhlaWdodD0iNjAiIGZpbGw9IiNlOGU4ZTgiLz48Y2lyY2xlIGN4PSIyODAiIGN5PSIxNDAiIHI9IjYwIiBmaWxsPSIjZTEwNjAwIiBvcGFjaXR5PSIwLjEiLz48cGF0aCBkPSJNMjAwIDE0MCBRMjgwIDgwIDM2MCAxNDAiIHN0cm9rZT0iI2UxMDYwMCIgc3Ryb2tlLXdpZHRoPSI2IiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSIyMDAiIHk9IjE4MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI0MCIgcng9IjgiIGZpbGw9IiNlMTA2MDAiIG9wYWNpdHk9IjAuMTUiLz48dGV4dCB4PSIyODAiIHk9IjIxMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2UxMDYwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UEFTU0VEPC90ZXh0Pjwvc3ZnPg==" alt="Student with certificate">
+            <div class="slide-body">
+              <h4><i class="fas fa-check-circle"></i> Priya K.</h4>
+              <p>Automatic · City Centre · 4 minors</p>
+              <span class="slide-tag">Passed 10 Mar</span>
             </div>
+          </div>
         </div>
-    </div>
+        <div class="slider-dots" id="studentDots">
+          <span class="active" onclick="goToSlide(0)"></span>
+          <span onclick="goToSlide(1)"></span>
+          <span onclick="goToSlide(2)"></span>
+        </div>
+      </div>
+    </section>
 
-    <!-- ===== ADD-ON: 2. Buy Now Lesson Packages ===== -->
-    <div class="section-header">
-        <h2>Lesson Packages</h2>
-        <a href="#">Buy Now</a>
-    </div>
-    <div class="packages-grid animate-on-scroll">
-        <div class="package-card">
-            <h4>Starter</h4>
-            <div class="price">£35</div>
-            <div class="desc">1 lesson • perfect first drive</div>
-            <button class="btn-package" onclick="alert('Starter package added to cart')">Buy Now</button>
-        </div>
-        <div class="package-card">
-            <span class="badge">Popular</span>
-            <h4>Beginner</h4>
-            <div class="price">£160</div>
-            <div class="desc">5 lessons • save £15</div>
-            <button class="btn-package" onclick="alert('Beginner package added to cart')">Buy Now</button>
-        </div>
-        <div class="package-card">
-            <h4>Intensive</h4>
-            <div class="price">£300</div>
-            <div class="desc">10 lessons • fast progress</div>
-            <button class="btn-package" onclick="alert('Intensive package added to cart')">Buy Now</button>
-        </div>
-        <div class="package-card">
-            <span class="badge">Best Value</span>
-            <h4>Fast Pass</h4>
-            <div class="price">£550</div>
-            <div class="desc">20 lessons • test ready</div>
-            <button class="btn-package" onclick="alert('Fast Pass package added to cart')">Buy Now</button>
-        </div>
-        <div class="package-card">
-            <h4>Test Prep</h4>
-            <div class="price">£120</div>
-            <div class="desc">Mock test + car hire</div>
-            <button class="btn-package" onclick="alert('Test Prep package added to cart')">Buy Now</button>
-        </div>
-    </div>
-    <!-- ===== ADD-ON: 11. Lesson Packages Link to Payment ===== -->
-    <div class="payment-note"><i class="fa-solid fa-lock"></i> Secure online payment • Apple Pay & Google Pay accepted</div>
-
-    <!-- ===== ADD-ON: 3. Automatic vs Manual Lessons Section ===== -->
-    <div class="section-header">
-        <h2>Automatic vs Manual</h2>
-    </div>
-    <div class="transmission-section animate-on-scroll">
-        <div class="transmission-card">
-            <i class="fa-solid fa-gear"></i>
-            <h4>Manual</h4>
-            <p>Full control, clutch & gears. Ideal for a full licence.</p>
-        </div>
-        <div class="transmission-card">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <h4>Automatic</h4>
-            <p>Easy to learn, no clutch. Perfect for nervous drivers.</p>
-        </div>
-    </div>
-
-    <!-- ===== ADD-ON: 4. Areas Covered Section ===== -->
-    <div class="section-header">
-        <h2>Areas Covered</h2>
-    </div>
-    <div class="areas-section animate-on-scroll">
-        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> Croydon</div>
-        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> Bromley</div>
-        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> Lewisham</div>
-        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> Greenwich</div>
-        <div class="area-pill"><i class="fa-solid fa-location-dot"></i> South London</div>
-    </div>
-
-    <!-- ===== ADD-ON: 5. Instructor Trust Section ===== -->
-    <div class="section-header">
-        <h2>Why Trust Us</h2>
-    </div>
-    <div class="trust-section animate-on-scroll">
-        <div class="trust-grid">
-            <div class="trust-item"><i class="fa-solid fa-certificate"></i> DVSA Approved</div>
-            <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> Fully Insured</div>
-            <div class="trust-item"><i class="fa-solid fa-heart"></i> Nervous Driver Specialist</div>
-            <div class="trust-item"><i class="fa-solid fa-chart-line"></i> 94% Pass Rate</div>
-        </div>
-    </div>
-
-    <!-- ===== ADD-ON: 14. Nervous Driver Specialist Section ===== -->
-    <div class="nervous-section animate-on-scroll">
-        <div class="nervous-card">
-            <h4><i class="fa-solid fa-hand-holding-heart"></i> Nervous Driver Specialist</h4>
-            <p>Calm, patient, confidence-building lessons. We specialise in helping anxious learners feel safe and in control behind the wheel.</p>
-        </div>
-    </div>
-
-    <!-- ===== ADD-ON: 15. Theory Test Help Section ===== -->
-    <div class="theory-section animate-on-scroll">
-        <div class="theory-card">
-            <h4><i class="fa-solid fa-book-open"></i> Theory Test Help</h4>
-            <p>Free resources, practice questions, and 1-to-1 theory support for beginners. Pass your theory first time with our guidance.</p>
-        </div>
-    </div>
-
-    <!-- ===== ORIGINAL SLIDER (OUR FLEET) with ADD-ON 17. Fleet dual controls info ===== -->
-    <div class="section-header">
-        <h2>Our Fleet</h2>
-        <a href="#">View All</a>
-    </div>
-    <div class="slider-container animate-on-scroll">
-        <!-- Slide 1 -->
-        <div class="slide-card">
-            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80" alt="VW Golf">
-            <div class="slide-info">
-                <h3>VW Golf 8</h3>
-                <p>Manual & Automatic • 2024 Model</p>
-                <div class="fleet-dual"><i class="fa-solid fa-shield"></i> Dual controls fitted</div>
+    <!-- ============ LEARNER CAR SLIDER ============ -->
+    <section style="padding-top:0;">
+      <div class="section-head">
+        <h2>Our learner cars<span class="dot">.</span></h2>
+        <a onclick="showToast('View full fleet')">Fleet <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+      </div>
+      <div class="slider-wrap">
+        <div class="slider-track" id="carSlider">
+          <div class="slide">
+            <img class="slide-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMzIwIiB2aWV3Qm94PSIwIDAgNTYwIDMyMCI+PHJlY3Qgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzMjAiIGZpbGw9IiMxYTFhMWMiLz48cmVjdCB4PSIwIiB5PSIyNDAiIHdpZHRoPSI1NjAiIGhlaWdodD0iODAiIGZpbGw9IiMyNTI1MjgiLz48Y2lyY2xlIGN4PSIxNjAiIGN5PSIyODAiIHI9IjM1IiBmaWxsPSIjMzMzIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjE2MCIgY3k9IjI4MCIgcj0iMTUiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyODAiIHI9IjM1IiBmaWxsPSIjMzMzIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjI4MCIgcj0iMTUiIGZpbGw9IiM1NTUiLz48cGF0aCBkPSJNMTIwIDI0MCBMNDQwIDI0MCBMNDAwIDE5MCBMMTYwIDE5MCBaIiBmaWxsPSIjMjIyIi8+PHJlY3QgeD0iMTgwIiB5PSIxNDAiIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHJ4PSI4IiBmaWxsPSIjZTEmMDYwMCIgb3BhY2l0eT0iMC4yIi8+PHRleHQgeD0iMjgwIiB5PSIxNzUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlMTA2MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFQRVggRFJJVkU8L3RleHQ+PC9zdmc+" alt="Apex learner car - Manual">
+            <div class="slide-body">
+              <h4><i class="fas fa-car"></i> Ford Fiesta · Manual</h4>
+              <p>2023 plate · Dual controls · Heated seats</p>
+              <span class="slide-tag" style="background:#0EA35A;">Available</span>
             </div>
-        </div>
-        <!-- Slide 2 -->
-        <div class="slide-card">
-            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=600&q=80" alt="Audi A3">
-            <div class="slide-info">
-                <h3>Audi A3</h3>
-                <p>Automatic • Perfect for beginners</p>
-                <div class="fleet-dual"><i class="fa-solid fa-shield"></i> Dual controls fitted</div>
+          </div>
+          <div class="slide">
+            <img class="slide-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMzIwIiB2aWV3Qm94PSIwIDAgNTYwIDMyMCI+PHJlY3Qgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzMjAiIGZpbGw9IiMxYTFhMWMiLz48cmVjdCB4PSIwIiB5PSIyNDAiIHdpZHRoPSI1NjAiIGhlaWdodD0iODAiIGZpbGw9IiMyNTI1MjgiLz48Y2lyY2xlIGN4PSIxNjAiIGN5PSIyODAiIHI9IjM1IiBmaWxsPSIjMzMzIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjE2MCIgY3k9IjI4MCIgcj0iMTUiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyODAiIHI9IjM1IiBmaWxsPSIjMzMzIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjI4MCIgcj0iMTUiIGZpbGw9IiM1NTUiLz48cGF0aCBkPSJNMTIwIDI0MCBMNDQwIDI0MCBMNDAwIDE5MCBMMTYwIDE5MCBaIiBmaWxsPSIjMjIyIi8+PHJlY3QgeD0iMTgwIiB5PSIxNDAiIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHJ4PSI4IiBmaWxsPSIjZTEmMDYwMCIgb3BhY2l0eT0iMC4yIi8+PHRleHQgeD0iMjgwIiB5PSIxNzUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlMTA2MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFQRVggRFJJVkU8L3RleHQ+PC9zdmc+" alt="Apex learner car - Automatic">
+            <div class="slide-body">
+              <h4><i class="fas fa-car"></i> VW Polo · Automatic</h4>
+              <p>2024 plate · Dual controls · Reversing cam</p>
+              <span class="slide-tag" style="background:#0EA35A;">Available</span>
             </div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="slide-card">
-            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" alt="Mini Cooper">
-            <div class="slide-info">
-                <h3>Mini Cooper</h3>
-                <p>Manual • Easy to park & maneuver</p>
-                <div class="fleet-dual"><i class="fa-solid fa-shield"></i> Dual controls fitted</div>
+          </div>
+          <div class="slide">
+            <img class="slide-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMzIwIiB2aWV3Qm94PSIwIDAgNTYwIDMyMCI+PHJlY3Qgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzMjAiIGZpbGw9IiMxYTFhMWMiLz48cmVjdCB4PSIwIiB5PSIyNDAiIHdpZHRoPSI1NjAiIGhlaWdodD0iODAiIGZpbGw9IiMyNTI1MjgiLz48Y2lyY2xlIGN4PSIxNjAiIGN5PSIyODAiIHI9IjM1IiBmaWxsPSIjMzMzIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjE2MCIgY3k9IjI4MCIgcj0iMTUiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyODAiIHI9IjM1IiBmaWxsPSIjMzMzIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjI4MCIgcj0iMTUiIGZpbGw9IiM1NTUiLz48cGF0aCBkPSJNMTIwIDI0MCBMNDQwIDI0MCBMNDAwIDE5MCBMMTYwIDE5MCBaIiBmaWxsPSIjMjIyIi8+PHJlY3QgeD0iMTgwIiB5PSIxNDAiIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHJ4PSI4IiBmaWxsPSIjZTEmMDYwMCIgb3BhY2l0eT0iMC4yIi8+PHRleHQgeD0iMjgwIiB5PSIxNzUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlMTA2MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFQRVggRFJJVkU8L3RleHQ+PC9zdmc+" alt="Apex learner car - Manual">
+            <div class="slide-body">
+              <h4><i class="fas fa-car"></i> Corsa · Manual</h4>
+              <p>2023 plate · Dual controls · Apple CarPlay</p>
+              <span class="slide-tag" style="background:#E10600;">Booked</span>
             </div>
+          </div>
         </div>
+        <div class="slider-dots" id="carDots">
+          <span class="active" onclick="goToCarSlide(0)"></span>
+          <span onclick="goToCarSlide(1)"></span>
+          <span onclick="goToCarSlide(2)"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="padding-top:0;">
+      <div class="section-head">
+        <h2>Questions<span class="dot">?</span></h2>
+        <a onclick="showToast('Opening help centre')">Help <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            Do I need my own car to learn?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-a">No — all our lessons use dual-control cars provided by Apex Drive. You just need your provisional licence and comfortable shoes.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            Can I switch instructors?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-a">Absolutely. If you don't click with your first instructor, we'll match you with another at no extra cost. Your progress notes carry over.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            How soon can I start?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-a">Most learners get their first lesson within 3–5 days of booking. We have instructors available 7 days a week, including evenings.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section style="padding-top:0;">
+      <div class="quote">
+        <div class="quote-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p>
+          Passed first time with <b>zero faults</b>. My instructor James was calm, funny, and genuinely cared. Booked the Smart 10 block — worth every penny.
+        </p>
+        <div class="quote-author">
+          <div class="av">EM</div>
+          <div class="meta">
+            Ella M.
+            <span>Passed 14 Mar · Manchester</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end scroll-content -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="brand">APEX<span>DRIVE</span></div>
+    School of Motoring · Est. 2014<br>
+    <a onclick="showToast('Opening Terms')">Terms</a> · <a onclick="showToast('Opening Privacy')">Privacy</a> · <a onclick="showToast('Opening Contact')">Contact</a><br>
+    <div style="margin-top:14px;opacity:.5;">© 2026 Apex Drive Ltd · DVSA ADI #48219</div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="nav">
+    <button class="nav-item active" onclick="switchNav(this,'Home')">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </button>
+    <button class="nav-item" onclick="switchNav(this,'Lessons')">
+      <i class="fas fa-car"></i>
+      <span>Lessons</span>
+    </button>
+    <button class="nav-item" onclick="switchNav(this,'Book')">
+      <i class="fas fa-calendar-check"></i>
+      <span>Book</span>
+    </button>
+    <button class="nav-item" onclick="switchNav(this,'Account')">
+      <i class="fas fa-user"></i>
+      <span>Account</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <h3>Book your lesson</h3>
+    <p class="sub">Pick your package, instructor, and preferred time. We'll confirm within 2 hours.</p>
+
+    <div class="form-group">
+      <label>Full name</label>
+      <input type="text" placeholder="e.g. Ella M." id="inputName">
     </div>
-
-    <!-- ORIGINAL GRID SECTION -->
-    <div class="section-header">
-        <h2>What We Offer</h2>
+    <div class="form-group">
+      <label>Phone number</label>
+      <input type="tel" placeholder="07XXX XXXXXX" id="inputPhone">
     </div>
-    <div class="grid-container animate-on-scroll">
-        <div class="grid-item">
-            <div class="grid-icon"><i class="fa-solid fa-book-open"></i></div>
-            <span>Theory Support</span>
-        </div>
-        <div class="grid-item">
-            <div class="grid-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-            <span>Mock Tests</span>
-        </div>
-        <div class="grid-item">
-            <div class="grid-icon"><i class="fa-solid fa-car-side"></i></div>
-            <span>Pick-up & Drop</span>
-        </div>
-        <div class="grid-item">
-            <div class="grid-icon"><i class="fa-solid fa-clock"></i></div>
-            <span>Flexible Hours</span>
-        </div>
+    <div class="form-group">
+      <label>Package</label>
+      <select id="inputPackage">
+        <option>Taster · 1 hour — £29</option>
+        <option selected>Smart 10 · 10 hours — £250</option>
+        <option>Test Ready · 20 hours — £499</option>
+      </select>
     </div>
-
-    <!-- ===== ADD-ON: 12. Highlighted Promotions / Limited Offers Section ===== -->
-    <div class="promo-banner animate-on-scroll">
-        <div>
-            <h4>🔥 Summer Discount</h4>
-            <p>10% off all packages — ends soon!</p>
-        </div>
-        <button class="promo-btn" onclick="alert('Summer discount applied at checkout!')">Grab Deal</button>
+    <div class="form-group">
+      <label>Preferred date</label>
+      <input type="date" id="inputDate">
     </div>
-
-    <!-- ===== ADD-ON: 13. Referral Program Promotion ===== -->
-    <div class="referral-section animate-on-scroll">
-        <div class="referral-card">
-            <div class="referral-icon"><i class="fa-solid fa-user-plus"></i></div>
-            <div class="referral-text">
-                <h4>Refer a Friend</h4>
-                <p>Give £20, get £20 when your friend books their first lesson. Share the road!</p>
-            </div>
-        </div>
+    <button class="btn-primary" onclick="submitBooking()">
+      Confirm booking
+      <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+    </button>
+    <div class="btn-note" style="color:var(--muted);">
+      <i class="fas fa-shield-alt" style="color:var(--green);"></i>
+      No payment taken until lesson confirmed
     </div>
+  </div>
+</div>
 
-    <!-- ===== ADD-ON: 10. Interactive Location Map ===== -->
-    <div class="section-header">
-        <h2>Our Coverage Map</h2>
-    </div>
-    <div class="map-section animate-on-scroll">
-        <div class="map-placeholder" onclick="alert('Interactive map: Croydon, Bromley, Lewisham, Greenwich & test centres')">
-            <i class="fa-solid fa-map-location-dot"></i>
-            <span>Click to explore coverage & test centres</span>
-        </div>
-        <div class="map-pins">
-            <div class="map-pin"><i class="fa-solid fa-circle"></i> Croydon</div>
-            <div class="map-pin"><i class="fa-solid fa-circle"></i> Bromley</div>
-            <div class="map-pin"><i class="fa-solid fa-circle"></i> Lewisham</div>
-            <div class="map-pin"><i class="fa-solid fa-circle"></i> Greenwich</div>
-            <div class="map-pin"><i class="fa-solid fa-circle"></i> Test Centre</div>
-        </div>
-    </div>
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">Done</span></div>
 
-    <!-- ===== ADD-ON: 6. FAQ Toggle / Accordion ===== -->
-    <div class="section-header">
-        <h2>FAQ</h2>
-    </div>
-    <div class="faq-section animate-on-scroll">
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                How much are lessons? <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">Lessons start from £35/hour. Block bookings and packages offer great discounts — see our packages above.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                How long is each lesson? <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">Standard lessons are 1 hour, but we also offer 2-hour and 3-hour sessions for intensive learning.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                Do you offer test preparation? <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">Yes! Our Test Prep Package includes a mock test, car hire for your practical test, and a warm-up lesson.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                Can I book weekend lessons? <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">Absolutely — we offer weekend and evening lessons at no extra charge, subject to availability.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                What payment methods do you accept? <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">We accept card, Apple Pay, Google Pay, and bank transfer. All online payments are secure.</div>
-        </div>
-    </div>
+<div class="desktop-note">Mobile mockup · 430px portrait</div>
 
-    <!-- ===== ADD-ON: 9. Subscribe / Newsletter Form ===== -->
-    <div class="newsletter-section animate-on-scroll">
-        <div class="newsletter-card">
-            <h3>Get driving tips & theory support</h3>
-            <p>Join our newsletter for free resources and exclusive offers.</p>
-            <div class="newsletter-form">
-                <input type="email" placeholder="Your email address" id="newsletterEmail">
-                <button onclick="alert('Subscribed with ' + document.getElementById('newsletterEmail').value)">Subscribe</button>
-            </div>
-        </div>
-    </div>
+<script>
+  // ============ NAVIGATION ============
+  function switchNav(el, name) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+    showToast(name + ' section');
+  }
 
-    <!-- FLOATING ACTION BUTTONS (original) -->
-    <div class="fab-container">
-        <button class="fab whatsapp" onclick="alert('Opening WhatsApp...')"><i class="fa-brands fa-whatsapp"></i></button>
-        <button class="fab" onclick="alert('Calling instructor...')"><i class="fa-solid fa-phone"></i></button>
-    </div>
+  // ============ FAQ TOGGLE ============
+  function toggleFaq(el) {
+    const wasOpen = el.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('open'));
+    if (!wasOpen) el.classList.add('open');
+  }
 
-    <!-- BOTTOM NAVIGATION BAR (original) -->
-    <nav class="bottom-nav">
-        <div class="nav-item active">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
-        </div>
-        <div class="nav-item">
-            <i class="fa-solid fa-car"></i>
-            <span>Lessons</span>
-        </div>
-        <div class="nav-item">
-            <i class="fa-solid fa-calendar-check"></i>
-            <span>Book</span>
-        </div>
-        <div class="nav-item">
-            <i class="fa-solid fa-user"></i>
-            <span>Profile</span>
-        </div>
-    </nav>
+  // ============ PACKAGE SELECTION ============
+  function selectPkg(el) {
+    document.querySelectorAll('.pkg').forEach(p => {
+      p.classList.remove('featured');
+      p.querySelector('.pkg-radio').style.borderColor = '#D4D4D8';
+      p.querySelector('.pkg-radio').style.background = 'transparent';
+    });
+    el.classList.add('featured');
+    el.querySelector('.pkg-radio').style.borderColor = 'var(--red)';
+    el.querySelector('.pkg-radio').style.background = 'var(--red)';
 
-    <div class="spacer"></div>
+    // Update modal select
+    const name = el.querySelector('.pkg-name').textContent.trim().split(' ')[0];
+    const select = document.getElementById('inputPackage');
+    for (let opt of select.options) {
+      if (opt.text.includes(name)) { select.value = opt.value; break; }
+    }
+    showToast('Selected: ' + el.querySelector('.pkg-name').textContent.trim().split(' ').slice(0,2).join(' '));
+  }
 
-    <!-- ===== ADD-ON: 8. Popup Limited-Time Offer ===== -->
-    <div class="popup-overlay" id="popupOverlay">
-        <div class="popup-box">
-            <button class="popup-close" onclick="document.getElementById('popupOverlay').classList.remove('show')">&times;</button>
-            <h3>🎉 First Lesson £25</h3>
-            <p>Limited-time offer for new learners. Book your first lesson today and save!</p>
-            <button class="btn-primary" onclick="alert('First lesson £25 offer applied!'); document.getElementById('popupOverlay').classList.remove('show')">
-                Claim Offer
-            </button>
-        </div>
-    </div>
+  // ============ SLIDER LOGIC ============
+  function initSlider(trackId, dotsId, goToFn) {
+    const track = document.getElementById(trackId);
+    const dots = document.getElementById(dotsId).children;
 
-    <!-- ===== ADD-ON: 7. Scroll Animations (JS) + Popup trigger ===== -->
-    <script>
-        (function() {
-            // Scroll animations
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            animatedElements.forEach(el => observer.observe(el));
+    track.addEventListener('scroll', () => {
+      const slideWidth = 294; // 280 + 14 gap
+      const index = Math.round(track.scrollLeft / slideWidth);
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('active', i === Math.min(index, dots.length - 1));
+      }
+    }, { passive: true });
+  }
 
-            // Popup limited-time offer: show after 3 seconds
-            setTimeout(() => {
-                document.getElementById('popupOverlay').classList.add('show');
-            }, 3000);
+  function goToSlide(index) {
+    const track = document.getElementById('studentSlider');
+    track.scrollTo({ left: index * 294, behavior: 'smooth' });
+  }
 
-            // Close popup on overlay click (outside box)
-            document.getElementById('popupOverlay').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.remove('show');
-                }
-            });
-        })();
-    </script>
+  function goToCarSlide(index) {
+    const track = document.getElementById('carSlider');
+    track.scrollTo({ left: index * 294, behavior: 'smooth' });
+  }
+
+  initSlider('studentSlider', 'studentDots');
+  initSlider('carSlider', 'carDots');
+
+  // ============ MODAL ============
+  function openModal() {
+    document.getElementById('bookingModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
+    // Set min date to today
+    const dateInput = document.getElementById('inputDate');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    dateInput.value = today;
+  }
+
+  function closeModal() {
+    document.getElementById('bookingModal').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('bookingModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // ============ BOOKING SUBMIT ============
+  function submitBooking() {
+    const name = document.getElementById('inputName').value.trim();
+    const phone = document.getElementById('inputPhone').value.trim();
+    const pkg = document.getElementById('inputPackage').value;
+    const date = document.getElementById('inputDate').value;
+
+    if (!name || !phone) {
+      showToast('Please fill in your name and phone', 'error');
+      return;
+    }
+
+    closeModal();
+    showToast('Booking confirmed for ' + name + '! 🎉', 'success');
+
+    // Reset form
+    document.getElementById('inputName').value = '';
+    document.getElementById('inputPhone').value = '';
+  }
+
+  // ============ TOAST ============
+  let toastTimer;
+  function showToast(msg, type) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    const icon = toast.querySelector('i');
+
+    toastMsg.textContent = msg;
+
+    if (type === 'error') {
+      icon.className = 'fas fa-exclamation-circle';
+      icon.style.color = '#E10600';
+    } else if (type === 'success') {
+      icon.className = 'fas fa-check-circle';
+      icon.style.color = '#0EA35A';
+    } else {
+      icon.className = 'fas fa-check-circle';
+      icon.style.color = '#0EA35A';
+    }
+
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // ============ INIT ============
+  // Set date input to today on load
+  document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('inputDate').value = today;
+    document.getElementById('inputDate').min = today;
+  });
+</script>
 </body>
 </html>
