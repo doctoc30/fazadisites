@@ -1,1 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meridian Drive | Elite Driving School</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1e1e2a;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* typography */
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .subhead {
+      font-size: 1.25rem;
+      color: #4a4a5a;
+      font-weight: 400;
+      max-width: 620px;
+    }
+
+    /* buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #0b2b4b;
+      color: white;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+      box-shadow: 0 12px 24px -8px rgba(11, 43, 75, 0.25);
+    }
+
+    .btn:hover {
+      background: #0f3a64;
+      transform: translateY(-2px);
+      box-shadow: 0 18px 32px -10px rgba(11, 43, 75, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid rgba(11, 43, 75, 0.25);
+      color: #0b2b4b;
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: #f5f7fa;
+      border-color: #0b2b4b;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -12px rgba(11, 43, 75, 0.2);
+    }
+
+    .btn-light {
+      background: white;
+      color: #0b2b4b;
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-light:hover {
+      background: #f0f4f9;
+      color: #0b2b4b;
+    }
+
+    .btn i {
+      font-size: 1rem;
+    }
+
+    /* header / nav */
+    .navbar {
+      padding: 22px 0;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+      color: #0b2b4b;
+      text-decoration: none;
+    }
+
+    .logo i {
+      font-size: 2rem;
+      color: #1e6f5c;
+      background: linear-gradient(145deg, #1e6f5c, #2b8b73);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2c2c3a;
+      font-size: 1rem;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: #0b2b4b;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* hero */
+    .hero {
+      padding: 80px 0 100px;
+      background: linear-gradient(115deg, #f9fbfd 0%, #edf2f7 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(30, 111, 92, 0.12);
+      color: #1e6f5c;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #3d3d4e;
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 14px 24px;
+      border-radius: 50px;
+      box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.06);
+      margin-top: 40px;
+      max-width: fit-content;
+    }
+
+    .trust-badge i {
+      font-size: 1.5rem;
+      color: #1e6f5c;
+    }
+
+    .trust-badge span {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #1e1e2a;
+    }
+
+    .trust-badge strong {
+      font-weight: 700;
+      color: #0b2b4b;
+    }
+
+    .hero-visual {
+      position: relative;
+      background: #0b2b4b;
+      border-radius: 32px;
+      padding: 20px;
+      box-shadow: 0 40px 70px -20px rgba(11, 43, 75, 0.35);
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 30%, rgba(30, 111, 92, 0.4), transparent 70%);
+      z-index: 1;
+    }
+
+    .hero-visual-content {
+      position: relative;
+      z-index: 5;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-visual-content i {
+      font-size: 6rem;
+      opacity: 0.25;
+      margin-bottom: 16px;
+    }
+
+    .hero-visual-content h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero-visual-content p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* section */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      color: #4a4a5a;
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+    }
+
+    .text-accent {
+      color: #1e6f5c;
+    }
+
+    /* features / why us */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      padding: 40px 32px;
+      border-radius: 28px;
+      border: 1px solid #eef1f5;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.02);
+    }
+
+    .feature-card:hover {
+      border-color: #d0ddeb;
+      box-shadow: 0 25px 35px -15px rgba(11, 43, 75, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      background: #f0f7f4;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .feature-icon i {
+      font-size: 2rem;
+      color: #1e6f5c;
+    }
+
+    .feature-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: #4a4a5a;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* instructors */
+    .instructor-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .instructor-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.06);
+      transition: all 0.25s ease;
+      border: 1px solid #eef1f5;
+    }
+
+    .instructor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 40px -18px rgba(11, 43, 75, 0.15);
+      border-color: #d0ddeb;
+    }
+
+    .instructor-img {
+      height: 260px;
+      background: linear-gradient(145deg, #e4eef7, #d3dfec);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: #0b2b4b;
+      opacity: 0.7;
+      position: relative;
+    }
+
+    .instructor-img i {
+      opacity: 0.7;
+    }
+
+    .instructor-info {
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .instructor-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .instructor-info .role {
+      color: #1e6f5c;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .instructor-info .desc {
+      color: #5f5f70;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* pricing / packages */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 32px;
+      padding: 44px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.05);
+      border: 1px solid #eef1f5;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+
+    .pricing-card.featured {
+      border: 2px solid #1e6f5c;
+      box-shadow: 0 30px 45px -15px rgba(30, 111, 92, 0.2);
+      transform: scale(1.02);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fcfb 100%);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 35px 45px -18px rgba(11, 43, 75, 0.12);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.02) translateY(-6px);
+    }
+
+    .package-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .package-price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #0b2b4b;
+      margin: 20px 0 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .package-price span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #6b6b7c;
+    }
+
+    .package-desc {
+      color: #5f5f70;
+      margin-bottom: 28px;
+      font-size: 0.95rem;
+    }
+
+    .package-features {
+      list-style: none;
+      text-align: left;
+      margin: 28px 0 36px;
+    }
+
+    .package-features li {
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #2c2c3a;
+      font-size: 0.98rem;
+    }
+
+    .package-features i {
+      color: #1e6f5c;
+      font-size: 1rem;
+      width: 20px;
+    }
+
+    /* testimonials */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      padding: 36px 30px;
+      border-radius: 28px;
+      border: 1px solid #eef1f5;
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.04);
+    }
+
+    .testimonial-card i.fa-quote-left {
+      font-size: 2rem;
+      color: #1e6f5c;
+      opacity: 0.3;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #2c2c3a;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      background: #e4eef7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #0b2b4b;
+      font-size: 1.2rem;
+    }
+
+    .author-info h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .author-info p {
+      font-size: 0.85rem;
+      color: #6b6b7c;
+    }
+
+    .stars {
+      color: #f5b342;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    /* cta section */
+    .cta-section {
+      background: #0b2b4b;
+      border-radius: 48px;
+      padding: 70px 60px;
+      margin: 40px 0 80px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(30, 111, 92, 0.35), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .cta-content h2 {
+      color: white;
+      margin-bottom: 12px;
+      font-size: 2.2rem;
+    }
+
+    .cta-content p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1.15rem;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* footer */
+    footer {
+      background: #f7f9fc;
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand p {
+      margin: 18px 0 24px;
+      color: #4a4a5a;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 14px;
+    }
+
+    .footer-social a {
+      width: 42px;
+      height: 42px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b2b4b;
+      text-decoration: none;
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s;
+    }
+
+    .footer-social a:hover {
+      background: #0b2b4b;
+      color: white;
+      border-color: #0b2b4b;
+    }
+
+    .footer-col h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #0b2b4b;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul a {
+      text-decoration: none;
+      color: #4a4a5a;
+      font-size: 0.95rem;
+      transition: color 0.15s;
+    }
+
+    .footer-col ul a:hover {
+      color: #0b2b4b;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: #6b6b7c;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom a {
+      color: #6b6b7c;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      color: #0b2b4b;
+    }
+
+    /* responsive */
+    @media (max-width: 1024px) {
+      h1 { font-size: 2.8rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 50px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .instructor-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      h1 { font-size: 2.3rem; }
+      h2 { font-size: 2rem; }
+      .navbar .nav-links { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .instructor-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+      .cta-section { padding: 40px 30px; }
+      .cta-content h2 { font-size: 1.8rem; }
+      .hero { padding: 50px 0 70px; }
+      .section { padding: 70px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .trust-badge { flex-direction: column; text-align: center; }
+      .nav-cta .btn-outline { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <i class="fas fa-car-side"></i>
+        Meridian Drive
+      </a>
+      <nav class="nav-links">
+        <a href="#">Courses</a>
+        <a href="#">Instructors</a>
+        <a href="#">Pricing</a>
+        <a href="#">Testimonials</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#" class="btn-outline btn" style="padding: 12px 28px;">Sign in</a>
+        <a href="#" class="btn" style="padding: 12px 28px;">Book now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">
+          <i class="fas fa-shield-alt"></i> DVSA approved • 98% first-time pass rate
+        </div>
+        <h1>Learn to drive with confidence, <span class="text-accent">not pressure.</span></h1>
+        <p>Premium driving tuition across London & Surrey. Structured lessons, patient instructors, and a proven system that gets you test-ready — faster.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn">Book your first lesson <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="btn-outline btn"><i class="fas fa-play"></i> How it works</a>
+        </div>
+        <div class="trust-badge">
+          <i class="fas fa-star"></i>
+          <span><strong>4.98/5</strong> from 1,200+ verified reviews</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-visual-content">
+          <i class="fas fa-car"></i>
+          <h3>Manual & Automatic</h3>
+          <p>Modern dual-control fleet</p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">12k+</div>
+              <div class="stat-label">Lessons</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">Pass rate</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">4.9</div>
+              <div class="stat-label">Rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / WHY US -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why learners choose <span class="text-accent">Meridian</span></h2>
+        <p>We've re-engineered driving lessons to be calmer, clearer, and more effective. No shouting, no wasted hours.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
+          <h3>Patient, expert coaches</h3>
+          <p>Every instructor is DVSA-ADI qualified with a minimum of 5 years' experience. They teach, not just supervise.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-route"></i></div>
+          <h3>Structured lesson plans</h3>
+          <p>Each session has clear objectives and a post-lesson debrief. You'll always know what you're improving next.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+          <h3>Flexible & easy booking</h3>
+          <p>Book, reschedule, or cancel via our app. Free cancellation up to 24h. Evening and weekend slots available.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-car"></i></div>
+          <h3>New dual-control cars</h3>
+          <p>All vehicles are under 2 years old, fully insured, and equipped with the latest safety tech. Manual & auto.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Progress tracking</h3>
+          <p>See your skill development online. We track 26 core competencies so you know exactly when you're test-ready.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-pound-sign"></i></div>
+          <h3>No hidden fees</h3>
+          <p>Transparent pricing. No admin charges, no last-minute surcharges. Test day car hire included in all packages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTRUCTORS -->
+  <section class="section" style="background: #f9fbfd;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Meet your instructors</h2>
+        <p>Hand-picked, background-checked, and rated 4.9+ by learners. They're the reason our pass rate is so high.</p>
+      </div>
+      <div class="instructor-grid">
+        <div class="instructor-card">
+          <div class="instructor-img"><i class="fas fa-user-tie"></i></div>
+          <div class="instructor-info">
+            <h3>James Whitfield</h3>
+            <div class="role">Senior Instructor • 12 years</div>
+            <p class="desc">Specialises in nervous drivers and intensive courses. Manual & automatic.</p>
+          </div>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-img"><i class="fas fa-user-tie"></i></div>
+          <div class="instructor-info">
+            <h3>Priya Nair</h3>
+            <div class="role">Senior Instructor • 9 years</div>
+            <p class="desc">Expert in mock tests and test route preparation. Calm and methodical.</p>
+          </div>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-img"><i class="fas fa-user-tie"></i></div>
+          <div class="instructor-info">
+            <h3>Mark Okafor</h3>
+            <div class="role">Instructor • 7 years</div>
+            <p class="desc">Great with young learners and refresher lessons. Automatic specialist.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simple, transparent pricing</h2>
+        <p>No hidden costs. All packages include theory support, progress tracking, and test-day car hire.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="package-name">Starter</div>
+          <div class="package-price">£35 <span>/ hour</span></div>
+          <p class="package-desc">Perfect for a first taste or occasional refresher.</p>
+          <ul class="package-features">
+            <li><i class="fas fa-check-circle"></i> 1-hour lesson</li>
+            <li><i class="fas fa-check-circle"></i> Dual-control car</li>
+            <li><i class="fas fa-check-circle"></i> Post-lesson summary</li>
+            <li><i class="fas fa-check-circle"></i> Free cancellation (24h)</li>
+          </ul>
+          <a href="#" class="btn-outline btn" style="width: 100%;">Book a lesson</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="package-name">Intensive</div>
+          <div class="package-price">£950 <span>/ 30 hours</span></div>
+          <p class="package-desc">Our most popular package. Save £100 and get test-ready faster.</p>
+          <ul class="package-features">
+            <li><i class="fas fa-check-circle"></i> 30 hours of tuition</li>
+            <li><i class="fas fa-check-circle"></i> Theory app access</li>
+            <li><i class="fas fa-check-circle"></i> 2 mock tests</li>
+            <li><i class="fas fa-check-circle"></i> Test-day car hire</li>
+            <li><i class="fas fa-check-circle"></i> Priority scheduling</li>
+          </ul>
+          <a href="#" class="btn" style="width: 100%;">Get started <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="pricing-card">
+          <div class="package-name">Premium</div>
+          <div class="package-price">£1,750 <span>/ 50 hours</span></div>
+          <p class="package-desc">For complete beginners who want maximum support and flexibility.</p>
+          <ul class="package-features">
+            <li><i class="fas fa-check-circle"></i> 50 hours of tuition</li>
+            <li><i class="fas fa-check-circle"></i> All intensive features</li>
+            <li><i class="fas fa-check-circle"></i> 4 mock tests</li>
+            <li><i class="fas fa-check-circle"></i> Pass guarantee*</li>
+            <li><i class="fas fa-check-circle"></i> Dedicated instructor</li>
+          </ul>
+          <a href="#" class="btn-outline btn" style="width: 100%;">Enquire now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background: #f9fbfd;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Loved by learners</h2>
+        <p>Over 1,200 five-star reviews. Here's what a few of our recent passes had to say.</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">I passed first time with only 2 minors. My instructor was incredibly patient and explained everything so clearly. Worth every penny.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">EL</div>
+            <div class="author-info">
+              <h4>Emma Lewis</h4>
+              <p>Passed with Meridian</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">After failing twice with another school, I switched to Meridian. The structured lessons made all the difference. Passed with confidence.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DK</div>
+            <div class="author-info">
+              <h4>Daniel Kim</h4>
+              <p>Intensive course</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left"></i>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">As a mature learner I was nervous, but my instructor never rushed me. The progress tracker showed exactly how far I'd come. Brilliant.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SP</div>
+            <div class="author-info">
+              <h4>Sarah Parker</h4>
+              <p>Premium package</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <div class="container">
+    <div class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to get on the road?</h2>
+        <p>Book your first lesson today or speak to our team about the right course for you.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-light">Book online <i class="fas fa-arrow-right"></i></a>
+        <a href="#" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Call 020 7946 0138</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" style="font-size: 1.5rem;">
+            <i class="fas fa-car-side"></i>
+            Meridian Drive
+          </a>
+          <p>Premium driving tuition across London & Surrey. DVSA approved, fully insured, and rated 4.9/5 by learners.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Courses</h4>
+          <ul>
+            <li><a href="#">Manual lessons</a></li>
+            <li><a href="#">Automatic lessons</a></li>
+            <li><a href="#">Intensive courses</a></li>
+            <li><a href="#">Refresher lessons</a></li>
+            <li><a href="#">Theory support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Instructors</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help centre</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Cookie policy</a></li>
+            <li><a href="#">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Meridian Drive. All rights reserved. Registered in England & Wales.</span>
+        <span>Made with <i class="fas fa-heart" style="color: #1e6f5c;"></i> for safer roads</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
