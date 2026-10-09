@@ -1,1097 +1,1139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meridian Drive | Elite Driving School</title>
-  <!-- Font Awesome 6 (free) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #1e1e2a;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    /* typography */
-    h1, h2, h3, h4 {
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      line-height: 1.2;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      line-height: 1.2;
-      margin-bottom: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .subhead {
-      font-size: 1.25rem;
-      color: #4a4a5a;
-      font-weight: 400;
-      max-width: 620px;
-    }
-
-    /* buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #0b2b4b;
-      color: white;
-      font-weight: 600;
-      padding: 16px 36px;
-      border-radius: 60px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      letter-spacing: 0.01em;
-      box-shadow: 0 12px 24px -8px rgba(11, 43, 75, 0.25);
-    }
-
-    .btn:hover {
-      background: #0f3a64;
-      transform: translateY(-2px);
-      box-shadow: 0 18px 32px -10px rgba(11, 43, 75, 0.35);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid rgba(11, 43, 75, 0.25);
-      color: #0b2b4b;
-      box-shadow: none;
-    }
-
-    .btn-outline:hover {
-      background: #f5f7fa;
-      border-color: #0b2b4b;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px -12px rgba(11, 43, 75, 0.2);
-    }
-
-    .btn-light {
-      background: white;
-      color: #0b2b4b;
-      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
-    }
-
-    .btn-light:hover {
-      background: #f0f4f9;
-      color: #0b2b4b;
-    }
-
-    .btn i {
-      font-size: 1rem;
-    }
-
-    /* header / nav */
-    .navbar {
-      padding: 22px 0;
-      background: #ffffff;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.92);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 1.7rem;
-      letter-spacing: -0.03em;
-      color: #0b2b4b;
-      text-decoration: none;
-    }
-
-    .logo i {
-      font-size: 2rem;
-      color: #1e6f5c;
-      background: linear-gradient(145deg, #1e6f5c, #2b8b73);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 500;
-      color: #2c2c3a;
-      font-size: 1rem;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover {
-      color: #0b2b4b;
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    /* hero */
-    .hero {
-      padding: 80px 0 100px;
-      background: linear-gradient(115deg, #f9fbfd 0%, #edf2f7 100%);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(30, 111, 92, 0.12);
-      color: #1e6f5c;
-      padding: 8px 18px;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      letter-spacing: 0.02em;
-    }
-
-    .hero h1 {
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #3d3d4e;
-      max-width: 520px;
-      margin-bottom: 36px;
-      line-height: 1.6;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      align-items: center;
-    }
-
-    .trust-badge {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: white;
-      padding: 14px 24px;
-      border-radius: 50px;
-      box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.06);
-      margin-top: 40px;
-      max-width: fit-content;
-    }
-
-    .trust-badge i {
-      font-size: 1.5rem;
-      color: #1e6f5c;
-    }
-
-    .trust-badge span {
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: #1e1e2a;
-    }
-
-    .trust-badge strong {
-      font-weight: 700;
-      color: #0b2b4b;
-    }
-
-    .hero-visual {
-      position: relative;
-      background: #0b2b4b;
-      border-radius: 32px;
-      padding: 20px;
-      box-shadow: 0 40px 70px -20px rgba(11, 43, 75, 0.35);
-      min-height: 380px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 80% 30%, rgba(30, 111, 92, 0.4), transparent 70%);
-      z-index: 1;
-    }
-
-    .hero-visual-content {
-      position: relative;
-      z-index: 5;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .hero-visual-content i {
-      font-size: 6rem;
-      opacity: 0.25;
-      margin-bottom: 16px;
-    }
-
-    .hero-visual-content h3 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .hero-visual-content p {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-      margin-top: 30px;
-    }
-
-    .stat-item {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: white;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.6);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    /* section */
-    .section {
-      padding: 100px 0;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .section-header h2 {
-      margin-bottom: 16px;
-    }
-
-    .section-header p {
-      color: #4a4a5a;
-      max-width: 600px;
-      margin: 0 auto;
-      font-size: 1.15rem;
-    }
-
-    .text-accent {
-      color: #1e6f5c;
-    }
-
-    /* features / why us */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    .feature-card {
-      background: #ffffff;
-      padding: 40px 32px;
-      border-radius: 28px;
-      border: 1px solid #eef1f5;
-      transition: all 0.25s ease;
-      box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.02);
-    }
-
-    .feature-card:hover {
-      border-color: #d0ddeb;
-      box-shadow: 0 25px 35px -15px rgba(11, 43, 75, 0.08);
-      transform: translateY(-4px);
-    }
-
-    .feature-icon {
-      width: 64px;
-      height: 64px;
-      background: #f0f7f4;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 28px;
-    }
-
-    .feature-icon i {
-      font-size: 2rem;
-      color: #1e6f5c;
-    }
-
-    .feature-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-    }
-
-    .feature-card p {
-      color: #4a4a5a;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    /* instructors */
-    .instructor-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    .instructor-card {
-      background: white;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.06);
-      transition: all 0.25s ease;
-      border: 1px solid #eef1f5;
-    }
-
-    .instructor-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 30px 40px -18px rgba(11, 43, 75, 0.15);
-      border-color: #d0ddeb;
-    }
-
-    .instructor-img {
-      height: 260px;
-      background: linear-gradient(145deg, #e4eef7, #d3dfec);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      color: #0b2b4b;
-      opacity: 0.7;
-      position: relative;
-    }
-
-    .instructor-img i {
-      opacity: 0.7;
-    }
-
-    .instructor-info {
-      padding: 28px 24px;
-      text-align: center;
-    }
-
-    .instructor-info h3 {
-      font-size: 1.3rem;
-      margin-bottom: 6px;
-    }
-
-    .instructor-info .role {
-      color: #1e6f5c;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .instructor-info .desc {
-      color: #5f5f70;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    /* pricing / packages */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      align-items: center;
-    }
-
-    .pricing-card {
-      background: white;
-      border-radius: 32px;
-      padding: 44px 32px;
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.05);
-      border: 1px solid #eef1f5;
-      transition: all 0.25s ease;
-      text-align: center;
-    }
-
-    .pricing-card.featured {
-      border: 2px solid #1e6f5c;
-      box-shadow: 0 30px 45px -15px rgba(30, 111, 92, 0.2);
-      transform: scale(1.02);
-      background: linear-gradient(180deg, #ffffff 0%, #f8fcfb 100%);
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 35px 45px -18px rgba(11, 43, 75, 0.12);
-    }
-
-    .pricing-card.featured:hover {
-      transform: scale(1.02) translateY(-6px);
-    }
-
-    .package-name {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .package-price {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #0b2b4b;
-      margin: 20px 0 8px;
-      letter-spacing: -0.03em;
-    }
-
-    .package-price span {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #6b6b7c;
-    }
-
-    .package-desc {
-      color: #5f5f70;
-      margin-bottom: 28px;
-      font-size: 0.95rem;
-    }
-
-    .package-features {
-      list-style: none;
-      text-align: left;
-      margin: 28px 0 36px;
-    }
-
-    .package-features li {
-      padding: 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #2c2c3a;
-      font-size: 0.98rem;
-    }
-
-    .package-features i {
-      color: #1e6f5c;
-      font-size: 1rem;
-      width: 20px;
-    }
-
-    /* testimonials */
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    .testimonial-card {
-      background: #ffffff;
-      padding: 36px 30px;
-      border-radius: 28px;
-      border: 1px solid #eef1f5;
-      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.04);
-    }
-
-    .testimonial-card i.fa-quote-left {
-      font-size: 2rem;
-      color: #1e6f5c;
-      opacity: 0.3;
-      margin-bottom: 20px;
-    }
-
-    .testimonial-text {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: #2c2c3a;
-      margin-bottom: 28px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .author-avatar {
-      width: 52px;
-      height: 52px;
-      background: #e4eef7;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #0b2b4b;
-      font-size: 1.2rem;
-    }
-
-    .author-info h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
-    .author-info p {
-      font-size: 0.85rem;
-      color: #6b6b7c;
-    }
-
-    .stars {
-      color: #f5b342;
-      margin-bottom: 12px;
-      letter-spacing: 2px;
-    }
-
-    /* cta section */
-    .cta-section {
-      background: #0b2b4b;
-      border-radius: 48px;
-      padding: 70px 60px;
-      margin: 40px 0 80px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .cta-section::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(30, 111, 92, 0.35), transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-    }
-
-    .cta-content h2 {
-      color: white;
-      margin-bottom: 12px;
-      font-size: 2.2rem;
-    }
-
-    .cta-content p {
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 1.15rem;
-    }
-
-    .cta-actions {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    /* footer */
-    footer {
-      background: #f7f9fc;
-      padding: 60px 0 30px;
-      border-top: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 50px;
-      margin-bottom: 50px;
-    }
-
-    .footer-brand p {
-      margin: 18px 0 24px;
-      color: #4a4a5a;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      max-width: 280px;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 14px;
-    }
-
-    .footer-social a {
-      width: 42px;
-      height: 42px;
-      background: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0b2b4b;
-      text-decoration: none;
-      border: 1px solid #e2e8f0;
-      transition: all 0.2s;
-    }
-
-    .footer-social a:hover {
-      background: #0b2b4b;
-      color: white;
-      border-color: #0b2b4b;
-    }
-
-    .footer-col h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: #0b2b4b;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 12px;
-    }
-
-    .footer-col ul a {
-      text-decoration: none;
-      color: #4a4a5a;
-      font-size: 0.95rem;
-      transition: color 0.15s;
-    }
-
-    .footer-col ul a:hover {
-      color: #0b2b4b;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid #e2e8f0;
-      padding-top: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      color: #6b6b7c;
-      font-size: 0.9rem;
-    }
-
-    .footer-bottom a {
-      color: #6b6b7c;
-      text-decoration: none;
-    }
-
-    .footer-bottom a:hover {
-      color: #0b2b4b;
-    }
-
-    /* responsive */
-    @media (max-width: 1024px) {
-      h1 { font-size: 2.8rem; }
-      .hero-grid { grid-template-columns: 1fr; gap: 50px; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .instructor-grid { grid-template-columns: 1fr 1fr; }
-      .pricing-grid { grid-template-columns: 1fr 1fr; }
-      .testimonial-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      h1 { font-size: 2.3rem; }
-      h2 { font-size: 2rem; }
-      .navbar .nav-links { display: none; }
-      .features-grid { grid-template-columns: 1fr; }
-      .instructor-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .testimonial-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-      .cta-section { padding: 40px 30px; }
-      .cta-content h2 { font-size: 1.8rem; }
-      .hero { padding: 50px 0 70px; }
-      .section { padding: 70px 0; }
-    }
-
-    @media (max-width: 480px) {
-      .hero-actions { flex-direction: column; align-items: flex-start; }
-      .trust-badge { flex-direction: column; text-align: center; }
-      .nav-cta .btn-outline { display: none; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MERIDIAN — Elite Driving Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..125,100..900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+:root{
+  --asphalt:#0a0a0c;
+  --asphalt-2:#111114;
+  --asphalt-3:#17171b;
+  --line:#2a2a30;
+  --lane:#ffd400;
+  --lane-dim:#c9a800;
+  --white:#f5f5f0;
+  --grey:#8a8a92;
+  --grey-2:#5a5a62;
+  --teal:#00e0a4;
+  --red:#ff3b30;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--asphalt);
+  color:var(--white);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Grain overlay */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.container{max-width:1320px;margin:0 auto;padding:0 40px;}
+
+/* TYPOGRAPHY */
+.display{
+  font-family:'Anybody',sans-serif;
+  font-weight:800;
+  letter-spacing:-0.035em;
+  line-height:.92;
+  text-transform:uppercase;
+}
+.mono{font-family:'JetBrains Mono',monospace;}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:20px 0;
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(10,10,12,.85);
+  backdrop-filter:blur(20px) saturate(180%);
+  border-bottom-color:var(--line);
+  padding:14px 0;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;}
+.brand{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;color:var(--white);
+}
+.brand-mark{
+  width:38px;height:38px;border-radius:10px;
+  background:var(--lane);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--asphalt);font-size:1.1rem;
+  position:relative;overflow:hidden;
+}
+.brand-mark::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 40%,rgba(0,0,0,.15) 100%);
+}
+.brand-text{
+  font-family:'Anybody',sans-serif;font-weight:800;
+  font-size:1.3rem;letter-spacing:-.02em;text-transform:uppercase;
+}
+.brand-text span{color:var(--lane);}
+
+.nav-links{display:flex;gap:8px;align-items:center;}
+.nav-links a{
+  color:var(--grey);text-decoration:none;font-size:.9rem;
+  font-weight:500;padding:10px 18px;border-radius:8px;
+  transition:all .2s;letter-spacing:.01em;
+}
+.nav-links a:hover{color:var(--white);background:rgba(255,255,255,.04);}
+
+.nav-right{display:flex;gap:12px;align-items:center;}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem;
+  padding:14px 26px;border-radius:10px;border:none;
+  cursor:pointer;text-decoration:none;letter-spacing:.01em;
+  transition:all .25s cubic-bezier(.2,.8,.2,1);
+  position:relative;overflow:hidden;
+}
+.btn-lane{
+  background:var(--lane);color:var(--asphalt);
+  box-shadow:0 0 0 0 rgba(255,212,0,.4);
+}
+.btn-lane:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px -8px rgba(255,212,0,.5);
+}
+.btn-ghost{
+  background:transparent;color:var(--white);
+  border:1px solid var(--line);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.05);border-color:var(--grey-2);}
+.btn-dark{background:var(--asphalt-3);color:var(--white);border:1px solid var(--line);}
+.btn-dark:hover{background:var(--line);}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  padding:140px 0 80px;
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 20%, rgba(255,212,0,.08), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 90%, rgba(0,224,164,.05), transparent 60%),
+    var(--asphalt);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 40%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 40%,transparent 100%);
+}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;width:100%;}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--lane);margin-bottom:28px;
+  padding:8px 14px;border:1px solid rgba(255,212,0,.25);
+  border-radius:100px;background:rgba(255,212,0,.04);
+}
+.eyebrow .dot{
+  width:7px;height:7px;border-radius:50%;background:var(--lane);
+  box-shadow:0 0 12px var(--lane);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+.hero h1{
+  font-size:clamp(3.5rem,7.5vw,7rem);
+  margin-bottom:28px;
+}
+.hero h1 .accent{color:var(--lane);position:relative;display:inline-block;}
+.hero h1 .accent::after{
+  content:'';position:absolute;left:0;bottom:.08em;
+  width:100%;height:.12em;background:var(--lane);opacity:.25;
+}
+.hero h1 .strike{
+  position:relative;display:inline-block;color:var(--grey-2);
+}
+.hero h1 .strike::after{
+  content:'';position:absolute;left:-2%;top:52%;width:104%;height:6px;
+  background:var(--red);transform:rotate(-2deg);border-radius:2px;
+}
+
+.hero-sub{
+  font-size:1.15rem;color:var(--grey);max-width:520px;
+  line-height:1.6;margin-bottom:40px;font-weight:400;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;}
+
+.hero-metrics{
+  display:flex;gap:44px;padding-top:36px;
+  border-top:1px solid var(--line);flex-wrap:wrap;
+}
+.metric .num{
+  font-family:'Anybody',sans-serif;font-weight:800;
+  font-size:2rem;color:var(--white);letter-spacing:-.03em;
+  line-height:1;margin-bottom:6px;
+}
+.metric .num small{color:var(--lane);font-size:1.2rem;}
+.metric .lbl{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--grey-2);letter-spacing:.1em;text-transform:uppercase;
+}
+
+/* HERO VISUAL — Route Card */
+.route-card{
+  position:relative;
+  background:linear-gradient(160deg,rgba(23,23,27,.95),rgba(17,17,20,.95));
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:32px;
+  backdrop-filter:blur(20px);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.7);
+  overflow:hidden;
+}
+.route-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--lane),transparent);
+  opacity:.6;
+}
+.route-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:28px;
+}
+.route-head .title{
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;
+  color:var(--grey);letter-spacing:.12em;text-transform:uppercase;
+}
+.route-head .live{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--teal);display:flex;align-items:center;gap:6px;
+}
+.route-head .live::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--teal);box-shadow:0 0 8px var(--teal);
+  animation:pulse 1.5s infinite;
+}
+
+/* SVG Route Visualizer */
+.route-viz{width:100%;height:auto;display:block;margin-bottom:8px;}
+.route-path{
+  stroke-dasharray:600;
+  stroke-dashoffset:600;
+  animation:draw 3s cubic-bezier(.6,0,.3,1) forwards .4s;
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+.route-dot{
+  opacity:0;
+  animation:fadeIn .4s forwards;
+}
+.route-dot:nth-child(1){animation-delay:1s;}
+.route-dot:nth-child(2){animation-delay:1.6s;}
+.route-dot:nth-child(3){animation-delay:2.2s;}
+.route-dot:nth-child(4){animation-delay:2.8s;}
+@keyframes fadeIn{to{opacity:1}}
+
+.route-steps{margin-top:24px;display:flex;flex-direction:column;gap:2px;}
+.step{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 14px;border-radius:10px;
+  transition:background .2s;
+}
+.step:hover{background:rgba(255,255,255,.03);}
+.step-num{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--lane);width:24px;flex-shrink:0;
+}
+.step-txt{font-size:.88rem;color:var(--grey);flex:1;}
+.step-txt strong{color:var(--white);font-weight:600;}
+.step-check{
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(0,224,164,.15);color:var(--teal);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;flex-shrink:0;
+}
+.step-check.pending{background:rgba(255,212,0,.1);color:var(--lane);}
+
+/* ============ MARQUEE ============ */
+.marquee{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:26px 0;overflow:hidden;
+  background:var(--asphalt-2);
+  position:relative;
+}
+.marquee-track{
+  display:flex;gap:60px;white-space:nowrap;
+  animation:scroll 40s linear infinite;
+  width:max-content;
+}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.marquee-item{
+  font-family:'Anybody',sans-serif;font-weight:700;
+  font-size:1.4rem;color:var(--grey-2);letter-spacing:-.01em;
+  display:flex;align-items:center;gap:60px;
+  text-transform:uppercase;
+}
+.marquee-item i{color:var(--lane);font-size:.9rem;}
+
+/* ============ SECTION ============ */
+.section{padding:120px 0;position:relative;}
+.section-head{max-width:720px;margin-bottom:80px;}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+.section-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--lane);margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-head.center .section-tag{justify-content:center;}
+.section-tag::before{content:'';width:24px;height:1px;background:var(--lane);}
+.section-head.center .section-tag::before{display:none;}
+.section-head h2{
+  font-family:'Anybody',sans-serif;font-weight:800;
+  font-size:clamp(2.2rem,4.5vw,3.6rem);
+  letter-spacing:-.03em;line-height:1;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.section-head h2 .accent{color:var(--lane);}
+.section-head p{color:var(--grey);font-size:1.05rem;line-height:1.65;}
+
+/* ============ COURSES ============ */
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.course{
+  position:relative;
+  background:var(--asphalt-2);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:36px 32px;
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+  overflow:hidden;
+  cursor:pointer;
+}
+.course::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(255,212,0,.06),transparent 60%);
+  opacity:0;transition:opacity .35s;
+}
+.course:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,212,0,.35);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
+}
+.course:hover::before{opacity:1;}
+.course-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--grey-2);margin-bottom:24px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.course-tag .badge{
+  padding:4px 10px;border-radius:6px;
+  background:rgba(0,224,164,.1);color:var(--teal);
+  letter-spacing:.1em;
+}
+.course-icon{
+  width:56px;height:56px;border-radius:14px;
+  background:linear-gradient(135deg,var(--asphalt-3),var(--line));
+  border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--lane);
+  margin-bottom:28px;position:relative;
+}
+.course h3{
+  font-family:'Anybody',sans-serif;font-weight:700;
+  font-size:1.5rem;letter-spacing:-.02em;margin-bottom:12px;
+  text-transform:uppercase;
+}
+.course p{color:var(--grey);font-size:.95rem;line-height:1.6;margin-bottom:28px;}
+.course-meta{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding-top:24px;border-top:1px solid var(--line);
+}
+.course-price .from{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  color:var(--grey-2);letter-spacing:.1em;text-transform:uppercase;
+  display:block;margin-bottom:4px;
+}
+.course-price .amount{
+  font-family:'Anybody',sans-serif;font-weight:800;
+  font-size:1.6rem;color:var(--white);letter-spacing:-.03em;
+}
+.course-price .amount span{color:var(--grey-2);font-size:.9rem;font-weight:400;}
+.course-arrow{
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--white);transition:all .3s;
+}
+.course:hover .course-arrow{
+  background:var(--lane);color:var(--asphalt);border-color:var(--lane);
+  transform:rotate(-45deg);
+}
+
+/* ============ INSTRUCTORS ============ */
+.inst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.inst{
+  background:var(--asphalt-2);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+  position:relative;
+}
+.inst:hover{transform:translateY(-6px);border-color:var(--grey-2);}
+.inst-photo{
+  aspect-ratio:1/1;
+  background:linear-gradient(160deg,var(--asphalt-3),var(--asphalt-2));
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.inst-photo::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.015) 20px,rgba(255,255,255,.015) 21px),
+    radial-gradient(circle at 70% 30%,rgba(255,212,0,.1),transparent 60%);
+}
+.inst-photo i{
+  font-size:6rem;color:var(--line);
+  position:relative;z-index:2;
+}
+.inst-photo .rating{
+  position:absolute;top:16px;right:16px;z-index:3;
+  background:rgba(10,10,12,.8);backdrop-filter:blur(10px);
+  border:1px solid var(--line);
+  border-radius:100px;padding:6px 12px;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--lane);display:flex;align-items:center;gap:5px;
+}
+.inst-body{padding:26px 26px 28px;}
+.inst-body h3{
+  font-family:'Anybody',sans-serif;font-weight:700;
+  font-size:1.3rem;letter-spacing:-.02em;margin-bottom:6px;
+  text-transform:uppercase;
+}
+.inst-role{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--lane);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.inst-body p{color:var(--grey);font-size:.9rem;line-height:1.55;margin-bottom:20px;}
+.inst-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.inst-tags span{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  padding:5px 10px;border-radius:6px;
+  background:var(--asphalt-3);border:1px solid var(--line);
+  color:var(--grey);letter-spacing:.05em;
+}
+
+/* ============ BOOKING ENGINE ============ */
+.booking{
+  background:linear-gradient(180deg,var(--asphalt),var(--asphalt-2));
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.booking-wrap{
+  background:var(--asphalt-3);
+  border:1px solid var(--line);
+  border-radius:28px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  box-shadow:0 60px 120px -40px rgba(0,0,0,.8);
+}
+.booking-side{
+  padding:48px 44px;
+  background:linear-gradient(160deg,var(--asphalt-2),var(--asphalt));
+  border-right:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.booking-side::before{
+  content:'';position:absolute;top:-40%;right:-40%;
+  width:120%;height:120%;
+  background:radial-gradient(circle,rgba(255,212,0,.08),transparent 60%);
+  pointer-events:none;
+}
+.booking-side .step-label{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--lane);letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:24px;display:flex;align-items:center;gap:10px;
+}
+.booking-side .step-label::before{
+  content:'';width:20px;height:1px;background:var(--lane);
+}
+.booking-side h3{
+  font-family:'Anybody',sans-serif;font-weight:800;
+  font-size:2rem;letter-spacing:-.03em;line-height:1.05;
+  text-transform:uppercase;margin-bottom:20px;
+}
+.booking-side h3 span{color:var(--lane);}
+.booking-side p{color:var(--grey);font-size:.95rem;line-height:1.6;margin-bottom:32px;}
+.booking-perks{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.booking-perks li{
+  display:flex;align-items:center;gap:12px;
+  font-size:.9rem;color:var(--grey);
+}
+.booking-perks li i{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(0,224,164,.12);color:var(--teal);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;flex-shrink:0;
+}
+
+.booking-form{padding:48px 44px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.field label{
+  display:block;font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;color:var(--grey-2);
+  letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.field input,.field select,.field textarea{
+  width:100%;background:var(--asphalt);
+  border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;color:var(--white);
+  font-family:'Inter',sans-serif;font-size:.92rem;
+  transition:all .2s;outline:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--lane);
+  background:var(--asphalt-2);
+  box-shadow:0 0 0 3px rgba(255,212,0,.1);
+}
+.field textarea{resize:vertical;min-height:100px;}
+.field select{cursor:pointer;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238a8a92' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;
+}
+
+.pkg-select{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.pkg-opt{
+  background:var(--asphalt);border:1px solid var(--line);
+  border-radius:12px;padding:16px 14px;cursor:pointer;
+  transition:all .2s;position:relative;
+}
+.pkg-opt:hover{border-color:var(--grey-2);}
+.pkg-opt.active{border-color:var(--lane);background:rgba(255,212,0,.04);}
+.pkg-opt .pkg-name{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  color:var(--grey);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.pkg-opt.active .pkg-name{color:var(--lane);}
+.pkg-opt .pkg-price{
+  font-family:'Anybody',sans-serif;font-weight:800;
+  font-size:1.2rem;letter-spacing:-.02em;
+}
+.pkg-opt .pkg-price small{color:var(--grey-2);font-size:.7rem;font-weight:400;}
+
+.form-submit{
+  width:100%;margin-top:8px;
+  padding:18px;font-size:.95rem;
+  justify-content:center;
+}
+.form-note{
+  text-align:center;font-size:.78rem;color:var(--grey-2);
+  margin-top:14px;font-family:'JetBrains Mono',monospace;
+  letter-spacing:.05em;
+}
+
+/* ============ STATS BAND ============ */
+.stats-band{
+  padding:80px 0;
+  border-bottom:1px solid var(--line);
+  background:var(--asphalt-2);
+}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.stat{
+  text-align:center;padding:20px 30px;
+  border-right:1px solid var(--line);
+}
+.stat:last-child{border-right:none;}
+.stat .n{
+  font-family:'Anybody',sans-serif;font-weight:800;
+  font-size:clamp(2.5rem,4vw,3.8rem);
+  letter-spacing:-.04em;line-height:1;color:var(--white);
+  margin-bottom:12px;
+}
+.stat .n span{color:var(--lane);}
+.stat .l{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--grey-2);letter-spacing:.15em;text-transform:uppercase;
+}
+
+/* ============ TESTIMONIALS ============ */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.test{
+  background:var(--asphalt-2);
+  border:1px solid var(--line);
+  border-radius:20px;padding:36px 32px;
+  transition:all .35s;
+  position:relative;
+}
+.test:hover{border-color:var(--grey-2);transform:translateY(-4px);}
+.test .stars{color:var(--lane);font-size:.85rem;letter-spacing:2px;margin-bottom:20px;}
+.test .quote{
+  font-size:1.05rem;line-height:1.6;color:var(--white);
+  margin-bottom:28px;font-weight:400;
+}
+.test .quote::before{content:'"';color:var(--lane);font-size:1.5rem;line-height:0;vertical-align:-.3em;margin-right:2px;}
+.test .quote::after{content:'"';color:var(--lane);font-size:1.5rem;line-height:0;vertical-align:-.3em;margin-left:2px;}
+.test-author{display:flex;align-items:center;gap:14px;padding-top:24px;border-top:1px solid var(--line);}
+.test-avatar{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--lane),var(--lane-dim));
+  color:var(--asphalt);display:flex;align-items:center;justify-content:center;
+  font-family:'Anybody',sans-serif;font-weight:800;font-size:.95rem;
+}
+.test-author h4{font-size:.92rem;font-weight:600;margin-bottom:2px;}
+.test-author p{font-size:.78rem;color:var(--grey-2);font-family:'JetBrains Mono',monospace;letter-spacing:.05em;}
+
+/* ============ CTA ============ */
+.cta-band{padding:140px 0;text-align:center;position:relative;overflow:hidden;}
+.cta-band::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(255,212,0,.08),transparent 70%);
+}
+.cta-band .container{position:relative;z-index:2;}
+.cta-band h2{
+  font-family:'Anybody',sans-serif;font-weight:800;
+  font-size:clamp(2.5rem,6vw,5rem);
+  letter-spacing:-.035em;line-height:.95;
+  text-transform:uppercase;margin-bottom:28px;
+}
+.cta-band h2 .accent{color:var(--lane);}
+.cta-band p{color:var(--grey);font-size:1.15rem;max-width:520px;margin:0 auto 40px;}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* ============ FOOTER ============ */
+footer{
+  background:var(--asphalt-2);
+  border-top:1px solid var(--line);
+  padding:80px 0 40px;
+}
+.foot-grid{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;
+  gap:60px;margin-bottom:60px;
+}
+.foot-brand p{color:var(--grey);font-size:.9rem;line-height:1.6;margin:20px 0 24px;max-width:300px;}
+.foot-social{display:flex;gap:10px;}
+.foot-social a{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--asphalt-3);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--grey);text-decoration:none;transition:all .2s;
+}
+.foot-social a:hover{background:var(--lane);color:var(--asphalt);border-color:var(--lane);}
+.foot-col h5{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--white);letter-spacing:.15em;text-transform:uppercase;
+  margin-bottom:24px;
+}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.foot-col a{color:var(--grey);text-decoration:none;font-size:.9rem;transition:color .2s;}
+.foot-col a:hover{color:var(--lane);}
+.foot-bottom{
+  border-top:1px solid var(--line);padding-top:30px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:20px;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--grey-2);letter-spacing:.05em;
+}
+.foot-bottom a{color:var(--grey-2);text-decoration:none;}
+.foot-bottom a:hover{color:var(--lane);}
+
+/* ============ REVEAL ANIMATION ============ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.reveal.d1{transition-delay:.1s;}
+.reveal.d2{transition-delay:.2s;}
+.reveal.d3{transition-delay:.3s;}
+.reveal.d4{transition-delay:.4s;}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1100px){
+  .hero-inner{grid-template-columns:1fr;gap:50px;}
+  .route-card{max-width:520px;}
+  .courses-grid,.inst-grid,.test-grid{grid-template-columns:1fr 1fr;}
+  .booking-wrap{grid-template-columns:1fr;}
+  .booking-side{border-right:none;border-bottom:1px solid var(--line);}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:40px;}
+}
+@media(max-width:720px){
+  .container{padding:0 22px;}
+  .nav-links{display:none;}
+  .hero{padding:120px 0 60px;}
+  .hero-metrics{gap:28px;}
+  .courses-grid,.inst-grid,.test-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .stat{border-right:none;border-bottom:1px solid var(--line);padding:30px 10px;}
+  .stat:nth-child(odd){border-right:1px solid var(--line);}
+  .stat:nth-last-child(-n+2){border-bottom:none;}
+  .form-row{grid-template-columns:1fr;}
+  .pkg-select{grid-template-columns:1fr;}
+  .booking-side,.booking-form{padding:36px 26px;}
+  .foot-grid{grid-template-columns:1fr;}
+  .section{padding:80px 0;}
+  .cta-band{padding:90px 0;}
+}
+</style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container nav-inner">
-      <a href="#" class="logo">
-        <i class="fas fa-car-side"></i>
-        Meridian Drive
-      </a>
-      <nav class="nav-links">
-        <a href="#">Courses</a>
-        <a href="#">Instructors</a>
-        <a href="#">Pricing</a>
-        <a href="#">Testimonials</a>
-        <a href="#">Contact</a>
-      </nav>
-      <div class="nav-cta">
-        <a href="#" class="btn-outline btn" style="padding: 12px 28px;">Sign in</a>
-        <a href="#" class="btn" style="padding: 12px 28px;">Book now</a>
-      </div>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark"><i class="fas fa-road"></i></div>
+      <div class="brand-text">MERIDIAN<span>.</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#courses">Courses</a>
+      <a href="#instructors">Instructors</a>
+      <a href="#booking">Pricing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
     </div>
-  </header>
+    <div class="nav-right">
+      <a href="#" class="btn btn-ghost">Sign in</a>
+      <a href="#booking" class="btn btn-lane">Book Lesson <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="hero-badge">
-          <i class="fas fa-shield-alt"></i> DVSA approved • 98% first-time pass rate
-        </div>
-        <h1>Learn to drive with confidence, <span class="text-accent">not pressure.</span></h1>
-        <p>Premium driving tuition across London & Surrey. Structured lessons, patient instructors, and a proven system that gets you test-ready — faster.</p>
-        <div class="hero-actions">
-          <a href="#" class="btn">Book your first lesson <i class="fas fa-arrow-right"></i></a>
-          <a href="#" class="btn-outline btn"><i class="fas fa-play"></i> How it works</a>
-        </div>
-        <div class="trust-badge">
-          <i class="fas fa-star"></i>
-          <span><strong>4.98/5</strong> from 1,200+ verified reviews</span>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="container hero-inner">
+    <div>
+      <div class="eyebrow reveal"><span class="dot"></span> DVSA Approved · Est. 2014 · London & Surrey</div>
+      <h1 class="display reveal d1">
+        Master the road.<br />
+        Own the <span class="accent">wheel.</span>
+      </h1>
+      <p class="hero-sub reveal d2">
+        Elite driving tuition engineered around you. Structured lessons, obsessive instructors, and a 98% first-time pass rate. Not just another driving school.
+      </p>
+      <div class="hero-actions reveal d3">
+        <a href="#booking" class="btn btn-lane">Start your journey <i class="fas fa-arrow-right"></i></a>
+        <a href="#courses" class="btn btn-ghost"><i class="fas fa-play"></i> Watch the film</a>
       </div>
-      <div class="hero-visual">
-        <div class="hero-visual-content">
-          <i class="fas fa-car"></i>
-          <h3>Manual & Automatic</h3>
-          <p>Modern dual-control fleet</p>
-          <div class="hero-stats">
-            <div class="stat-item">
-              <div class="stat-number">12k+</div>
-              <div class="stat-label">Lessons</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">98%</div>
-              <div class="stat-label">Pass rate</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">4.9</div>
-              <div class="stat-label">Rating</div>
-            </div>
-          </div>
+      <div class="hero-metrics reveal d4">
+        <div class="metric">
+          <div class="num">98<small>%</small></div>
+          <div class="lbl">Pass Rate</div>
+        </div>
+        <div class="metric">
+          <div class="num">12<small>k+</small></div>
+          <div class="lbl">Lessons Taught</div>
+        </div>
+        <div class="metric">
+          <div class="num">4.9<small>★</small></div>
+          <div class="lbl">Avg Rating</div>
+        </div>
+        <div class="metric">
+          <div class="num">26<small>pt</small></div>
+          <div class="lbl">Skill Tracker</div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- FEATURES / WHY US -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Why learners choose <span class="text-accent">Meridian</span></h2>
-        <p>We've re-engineered driving lessons to be calmer, clearer, and more effective. No shouting, no wasted hours.</p>
+    <!-- ROUTE VISUALIZER -->
+    <div class="route-card reveal d2">
+      <div class="route-head">
+        <div class="title">// Your Route to Licence</div>
+        <div class="live">Live progress</div>
       </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
-          <h3>Patient, expert coaches</h3>
-          <p>Every instructor is DVSA-ADI qualified with a minimum of 5 years' experience. They teach, not just supervise.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-route"></i></div>
-          <h3>Structured lesson plans</h3>
-          <p>Each session has clear objectives and a post-lesson debrief. You'll always know what you're improving next.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
-          <h3>Flexible & easy booking</h3>
-          <p>Book, reschedule, or cancel via our app. Free cancellation up to 24h. Evening and weekend slots available.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-car"></i></div>
-          <h3>New dual-control cars</h3>
-          <p>All vehicles are under 2 years old, fully insured, and equipped with the latest safety tech. Manual & auto.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Progress tracking</h3>
-          <p>See your skill development online. We track 26 core competencies so you know exactly when you're test-ready.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-pound-sign"></i></div>
-          <h3>No hidden fees</h3>
-          <p>Transparent pricing. No admin charges, no last-minute surcharges. Test day car hire included in all packages.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- INSTRUCTORS -->
-  <section class="section" style="background: #f9fbfd;">
-    <div class="container">
-      <div class="section-header">
-        <h2>Meet your instructors</h2>
-        <p>Hand-picked, background-checked, and rated 4.9+ by learners. They're the reason our pass rate is so high.</p>
-      </div>
-      <div class="instructor-grid">
-        <div class="instructor-card">
-          <div class="instructor-img"><i class="fas fa-user-tie"></i></div>
-          <div class="instructor-info">
-            <h3>James Whitfield</h3>
-            <div class="role">Senior Instructor • 12 years</div>
-            <p class="desc">Specialises in nervous drivers and intensive courses. Manual & automatic.</p>
-          </div>
-        </div>
-        <div class="instructor-card">
-          <div class="instructor-img"><i class="fas fa-user-tie"></i></div>
-          <div class="instructor-info">
-            <h3>Priya Nair</h3>
-            <div class="role">Senior Instructor • 9 years</div>
-            <p class="desc">Expert in mock tests and test route preparation. Calm and methodical.</p>
-          </div>
-        </div>
-        <div class="instructor-card">
-          <div class="instructor-img"><i class="fas fa-user-tie"></i></div>
-          <div class="instructor-info">
-            <h3>Mark Okafor</h3>
-            <div class="role">Instructor • 7 years</div>
-            <p class="desc">Great with young learners and refresher lessons. Automatic specialist.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <svg class="route-viz" viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 130 C 80 130, 100 40, 160 40 S 240 130, 300 40 S 370 30, 385 30"
+              stroke="#2a2a30" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path class="route-path" d="M20 130 C 80 130, 100 40, 160 40 S 240 130, 300 40 S 370 30, 385 30"
+              stroke="#ffd400" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 8" fill="none"/>
+        <g class="route-dot"><circle cx="20" cy="130" r="7" fill="#0a0a0c" stroke="#ffd400" stroke-width="2.5"/></g>
+        <g class="route-dot"><circle cx="160" cy="40" r="7" fill="#0a0a0c" stroke="#ffd400" stroke-width="2.5"/></g>
+        <g class="route-dot"><circle cx="300" cy="40" r="7" fill="#0a0a0c" stroke="#ffd400" stroke-width="2.5"/></g>
+        <g class="route-dot"><circle cx="385" cy="30" r="9" fill="#ffd400"/><circle cx="385" cy="30" r="4" fill="#0a0a0c"/></g>
+        <text x="20" y="155" fill="#5a5a62" font-family="JetBrains Mono" font-size="9">START</text>
+        <text x="350" y="55" fill="#ffd400" font-family="JetBrains Mono" font-size="9">TEST</text>
+      </svg>
 
-  <!-- PRICING -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Simple, transparent pricing</h2>
-        <p>No hidden costs. All packages include theory support, progress tracking, and test-day car hire.</p>
-      </div>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="package-name">Starter</div>
-          <div class="package-price">£35 <span>/ hour</span></div>
-          <p class="package-desc">Perfect for a first taste or occasional refresher.</p>
-          <ul class="package-features">
-            <li><i class="fas fa-check-circle"></i> 1-hour lesson</li>
-            <li><i class="fas fa-check-circle"></i> Dual-control car</li>
-            <li><i class="fas fa-check-circle"></i> Post-lesson summary</li>
-            <li><i class="fas fa-check-circle"></i> Free cancellation (24h)</li>
-          </ul>
-          <a href="#" class="btn-outline btn" style="width: 100%;">Book a lesson</a>
+      <div class="route-steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <span class="step-txt"><strong>Book</strong> your first lesson</span>
+          <span class="step-check"><i class="fas fa-check"></i></span>
         </div>
-        <div class="pricing-card featured">
-          <div class="package-name">Intensive</div>
-          <div class="package-price">£950 <span>/ 30 hours</span></div>
-          <p class="package-desc">Our most popular package. Save £100 and get test-ready faster.</p>
-          <ul class="package-features">
-            <li><i class="fas fa-check-circle"></i> 30 hours of tuition</li>
-            <li><i class="fas fa-check-circle"></i> Theory app access</li>
-            <li><i class="fas fa-check-circle"></i> 2 mock tests</li>
-            <li><i class="fas fa-check-circle"></i> Test-day car hire</li>
-            <li><i class="fas fa-check-circle"></i> Priority scheduling</li>
-          </ul>
-          <a href="#" class="btn" style="width: 100%;">Get started <i class="fas fa-arrow-right"></i></a>
+        <div class="step">
+          <span class="step-num">02</span>
+          <span class="step-txt"><strong>Track</strong> 26 core competencies</span>
+          <span class="step-check"><i class="fas fa-check"></i></span>
         </div>
-        <div class="pricing-card">
-          <div class="package-name">Premium</div>
-          <div class="package-price">£1,750 <span>/ 50 hours</span></div>
-          <p class="package-desc">For complete beginners who want maximum support and flexibility.</p>
-          <ul class="package-features">
-            <li><i class="fas fa-check-circle"></i> 50 hours of tuition</li>
-            <li><i class="fas fa-check-circle"></i> All intensive features</li>
-            <li><i class="fas fa-check-circle"></i> 4 mock tests</li>
-            <li><i class="fas fa-check-circle"></i> Pass guarantee*</li>
-            <li><i class="fas fa-check-circle"></i> Dedicated instructor</li>
-          </ul>
-          <a href="#" class="btn-outline btn" style="width: 100%;">Enquire now</a>
+        <div class="step">
+          <span class="step-num">03</span>
+          <span class="step-txt"><strong>Mock tests</strong> on real routes</span>
+          <span class="step-check pending"><i class="fas fa-clock"></i></span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section" style="background: #f9fbfd;">
-    <div class="container">
-      <div class="section-header">
-        <h2>Loved by learners</h2>
-        <p>Over 1,200 five-star reviews. Here's what a few of our recent passes had to say.</p>
-      </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <i class="fas fa-quote-left"></i>
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p class="testimonial-text">I passed first time with only 2 minors. My instructor was incredibly patient and explained everything so clearly. Worth every penny.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">EL</div>
-            <div class="author-info">
-              <h4>Emma Lewis</h4>
-              <p>Passed with Meridian</p>
-            </div>
-          </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <span class="step-txt"><strong>Pass</strong> with our car on test day</span>
+          <span class="step-check pending"><i class="fas fa-clock"></i></span>
         </div>
-        <div class="testimonial-card">
-          <i class="fas fa-quote-left"></i>
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p class="testimonial-text">After failing twice with another school, I switched to Meridian. The structured lessons made all the difference. Passed with confidence.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">DK</div>
-            <div class="author-info">
-              <h4>Daniel Kim</h4>
-              <p>Intensive course</p>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <i class="fas fa-quote-left"></i>
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p class="testimonial-text">As a mature learner I was nervous, but my instructor never rushed me. The progress tracker showed exactly how far I'd come. Brilliant.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">SP</div>
-            <div class="author-info">
-              <h4>Sarah Parker</h4>
-              <p>Premium package</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA SECTION -->
-  <div class="container">
-    <div class="cta-section">
-      <div class="cta-content">
-        <h2>Ready to get on the road?</h2>
-        <p>Book your first lesson today or speak to our team about the right course for you.</p>
-      </div>
-      <div class="cta-actions">
-        <a href="#" class="btn btn-light">Book online <i class="fas fa-arrow-right"></i></a>
-        <a href="#" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Call 020 7946 0138</a>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="logo" style="font-size: 1.5rem;">
-            <i class="fas fa-car-side"></i>
-            Meridian Drive
-          </a>
-          <p>Premium driving tuition across London & Surrey. DVSA approved, fully insured, and rated 4.9/5 by learners.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item"><i class="fas fa-circle"></i> Manual <i class="fas fa-circle"></i> Automatic <i class="fas fa-circle"></i> Intensive Courses <i class="fas fa-circle"></i> Refresher Lessons <i class="fas fa-circle"></i> Theory Support <i class="fas fa-circle"></i> Test Day Car Hire <i class="fas fa-circle"></i> Motorway Lessons <i class="fas fa-circle"></i> Pass Plus</div>
+    <div class="marquee-item"><i class="fas fa-circle"></i> Manual <i class="fas fa-circle"></i> Automatic <i class="fas fa-circle"></i> Intensive Courses <i class="fas fa-circle"></i> Refresher Lessons <i class="fas fa-circle"></i> Theory Support <i class="fas fa-circle"></i> Test Day Car Hire <i class="fas fa-circle"></i> Motorway Lessons <i class="fas fa-circle"></i> Pass Plus</div>
+  </div>
+</div>
+
+<!-- STATS BAND -->
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="n">4,<span>200+</span></div><div class="l">Students Passed</div></div>
+      <div class="stat reveal d1"><div class="n">18<span>yrs</span></div><div class="l">Combined Experience</div></div>
+      <div class="stat reveal d2"><div class="n">42<span>min</span></div><div class="l">Avg Lesson Length</div></div>
+      <div class="stat reveal d3"><div class="n">100<span>%</span></div><div class="l">Insured & Certified</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="section" id="courses">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">01 / Courses</div>
+      <h2>Engineered for <span class="accent">every</span> learner.</h2>
+      <p>From first-time nerves to test-day polish — structured programmes built around how people actually learn to drive.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course reveal">
+        <div class="course-tag"><span>Beginner</span><span class="badge">Popular</span></div>
+        <div class="course-icon"><i class="fas fa-car-side"></i></div>
+        <h3>Foundation</h3>
+        <p>Perfect for absolute beginners. Master the basics — clutch control, junctions, and road awareness — in a calm, structured environment.</p>
+        <div class="course-meta">
+          <div class="course-price">
+            <span class="from">From</span>
+            <div class="amount">£35<span>/hr</span></div>
           </div>
-        </div>
-        <div class="footer-col">
-          <h4>Courses</h4>
-          <ul>
-            <li><a href="#">Manual lessons</a></li>
-            <li><a href="#">Automatic lessons</a></li>
-            <li><a href="#">Intensive courses</a></li>
-            <li><a href="#">Refresher lessons</a></li>
-            <li><a href="#">Theory support</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Instructors</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Reviews</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="#">Help centre</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-            <li><a href="#">Cookie policy</a></li>
-            <li><a href="#">Sitemap</a></li>
-          </ul>
+          <div class="course-arrow"><i class="fas fa-arrow-right"></i></div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>© 2025 Meridian Drive. All rights reserved. Registered in England & Wales.</span>
-        <span>Made with <i class="fas fa-heart" style="color: #1e6f5c;"></i> for safer roads</span>
+      <div class="course reveal d1">
+        <div class="course-tag"><span>Intensive</span><span class="badge">Best Value</span></div>
+        <div class="course-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Intensive 30</h3>
+        <p>Test-ready in weeks, not months. 30 hours of focused tuition, 2 mock tests, and priority scheduling. Save £100 vs hourly.</p>
+        <div class="course-meta">
+          <div class="course-price">
+            <span class="from">From</span>
+            <div class="amount">£950<span>/30hr</span></div>
+          </div>
+          <div class="course-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </div>
+      <div class="course reveal d2">
+        <div class="course-tag"><span>Premium</span><span class="badge">Guarantee</span></div>
+        <div class="course-icon"><i class="fas fa-crown"></i></div>
+        <h3>Pass Elite</h3>
+        <p>Full 50-hour programme with a dedicated instructor, 4 mock tests, and our pass guarantee. Complete peace of mind.</p>
+        <div class="course-meta">
+          <div class="course-price">
+            <span class="from">From</span>
+            <div class="amount">£1,750<span>/50hr</span></div>
+          </div>
+          <div class="course-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
+<!-- INSTRUCTORS -->
+<section class="section" id="instructors" style="background:var(--asphalt-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">02 / Instructors</div>
+      <h2>The people behind the <span class="accent">pass rate.</span></h2>
+      <p>Hand-picked, DVSA-ADI qualified, and rated 4.9+ by learners. They don't just teach — they coach.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="inst reveal">
+        <div class="inst-photo">
+          <i class="fas fa-user-tie"></i>
+          <div class="rating"><i class="fas fa-star"></i> 4.98</div>
+        </div>
+        <div class="inst-body">
+          <h3>James Whitfield</h3>
+          <div class="inst-role">Senior Instructor · 12 yrs</div>
+          <p>Specialises in nervous drivers and intensive courses. The calmest voice in the car.</p>
+          <div class="inst-tags"><span>MANUAL</span><span>AUTO</span><span>INTENSIVE</span></div>
+        </div>
+      </div>
+      <div class="inst reveal d1">
+        <div class="inst-photo">
+          <i class="fas fa-user-tie"></i>
+          <div class="rating"><i class="fas fa-star"></i> 4.97</div>
+        </div>
+        <div class="inst-body">
+          <h3>Priya Nair</h3>
+          <div class="inst-role">Senior Instructor · 9 yrs</div>
+          <p>Mock test specialist. Knows every local route and exactly what examiners look for.</p>
+          <div class="inst-tags"><span>MANUAL</span><span>MOCK TESTS</span><span>THEORY</span></div>
+        </div>
+      </div>
+      <div class="inst reveal d2">
+        <div class="inst-photo">
+          <i class="fas fa-user-tie"></i>
+          <div class="rating"><i class="fas fa-star"></i> 4.96</div>
+        </div>
+        <div class="inst-body">
+          <h3>Mark Okafor</h3>
+          <div class="inst-role">Instructor · 7 yrs</div>
+          <p>Auto specialist and refresher expert. Great with young learners returning after a break.</p>
+          <div class="inst-tags"><span>AUTO</span><span>REFRESHER</span><span>NERVOUS</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING ENGINE -->
+<section class="section booking" id="booking">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="section-tag">03 / Book</div>
+      <h2>Reserve your <span class="accent">seat.</span></h2>
+      <p>Pick a package, choose a slot, and we'll assign the right instructor for you.</p>
+    </div>
+
+    <div class="booking-wrap reveal">
+      <div class="booking-side">
+        <div class="step-label">Step 01 — Configure</div>
+        <h3>Your first <span>lesson</span> starts here.</h3>
+        <p>Tell us what you need. We'll match you with a certified instructor and confirm within 2 hours.</p>
+        <ul class="booking-perks">
+          <li><i class="fas fa-check"></i> Free cancellation up to 24h</li>
+          <li><i class="fas fa-check"></i> Dual-control, fully insured cars</li>
+          <li><i class="fas fa-check"></i> Progress tracked in your dashboard</li>
+          <li><i class="fas fa-check"></i> Test-day car hire included</li>
+        </ul>
+      </div>
+      <div class="booking-form">
+        <div class="pkg-select">
+          <div class="pkg-opt active" data-pkg="Single Lesson">
+            <div class="pkg-name">Single</div>
+            <div class="pkg-price">£35<small>/hr</small></div>
+          </div>
+          <div class="pkg-opt" data-pkg="Intensive 30">
+            <div class="pkg-name">Intensive</div>
+            <div class="pkg-price">£950<small>/30hr</small></div>
+          </div>
+          <div class="pkg-opt" data-pkg="Pass Elite">
+            <div class="pkg-name">Elite</div>
+            <div class="pkg-price">£1750<small>/50hr</small></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Full Name</label><input type="text" placeholder="Alex Morgan" /></div>
+          <div class="field"><label>Phone</label><input type="tel" placeholder="07700 900000" /></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Email</label><input type="email" placeholder="alex@example.com" /></div>
+          <div class="field"><label>Transmission</label>
+            <select><option>Manual</option><option>Automatic</option></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Preferred Date</label><input type="date" /></div>
+          <div class="field"><label>Preferred Time</label>
+            <select><option>Morning (8am – 12pm)</option><option>Afternoon (12pm – 5pm)</option><option>Evening (5pm – 8pm)</option></select>
+          </div>
+        </div>
+        <button class="btn btn-lane form-submit" onclick="event.preventDefault();this.innerHTML='<i class=\'fas fa-check\'></i> Booking Request Sent';">Confirm Booking <i class="fas fa-arrow-right"></i></button>
+        <div class="form-note">// Secured · No card required · Response within 2 hours</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="section-tag">04 / Reviews</div>
+      <h2>4,200+ passes. <span class="accent">Zero</span> shortcuts.</h2>
+      <p>Real reviews from real learners who trusted us with their licence.</p>
+    </div>
+    <div class="test-grid">
+      <div class="test reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">I passed first time with only 2 minors. My instructor was incredibly patient and explained everything so clearly. Worth every penny.</p>
+        <div class="test-author">
+          <div class="test-avatar">EL</div>
+          <div><h4>Emma Lewis</h4><p>Passed · Feb 2025</p></div>
+        </div>
+      </div>
+      <div class="test reveal d1">
+        <div class="stars">★★★★★</div>
+        <p class="quote">After failing twice with another school, I switched to Meridian. The structured lessons made all the difference. Passed with confidence.</p>
+        <div class="test-author">
+          <div class="test-avatar">DK</div>
+          <div><h4>Daniel Kim</h4><p>Intensive 30</p></div>
+        </div>
+      </div>
+      <div class="test reveal d2">
+        <div class="stars">★★★★★</div>
+        <p class="quote">As a mature learner I was nervous, but my instructor never rushed me. The progress tracker showed exactly how far I'd come. Brilliant.</p>
+        <div class="test-author">
+          <div class="test-avatar">SP</div>
+          <div><h4>Sarah Parker</h4><p>Pass Elite</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="contact">
+  <div class="container">
+    <h2 class="display reveal">Ready to<br /><span class="accent">drive?</span></h2>
+    <p class="reveal d1">Book your first lesson today or speak to our team about the right course for you.</p>
+    <div class="cta-actions reveal d2">
+      <a href="#booking" class="btn btn-lane">Book online <i class="fas fa-arrow-right"></i></a>
+      <a href="tel:02079460138" class="btn btn-ghost"><i class="fas fa-phone"></i> 020 7946 0138</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="brand">
+          <div class="brand-mark"><i class="fas fa-road"></i></div>
+          <div class="brand-text">MERIDIAN<span>.</span></div>
+        </a>
+        <p>Elite driving tuition across London & Surrey. DVSA approved, fully insured, and rated 4.9/5 by learners.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Courses</h5>
+        <ul>
+          <li><a href="#">Manual Lessons</a></li>
+          <li><a href="#">Automatic Lessons</a></li>
+          <li><a href="#">Intensive Courses</a></li>
+          <li><a href="#">Refresher Lessons</a></li>
+          <li><a href="#">Pass Plus</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Instructors</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 MERIDIAN DRIVE LTD · REG. ENGLAND & WALES</span>
+      <span>DESIGNED FOR SAFER ROADS · <i class="fas fa-heart" style="color:var(--lane)"></i></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+}, {passive:true});
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.12, rootMargin: '0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Package selector
+document.querySelectorAll('.pkg-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.pkg-opt').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+  });
+});
+
+// Animated stat counters on scroll
+const animateNum = (el, target, suffix='') => {
+  let cur = 0;
+  const dur = 1600;
+  const start = performance.now();
+  const step = (t) => {
+    const p = Math.min((t - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    cur = Math.floor(eased * target);
+    el.textContent = cur.toLocaleString();
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target.toLocaleString();
+  };
+  requestAnimationFrame(step);
+};
+</script>
 </body>
 </html>
