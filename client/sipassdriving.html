@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Added FontAwesome for real brand icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -48,7 +50,7 @@
             width: 720px;
             height: auto; 
             position: absolute;
-            bottom: 25px; /* Adjusted slightly for the thinner line */
+            bottom: 25px; 
             left: 0;
             z-index: 20; 
             animation: driveForward 22s linear infinite; 
@@ -61,7 +63,7 @@
             100% { transform: translateX(calc(100vw + 150px)); }
         }
 
-        /* NEW THIN DASHED TRACK WITH BRAND COLORS */
+        /* THIN DASHED TRACK WITH BRAND COLORS */
         .road-indicator {
             height: 3px; 
             width: 100%;
@@ -69,7 +71,6 @@
             bottom: 35px; 
             z-index: 5; 
             left: 0;
-            /* Base thin navy line */
             background: var(--brand-gray); 
             opacity: 0.3;
         }
@@ -81,9 +82,8 @@
             left: 0;
             width: 100%;
             height: 100%; 
-            /* Red dashed lines */
             background-image: linear-gradient(to right, var(--brand-red) 50%, transparent 50%);
-            background-size: 40px 100%; /* Controls the dash width */
+            background-size: 40px 100%; 
             animation: roadMove 0.5s linear infinite; 
         }
         
@@ -148,6 +148,8 @@
             margin-right: 10px;
             color: var(--brand-red);
         }
+        
+        /* UPDATED SOCIAL ICONS */
         .social-icon {
             transition: all 0.3s ease;
             display: inline-flex;
@@ -159,6 +161,7 @@
             background: var(--brand-gray);
             color: var(--brand-gold);
             border: 2px solid var(--brand-gold);
+            text-decoration: none;
         }
         .social-icon:hover {
             background: var(--brand-red);
@@ -181,12 +184,7 @@
     <nav class="sticky top-0 z-50 glass border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="logo-wrap">
-                <svg width="60" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="5" y="30" width="90" height="40" rx="4" fill="#254a5d" />
-                    <text x="50" y="58" font-family="Arial" font-size="24" font-weight="900" fill="#a9d6e5" text-anchor="middle">SI PASS</text>
-                    <circle cx="50" cy="30" r="15" fill="#a9d6e5" />
-                    <path d="M40 30 L60 30 M50 20 L50 40" stroke="#254a5d" stroke-width="3" />
-                </svg>
+                <!-- REMOVED SVG LOGO HERE -->
                 <div class="logo-text">
                     <span class="text-2xl font-black italic block text-[#254a5d]">SI PASS <span class="text-[#e34b25]">DRIVING</span></span>
                     <span class="text-[8px] font-bold tracking-[0.3em] uppercase block text-[#254a5d]">School • Wigan</span>
@@ -230,7 +228,7 @@
     <section class="relative min-h-[70vh] flex flex-col items-center justify-center bg-white pt-4 pb-12 overflow-hidden">
         <div class="w-full">
             <div class="car-hero-container">
-                <!-- NEW THIN DASHED LINE -->
+                <!-- THIN DASHED LINE -->
                 <div class="road-indicator"></div>
                 <!-- CAR IMAGE -->
                 <img id="panningCar" src="https://raw.githubusercontent.com/doctoc30/fazadisites/main/images/si_pass_east_final_transparent.png" alt="Si Pass Driving School Car">
@@ -622,10 +620,11 @@
                     <div>
                         <h5 class="font-black uppercase text-[#e34b25] text-xs mb-6">Social</h5>
                         <div class="flex space-x-4">
-                            <a href="#" class="social-icon"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                            <a href="#" class="social-icon"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                            <a href="https://wa.me/447842529565" class="social-icon"><i data-lucide="message-square" class="w-5 h-5"></i></a>
-                            <a href="#" class="social-icon"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                            <!-- REAL SOCIAL ICONS ADDED -->
+                            <a href="#" class="social-icon"><i class="fa-brands fa-instagram text-lg"></i></a>
+                            <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+                            <a href="https://wa.me/447842529565" class="social-icon"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                            <a href="#" class="social-icon"><i class="fa-brands fa-youtube text-lg"></i></a>
                         </div>
                     </div>
                 </div>
