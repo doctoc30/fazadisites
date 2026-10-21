@@ -561,7 +561,7 @@
             scroll-margin-top: 80px;
         }
 
-        /* --- HIGHWAY SVG ANIMATION STYLES --- */
+        /* --- HIGHWAY SVG ANIMATION STYLES (FORWARD DRIVING) --- */
         .highway-scene {
             width: 100%;
             height: 100%;
@@ -571,46 +571,59 @@
             background: #050505;
         }
         
-        .lane-line {
+        /* Road dashes moving towards the viewer to simulate forward motion of the observer/cars */
+        .lane-line-forward {
             stroke-dasharray: 20 30;
-            animation: dash 1s linear infinite;
+            animation: dashForward 0.8s linear infinite;
         }
         
-        @keyframes dash {
-            to { stroke-dashoffset: -50; }
+        @keyframes dashForward {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -50; }
         }
 
-        .car-fast {
-            animation: driveFast 2.5s linear infinite;
+        /* Cars start small in the distance (top of the SVG) and grow larger as they approach the bottom */
+        .car-ahead-fast {
+            animation: driveAheadFast 3s linear infinite;
         }
         
-        .car-med {
-            animation: driveMed 3.5s linear infinite 1s;
+        .car-ahead-med {
+            animation: driveAheadMed 4.5s linear infinite 1.5s;
         }
         
-        .car-slow {
-            animation: driveSlow 5s linear infinite 2s;
+        .car-ahead-slow {
+            animation: driveAheadSlow 6s linear infinite 3s;
         }
 
-        @keyframes driveFast {
-            0% { transform: translateY(-50px) scale(1.2); opacity: 0; }
-            10% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { transform: translateY(250px) scale(2.5); opacity: 0; }
+        @keyframes driveAheadFast {
+            0% { transform: translateY(0) scale(0.1); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translateY(200px) scale(2); opacity: 0; }
         }
         
-        @keyframes driveMed {
-            0% { transform: translateY(-50px) scale(1.1); opacity: 0; }
-            10% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { transform: translateY(250px) scale(2.2); opacity: 0; }
+        @keyframes driveAheadMed {
+            0% { transform: translateY(0) scale(0.1); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translateY(200px) scale(2); opacity: 0; }
         }
         
-        @keyframes driveSlow {
-            0% { transform: translateY(-50px) scale(1); opacity: 0; }
-            10% { opacity: 0.8; }
-            80% { opacity: 0.8; }
-            100% { transform: translateY(250px) scale(2); opacity: 0; }
+        @keyframes driveAheadSlow {
+            0% { transform: translateY(0) scale(0.1); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translateY(200px) scale(2); opacity: 0; }
+        }
+
+        /* Motion blur trails trailing BEHIND the cars (towards the viewer) */
+        .speed-trail {
+            animation: trailFade 0.5s linear infinite;
+        }
+
+        @keyframes trailFade {
+            0% { opacity: 0.8; }
+            100% { opacity: 0; }
         }
 
         .streetlight-glow {
@@ -805,7 +818,7 @@
                     <a href="https://wa.me/447795517994" class="btn-premium px-8 py-4 text-[11px] uppercase tracking-[0.15em] inline-block rounded-sm">Meet Your Instructor</a>
                 </div>
 
-                <!-- REALISTIC HIGHWAY GRAPHIC -->
+                <!-- REALISTIC HIGHWAY GRAPHIC (CARS DRIVING FORWARD) -->
                 <div class="reveal reveal-delay-2">
                     <div class="relative">
                         <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl shadow-black/20 relative">
@@ -826,13 +839,13 @@
                                             <stop offset="0%" stop-color="#E31E24" stop-opacity="0.15" />
                                             <stop offset="100%" stop-color="#E31E24" stop-opacity="0" />
                                         </radialGradient>
-                                        <radialGradient id="headlightGlow" cx="50%" cy="50%" r="50%">
-                                            <stop offset="0%" stop-color="#fff" stop-opacity="0.8" />
-                                            <stop offset="100%" stop-color="#fff" stop-opacity="0" />
-                                        </radialGradient>
                                         <radialGradient id="taillightGlow" cx="50%" cy="50%" r="50%">
                                             <stop offset="0%" stop-color="#E31E24" stop-opacity="0.8" />
                                             <stop offset="100%" stop-color="#E31E24" stop-opacity="0" />
+                                        </radialGradient>
+                                        <radialGradient id="streetlightGlow" cx="50%" cy="50%" r="50%">
+                                            <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.6" />
+                                            <stop offset="100%" stop-color="#D4AF37" stop-opacity="0" />
                                         </radialGradient>
                                     </defs>
 
@@ -842,79 +855,90 @@
                                     <!-- City Silhouette (Background) -->
                                     <path d="M0,250 L50,240 L80,245 L110,230 L140,248 L180,240 L220,248 L260,235 L290,245 L330,225 L370,242 L400,250 Z" fill="#050505" />
 
-                                    <!-- Road Surface -->
+                                    <!-- Road Surface (Perspective) -->
                                     <polygon points="150,250 250,250 500,500 -100,500" fill="url(#roadGradient)" />
                                     
                                     <!-- Road Edge Lines -->
                                     <line x1="150" y1="250" x2="-100" y2="500" stroke="#D4AF37" stroke-width="3" opacity="0.6" />
                                     <line x1="250" y1="250" x2="500" y2="500" stroke="#D4AF37" stroke-width="3" opacity="0.6" />
 
-                                    <!-- Lane Markers (Dashed) -->
-                                    <line x1="175" y1="250" x2="50" y2="500" stroke="#fff" stroke-width="2" opacity="0.4" class="lane-line" />
-                                    <line x1="225" y1="250" x2="350" y2="500" stroke="#fff" stroke-width="2" opacity="0.4" class="lane-line" />
+                                    <!-- Lane Markers (Dashed) - Animated to simulate moving forward -->
+                                    <line x1="175" y1="250" x2="50" y2="500" stroke="#fff" stroke-width="2" opacity="0.4" class="lane-line-forward" />
+                                    <line x1="225" y1="250" x2="350" y2="500" stroke="#fff" stroke-width="2" opacity="0.4" class="lane-line-forward" />
                                     
                                     <!-- Streetlights (Left & Right) -->
-                                    <!-- Left Light -->
                                     <g transform="translate(100, 300)">
                                         <line x1="0" y1="0" x2="0" y2="-60" stroke="#333" stroke-width="2" />
                                         <path d="M0,-60 Q10,-65 20,-60" fill="none" stroke="#333" stroke-width="2" />
                                         <circle cx="20" cy="-58" r="4" fill="#D4AF37" class="streetlight-glow" />
-                                        <circle cx="20" cy="-58" r="15" fill="url(#headlightGlow)" opacity="0.3" />
+                                        <circle cx="20" cy="-58" r="20" fill="url(#streetlightGlow)" opacity="0.4" />
                                     </g>
-                                    <!-- Right Light -->
                                     <g transform="translate(300, 300)">
                                         <line x1="0" y1="0" x2="0" y2="-60" stroke="#333" stroke-width="2" />
                                         <path d="M0,-60 Q-10,-65 -20,-60" fill="none" stroke="#333" stroke-width="2" />
                                         <circle cx="-20" cy="-58" r="4" fill="#D4AF37" class="streetlight-glow" />
-                                        <circle cx="-20" cy="-58" r="15" fill="url(#headlightGlow)" opacity="0.3" />
+                                        <circle cx="-20" cy="-58" r="20" fill="url(#streetlightGlow)" opacity="0.4" />
                                     </g>
 
-                                    <!-- ANIMATED CARS -->
-                                    
-                                    <!-- Car 1: Fast Red Car (Right Lane) -->
-                                    <g class="car-fast" style="transform-origin: 250px 260px;">
-                                        <!-- Light Trails -->
-                                        <rect x="245" y="260" width="6" height="80" fill="#E31E24" opacity="0.4" rx="2" />
-                                        <rect x="255" y="260" width="6" height="80" fill="#E31E24" opacity="0.4" rx="2" />
-                                        <!-- Car Body -->
-                                        <path d="M240,260 L260,260 L265,275 L262,295 L238,295 L235,275 Z" fill="#E31E24" />
-                                        <!-- Windows -->
-                                        <path d="M243,263 L257,263 L260,273 L240,273 Z" fill="#111" opacity="0.8" />
-                                        <path d="M240,277 L260,277 L260,285 L240,285 Z" fill="#111" opacity="0.5" />
-                                        <!-- Taillights -->
-                                        <rect x="238" y="292" width="6" height="3" fill="#ff4444" />
-                                        <rect x="256" y="292" width="6" height="3" fill="#ff4444" />
-                                        <circle cx="241" cy="293" r="8" fill="url(#taillightGlow)" />
-                                        <circle cx="259" cy="293" r="8" fill="url(#taillightGlow)" />
+                                    <!-- ============================================== -->
+                                    <!-- ANIMATED CARS (DRIVING FORWARD AWAY FROM VIEWER) -->
+                                    <!-- ============================================== -->
+
+                                    <!-- Car 1: Fast Red Car (Right Lane) - Approaching from distance -->
+                                    <g class="car-ahead-fast" style="transform-origin: 250px 260px;">
+                                        <!-- Speed Trails (Trailing behind towards viewer) -->
+                                        <rect x="245" y="280" width="4" height="30" fill="#E31E24" opacity="0.4" rx="2" class="speed-trail" />
+                                        <rect x="251" y="280" width="4" height="30" fill="#E31E24" opacity="0.4" rx="2" class="speed-trail" />
+                                        
+                                        <!-- Car Body (Rear View) -->
+                                        <path d="M235,260 L265,260 L270,275 L268,295 L232,295 L230,275 Z" fill="#E31E24" />
+                                        <!-- Rear Window -->
+                                        <path d="M238,263 L262,263 L265,273 L235,273 Z" fill="#111" opacity="0.9" />
+                                        <!-- Rear Bumper / Details -->
+                                        <rect x="232" y="285" width="36" height="6" fill="#111" opacity="0.5" />
+                                        <!-- Taillights (Glowing Red) -->
+                                        <rect x="234" y="276" width="8" height="4" fill="#ff1111" />
+                                        <rect x="258" y="276" width="8" height="4" fill="#ff1111" />
+                                        <circle cx="238" cy="278" r="10" fill="url(#taillightGlow)" />
+                                        <circle cx="262" cy="278" r="10" fill="url(#taillightGlow)" />
+                                        <!-- License Plate -->
+                                        <rect x="246" y="288" width="8" height="3" fill="#fff" opacity="0.8" />
                                     </g>
 
                                     <!-- Car 2: Medium Speed White Car (Left Lane) -->
-                                    <g class="car-med" style="transform-origin: 140px 260px;">
-                                        <!-- Light Trails -->
-                                        <rect x="135" y="260" width="5" height="60" fill="#fff" opacity="0.3" rx="2" />
-                                        <rect x="144" y="260" width="5" height="60" fill="#fff" opacity="0.3" rx="2" />
-                                        <!-- Car Body -->
-                                        <path d="M130,260 L150,260 L155,270 L152,290 L128,290 L125,270 Z" fill="#e0e0e0" />
-                                        <!-- Windows -->
-                                        <path d="M133,263 L147,263 L150,269 L130,269 Z" fill="#111" opacity="0.8" />
+                                    <g class="car-ahead-med" style="transform-origin: 140px 260px;">
+                                        <!-- Speed Trails -->
+                                        <rect x="135" y="280" width="4" height="25" fill="#fff" opacity="0.3" rx="2" class="speed-trail" />
+                                        <rect x="141" y="280" width="4" height="25" fill="#fff" opacity="0.3" rx="2" class="speed-trail" />
+                                        
+                                        <!-- Car Body (Rear View) -->
+                                        <path d="M125,260 L155,260 L160,272 L158,290 L122,290 L120,272 Z" fill="#e0e0e0" />
+                                        <!-- Rear Window -->
+                                        <path d="M128,263 L152,263 L155,270 L125,270 Z" fill="#111" opacity="0.8" />
+                                        <!-- Rear Bumper -->
+                                        <rect x="123" y="282" width="34" height="5" fill="#999" opacity="0.6" />
                                         <!-- Taillights -->
-                                        <rect x="128" y="287" width="6" height="3" fill="#ff4444" />
-                                        <rect x="146" y="287" width="6" height="3" fill="#ff4444" />
-                                        <circle cx="131" cy="288" r="8" fill="url(#taillightGlow)" />
-                                        <circle cx="149" cy="288" r="8" fill="url(#taillightGlow)" />
+                                        <rect x="124" y="273" width="7" height="4" fill="#ff1111" />
+                                        <rect x="149" y="273" width="7" height="4" fill="#ff1111" />
+                                        <circle cx="127" cy="275" r="8" fill="url(#taillightGlow)" />
+                                        <circle cx="153" cy="275" r="8" fill="url(#taillightGlow)" />
                                     </g>
 
                                     <!-- Car 3: Slow Dark Car (Center Lane) -->
-                                    <g class="car-slow" style="transform-origin: 200px 260px;">
-                                        <!-- Car Body -->
-                                        <path d="M190,260 L210,260 L215,270 L212,288 L188,288 L185,270 Z" fill="#222" />
-                                        <!-- Windows -->
-                                        <path d="M193,263 L207,263 L210,269 L190,269 Z" fill="#fff" opacity="0.2" />
+                                    <g class="car-ahead-slow" style="transform-origin: 200px 260px;">
+                                        <!-- Speed Trails -->
+                                        <rect x="195" y="280" width="3" height="20" fill="#888" opacity="0.3" rx="1" class="speed-trail" />
+                                        <rect x="202" y="280" width="3" height="20" fill="#888" opacity="0.3" rx="1" class="speed-trail" />
+                                        
+                                        <!-- Car Body (Rear View) -->
+                                        <path d="M185,260 L215,260 L220,270 L218,288 L182,288 L180,270 Z" fill="#222" />
+                                        <!-- Rear Window -->
+                                        <path d="M188,263 L212,263 L215,268 L185,268 Z" fill="#fff" opacity="0.2" />
                                         <!-- Taillights -->
-                                        <rect x="188" y="285" width="6" height="3" fill="#ff4444" />
-                                        <rect x="206" y="285" width="6" height="3" fill="#ff4444" />
-                                        <circle cx="191" cy="286" r="10" fill="url(#taillightGlow)" />
-                                        <circle cx="209" cy="286" r="10" fill="url(#taillightGlow)" />
+                                        <rect x="184" y="272" width="6" height="3" fill="#ff1111" />
+                                        <rect x="210" y="272" width="6" height="3" fill="#ff1111" />
+                                        <circle cx="187" cy="273" r="9" fill="url(#taillightGlow)" />
+                                        <circle cx="213" cy="273" r="9" fill="url(#taillightGlow)" />
                                     </g>
 
                                     <!-- Overlay gradient to blend bottom into the card border -->
