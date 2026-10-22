@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handley Driving School | Chesterfield & Sheffield</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --hds-black: #000000;
+            --hds-red: #C21E1D;
+            --hds-red-hover: #a01817;
+            --hds-white: #ffffff;
+            --hds-gray: #f4f4f4;
+            --hds-text-gray: #666666;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--hds-white);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: var(--font-heading);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- TOP NAVIGATION --- */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--hds-white);
+            height: 70px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Custom Handley Logo styling mimicking the image */
+        .logo-text {
+            font0 2-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            color: var(--hds-black);
+            line-height: 1;
+        }
+
+        .logo-l-box {
+            background-color: var(--hds-red);
+            color: var(--hds-white);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: px;
+            font-size: 18px;
+            border: 1px solid var(--hds-red);
+        }
+        
+        .logo-registered {
+            font-size: 10px;
+            vertical-align: top;
+            margin-left: 2px;
+            margin-top: -5px;
+        }
+
+        .logo-subtext {
+            font-family: var(--font-heading);
+            font-size: 7px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .hamburger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: var(--hds-black);
+            transition: all 0.3s ease;
+        }
+
+        /* --- MOBILE MENU (Slide from right) --- */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--hds-white);
+            z-index: 1005;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu-drawer.active {
+            transform: translateX(0);
+        }
+
+        .close-menu-btn {
+            align-self: flex-end;
+            background: none;
+            border: 2px solid #ccc; /* Matched from screenshot */
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .close-menu-btn i {
+            width: 28px;
+            height: 28px;
+            color: #333;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .mobile-nav-links li a {
+            font-family: var(--font-body);
+            font-size: 22px;
+            color: #555;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav-links li a:hover {
+            color: var(--hds-black);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 120px;
+            /* Using a placeholder image that resembles a road/driving environment */
+            background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: var(--hds-white);
+        }
+
+        /* Dark overlay to make text readable */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65); /* Dark overlay */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Large Hero Logo */
+        .hero-logo-wrap {
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-logo-text {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 50px;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            color: var(--hds-white);
+            line-height: 1;
+        }
+
+        .hero-logo-l-box {
+            background-color: var(--hds-white);
+            color: var(--hds-red);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            font-size: 38px;
+            border: 2px solid var(--hds-white);
+        }
+
+        .hero-logo-registered {
+            font-size: 18px;
+            vertical-align: top;
+            margin-left: 5px;
+            margin-top: -10px;
+            font-weight: 600;
+        }
+
+        .hero-logo-subtext {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Headline */
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        /* CTA Button */
+        .btn-enquire {
+            background-color: var(--hds-red);
+            color: var(--hds-white);
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 32px;
+            padding: 20px 50px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(194, 30, 29, 0.4);
+        }
+
+        .btn-enquire:hover {
+            background-color: var(--hds-red-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Subtext */
+        .hero-subtext {
+            font-size: 22px;
+            line-height: 1.5;
+            color: #ccc;
+            font-weight: 400;
+            max-width: 800px;
+        }
+
+        /* --- ABOUT/INFO SECTION (Based on scrolling screenshots) --- */
+        .about-section {
+            position: relative;
+            padding: 100px 20px;
+            background-color: #111;
+            color: var(--hds-white);
+            /* Background image for about section, similar dark aesthetic */
+            background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 15, 0.85); /* Heavy dark overlay */
+            z-index: 1;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 24px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+            font-weight: 400;
+        }
+
+        .about-content a {
+            text-decoration: underline;
+            color: var(--hds-white);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .about-content a:hover {
+            color: var(--hds-red);
+        }
+
+        .privacy-link {
+            display: inline-block;
+            margin-top: 40px;
+            font-size: 20px;
+        }
+
+        /* Car Image Section Placeholder */
+        .car-showcase {
+            padding: 80px 20px;
+            background-color: var(--hds-white);
+            text-align: center;
+        }
+        
+        .car-showcase img {
+            max-width: 100%;
+            height: auto;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 100px;
+            }
+
+            .hero-logo-text {
+                font-size: 32px;
+            }
+
+            .hero-logo-l-box {
+                width: 32px;
+                height: 32px;
+                font-size: 24px;
+            }
+
+            .hero-logo-subtext {
+                font-size: 10px;
+                letter-spacing: 4px;
+            }
+
+            .btn-enquire {
+                font-size: 24px;
+                padding: 15px 30px;
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .hero-subtext {
+                font-size: 18px;
+            }
+
+            .about-content p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <a href="#" class="logo-wrap">
+            <div class="logo-text">
+                HAND<span class="logo-l-box">L</span>EY<span class="logo-registered">®</span>
+                <span class="logo-subtext">DRIVING SCHOOL</span>
+            </div>
+        </a>
+        
+        <button class="hamburger-btn" id="openMenuBtn" aria-label="Open Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY & DRAWER -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu-drawer" id="mobileMenu">
+        <button class="close-menu-btn" id="closeMenuBtn" aria-label="Close Menu">
+            <i data-lucide="x"></i>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Our Family</a></li>
+            <li><a href="#">Instructor Training</a></li>
+            <li><a href="#">Franchise</a></li>
+            <li><a href="#">Young Driver</a></li>
+            <li><a href="#">Pass Gallery</a></li>
+            <li><a href="#">Instructor Testimonials</a></li>
+        </ul>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Large Hero Logo -->
+            <div class="hero-logo-wrap">
+                <div class="hero-logo-text">
+                    HAND<span class="hero-logo-l-box">L</span>EY<span class="hero-logo-registered">®</span>
+                </div>
+                <div class="hero-logo-subtext">DRIVING SCHOOL</div>
+            </div>
+
+            <!-- Main Headline -->
+            <h1>Your<br>journey<br>starts<br>here</h1>
+
+            <!-- CTA Button -->
+            <a href="#" class="btn-enquire">ENQUIRE NOW</a>
+
+            <!-- Subtext -->
+            <p class="hero-subtext">
+                Professional driving instruction in<br>
+                Chesterfield, Sheffield and beyond.<br>
+                Expert instructors and a high-class
+            </p>
+        </div>
+    </section>
+
+    <!-- ABOUT / INFO SECTION (Based on screenshot 3 & 4) -->
+    <section class="about-section">
+        <div class="about-content">
+            <p>
+                At Handley Driving School, our mission is to provide you with the best driving education possible. A proudly growing driving school with 16 cars on the road. We meticulously select only the finest instructors to join the HDS family, ensuring that our students receive the highest quality education. We know that learning to drive can be a daunting task, which is why we're here to help you every step of the way.
+            </p>
+            <p>
+                Founded by Joseph Handley, a Grade A Approved Driving Instructor, who has been delivering top-notch instruction since March 2022. With over 20 years of extensive motoring experience, including his background as an HGV driver – lorry-mounted cranes and car transporters, as well as being a skilled motorcyclist, he confidently supports our instructors at every turn. His wealth of knowledge guarantees that our learners receive the finest guidance on the road, setting them up for success.
+            </p>
+            <p>
+                We offer driving tuition for all levels of experience, PASSPLUS, refresher courses and for those looking for a new career ADI training. Whatever you need we'll make sure you have the knowledge and experience necessary to become a safe and confident driver. Choose Handley Driving School, where we pride ourselves on our high pass rate and most importantly our 100% honest, upfront and reliable service. <a href="#">Get in touch</a> with us to ask about our block bookings, hourly rates and how to get started.
+            </p>
+            
+            <a href="#" class="privacy-link">Privacy Policy</a>
+        </div>
+    </section>
+
+    <!-- CAR SHOWCASE SECTION (Added for visual completeness based on the vehicle image) -->
+    <section class="car-showcase">
+        <!-- Using an image placeholder styled similarly to the car provided -->
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80" alt="Handley Driving School Car" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+    </section>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Logic
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            
+            // Prevent body scrolling when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        openMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    </script>
+</body>
+</html>
