@@ -10,20 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Business Brand Colors derived from images */
-            --brand-black: #0a0a0a;
+            /* Exact Brand Colors derived from the Car Image */
+            --brand-black: #111111; /* Car text & lower stripe */
             --brand-charcoal: #161616;
-            --brand-navy: #1B2A4A; /* Retained for structural contrast */
-            --brand-navy-light: #2a3f6b;
-            --brand-red: #E3000F; /* Bright Red from Logo/Car */
+            --brand-navy: #111111; /* Replaced with black to match car theme */
+            --brand-navy-light: #2a2a2a;
+            --brand-red: #E3000F; /* Roof sign L & body stripes */
             --brand-red-dark: #B8000C;
-            --brand-gold: #F2A900; /* Retained for subtle accent */
+            --brand-magenta: #FF00FF; /* Wheel center caps */
+            --brand-gold: #F2A900; /* Retained for subtle accent contrast */
             --brand-gold-light: #ffc233;
             --brand-white: #ffffff;
             --brand-cream: #f8fafc;
-            --brand-blue: #E3000F; /* Shifted CTA to Red for brand match */
+            --brand-blue: #E3000F; /* Shifted CTA to Red to match car */
             --brand-blue-hover: #B8000C;
-            --brand-silver: #E5E7EB; /* From the car body */
+            --brand-silver: #E2E4E5; /* Car body paint */
         }
         
         * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -52,7 +53,7 @@
         .hero-premium {
             position: relative;
             min-height: 100vh;
-            background: var(--brand-navy);
+            background: var(--brand-black); /* Black background to match car body style */
             overflow: hidden;
         }
 
@@ -72,7 +73,7 @@
             width: 600px;
             height: 600px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(242,169,0,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,0,255,0.08) 0%, transparent 70%); /* Magenta glow */
             bottom: -10%;
             left: -5%;
             pointer-events: none;
@@ -121,7 +122,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(242,169,0,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(227,0,15,0.3), transparent);
             z-index: 5;
         }
 
@@ -144,7 +145,7 @@
 
         /* Nav */
         .nav-premium {
-            background: rgba(27,42,74,0.95);
+            background: rgba(17,17,17,0.95); /* Black matching car text */
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -162,7 +163,7 @@
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--brand-gold);
+            background: var(--brand-red);
             transition: width 0.3s ease;
         }
 
@@ -172,7 +173,7 @@
         #mobile-menu {
             transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
             transform: translateX(100%);
-            background: var(--brand-navy);
+            background: var(--brand-black);
         }
         #mobile-menu.open { transform: translateX(0); }
 
@@ -180,7 +181,7 @@
         .btn-premium {
             position: relative;
             overflow: hidden;
-            background: var(--brand-blue);
+            background: var(--brand-red);
             color: white;
             font-weight: 900;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -191,7 +192,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: var(--brand-blue-hover);
+            background: var(--brand-red-dark);
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -213,8 +214,8 @@
         }
 
         .btn-outline-premium:hover {
-            border-color: var(--brand-gold);
-            color: var(--brand-gold);
+            border-color: var(--brand-magenta); /* Exact wheel color accent */
+            color: var(--brand-magenta);
             transform: translateY(-2px);
         }
 
@@ -229,7 +230,7 @@
 
         .glass-card:hover {
             background: rgba(255,255,255,0.06);
-            border-color: rgba(242,169,0,0.3);
+            border-color: rgba(227,0,15,0.3);
             transform: translateY(-8px);
         }
 
@@ -247,7 +248,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--brand-gold), transparent);
+            background: linear-gradient(90deg, transparent, var(--brand-red), transparent);
             opacity: 0;
             transition: opacity 0.5s ease;
         }
@@ -262,7 +263,7 @@
         /* Featured pricing */
         .pricing-featured {
             background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-            border: 1px solid rgba(242,169,0,0.3);
+            border: 1px solid rgba(227,0,15,0.3);
             position: relative;
         }
 
@@ -272,7 +273,7 @@
             inset: -1px;
             border-radius: inherit;
             padding: 1px;
-            background: linear-gradient(145deg, var(--brand-gold), transparent 40%, transparent 60%, var(--brand-gold));
+            background: linear-gradient(145deg, var(--brand-red), transparent 40%, transparent 60%, var(--brand-red));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -364,8 +365,8 @@
         }
 
         .social-icon:hover {
-            background: var(--brand-blue);
-            border-color: var(--brand-blue);
+            background: var(--brand-red);
+            border-color: var(--brand-red);
             transform: translateY(-3px);
         }
 
@@ -375,10 +376,10 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--brand-navy);
+            background: var(--brand-black);
             display: flex;
             z-index: 100;
-            border-top: 1px solid rgba(242,169,0,0.2);
+            border-top: 1px solid rgba(227,0,15,0.2);
         }
 
         .cta-dock a {
@@ -398,10 +399,10 @@
         /* Ticker */
         .ticker-wrap {
             overflow: hidden;
-            background: var(--brand-navy);
+            background: var(--brand-black);
             color: var(--brand-white);
             padding: 14px 0;
-            border-bottom: 1px solid rgba(242,169,0,0.15);
+            border-bottom: 1px solid rgba(227,0,15,0.15);
         }
 
         .ticker {
@@ -437,7 +438,7 @@
         .divider-gold {
             width: 60px;
             height: 2px;
-            background: linear-gradient(90deg, var(--brand-gold), transparent);
+            background: linear-gradient(90deg, var(--brand-red), transparent);
         }
 
         /* Form inputs premium */
@@ -452,10 +453,10 @@
         }
 
         .form-input-premium:focus {
-            border-color: var(--brand-gold);
+            border-color: var(--brand-red);
             background: rgba(255,255,255,0.08);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(242,169,0,0.1);
+            box-shadow: 0 0 0 3px rgba(227,0,15,0.1);
         }
 
         .form-input-premium::placeholder {
@@ -493,8 +494,8 @@
             left: 20px;
             z-index: 1000;
             width: 300px;
-            background: var(--brand-navy);
-            border: 1px solid rgba(242,169,0,0.3);
+            background: var(--brand-black);
+            border: 1px solid rgba(227,0,15,0.3);
             box-shadow: 0 30px 60px rgba(0,0,0,0.4);
             border-radius: 16px;
             padding: 24px;
@@ -518,7 +519,7 @@
         }
 
         .testimonial-card:hover {
-            border-color: rgba(242,169,0,0.4);
+            border-color: rgba(227,0,15,0.4);
             box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
             transform: translateY(-4px);
         }
@@ -655,10 +656,10 @@
     <!-- NAVIGATION -->
     <nav class="nav-premium sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <!-- Logo WITHOUT SVG car icon -->
+            <!-- Logo WITH Custom SVG matching Car styling -->
             <div class="logo-wrap flex items-center">
                 <div class="logo-text">
-                    <span class="text-2xl font-black italic block text-white">HANDL<span class="text-[#E3000F]">L</span>EY</span>
+                    <span class="text-2xl font-black italic block text-white">HANDLEY</span>
                     <span class="text-[8px] font-bold tracking-[0.35em] uppercase block text-slate-400">Driving School • Chesterfield</span>
                 </div>
             </div>
@@ -669,7 +670,7 @@
                 <a href="#pricing" class="nav-link hover:text-white transition">Packages</a>
                 <a href="#areas" class="nav-link hover:text-white transition">Locations</a>
                 <a href="tel:07590575008" class="nav-link hover:text-white transition">07590 575008</a>
-                <a href="https://wa.me/447590575008" class="btn-premium px-6 py-3 rounded-sm shadow-lg shadow-blue-900/30">WhatsApp Us</a>
+                <a href="https://wa.me/447590575008" class="btn-premium px-6 py-3 rounded-sm shadow-lg shadow-red-900/30">WhatsApp Us</a>
             </div>
             <button id="menu-btn" class="md:hidden text-white"><i data-lucide="menu" class="w-7 h-7"></i></button>
         </div>
@@ -693,13 +694,13 @@
     <div class="ticker-wrap font-bold uppercase text-[10px] tracking-[0.2em]">
         <div class="ticker space-x-20 text-slate-400">
             <span>🏁 100% recommend (223 reviews)</span>
-            <span class="text-[#F2A900]">◆</span>
+            <span class="text-[#E3000F]">◆</span>
             <span>📍 Chesterfield • Sheffield • Rotherham</span>
-            <span class="text-[#F2A900]">◆</span>
+            <span class="text-[#E3000F]">◆</span>
             <span>⚙️ Manual & Automatic Available</span>
-            <span class="text-[#F2A900]">◆</span>
+            <span class="text-[#E3000F]">◆</span>
             <span>⭐ ADI & PDI Training</span>
-            <span class="text-[#F2A900]">◆</span>
+            <span class="text-[#E3000F]">◆</span>
             <span>📱 Call: 07590 575008</span>
         </div>
     </div>
@@ -748,18 +749,18 @@
     </section>
 
     <!-- ========== STATS BAR ========== -->
-    <section class="bg-[#0a0a0a] border-b border-white/5">
+    <section class="bg-[#111111] border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/5">
             <div class="reveal py-4">
                 <p class="stat-number text-6xl text-white mb-2 counter" data-target="223">0</p>
                 <p class="text-[9px] font-black uppercase tracking-[0.25em] text-slate-500">5-Star Reviews</p>
             </div>
             <div class="reveal reveal-delay-1 py-4">
-                <p class="stat-number text-6xl text-[#F2A900] mb-2 counter" data-target="16">0</p>
+                <p class="stat-number text-6xl text-[#E3000F] mb-2 counter" data-target="16">0</p>
                 <p class="text-[9px] font-black uppercase tracking-[0.25em] text-slate-500">Cars on Road</p>
             </div>
             <div class="reveal reveal-delay-2 py-4">
-                <p class="stat-number text-6xl text-[#E3000F] mb-2 counter" data-target="100">0</p>
+                <p class="stat-number text-6xl text-[#FF00FF] mb-2 counter" data-target="100">0</p>
                 <p class="text-[9px] font-black uppercase tracking-[0.25em] text-slate-500">% Recommend</p>
             </div>
         </div>
@@ -771,7 +772,7 @@
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
                 <div class="reveal">
                     <div class="section-label mb-6">About Handley</div>
-                    <h2 class="font-display text-5xl md:text-6xl lg:text-7xl font-black text-[#0a0a0a] leading-[0.95] mb-8">
+                    <h2 class="font-display text-5xl md:text-6xl lg:text-7xl font-black text-[#111111] leading-[0.95] mb-8">
                         Driven by<br><span class="text-[#E3000F]">Excellence.</span>
                     </h2>
                     <p class="text-slate-600 font-medium text-base leading-relaxed mb-5">
@@ -787,7 +788,7 @@
                                 <i data-lucide="shield-check" class="w-4 h-4 text-[#E3000F]"></i>
                             </div>
                             <div>
-                                <p class="font-black text-[11px] uppercase tracking-wide text-[#0a0a0a]">Grade A ADI</p>
+                                <p class="font-black text-[11px] uppercase tracking-wide text-[#111111]">Grade A ADI</p>
                                 <p class="text-[10px] text-slate-400 font-semibold mt-0.5">Fully qualified & insured</p>
                             </div>
                         </div>
@@ -796,7 +797,7 @@
                                 <i data-lucide="heart-handshake" class="w-4 h-4 text-[#E3000F]"></i>
                             </div>
                             <div>
-                                <p class="font-black text-[11px] uppercase tracking-wide text-[#0a0a0a]">Patient & Friendly</p>
+                                <p class="font-black text-[11px] uppercase tracking-wide text-[#111111]">Patient & Friendly</p>
                                 <p class="text-[10px] text-slate-400 font-semibold mt-0.5">Learn at your own pace</p>
                             </div>
                         </div>
@@ -805,7 +806,7 @@
                                 <i data-lucide="car-front" class="w-4 h-4 text-[#E3000F]"></i>
                             </div>
                             <div>
-                                <p class="font-black text-[11px] uppercase tracking-wide text-[#0a0a0a]">Modern Vehicles</p>
+                                <p class="font-black text-[11px] uppercase tracking-wide text-[#111111]">Modern Vehicles</p>
                                 <p class="text-[10px] text-slate-400 font-semibold mt-0.5">Manual & Automatic</p>
                             </div>
                         </div>
@@ -814,7 +815,7 @@
                                 <i data-lucide="star" class="w-4 h-4 text-[#E3000F]"></i>
                             </div>
                             <div>
-                                <p class="font-black text-[11px] uppercase tracking-wide text-[#0a0a0a]">5-Star Rated</p>
+                                <p class="font-black text-[11px] uppercase tracking-wide text-[#111111]">5-Star Rated</p>
                                 <p class="text-[10px] text-slate-400 font-semibold mt-0.5">100% recommend</p>
                             </div>
                         </div>
@@ -831,7 +832,7 @@
                             <!-- SVG Highway Scene -->
                             <div class="highway-scene">
                                 <!-- Sky Background -->
-                                <div class="absolute inset-0 bg-gradient-to-b from-[#1B2A4A] via-[#2a3f6b] to-[#0a0a0a]"></div>
+                                <div class="absolute inset-0 bg-gradient-to-b from-[#111111] via-[#2a2a2a] to-[#111111]"></div>
 
                                 <svg viewBox="0 0 400 500" class="w-full h-full object-cover relative z-10" preserveAspectRatio="xMidYMid slice">
                                     <defs>
@@ -849,8 +850,8 @@
                                             <stop offset="100%" stop-color="#E3000F" stop-opacity="0" />
                                         </radialGradient>
                                         <radialGradient id="streetlightGlow" cx="50%" cy="50%" r="50%">
-                                            <stop offset="0%" stop-color="#F2A900" stop-opacity="0.6" />
-                                            <stop offset="100%" stop-color="#F2A900" stop-opacity="0" />
+                                            <stop offset="0%" stop-color="#FF00FF" stop-opacity="0.6" />
+                                            <stop offset="100%" stop-color="#FF00FF" stop-opacity="0" />
                                         </radialGradient>
                                     </defs>
 
@@ -864,8 +865,8 @@
                                     <polygon points="150,250 250,250 500,500 -100,500" fill="url(#roadGradient)" />
                                     
                                     <!-- Road Edge Lines -->
-                                    <line x1="150" y1="250" x2="-100" y2="500" stroke="#F2A900" stroke-width="3" opacity="0.6" />
-                                    <line x1="250" y1="250" x2="500" y2="500" stroke="#F2A900" stroke-width="3" opacity="0.6" />
+                                    <line x1="150" y1="250" x2="-100" y2="500" stroke="#E3000F" stroke-width="3" opacity="0.6" />
+                                    <line x1="250" y1="250" x2="500" y2="500" stroke="#E3000F" stroke-width="3" opacity="0.6" />
 
                                     <!-- Lane Markers (Dashed) - Animated to simulate moving forward -->
                                     <line x1="175" y1="250" x2="50" y2="500" stroke="#fff" stroke-width="2" opacity="0.4" class="lane-line-forward" />
@@ -875,13 +876,13 @@
                                     <g transform="translate(100, 300)">
                                         <line x1="0" y1="0" x2="0" y2="-60" stroke="#333" stroke-width="2" />
                                         <path d="M0,-60 Q10,-65 20,-60" fill="none" stroke="#333" stroke-width="2" />
-                                        <circle cx="20" cy="-58" r="4" fill="#F2A900" class="streetlight-glow" />
+                                        <circle cx="20" cy="-58" r="4" fill="#FF00FF" class="streetlight-glow" />
                                         <circle cx="20" cy="-58" r="20" fill="url(#streetlightGlow)" opacity="0.4" />
                                     </g>
                                     <g transform="translate(300, 300)">
                                         <line x1="0" y1="0" x2="0" y2="-60" stroke="#333" stroke-width="2" />
                                         <path d="M0,-60 Q-10,-65 -20,-60" fill="none" stroke="#333" stroke-width="2" />
-                                        <circle cx="-20" cy="-58" r="4" fill="#F2A900" class="streetlight-glow" />
+                                        <circle cx="-20" cy="-58" r="4" fill="#FF00FF" class="streetlight-glow" />
                                         <circle cx="-20" cy="-58" r="20" fill="url(#streetlightGlow)" opacity="0.4" />
                                     </g>
 
@@ -917,7 +918,7 @@
                                         <rect x="141" y="280" width="4" height="25" fill="#fff" opacity="0.3" rx="2" class="speed-trail" />
                                         
                                         <!-- Car Body (Rear View) -->
-                                        <path d="M125,260 L155,260 L160,272 L158,290 L122,290 L120,272 Z" fill="#e0e0e0" />
+                                        <path d="M125,260 L155,260 L160,272 L158,290 L122,290 L120,272 Z" fill="#E2E4E5" />
                                         <!-- Rear Window -->
                                         <path d="M128,263 L152,263 L155,270 L125,270 Z" fill="#111" opacity="0.8" />
                                         <!-- Rear Bumper -->
@@ -953,16 +954,16 @@
 
                             <!-- Typography overlay -->
                             <div class="absolute top-8 left-8 text-white z-20">
-                                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#F2A900] mb-1">Grade A Approved</p>
+                                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#E3000F] mb-1">Grade A Approved</p>
                                 <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Chesterfield, UK</p>
                             </div>
                         </div>
 
                         <!-- Floating Instructor Card -->
-                        <div class="absolute -bottom-6 -left-6 md:-left-10 bg-[#1B2A4A] text-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-[240px] border border-white/10 z-30">
+                        <div class="absolute -bottom-6 -left-6 md:-left-10 bg-[#111111] text-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-[240px] border border-white/10 z-30">
                             <div class="flex items-center gap-2 mb-2">
-                                <i data-lucide="award" class="w-4 h-4 text-[#F2A900]"></i>
-                                <span class="text-[9px] font-black uppercase tracking-[0.2em] text-[#F2A900]">Lead Instructor</span>
+                                <i data-lucide="award" class="w-4 h-4 text-[#FF00FF]"></i>
+                                <span class="text-[9px] font-black uppercase tracking-[0.2em] text-[#FF00FF]">Lead Instructor</span>
                             </div>
                             <p class="font-display text-2xl font-black mb-1">Joseph</p>
                             <p class="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-400">Grade A ADI • Patient & Calm</p>
@@ -978,11 +979,11 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="section-label justify-center mb-5">Tuition Options</div>
-                <h2 class="font-display text-5xl md:text-6xl font-black text-[#0a0a0a] leading-tight">Choose Your <span class="text-[#E3000F]">Path</span></h2>
+                <h2 class="font-display text-5xl md:text-6xl font-black text-[#111111] leading-tight">Choose Your <span class="text-[#E3000F]">Path</span></h2>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="reveal group relative overflow-hidden rounded-2xl bg-[#0a0a0a] text-white p-10 md:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20">
+                <div class="reveal group relative overflow-hidden rounded-2xl bg-[#111111] text-white p-10 md:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#E3000F]/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-[#E3000F] group-hover:border-[#E3000F] transition-all duration-500">
@@ -990,15 +991,15 @@
                         </div>
                         <h3 class="font-display text-3xl font-black uppercase mb-4">Manual & Automatic</h3>
                         <p class="text-sm text-slate-400 leading-relaxed mb-8 max-w-md">We offer driving tuition for all levels of experience, covering manual and automatic vehicles. Carefully selected from the absolute best male and female instructors. Whether you're a complete beginner or looking to refine your skills, we tailor our lessons to your specific needs.</p>
-                        <a href="https://wa.me/447590575008" class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.15em] text-[#F2A900] group-hover:gap-4 transition-all">Book Lessons <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        <a href="https://wa.me/447590575008" class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.15em] text-[#FF00FF] group-hover:gap-4 transition-all">Book Lessons <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
                     </div>
                 </div>
                 
-                <div class="reveal reveal-delay-1 group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] text-white p-10 md:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20 border border-[#F2A900]/20">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#F2A900]/10 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="reveal reveal-delay-1 group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#111111] text-white p-10 md:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20 border border-[#E3000F]/20">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#E3000F]/10 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
                     <div class="relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-[#F2A900]/10 border border-[#F2A900]/30 flex items-center justify-center mb-8 group-hover:bg-[#F2A900] group-hover:border-[#F2A900] transition-all duration-500">
-                            <i data-lucide="zap" class="w-6 h-6 text-[#F2A900] group-hover:text-black transition-colors"></i>
+                        <div class="w-14 h-14 rounded-xl bg-[#E3000F]/10 border border-[#E3000F]/30 flex items-center justify-center mb-8 group-hover:bg-[#E3000F] group-hover:border-[#E3000F] transition-all duration-500">
+                            <i data-lucide="zap" class="w-6 h-6 text-[#E3000F] group-hover:text-black transition-colors"></i>
                         </div>
                         <h3 class="font-display text-3xl font-black uppercase mb-4">ADI & PDI Training</h3>
                         <p class="text-sm text-slate-400 leading-relaxed mb-8 max-w-md">Looking for a new career? We offer comprehensive ADI (Approved Driving Instructor) and PDI (Potential Driving Instructor) training. We also provide PASS PLUS and refresher courses to ensure you have the knowledge and experience necessary to become a safe and confident driver.</p>
@@ -1014,11 +1015,11 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="section-label justify-center mb-5">Full Range</div>
-                <h2 class="font-display text-5xl md:text-6xl font-black text-[#0a0a0a] leading-tight">More <span class="text-[#E3000F]">Services</span></h2>
+                <h2 class="font-display text-5xl md:text-6xl font-black text-[#111111] leading-tight">More <span class="text-[#E3000F]">Services</span></h2>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="reveal service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
+                <div class="reveal service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
                     <div class="service-icon-premium mb-5">
                         <i data-lucide="clock" class="w-6 h-6 text-[#E3000F]"></i>
                     </div>
@@ -1026,7 +1027,7 @@
                     <p class="text-[11px] text-slate-500 font-medium leading-relaxed">Boost confidence behind the wheel. Perfect for returning drivers or newcomers.</p>
                 </div>
                 
-                <div class="reveal reveal-delay-1 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
+                <div class="reveal reveal-delay-1 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
                     <div class="service-icon-premium mb-5">
                         <i data-lucide="car" class="w-6 h-6 text-[#E3000F]"></i>
                     </div>
@@ -1034,7 +1035,7 @@
                     <p class="text-[11px] text-slate-500 font-medium leading-relaxed">Advanced training to improve your skills and potentially lower insurance costs.</p>
                 </div>
                 
-                <div class="reveal reveal-delay-2 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
+                <div class="reveal reveal-delay-2 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
                     <div class="service-icon-premium mb-5">
                         <i data-lucide="book-open" class="w-6 h-6 text-[#E3000F]"></i>
                     </div>
@@ -1042,7 +1043,7 @@
                     <p class="text-[11px] text-slate-500 font-medium leading-relaxed">Guidance and resources to help you pass your theory test with confidence.</p>
                 </div>
                 
-                <div class="reveal reveal-delay-3 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
+                <div class="reveal reveal-delay-3 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
                     <div class="service-icon-premium mb-5">
                         <i data-lucide="users" class="w-6 h-6 text-[#E3000F]"></i>
                     </div>
@@ -1050,7 +1051,7 @@
                     <p class="text-[11px] text-slate-500 font-medium leading-relaxed">Carefully selected female instructors available for those who prefer them.</p>
                 </div>
                 
-                <div class="reveal service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
+                <div class="reveal service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
                     <div class="service-icon-premium mb-5">
                         <i data-lucide="shield" class="w-6 h-6 text-[#E3000F]"></i>
                     </div>
@@ -1058,7 +1059,7 @@
                     <p class="text-[11px] text-slate-500 font-medium leading-relaxed">Learn safe driving techniques for a lifetime of confident driving.</p>
                 </div>
                 
-                <div class="reveal reveal-delay-1 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
+                <div class="reveal reveal-delay-1 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
                     <div class="service-icon-premium mb-5">
                         <i data-lucide="moon" class="w-6 h-6 text-[#E3000F]"></i>
                     </div>
@@ -1066,7 +1067,7 @@
                     <p class="text-[11px] text-slate-500 font-medium leading-relaxed">Real motorway driving experience to boost confidence for the future.</p>
                 </div>
                 
-                <div class="reveal reveal-delay-2 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
+                <div class="reveal reveal-delay-2 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
                     <div class="service-icon-premium mb-5">
                         <i data-lucide="map" class="w-6 h-6 text-[#E3000F]"></i>
                     </div>
@@ -1074,7 +1075,7 @@
                     <p class="text-[11px] text-slate-500 font-medium leading-relaxed">Choose your pickup and drop-off location across Chesterfield and nearby.</p>
                 </div>
                 
-                <div class="reveal reveal-delay-3 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
+                <div class="reveal reveal-delay-3 service-card bg-white p-7 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition-all duration-400 hover:shadow-xl hover:shadow-black/5 group">
                     <div class="service-icon-premium mb-5">
                         <i data-lucide="award" class="w-6 h-6 text-[#E3000F]"></i>
                     </div>
@@ -1086,15 +1087,15 @@
     </section>
 
     <!-- ========== PRICING ========== -->
-    <section id="pricing" class="py-28 bg-[#0a0a0a] relative overflow-hidden">
+    <section id="pricing" class="py-28 bg-[#111111] relative overflow-hidden">
         <div class="absolute inset-0 opacity-30">
             <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#E3000F]/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#F2A900]/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FF00FF]/10 rounded-full blur-3xl"></div>
         </div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
-                <div class="section-label justify-center mb-5 text-[#F2A900]">Simple Pricing</div>
+                <div class="section-label justify-center mb-5 text-[#FF00FF]">Simple Pricing</div>
                 <h2 class="font-display text-5xl md:text-6xl font-black text-white leading-tight">Lesson <span class="text-[#E3000F]">Packages</span></h2>
                 <p class="text-sm text-slate-400 font-medium max-w-xl mx-auto mt-5">Best pricing across Chesterfield, Sheffield and Rotherham. Contact us for a personalised quote. All prices are inclusive of tax.</p>
             </div>
@@ -1106,10 +1107,10 @@
                     <p class="text-4xl font-black text-white mt-4 mb-1">£35</p>
                     <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-7">per hour</p>
                     <ul class="space-y-3 text-[12px] font-medium text-slate-400">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> 1-hour lesson</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Pick-up & drop-off</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Progress report</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Tax included</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> 1-hour lesson</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Pick-up & drop-off</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Progress report</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Tax included</li>
                     </ul>
                     <a href="tel:07590575008" class="btn-premium w-full block py-3.5 text-[10px] uppercase tracking-[0.15em] mt-8 rounded-sm text-center">Call to Book</a>
                 </div>
@@ -1120,26 +1121,26 @@
                     <p class="text-4xl font-black text-white mt-4 mb-1">£165</p>
                     <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-7">5 lessons (save £10)</p>
                     <ul class="space-y-3 text-[12px] font-medium text-slate-400">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> 5 x 1-hour lessons</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Flexible scheduling</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Progress tracking</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Tax included</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> 5 x 1-hour lessons</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Flexible scheduling</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Progress tracking</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Tax included</li>
                     </ul>
                     <a href="tel:07590575008" class="btn-premium w-full block py-3.5 text-[10px] uppercase tracking-[0.15em] mt-8 rounded-sm text-center">Call to Book</a>
                 </div>
 
                 <!-- Package 3 (Featured) -->
                 <div class="reveal reveal-delay-2 pricing-premium pricing-featured rounded-2xl p-8 transform lg:scale-105 shadow-2xl shadow-black/50 z-10">
-                    <div class="absolute top-0 right-0 bg-[#F2A900] text-black text-[9px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-bl-lg">⭐ Popular</div>
-                    <span class="text-[9px] font-black uppercase tracking-[0.2em] text-[#F2A900]">Best Value</span>
+                    <div class="absolute top-0 right-0 bg-[#FF00FF] text-black text-[9px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-bl-lg">⭐ Popular</div>
+                    <span class="text-[9px] font-black uppercase tracking-[0.2em] text-[#FF00FF]">Best Value</span>
                     <p class="text-4xl font-black text-white mt-4 mb-1">£320</p>
                     <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-7">10 lessons (save £30)</p>
                     <ul class="space-y-3 text-[12px] font-medium text-slate-300">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> 10 x 1-hour lessons</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Priority booking</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Mock test included</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Test prep included</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Tax included</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#FF00FF]"></i> 10 x 1-hour lessons</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#FF00FF]"></i> Priority booking</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#FF00FF]"></i> Mock test included</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#FF00FF]"></i> Test prep included</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#FF00FF]"></i> Tax included</li>
                     </ul>
                     <a href="tel:07590575008" class="btn-premium w-full block py-3.5 text-[10px] uppercase tracking-[0.15em] mt-8 rounded-sm text-center">Call to Book</a>
                 </div>
@@ -1150,12 +1151,12 @@
                     <p class="text-4xl font-black text-white mt-4 mb-1">£600</p>
                     <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-7">20 lessons (save £100)</p>
                     <ul class="space-y-3 text-[12px] font-medium text-slate-400">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> 20 x 1-hour lessons</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Unlimited rescheduling</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> 2 mock tests</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Motorway lesson included</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Free test day car hire</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#F2A900]"></i> Tax included</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> 20 x 1-hour lessons</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Unlimited rescheduling</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> 2 mock tests</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Motorway lesson included</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Free test day car hire</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#E3000F]"></i> Tax included</li>
                     </ul>
                     <a href="tel:07590575008" class="btn-premium w-full block py-3.5 text-[10px] uppercase tracking-[0.15em] mt-8 rounded-sm text-center">Call to Book</a>
                 </div>
@@ -1163,10 +1164,10 @@
 
             <!-- Intensive -->
             <div class="max-w-md mx-auto mt-8">
-                <div class="reveal pricing-premium bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-2xl border border-[#E3000F]/30 p-8">
+                <div class="reveal pricing-premium bg-gradient-to-br from-[#1a1a1a] to-[#111111] rounded-2xl border border-[#E3000F]/30 p-8">
                     <div class="flex items-center justify-between mb-1">
                         <span class="text-[9px] font-black uppercase tracking-[0.2em] text-[#E3000F]">ADI & PDI Training</span>
-                        <span class="text-[9px] font-black uppercase tracking-[0.15em] text-[#F2A900]">Career Focused</span>
+                        <span class="text-[9px] font-black uppercase tracking-[0.15em] text-[#FF00FF]">Career Focused</span>
                     </div>
                     <p class="text-4xl font-black text-white mt-4 mb-1">£650</p>
                     <p class="text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-7">Instructor Training Program</p>
@@ -1188,7 +1189,7 @@
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-14">
                 <div class="section-label justify-center mb-5">Watch & Learn</div>
-                <h2 class="font-display text-5xl md:text-6xl font-black text-[#0a0a0a] leading-tight">The <span class="text-[#E3000F]">Handley Way</span></h2>
+                <h2 class="font-display text-5xl md:text-6xl font-black text-[#111111] leading-tight">The <span class="text-[#E3000F]">Handley Way</span></h2>
             </div>
             <div class="aspect-video bg-black rounded-2xl relative overflow-hidden group cursor-pointer shadow-2xl shadow-black/20">
                 <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
@@ -1207,7 +1208,7 @@
         <div class="max-w-3xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="section-label justify-center mb-5">Questions</div>
-                <h2 class="font-display text-5xl md:text-6xl font-black text-[#0a0a0a] leading-tight">Help & <span class="text-[#E3000F]">FAQs</span></h2>
+                <h2 class="font-display text-5xl md:text-6xl font-black text-[#111111] leading-tight">Help & <span class="text-[#E3000F]">FAQs</span></h2>
             </div>
             <div class="space-y-0">
                 <div class="faq-item reveal">
@@ -1244,31 +1245,31 @@
             <div class="grid lg:grid-cols-2 gap-16 items-start">
                 <div class="reveal">
                     <div class="section-label mb-5">Coverage</div>
-                    <h2 class="font-display text-5xl md:text-6xl font-black text-[#0a0a0a] leading-tight mb-10">Service <span class="text-[#E3000F]">Areas</span></h2>
+                    <h2 class="font-display text-5xl md:text-6xl font-black text-[#111111] leading-tight mb-10">Service <span class="text-[#E3000F]">Areas</span></h2>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                        <div class="flex items-center gap-3 bg-[#faf8f5] p-4 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition">
+                        <div class="flex items-center gap-3 bg-[#faf8f5] p-4 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition">
                             <i data-lucide="map-pin" class="text-[#E3000F] w-5 h-5 flex-shrink-0"></i>
                             <div>
                                 <p class="font-black text-[12px] uppercase tracking-wide">Chesterfield</p>
                                 <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Main Area</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-3 bg-[#faf8f5] p-4 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition">
+                        <div class="flex items-center gap-3 bg-[#faf8f5] p-4 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition">
                             <i data-lucide="map-pin" class="text-[#E3000F] w-5 h-5 flex-shrink-0"></i>
                             <div>
                                 <p class="font-black text-[12px] uppercase tracking-wide">Sheffield</p>
                                 <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Surrounding Areas</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-3 bg-[#faf8f5] p-4 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition">
+                        <div class="flex items-center gap-3 bg-[#faf8f5] p-4 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition">
                             <i data-lucide="map-pin" class="text-[#E3000F] w-5 h-5 flex-shrink-0"></i>
                             <div>
                                 <p class="font-black text-[12px] uppercase tracking-wide">Rotherham</p>
                                 <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Surrounding Areas</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-3 bg-[#faf8f5] p-4 rounded-xl border border-black/5 hover:border-[#F2A900]/40 transition">
+                        <div class="flex items-center gap-3 bg-[#faf8f5] p-4 rounded-xl border border-black/5 hover:border-[#E3000F]/40 transition">
                             <i data-lucide="map-pin" class="text-[#E3000F] w-5 h-5 flex-shrink-0"></i>
                             <div>
                                 <p class="font-black text-[12px] uppercase tracking-wide">Killamarsh & Eckington</p>
@@ -1284,11 +1285,11 @@
                 
                 <div class="reveal reveal-delay-2">
                     <div class="section-label mb-5">Schedule</div>
-                    <h2 class="font-display text-5xl md:text-6xl font-black text-[#0a0a0a] leading-tight mb-10">Lesson <span class="text-[#E3000F]">Availability</span></h2>
+                    <h2 class="font-display text-5xl md:text-6xl font-black text-[#111111] leading-tight mb-10">Lesson <span class="text-[#E3000F]">Availability</span></h2>
                     
                     <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-black/5">
                         <table class="w-full text-left">
-                            <thead class="bg-[#1B2A4A] text-white">
+                            <thead class="bg-[#111111] text-white">
                                 <tr>
                                     <th class="p-4 text-[10px] font-black uppercase tracking-[0.15em]">Day</th>
                                     <th class="p-4 text-[10px] font-black uppercase tracking-[0.15em]">Daytime</th>
@@ -1318,10 +1319,10 @@
                         </div>
                     </div>
                     
-                    <div class="mt-8 p-6 bg-[#1B2A4A] rounded-2xl text-white">
+                    <div class="mt-8 p-6 bg-[#111111] rounded-2xl text-white">
                         <div class="flex items-center gap-3 mb-3">
-                            <i data-lucide="phone-call" class="w-5 h-5 text-[#F2A900]"></i>
-                            <p class="text-[10px] font-black uppercase tracking-[0.2em] text-[#F2A900]">Ready to Start?</p>
+                            <i data-lucide="phone-call" class="w-5 h-5 text-[#E3000F]"></i>
+                            <p class="text-[10px] font-black uppercase tracking-[0.2em] text-[#E3000F]">Ready to Start?</p>
                         </div>
                         <p class="text-sm font-medium text-slate-400 mb-4">Book your first lesson today and start your journey to freedom.</p>
                         <a href="https://wa.me/447590575008" class="btn-premium inline-block px-6 py-3 text-[10px] uppercase tracking-[0.15em] rounded-sm">Book via WhatsApp</a>
@@ -1336,7 +1337,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="section-label justify-center mb-5">Reviews</div>
-                <h2 class="font-display text-5xl md:text-6xl font-black text-[#0a0a0a] leading-tight">Student <span class="text-[#E3000F]">Feedback</span></h2>
+                <h2 class="font-display text-5xl md:text-6xl font-black text-[#111111] leading-tight">Student <span class="text-[#E3000F]">Feedback</span></h2>
             </div>
             
             <div class="grid md:grid-cols-3 gap-6">
@@ -1404,17 +1405,17 @@
     </section>
 
     <!-- ========== NEWSLETTER ========== -->
-    <section class="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <section class="py-24 bg-[#111111] relative overflow-hidden">
         <div class="absolute inset-0 opacity-20">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E3000F]/20 rounded-full blur-3xl"></div>
         </div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="max-w-xl mx-auto text-center">
-                <div class="section-label justify-center mb-5 text-[#F2A900]">Stay Sharp</div>
+                <div class="section-label justify-center mb-5 text-[#FF00FF]">Stay Sharp</div>
                 <h3 class="font-display text-4xl md:text-5xl font-black text-white mb-5 leading-tight">Theory Support & <span class="text-[#E3000F]">Tips</span></h3>
                 <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.15em] mb-8">Sign up for driving tips, theory test help, and local test centre updates.</p>
                 <form class="flex flex-col sm:flex-row gap-2">
-                    <input type="email" placeholder="Your Email Address" class="flex-1 p-4 bg-white/5 border border-white/10 rounded-sm text-xs uppercase font-bold tracking-wider text-white outline-none focus:border-[#F2A900] transition placeholder:text-slate-500">
+                    <input type="email" placeholder="Your Email Address" class="flex-1 p-4 bg-white/5 border border-white/10 rounded-sm text-xs uppercase font-bold tracking-wider text-white outline-none focus:border-[#E3000F] transition placeholder:text-slate-500">
                     <button class="btn-premium px-8 py-4 text-[10px] uppercase tracking-[0.15em] rounded-sm">Sign Up</button>
                 </form>
             </div>
@@ -1430,17 +1431,17 @@
                 <div>
                     <div class="logo-wrap mb-8">
                         <div class="logo-text !text-white flex items-center gap-3">
-                            <!-- Custom Handley Logo SVG -->
+                            <!-- Custom Handley Logo SVG matching car style -->
                             <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="10" y="30" width="80" height="40" rx="10" fill="#E3000F"/>
-                                <path d="M30 30 L40 15 L60 15 L70 30" fill="#1B2A4A"/>
-                                <circle cx="30" cy="70" r="10" fill="#1B2A4A" stroke="#fff" stroke-width="4"/>
-                                <circle cx="70" cy="70" r="10" fill="#1B2A4A" stroke="#fff" stroke-width="4"/>
+                                <path d="M30 30 L40 15 L60 15 L70 30" fill="#111111"/>
+                                <circle cx="30" cy="70" r="10" fill="#111111" stroke="#fff" stroke-width="4"/>
+                                <circle cx="70" cy="70" r="10" fill="#111111" stroke="#fff" stroke-width="4"/>
                                 <rect x="35" y="40" width="30" height="15" rx="3" fill="#ffffff" opacity="0.8"/>
-                                <path d="M20 50 L10 55 L10 60 L20 55 Z" fill="#F2A900"/>
+                                <path d="M20 50 L10 55 L10 60 L20 55 Z" fill="#FF00FF"/>
                             </svg>
                             <div>
-                                <span class="text-xl font-black italic block">HANDL<span class="text-[#E3000F]">L</span>EY</span>
+                                <span class="text-xl font-black italic block">HANDLEY</span>
                                 <span class="text-[7px] font-bold tracking-[0.35em] uppercase block text-slate-500">Driving School • Chesterfield</span>
                             </div>
                         </div>
@@ -1454,7 +1455,7 @@
 
                 <!-- Column 2: Contact Form & Social Icons -->
                 <div class="lg:col-span-2">
-                    <h5 class="font-black uppercase text-[#F2A900] text-[10px] mb-6 tracking-[0.2em]">Send Us A Message</h5>
+                    <h5 class="font-black uppercase text-[#E3000F] text-[10px] mb-6 tracking-[0.2em]">Send Us A Message</h5>
                     <form class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <input type="text" placeholder="Full Name" class="form-input-premium w-full p-4 rounded-sm">
@@ -1512,9 +1513,9 @@
 
     <!-- MOBILE CTA DOCK -->
     <div class="cta-dock md:hidden">
-        <a href="tel:07590575008"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#F2A900]"></i>CALL</a>
-        <a href="https://wa.me/447590575008"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#F2A900]"></i>WHATSAPP</a>
-        <a href="sms:+447590575008"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#F2A900]"></i>TEXT</a>
+        <a href="tel:07590575008"><i data-lucide="phone" class="w-5 h-5 mb-1 text-[#E3000F]"></i>CALL</a>
+        <a href="https://wa.me/447590575008"><i data-lucide="message-circle" class="w-5 h-5 mb-1 text-[#E3000F]"></i>WHATSAPP</a>
+        <a href="sms:+447590575008"><i data-lucide="smartphone" class="w-5 h-5 mb-1 text-[#E3000F]"></i>TEXT</a>
         <a href="tel:07590575008" class="bg-[#E3000F] !text-white !border-none"><i data-lucide="calendar" class="w-5 h-5 mb-1"></i>BOOK</a>
     </div>
 
